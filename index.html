@@ -116,6 +116,55 @@ p  { margin: 0 0 0.75rem; }
 .tile__title { font-weight: 600; font-size: 1.05rem; }
 .tile__meta  { color: var(--text-muted); font-size: 0.85rem; }
 
+/* Tarjeta de nivel con dos acciones: jugar (.tile-btn) y saltear (.btn-skip).
+   La tarjeta en sí ya no es un <button> único porque necesita dos botones
+   independientes en su interior. */
+.tile-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.tile-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  width: 100%;
+  min-height: 76px;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  transition: opacity 0.15s ease;
+}
+
+.tile-btn:hover:not(:disabled),
+.tile-btn:focus-visible:not(:disabled) {
+  opacity: 0.8;
+}
+
+.tile-btn:disabled,
+.tile-btn.tile-btn--locked {
+  opacity: 0.45;
+  filter: grayscale(0.6);
+  cursor: not-allowed;
+}
+
+.btn-skip {
+  align-self: flex-start;
+  min-height: auto;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.8rem;
+  background: none;
+  border-color: var(--border-subtle);
+  color: var(--text-muted);
+}
+
+.btn-skip:hover { color: var(--text-primary); border-color: var(--text-muted); }
+
 .badge {
   display: inline-block;
   align-self: flex-start;
@@ -492,6 +541,18 @@ function resetMateriaProgress(materiaId, progress) {
   saveProgress(progress);
 }
 
+// Marca un nivel como aprobado sin haber respondido ninguna pregunta, para
+// desbloquear el siguiente. A diferencia de recordAttempt, no toca
+// lastAttempts (no hubo ningún intento real que registrar).
+function skipLevel(materiaId, levelNumber, progress) {
+  const materiaProgress = getMateriaProgress(materiaId, progress);
+  if (!materiaProgress.passedLevels.includes(levelNumber)) {
+    materiaProgress.passedLevels.push(levelNumber);
+  }
+  progress.materias[materiaId] = materiaProgress;
+  saveProgress(progress);
+}
+
 // ===========================================================================
 // ESTADO Y UTILIDADES
 // ===========================================================================
@@ -579,7 +640,7 @@ function renderSubjects() {
   if (state.materias.length === 0) {
     const empty = document.createElement('div');
     empty.className = 'card empty-state';
-    empty.textContent = 'No hay materias cargadas. Revisá el registro MATERIAS_DISPONIBLES en quiz.html y el README.';
+    empty.textContent = 'No hay materias cargadas. Revisá el registro MATERIAS_DISPONIBLES en index.html y el README.';
     app.appendChild(empty);
     return;
   }
@@ -621,7 +682,7 @@ function renderLevels() {
   header.className = 'screen-header';
   header.innerHTML =
     `<h1>${escapeHtml(materia.nombre)}</h1>` +
-    '<p class="muted">Aprobá un nivel con el 100% de aciertos para desbloquear el siguiente.</p>';
+    '<p class="muted">Aprobá un nivel con el 100% de aciertos para desbloquear el siguiente, o salteálo si querés avanzar sin responderlo.</p>';
   app.appendChild(header);
 
   const grid = document.createElement('div');
@@ -641,19 +702,32 @@ function renderLevels() {
     else if (bloqueado) meta = '🔒 Aprobá el nivel anterior para desbloquear';
     else meta = `${totalPreguntas} pregunta(s)` + (checkpointCount > 1 ? ` · ${checkpointCount} temas` : '');
 
-    const tile = document.createElement('button');
-    tile.className = 'card tile' + (deshabilitado ? ' tile--locked' : '');
-    tile.innerHTML =
+    const wrap = document.createElement('div');
+    wrap.className = 'card tile-card';
+
+    const tileBtn = document.createElement('button');
+    tileBtn.className = 'tile-btn' + (deshabilitado ? ' tile-btn--locked' : '');
+    tileBtn.innerHTML =
       `<span class="tile__title">Nivel ${level.number}: ${escapeHtml(level.name)}</span>` +
       `<span class="tile__meta">${meta}</span>` +
       (aprobado ? '<span class="badge">Aprobado ✓</span>' : '');
 
     if (deshabilitado) {
-      tile.disabled = true;
+      tileBtn.disabled = true;
     } else {
-      tile.addEventListener('click', () => startLevel(index));
+      tileBtn.addEventListener('click', () => startLevel(index));
     }
-    grid.appendChild(tile);
+    wrap.appendChild(tileBtn);
+
+    if (!aprobado) {
+      const skip = document.createElement('button');
+      skip.className = 'btn-skip';
+      skip.textContent = 'Saltar nivel';
+      skip.addEventListener('click', () => handleSkipLevel(materia, level));
+      wrap.appendChild(skip);
+    }
+
+    grid.appendChild(wrap);
   });
 
   app.appendChild(grid);
@@ -889,6 +963,16 @@ function handleReset(materia) {
   );
   if (!confirmado) return;
   resetMateriaProgress(materia.id, state.progress);
+  render();
+}
+
+function handleSkipLevel(materia, level) {
+  const confirmado = window.confirm(
+    `¿Saltear el Nivel ${level.number}: "${level.name}" sin responder sus preguntas?\n\n` +
+    'Se va a marcar como aprobado y se desbloqueará el siguiente nivel.'
+  );
+  if (!confirmado) return;
+  skipLevel(materia.id, level.number, state.progress);
   render();
 }
 
