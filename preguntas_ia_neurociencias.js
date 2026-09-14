@@ -842,4 +842,268 @@ a) La memoria de trabajo de corto plazo
 b) El razonamiento verbal
 c) La memoria episódica autobiográfica
 *d) La inteligencia fluida
+
+## Nivel 4: Emociones y su regulación
+
+### Tema: El TDAH y sus síntomas emocionales
+
+1. Según el material, ¿cuáles son los rasgos distintivos "core" del TDAH, más allá de los síntomas emocionales asociados?
+a) Ansiedad, depresión y baja autoestima
+*b) Falta de atención, impulsividad e hiperactividad
+c) Procrastinación, insomnio y fatiga crónica
+d) Cambios de humor, irritabilidad y aislamiento social
+
+2. El material describe al TDAH en adultos como una condición que suele estar...
+a) sobrediagnosticada y sobretratada
+b) diagnosticada solo en la niñez
+c) asociada únicamente a síntomas físicos y visibles
+*d) infradiagnosticada, infratratada y poco reconocida
+
+### Tema: El modelo de los dos sistemas de pensamiento
+
+3. Según el modelo de los dos sistemas de pensamiento retomado en el material, ¿qué caracteriza al Sistema 1?
+a) Es lento, consciente y confiable
+*b) Es rápido, automático y completamente inconsciente
+c) Se usa solo para decisiones complejas
+d) Es deliberado y requiere esfuerzo consciente sostenido
+
+4. Según el modelo de los dos sistemas de pensamiento retomado en el material, ¿qué caracteriza al Sistema 2?
+a) Es rápido y propenso a errores
+b) Opera de forma automática e inconsciente
+*c) Es lento, deliberado y requiere esfuerzo consciente
+d) Se usa principalmente para tomar decisiones cotidianas simples
+
+### Tema: ¿Qué son las emociones?
+
+5. Según el material, ¿qué relación se plantea entre las emociones y la inteligencia artificial?
+*a) Por ahora no se cree que exista un análogo de las emociones en las IAs
+b) Las emociones ya fueron replicadas con éxito en los modelos de IA actuales
+c) Las emociones son un fenómeno exclusivamente computacional, sin ningún correlato biológico o corporal
+d) Los modelos de lenguaje actuales simulan emociones de forma prácticamente idéntica a como las sienten los humanos
+
+6. Según el material, las emociones están asociadas a...
+a) procesos exclusivamente culturales aprendidos durante la vida adulta
+b) decisiones racionales tomadas de forma plenamente consciente y deliberada
+*c) estructuras innatas del cerebro moldeadas por la evolución
+d) patrones de crianza específicos de cada familia
+
+7. ¿Qué distingue a los sentimientos, como la felicidad o la satisfacción, de las emociones, según el material?
+a) Los sentimientos son exclusivos de los animales no humanos, nunca de los seres humanos adultos y mayores
+b) Los sentimientos no tienen ninguna base biológica ni neuronal reconocida por la ciencia actual
+c) Los sentimientos son idénticos a las emociones en su definición y en su duración
+*d) Los sentimientos se asocian más a componentes cognitivos y duran más en el tiempo de vida
+
+### Tema: Cuatro ideas consensuadas sobre las emociones desde la psicología evolutiva
+
+8. Según el material, ¿qué son las emociones desde la perspectiva de la psicología evolutiva?
+*a) El resultado del perfeccionamiento de dispositivos de sobrevivencia a lo largo de la evolución de las especies biológicas
+b) Mecanismos aprendidos exclusivamente a través de la cultura y la educación formal recibida durante la vida adulta
+c) Un fenómeno exclusivo de la conciencia humana sin base biológica ni ningún correlato en otras especies animales
+d) Reacciones aleatorias sin ninguna función adaptativa ni relación alguna con la supervivencia de la especie a lo largo del tiempo
+
+9. Según el material, ¿qué conjunto de fenómenos mentales se explican, entre otros, por el perfeccionamiento evolutivo de las emociones como dispositivos de sobrevivencia?
+a) La memoria de trabajo, el lenguaje, el razonamiento lógico y la planificación consciente diaria y constante
+b) La plasticidad cerebral, la mielinización, la poda sináptica y la neurogénesis adulta
+c) La atención selectiva, la memoria semántica, la toma de decisiones racional y el pensamiento abstracto
+*d) Las emociones primarias, los ambientes obesogénicos, el ambiente "instagramagénico", el tribalismo y el amor romántico
+
+10. Según el material, ¿qué tienen en común los dispositivos evolutivos que dan lugar a las emociones en los distintos mamíferos?
+a) Cada especie de mamífero desarrolló estructuras cerebrales completamente distintas para las emociones a lo largo de la evolución
+b) Solo están presentes en los primates y en el ser humano, nunca en el resto de los mamíferos
+*c) Utilizan las mismas estructuras cerebrales y los mismos neurotransmisores en todos los mamíferos, incluyendo al ser humano
+d) Dependen exclusivamente del aprendizaje social de cada individuo y no de ninguna estructura cerebral heredada evolutivamente
+
+11. Según el material, ¿a qué función básica están vinculadas las estructuras cerebrales que sustentan las emociones?
+*a) A la regulación del equilibrio interno necesario para la supervivencia
+b) A la generación del lenguaje verbal y su comprensión en distintos contextos
+c) Al almacenamiento de la memoria episódica de largo plazo
+d) A la coordinación motora fina de los movimientos voluntarios
+
+12. Según el material, ¿en qué fenómenos corporales están íntimamente arraigadas las emociones?
+a) En el lenguaje corporal aprendido culturalmente
+b) En la actividad exclusiva de la corteza prefrontal humana
+c) En los reflejos motores de la médula espinal
+*d) En fenómenos sensitivos y viscerales llamados interocepción corporal
+
+13. Según una idea citada en el material sobre la relación entre el cuerpo y las emociones, ¿qué son las emociones?
+a) Pensamientos abstractos y racionales sobre una situación vivida
+*b) Los cambios físicos que experimentamos ante una situación determinada
+c) Juicios morales que hacemos sobre lo que nos sucede
+d) Recuerdos asociados a experiencias pasadas que ya no sentimos igual
+
+### Tema: Las emociones básicas
+
+14. Según el material, ¿qué evidencia relacionada con el desarrollo temprano sustenta que ciertas emociones sean consideradas básicas?
+a) Se observan únicamente después de los cinco años de edad y nunca antes de esa etapa
+b) Aparecen solo tras la adquisición completa del lenguaje verbal en la infancia
+*c) Se observan incluso en personas con ceguera y sordera congénitas, desde edades muy tempranas
+d) Se desarrollan exclusivamente durante la adolescencia y la adultez temprana, nunca antes
+
+15. Según el material, ¿qué evidencia transcultural sustenta que ciertas emociones sean consideradas básicas?
+*a) Se observan en distintas culturas, lo que sugiere que son universales y compartidas
+b) Solo se observan en culturas occidentales industrializadas y profundamente modernas del siglo actual y presente
+c) Varían completamente de una cultura a otra, sin ningún patrón común
+d) Dependen del idioma que se hable en cada región del mundo
+
+16. Según el material, ¿qué permite reconocer las emociones básicas, más allá de su aparición temprana y su presencia en distintas culturas?
+a) Informes verbales estandarizados completados por un profesional entrenado
+b) Escáneres cerebrales individuales realizados en un laboratorio especializado
+c) Cuestionarios de autopercepción completados de forma individual y voluntaria cada vez
+*d) Expresiones faciales universales, comunes a todas las culturas humanas
+
+### Tema: Patrones de desarrollo y envejecimiento
+
+17. Según el gráfico presentado en el material, que compara datos propios con datos de Harvard, ¿qué patrón se observa en el desempeño a lo largo de la edad?
+a) Un descenso continuo desde la infancia hasta la vejez, sin ninguna meseta intermedia en ninguno de los dos conjuntos de datos
+b) Un patrón completamente distinto entre ambos conjuntos de datos, sin ningún punto de coincidencia entre ellos a lo largo de toda la vida
+*c) Un patrón similar de aumento en la juventud, una meseta en la adultez y un descenso hacia edades avanzadas, en ambos conjuntos de datos
+d) Un aumento constante del desempeño a lo largo de toda la vida, sin ninguna meseta ni descenso en ninguna etapa del desarrollo o del envejecimiento
+
+### Tema: El sistema nervioso: ramas y funciones
+
+18. Según el diagrama del sistema nervioso presentado en el material, ¿qué compone el sistema nervioso central?
+*a) El cerebro (hemisferios, tronco y cerebelo) y la médula espinal
+b) Los nervios periféricos y los ganglios del sistema nervioso autónomo periférico
+c) El sistema nervioso simpático y el sistema parasimpático periférico
+d) Las vías sensoriales y las vías motoras voluntarias del cuerpo
+
+19. Según el diagrama del sistema nervioso presentado en el material, ¿en qué dos ramas se divide el sistema nervioso periférico?
+a) En el sistema central y el sistema simpático
+*b) En el sistema autónomo y el sistema somático del cuerpo
+c) En el sistema parasimpático y el sistema motor
+d) En el cerebro y en la médula espinal solamente y exclusivamente
+
+20. Según el diagrama del sistema nervioso presentado en el material, ¿cuál es la función principal asociada a la rama simpática del sistema nervioso autónomo?
+a) La relajación y la recuperación del cuerpo en completo y profundo reposo
+b) La digestión y el descanso profundo del organismo en calma
+c) El procesamiento sensorial voluntario del entorno inmediato y consciente
+*d) La acción, asociada a la respuesta de lucha o huida
+
+21. Según el diagrama del sistema nervioso presentado en el material, ¿cuál es la función principal asociada a la rama parasimpática del sistema nervioso autónomo?
+*a) La relajación y la recuperación del organismo
+b) La acción, asociada a la lucha o huida
+c) El control de los movimientos voluntarios
+d) El procesamiento de la información sensorial
+
+22. Según el diagrama del sistema nervioso presentado en el material, ¿qué controla el sistema nervioso autónomo en su conjunto?
+a) El procesamiento de información sensorial y los movimientos voluntarios del cuerpo humano
+*b) Los movimientos musculares involuntarios y los órganos viscerales internos del cuerpo
+c) Los reflejos espinales exclusivamente, sin ninguna otra función asociada
+d) La producción y comprensión del lenguaje hablado y escrito
+
+23. Según el diagrama del sistema nervioso presentado en el material, ¿de qué se encarga el sistema nervioso somático?
+a) De la regulación de los órganos viscerales y las glándulas internas del cuerpo humano por completo
+b) De la respuesta de lucha o huida ante amenazas externas inmediatas percibidas
+*c) Del procesamiento de la información sensorial y el control de los movimientos musculares voluntarios
+d) De la relajación y la recuperación completa del organismo en reposo prolongado y profundo
+
+24. Según el material, ¿cómo se definen los nervios en el diagrama del sistema nervioso?
+a) Como conjuntos de cuerpos neuronales
+b) Como redes de sinapsis exclusivamente centrales
+c) Como estructuras compuestas solo por células gliales
+*d) Como manojos organizados de axones nerviosos
+
+25. Según el material, ¿de qué sistema forma parte la denominada "parte reptiliana" del cerebro?
+a) Del sistema nervioso somático
+*b) Del sistema nervioso autónomo central y periférico
+c) De la corteza prefrontal
+d) Del sistema límbico exclusivamente y no de otro
+
+### Tema: Dolor, sufrimiento y pensamiento terribilizador
+
+26. Según el esquema presentado en el material sobre la psicología científica y las terapias cognitivo conductuales, ¿qué transforma el dolor en sufrimiento?
+*a) El pensamiento terribilizador, también llamado catastrofización
+b) La activación del sistema nervioso somático
+c) La ausencia de pensamientos conscientes
+d) La expresión facial asociada a la emoción
+
+### Tema: El sufrimiento y la sobreactivación del sistema simpático
+
+27. Según el material, ¿con qué está relacionado el sufrimiento a nivel del sistema nervioso?
+a) Con la activación exclusiva del sistema nervioso somático
+b) Con la ausencia total de actividad del sistema nervioso autónomo
+c) Con la actividad basal del sistema nervioso parasimpático y muy estable
+*d) Con la sobreactivación del sistema nervioso simpático en el cuerpo
+
+28. Según el material, ¿qué estructuras y ejes intervienen en que el sufrimiento se propague en cascada por el cuerpo?
+a) El sistema nervioso parasimpático, el cerebelo y el tronco encefálico
+*b) Principalmente el sistema nervioso simpático, la amígdala y el eje hipotalámico-hipofisario-adrenal
+c) El sistema nervioso somático, el hipocampo y la corteza visual y occipital
+d) El sistema límbico exclusivamente, sin otras estructuras involucradas en el proceso
+
+29. Según el material, ¿qué son los "segundos dardos"?
+*a) Los pensamientos posteriores a un dolor inevitable
+b) Las sensaciones físicas que acompañan al dolor original
+c) Los recuerdos traumáticos reprimidos
+d) Las expresiones faciales asociadas al dolor
+
+### Tema: El estrés en la vida moderna
+
+30. Según el material, ¿qué caracteriza a los agentes estresantes que predominan en la vida moderna, a diferencia de los que enfrentaban nuestros antepasados?
+a) Son exclusivamente amenazas físicas de supervivencia inmediata, iguales a las que enfrentaban nuestros antepasados en entornos naturales hostiles
+b) Han desaparecido casi por completo de la vida cotidiana gracias a los avances tecnológicos, médicos y sociales de las últimas décadas
+c) Afectan únicamente a las especies animales no humanas que viven en libertad en entornos naturales y salvajes remotos, lejos de cualquier ciudad o zona habitada por personas
+*d) Están relacionados con problemas cotidianos como el tráfico, las finanzas, el trabajo y las relaciones sociales, más que con amenazas de supervivencia inmediata
+
+### Tema: El sistema parasimpático y la regulación emocional
+
+31. Según el material, ¿qué función cumple el sistema nervioso parasimpático en relación con la activación del sistema simpático y el eje hipotalámico-hipofisario-adrenal?
+a) La intensifica de forma significativa
+*b) Calma esa activación de forma progresiva
+c) No tiene ninguna influencia sobre ella
+d) La reemplaza por completo de forma permanente
+
+32. Según el material, ¿cuál es la combinación de activación del sistema nervioso autónomo asociada a una vida larga y saludable?
+*a) Una activación basal principalmente parasimpática, con una leve activación simpática y picos ocasionales ante grandes oportunidades o amenazas
+b) Una activación basal principalmente simpática, con una leve activación parasimpática y picos ocasionales de relajación profunda y muy necesaria
+c) Una activación simpática constante y máxima durante todo el día, sin ninguna pausa parasimpática ni descanso
+d) La ausencia total de actividad tanto en la rama simpática como en la parasimpática del sistema nervioso autónomo
+
+### Tema: Cultivar experiencias positivas
+
+33. Según el material, ¿cuál es el primer remedio propuesto para guiar al sistema nervioso autónomo hacia la calma?
+a) Evitar por completo cualquier situación que genere estrés
+b) Suprimir voluntariamente los pensamientos negativos
+*c) Buscar conscientemente y absorber experiencias positivas
+d) Aumentar la activación del sistema nervioso simpático
+
+34. Según el material, ¿cuáles son los tres pasos propuestos para absorber una experiencia positiva?
+a) Identificar el hecho positivo, compartirlo de inmediato en redes sociales y olvidarlo rápidamente después de haberlo vivido
+*b) Convertir hechos positivos en experiencias positivas, saborear esas experiencias y percibir cómo se integran en el interior
+c) Registrar el hecho positivo por escrito, analizarlo racionalmente en detalle y descartarlo de inmediato para siempre y sin dudarlo
+d) Recordar el hecho positivo, compararlo con experiencias pasadas similares y minimizarlo por completo una vez más
+
+35. Según el material, ¿qué efecto tiene repetir la asimilación de experiencias positivas varias veces al día durante meses o años?
+a) No genera ningún cambio duradero en el cerebro ni en el cuerpo
+b) Aumenta permanentemente la activación del sistema nervioso simpático de forma extrema
+c) Disminuye la capacidad de sentir emociones negativas por completo
+*d) Cambia gradualmente el cerebro, construyendo estructura neuronal de forma duradera
+
+### Tema: Manejo emocional, razón y consideración moral
+
+36. Según el material, ¿qué diferencia al altruismo humano del de otras especies animales?
+*a) El altruismo humano puede basarse en la razón, mientras que el de otras especies es fundamentalmente instintivo
+b) El altruismo humano es puramente instintivo, igual que ocurre en el resto de las otras especies animales
+c) Solo los animales no humanos son capaces de actuar de forma verdaderamente altruista y desinteresada con otros seres
+d) El altruismo humano no tiene ninguna base biológica ni evolutiva reconocida por la ciencia actual
+
+37. Según el material, ¿a qué conclusión llevan la evidencia objetiva y subjetiva analizadas mediante el uso de la razón, respecto de la consideración moral?
+a) A que algunas personas merecen mayor consideración moral que otras por su capacidad intelectual superior
+b) A que la consideración moral depende exclusivamente de la cultura y el origen de cada persona y su historia personal
+*c) A que ninguna persona tiene algo especial que la haga merecedora de mayor consideración moral que las demás
+d) A que solo los seres humanos altamente racionales merecen algún tipo de consideración moral plena
+
+### Tema: Una visión alternativa del manejo emocional
+
+38. Según la idea presentada al cierre del material sobre una visión alternativa de la libertad, ¿qué elementos involucra el tipo de libertad más importante?
+a) Independencia económica, éxito profesional, reconocimiento social y comodidad material duradera en el tiempo
+*b) Atención, consciencia, disciplina, esfuerzo y la capacidad de preocuparse genuinamente por los demás cada día
+c) Ausencia total de responsabilidades, obligaciones y compromisos con otras personas cercanas y muy queridas de verdad
+d) Control absoluto sobre las propias emociones, sin ninguna intervención externa de otras personas
+
+39. Según el material, ¿con qué se propone identificar al manejo emocional en esta visión alternativa?
+a) Con la capacidad de suprimir completamente cualquier emoción negativa apenas aparece, sin dejarla manifestarse de ninguna manera visible
+b) Con la capacidad de evitar por completo el contacto con cualquier situación estresante o incómoda que pueda surgir en el día a día
+*c) Con la capacidad de mantener la actitud de atención, disciplina y cuidado genuino por los demás descripta en la cita final
+d) Con la capacidad de analizar racionalmente cada emoción antes de permitirse sentirla por completo, sin ninguna excepción
 `;
