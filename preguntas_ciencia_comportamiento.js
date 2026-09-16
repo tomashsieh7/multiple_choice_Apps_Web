@@ -1511,4 +1511,786 @@ a) Aumentar de manera exclusiva la cantidad de información disponible para las 
 *b) Comprender y transformar el sistema que hace posible o conveniente esa conducta de forma sostenida
 c) Reemplazar a la persona involucrada por otro actor dentro del mismo sistema
 d) Ignorar por completo el contexto estructural en el que ocurre esa conducta
+
+## Nivel 6: Diseño de Intervenciones
+
+### Tema: El proceso de diseño de intervenciones y el modelo del doble diamante
+
+1. En el modelo del doble diamante aplicado al diseño de intervenciones, ¿qué dos etapas conforman el "espacio para el problema"?
+a) Diseñar y Evaluar
+b) Desarrollar y Entregar
+*c) Descubrir y Definir
+d) Explorar y Escalar
+
+2. En el modelo del doble diamante, ¿qué dos etapas conforman el "espacio para la solución"?
+*a) Desarrollar y Entregar
+b) Descubrir y Definir
+c) Explorar y Diseñar
+d) Definir y Evaluar
+
+3. Según el modelo del doble diamante presentado en la clase, ¿qué herramientas se utilizan durante la etapa "Descubrir"?
+a) Producto mínimo viable y métricas
+b) Lluvia de ideas y prototipado rápido
+*c) Mapas del sistema, investigación de campo y posibles puntos de palanca
+d) Matriz de viabilidad e impacto
+
+### Tema: Marcos de etapas para estructurar el proceso (Target-Explore-Solution-Trial-Scale)
+
+4. En el marco de etapas Target-Explore-Solution-Trial-Scale, la etapa que consiste en "identificar el objetivo o problema que el proyecto pretende abordar" corresponde a:
+*a) Target (Definir)
+b) Explore (Explorar)
+c) Trial (Evaluar)
+d) Scale (Escalar)
+
+5. En el marco de etapas Target-Explore-Solution-Trial-Scale, la etapa que consiste en "explorar los factores de comportamiento y las ideas que pueden estar influyendo en el problema objetivo" corresponde a:
+a) Target (Definir)
+*b) Explore (Explorar)
+c) Solution (Diseñar)
+d) Scale (Escalar)
+
+6. En el marco de etapas Target-Explore-Solution-Trial-Scale, la etapa que consiste en "desarrollar posibles soluciones o intervenciones basadas en los conocimientos sobre el comportamiento" corresponde a:
+a) Explore (Explorar)
+b) Trial (Evaluar)
+*c) Solution (Diseñar)
+d) Target (Definir)
+
+7. En el marco de etapas Target-Explore-Solution-Trial-Scale, la etapa que consiste en "poner a prueba las intervenciones propuestas mediante ensayos o experimentos a pequeña escala" corresponde a:
+a) Solution (Diseñar)
+*b) Trial (Evaluar)
+c) Scale (Escalar)
+d) Target (Definir)
+
+8. En el marco de etapas Target-Explore-Solution-Trial-Scale, la etapa en la que "las intervenciones que tuvieron éxito en la fase de prueba pueden ampliarse" corresponde a:
+a) Trial (Evaluar)
+b) Explore (Explorar)
+c) Solution (Diseñar)
+*d) Scale (Escalar)
+
+### Tema: Identificar, entender y acortar brechas de comportamiento
+
+9. Según el ciclo de trabajo con brechas de comportamiento presentado en la clase, ¿cuál es el orden correcto de los tres pasos?
+*a) Identificar las brechas, entender las brechas y acortar las brechas
+b) Entender las brechas, acortar las brechas e identificar las brechas
+c) Acortar las brechas, identificar las brechas y entenderlas
+d) Entender las brechas, identificarlas y luego acortarlas
+
+### Tema: La fase Explorar
+
+10. Según la clase, ¿cuáles son las dos actividades principales dentro de la fase "Explorar" del proceso de diseño de intervenciones?
+a) Definir el problema y construir la intervención
+*b) Recolectar información y analizar la información
+c) Idear soluciones y prototipar rápidamente
+d) Medir el impacto y escalar la intervención
+
+### Tema: La fase Definir: el criterio Asignable, Observable, Específico
+
+11. Según el criterio presentado para la fase "Definir", un objetivo bien definido debe ser Asignable, Observable y Específico. ¿Qué significa cada una de estas características, respectivamente?
+*a) Que se pueda determinar quién es responsable, que sea medible y que esté formulado con mucha precisión
+b) Que tenga un plazo de cumplimiento, que sea alcanzable y que esté redactado con claridad
+c) Que sea medible, que se pueda determinar quién es responsable y que sea alcanzable
+d) Que esté formulado con precisión, que tenga un plazo de cumplimiento y que sea medible
+
+### Tema: De la fase Diseñar a la intervención: toolkits disponibles
+
+12. Según la clase, una vez que se entiende bien el comportamiento y el contexto, y se identifican las barreras conductuales, ¿qué corresponde hacer en la fase "Diseñar"?
+a) Volver a recolectar información de campo
+*b) Pasar del diagnóstico a la acción, ideando y diseñando una intervención
+c) Medir el impacto de la intervención mediante un ensayo controlado
+d) Redefinir el objetivo del proyecto desde cero
+
+13. ¿Cuáles son los tres toolkits mencionados en la clase para apoyar el diseño de intervenciones basadas en ciencias del comportamiento?
+*a) MINDSPACE, EAST y Behavior Change Wheel
+b) COM-B, EAST y DECIDE
+c) MINDSPACE, COM-B y Target-Explore-Solution-Trial-Scale
+d) EAST, DECIDE y Behavior Change Wheel
+
+### Tema: MINDSPACE: concepto general
+
+14. ¿Qué es MINDSPACE, según la clase?
+a) Un método para medir el impacto de una intervención mediante ensayos controlados
+*b) Un acrónimo en el que cada letra representa un factor psicológico clave que afecta nuestras decisiones
+c) Un modelo de cuatro etapas para construir una intervención
+d) Una matriz que cruza barreras de comportamiento con tipos de intervención
+
+### Tema: Los nueve factores de MINDSPACE
+
+15. ¿Qué factor de MINDSPACE describe el hecho de que las personas se ven influenciadas por quién transmite un mensaje?
+a) Normas
+*b) Mensajero
+c) Afecto
+d) Ego
+
+16. ¿Qué factor de MINDSPACE se refiere a que las personas responden a recompensas y multas, aunque hay que tener cuidado porque la aversión a la pérdida puede alterar el resultado esperado?
+*a) Incentivos
+b) Predeterminados
+c) Compromiso
+d) Saliencia
+
+17. ¿Qué factor de MINDSPACE describe que las personas son influenciadas por lo que hacen los demás?
+a) Primacía
+b) Mensajero
+c) Ego
+*d) Normas
+
+18. ¿Qué factor de MINDSPACE describe que las personas tienden a seguir la corriente y quedarse con la opción que ya está establecida?
+a) Compromiso
+b) Afecto
+*c) Predeterminados
+d) Incentivos
+
+19. ¿Qué factor de MINDSPACE describe que las personas se ven influenciadas por las novedades que aparecen en su entorno?
+*a) Saliencia
+b) Ego
+c) Normas
+d) Primacía
+
+20. ¿Qué factor de MINDSPACE describe que las personas son influenciadas por señales subconscientes previas a la decisión?
+a) Saliencia
+b) Compromiso
+c) Mensajero
+*d) Primacía o Priming
+
+21. ¿Qué factor de MINDSPACE describe que las emociones pueden influir fuertemente en las decisiones?
+a) Incentivos
+*b) Afecto
+c) Predeterminados
+d) Compromiso
+
+22. ¿Qué factor de MINDSPACE describe que las promesas hechas de forma pública habitualmente son cumplidas?
+a) Ego
+b) Normas
+*c) Compromiso
+d) Saliencia
+
+23. ¿Qué factor de MINDSPACE describe que las personas actúan de manera que las haga sentirse bien consigo mismas?
+*a) Ego
+b) Afecto
+c) Primacía
+d) Mensajero
+
+### Tema: Incentivos: tipos y evidencia empírica
+
+24. Según la clasificación de incentivos vista en la clase, un beneficio económico por pagar una factura a tiempo es un ejemplo de incentivo:
+a) Negativo
+*b) Positivo
+c) Simbólico
+d) De coerción
+
+25. Según la clasificación de incentivos vista en la clase, una multa por llegar tarde es un ejemplo de incentivo:
+a) Positivo
+b) Simbólico
+*c) Negativo
+d) Material
+
+26. Según la clasificación de incentivos vista en la clase, un reconocimiento público sin recompensa económica es un ejemplo de incentivo:
+a) Material
+b) Negativo
+c) De coerción
+*d) Simbólico
+
+27. Según la clasificación de incentivos vista en la clase, un regalo o una suma de dinero entregados como recompensa son ejemplos de incentivos:
+a) Simbólicos
+*b) Materiales
+c) De restricción
+d) Negativos
+
+28. En el estudio de campo realizado en guarderías de Israel sobre padres que llegaban tarde a buscar a sus hijos, ¿qué ocurrió al introducir una multa por llegar tarde?
+*a) La cantidad de padres que llegaban tarde aumentó, y se mantuvo alta incluso después de eliminar la multa
+b) La cantidad de padres que llegaban tarde disminuyó de inmediato y se mantuvo baja
+c) La multa no tuvo ningún efecto medible sobre la puntualidad de los padres
+d) La cantidad de padres que llegaban tarde disminuyó, pero volvió a subir apenas se eliminó la multa
+
+29. ¿Qué idea resume el concepto de "aversión a la pérdida" mencionado en la clase?
+a) Las personas prefieren siempre obtener una ganancia antes que evitar una pérdida
+b) Las personas ignoran por completo los mensajes que mencionan una pérdida
+c) Las pérdidas y las ganancias generan siempre el mismo nivel de motivación
+*d) A veces lo que motiva a las personas no es ganar algo, sino evitar perderlo
+
+30. Según la clase, ¿qué se recomienda hacer antes de escalar un incentivo a toda la población objetivo?
+*a) Evaluar el incentivo con pruebas piloto
+b) Aumentar el monto del incentivo para asegurar su efectividad
+c) Reemplazar el incentivo por una restricción
+d) Consultar exclusivamente literatura académica sobre el tema
+
+### Tema: Normas sociales
+
+31. Según la clase, las normas sociales pueden ser descriptivas o injuntivas. ¿Cuál de las siguientes opciones distingue correctamente ambos tipos?
+*a) Las descriptivas reflejan lo que la gente típicamente hace, y las injuntivas reflejan lo que la comunidad aprueba o desaprueba
+b) Las descriptivas reflejan lo que la comunidad aprueba, y las injuntivas reflejan lo que la gente típicamente hace
+c) Las descriptivas y las injuntivas se refieren ambas a lo que está prohibido por ley
+d) Las descriptivas se aplican solo a comportamientos individuales, y las injuntivas solo a comportamientos grupales
+
+32. Según la clase, ¿cuándo es más poderoso un mensaje de norma social?
+a) Cuando solo se menciona la norma injuntiva, sin datos sobre el comportamiento real
+*b) Cuando lo que la gente típicamente hace (norma descriptiva) se alinea con lo que está socialmente aprobado (norma injuntiva)
+c) Cuando se combina con una restricción legal formal
+d) Cuando la norma descriptiva contradice a la norma injuntiva
+
+33. En el experimento del Instituto de Vivienda de la Ciudad de Buenos Aires (IVC) con cartas a deudores, ¿qué resultado tuvo el mensaje que incluía una norma social ("7 de cada 10 familias no adeudan cuotas") en comparación con el grupo control?
+a) Tuvo un resultado idéntico al del grupo control
+b) Disminuyó la probabilidad de pago respecto al grupo control
+*c) Aumentó la probabilidad de pago en un 17% respecto al grupo control
+d) Solo funcionó en hogares con bajo nivel de morosidad
+
+### Tema: Default: opciones predeterminadas
+
+34. ¿Qué sesgo explica por qué las personas tienden a quedarse con la opción predeterminada (default) en lugar de cambiarla activamente?
+a) Aversión a la pérdida
+b) Efecto ancla
+*c) Sesgo del status quo
+d) Sesgo de consistencia
+
+35. Según los datos comparados entre países sobre donación de órganos, ¿qué se observa en los países donde el default es "donante" (opt-out) frente a los países donde el default es "no donante" (opt-in)?
+a) La tasa de consentimiento efectivo es similar en ambos casos
+*b) La tasa de consentimiento efectivo es mucho más alta en los países con default opt-out
+c) La tasa de consentimiento efectivo es más alta en los países con default opt-in
+d) El tipo de default no tiene relación con la tasa de consentimiento
+
+### Tema: Notoriedad o saliencia
+
+36. ¿Qué idea describe el factor de "notoriedad o saliencia" mencionado en la clase?
+*a) Que, dado que la atención es limitada, destacar la información clave puede influir significativamente en las decisiones
+b) Que las personas ignoran cualquier información nueva en su entorno
+c) Que las personas solo prestan atención a los mensajes que reciben de figuras de autoridad
+d) Que las personas prefieren siempre la opción más simple, sin importar cuán visible sea
+
+37. En el experimento de la autoridad de tránsito (DVLA) con cartas a quienes no habían pagado el impuesto de circulación, ¿qué modificación produjo el mayor aumento en la tasa de pago?
+a) Simplificar el texto de la carta original, sin agregar imágenes
+*b) Incluir una imagen del vehículo del destinatario en la carta
+c) Enviar la carta con mayor frecuencia
+d) Eliminar por completo el texto legal de la carta
+
+### Tema: Primacía, preactivación, priming o efecto ancla
+
+38. ¿Qué describe el fenómeno de "priming" o efecto ancla mencionado en la clase?
+*a) Que la exposición a un estímulo influye en la respuesta a otro estímulo posterior, muchas veces sin que seamos conscientes
+b) Que las personas siempre recuerdan con exactitud los detalles de un evento que presenciaron
+c) Que las decisiones de las personas dependen exclusivamente de la información más reciente que reciben
+d) Que las personas evitan tomar decisiones cuando reciben demasiados estímulos
+
+39. En el experimento clásico sobre el choque de autos, ¿qué se observó al preguntar por la velocidad de los autos usando la palabra "colisionaron" en lugar de "se estrellaron"?
+a) Las estimaciones de velocidad fueron exactamente iguales con ambas palabras
+b) Las personas se negaron a responder cuando se usó la palabra "colisionaron"
+*c) La palabra utilizada en la pregunta influyó en la estimación de velocidad que daban las personas
+d) Solo la palabra "se estrellaron" generó una respuesta medible
+
+40. Según la advertencia mencionada en la clase respecto a los estudios de priming, ¿qué hay que tener en cuenta al interpretarlos?
+a) Que todos sus resultados han sido replicados sin excepción
+*b) Que muchos de esos estudios no fueron replicados o sus efectos pueden ser sutiles
+c) Que el priming solo se observó en estudios realizados fuera de un laboratorio
+d) Que el efecto de priming es siempre más fuerte que el de los incentivos económicos
+
+### Tema: Afecto y emociones
+
+41. Según la clase, ¿qué efecto producen frecuentemente las emociones negativas sobre el comportamiento?
+a) Generan siempre un cambio inmediato de comportamiento
+b) No tienen ninguna influencia sobre el juicio ni la memoria
+*c) Muchas veces producen inacción en lugar de un cambio de comportamiento
+d) Aumentan siempre la disposición a asumir riesgos
+
+### Tema: Compromiso (commitment) y ego
+
+42. ¿Cuál de las siguientes acciones ejemplifica el factor de "compromiso" (commitment) mencionado en la clase?
+*a) Anunciar públicamente una meta en redes sociales
+b) Recibir una multa por no cumplir con una norma
+c) Recibir una imagen personalizada en una carta de cobro
+d) Ver un ejemplo de otra persona realizando el comportamiento deseado
+
+43. Según la clase, además de buscar coherencia entre lo que se promete y lo que se hace, ¿qué otro efecto produce el compromiso público?
+a) Reduce el costo psicológico de abandonar la meta
+*b) Transforma la autoimagen de la persona y eleva el costo psicológico de retroceder
+c) Elimina por completo la necesidad de incentivos económicos
+d) Hace que la meta comprometida sea legalmente exigible
+
+44. En el ejemplo del IVC sobre turnos para créditos hipotecarios, un mensaje que resalta el logro personal del destinatario (por ejemplo, "fuiste preseleccionado/a") para motivar su asistencia al turno es un ejemplo del factor:
+a) Normas
+b) Compromiso
+*c) Ego
+d) Saliencia
+
+### Tema: El marco EAST
+
+45. ¿Qué es el marco EAST, según la clase?
+a) Un modelo que clasifica las barreras de comportamiento en capacidad, oportunidad y motivación
+*b) Un método de diseño de intervenciones basado en cuatro grandes principios de las ciencias del comportamiento
+c) Una lista de nueve factores psicológicos que afectan las decisiones
+d) Una matriz que cruza tipos de intervención con barreras de comportamiento
+
+46. El principio "Hazlo Simple" del marco EAST propone, entre otras cosas, utilizar el poder de los defaults y reducir el esfuerzo requerido. ¿Cuál de los siguientes resultados ejemplifica la aplicación de este principio?
+a) La tasa de pago de impuestos aumentó 5 puntos porcentuales al mencionar que la mayoría paga a tiempo
+b) La tasa de pago de una multa se duplicó al enviar un mensaje de texto días antes de una notificación judicial
+*c) La tasa de participación en un esquema de pensiones subió de 61% a 83% al inscribir automáticamente a los empleados
+d) La tasa de pago de un impuesto vehicular aumentó de 40% a 49% al incluir una imagen del vehículo
+
+47. El principio "Hazlo Atractivo" del marco EAST propone atraer la atención mediante imágenes, colores o personalización. ¿Cuál de los siguientes resultados ejemplifica la aplicación de este principio?
+a) La tasa de participación en un esquema de pensiones subió de 61% a 83% al inscribir automáticamente a los empleados
+b) La tasa de pago de impuestos aumentó 5 puntos porcentuales al mencionar que la mayoría paga a tiempo
+c) La tasa de pago de una multa se duplicó al enviar un mensaje de texto días antes de una notificación judicial
+*d) La tasa de pago de un impuesto vehicular aumentó de 40% a 49% al incluir una imagen del vehículo
+
+48. El principio "Hazlo Social" del marco EAST propone mostrar que la mayoría de las personas realiza el comportamiento deseado. ¿Cuál de los siguientes resultados ejemplifica la aplicación de este principio?
+*a) La tasa de pago de impuestos aumentó 5 puntos porcentuales al mencionar que la mayoría paga a tiempo
+b) La tasa de participación en un esquema de pensiones subió de 61% a 83% al inscribir automáticamente a los empleados
+c) La tasa de pago de un impuesto vehicular aumentó de 40% a 49% al incluir una imagen del vehículo
+d) La tasa de pago de una multa se duplicó al enviar un mensaje de texto días antes de una notificación judicial
+
+49. El principio "Hazlo a Tiempo" del marco EAST propone contactar a las personas cuando es más probable que sean receptivas. ¿Cuál de los siguientes resultados ejemplifica la aplicación de este principio?
+a) La tasa de participación en un esquema de pensiones subió de 61% a 83% al inscribir automáticamente a los empleados
+b) La tasa de pago de un impuesto vehicular aumentó de 40% a 49% al incluir una imagen del vehículo
+*c) La tasa de pago de una multa se duplicó al enviar un mensaje de texto días antes de una notificación judicial
+d) La tasa de pago de impuestos aumentó 5 puntos porcentuales al mencionar que la mayoría paga a tiempo
+
+### Tema: El método completo de EAST y el proyecto REACTIVITY
+
+50. El método completo para desarrollar intervenciones con el marco EAST incluye, entre otras, las etapas "Definir el resultado" y "Entender el contexto". ¿Cuál de las siguientes describe correctamente a cada una, en ese orden?
+*a) Identificar el comportamiento a fomentar y cómo medirlo; luego visitar las situaciones y personas involucradas para entender el problema desde su perspectiva
+b) Visitar las situaciones y personas involucradas para entender el problema; luego identificar el comportamiento a fomentar y cómo medirlo
+c) Usar el marco EAST para generar ideas; luego llevar la intervención a la práctica y medir su impacto
+d) Llevar la intervención a la práctica y medir su impacto; luego usar el marco EAST para generar ideas
+
+51. El método completo para desarrollar intervenciones con el marco EAST incluye también las etapas "Construir la intervención" y "Evaluar, aprender y adaptar". ¿Cuál de las siguientes describe correctamente a cada una, en ese orden?
+a) Visitar las situaciones y personas involucradas para entender el contexto; luego identificar el comportamiento a fomentar
+*b) Usar el marco EAST para generar lecciones de las ciencias del comportamiento que alimenten el diseño; luego llevar la intervención a la práctica y medir su impacto, idealmente con un ensayo controlado
+c) Identificar el comportamiento a fomentar y cómo medirlo; luego usar el marco EAST para generar ideas
+d) Llevar la intervención a la práctica; luego visitar las situaciones y personas involucradas
+
+52. ¿Cuál era el desafío del proyecto REACTIVITY implementado en la ciudad de Braga, Portugal?
+a) Aumentar la tasa de reciclaje de residuos domiciliarios
+b) Aumentar la cantidad de donantes de órganos registrados
+c) Reducir el consumo de tabaco entre los jóvenes
+*d) Reducir el uso de automóviles y, en consecuencia, las emisiones de CO2
+
+53. ¿En qué consistió la intervención del proyecto REACTIVITY?
+a) Una restricción legal a la circulación de automóviles particulares en el centro de la ciudad
+*b) Una aplicación gamificada que otorgaba puntos y vales para tiendas locales a quienes usaran transporte sostenible
+c) Una campaña de multas para quienes no usaran transporte público
+d) Una serie de charlas educativas sobre el cambio climático en escuelas locales
+
+54. ¿Qué resultado reportó el proyecto REACTIVITY luego de su implementación?
+a) Los usuarios redujeron su uso de auto, pero no se midió ningún efecto en las emisiones de CO2
+b) Solo un pequeño grupo de usuarios instaló la aplicación y no se registraron resultados medibles
+*c) 475 usuarios cubrieron más de 100.000 kilómetros en transporte sustentable, logrando una reducción de emisiones de CO2
+d) La aplicación fue discontinuada antes de poder medir resultados
+
+### Tema: El modelo COM-B del Behavior Change Wheel
+
+55. ¿Qué es el Behavior Change Wheel, según la clase?
+a) Un conjunto de nueve factores psicológicos que afectan las decisiones, como el mensajero y los incentivos
+*b) Un marco teórico que organiza los factores que influyen en el comportamiento y guía el diseño de estrategias de cambio
+c) Un método de cuatro principios para diseñar intervenciones (Simple, Atractivo, Social y A tiempo)
+d) Un modelo de cinco etapas que va desde Explorar hasta Escalar
+
+56. Según el modelo COM-B en el centro del Behavior Change Wheel, ¿cuáles son sus tres componentes principales y cómo se subdivide cada uno?
+*a) Capacidad (física y psicológica), Oportunidad (física y social) y Motivación (automática y reflexiva)
+b) Capacidad (física y social), Oportunidad (automática y reflexiva) y Motivación (física y psicológica)
+c) Capacidad (automática y reflexiva), Oportunidad (física y psicológica) y Motivación (física y social)
+d) Capacidad (física y automática), Oportunidad (psicológica y reflexiva) y Motivación (física y social)
+
+### Tema: Tipos de intervención del Behavior Change Wheel
+
+57. Según el Behavior Change Wheel, ¿qué tipo de intervención consiste en "informar o explicar para aumentar el conocimiento o la comprensión sobre un comportamiento"?
+*a) Educación
+b) Persuasión
+c) Entrenamiento
+d) Modelado
+
+58. Una campaña que utiliza imágenes fuertes de enfermedades para generar rechazo hacia el consumo de tabaco es un ejemplo del tipo de intervención:
+a) Coerción
+*b) Persuasión
+c) Restricción
+d) Educación
+
+59. Un programa que otorga puntos canjeables por premios a quienes reciclan sus residuos es un ejemplo del tipo de intervención:
+a) Facilitar
+b) Entrenamiento
+c) Modelado
+*d) Incentivos
+
+60. Un cartel que anuncia que se pagará el doble de tarifa por circular sin el pase correspondiente es un ejemplo del tipo de intervención:
+a) Restricción
+b) Persuasión
+*c) Coerción
+d) Incentivos
+
+61. Según el Behavior Change Wheel, ¿qué tipo de intervención consiste en "mejorar habilidades físicas o psicológicas mediante demostración, práctica y retroalimentación"?
+*a) Entrenamiento
+b) Facilitar
+c) Modelado
+d) Educación
+
+62. Un subsidio y un crédito que ayudan a una familia a acceder a una vivienda propia son un ejemplo del tipo de intervención:
+a) Incentivos
+b) Entrenamiento
+c) Restricción
+*d) Facilitar
+
+63. Una campaña que muestra el testimonio de una persona real hablando de su experiencia con el cáncer, para inspirar a otros a acercarse a un centro de salud, es un ejemplo del tipo de intervención:
+a) Entrenamiento
+*b) Modelado
+c) Persuasión
+d) Educación
+
+64. El rediseño de una calle para incorporar un carril exclusivo de tránsito rápido para el transporte público es un ejemplo del tipo de intervención:
+a) Restricción
+b) Facilitar
+*c) Reestructuración del entorno
+d) Entrenamiento
+
+65. Según el Behavior Change Wheel, ¿qué tipo de intervención consiste en "imponer reglas sociales o límites formales sobre un comportamiento"?
+a) Coerción
+b) Reestructuración del entorno
+c) Facilitar
+*d) Restricción
+
+## Nivel 7: Nudges, Sludges, Boosts y el Marco CREATE
+
+### Tema: Teoría del cambio y la necesidad de múltiples intervenciones
+
+1. Según la teoría del cambio de Weiss (1995) mencionada en la clase, ¿qué estrategia se propone para lograr el cambio buscado?
+a) Evaluar el impacto únicamente al finalizar todo el proceso
+*b) Establecer objetivos a corto, mediano y largo plazo mediante "mini-steps"
+c) Aplicar siempre la misma intervención en todos los momentos del proceso
+d) Enfocarse en una única intervención de alcance masivo
+
+2. Según la clase, ¿por qué no alcanza con diseñar una sola intervención para lograr un cambio de comportamiento?
+a) Porque las intervenciones únicas generan siempre rechazo en la población
+b) Porque cada intervención solo puede aplicarse una vez por persona
+*c) Porque las estrategias necesitan el diseño de distintas intervenciones para distintos momentos
+d) Porque las intervenciones pierden su efecto luego de la primera semana de aplicación
+
+### Tema: Dos tipos de intervenciones según el grado de autonomía
+
+3. Según la clasificación presentada en la clase, ¿qué caracteriza a las intervenciones que preservan la autonomía de las personas?
+a) Aplican sanciones económicas a quienes no cumplen con la conducta deseada
+b) Exigen el cumplimiento obligatorio de una conducta específica
+c) Eliminan por completo las opciones disponibles para la persona
+*d) Modifican el contexto de decisión para influir en la conducta, dentro del paternalismo liberal o libertario
+
+4. Según la clase, ¿qué caracteriza a las intervenciones que usan la coerción o la restricción?
+*a) Implican cambios deliberados en la estructura de costos y beneficios, resultando intrusivas o forzadas
+b) Preservan siempre la autonomía de decisión de la persona
+c) Se basan exclusivamente en el rediseño del entorno físico
+d) Solo pueden aplicarse dentro del ámbito de la salud pública
+
+### Tema: Nudges: definición y características
+
+5. Según la clase, ¿qué significa la palabra "nudge" y qué dos características se le atribuyen?
+a) "Lodo/barro"; se asocia a fricciones o barreras
+b) "Impulso"; se asocia a fortalecer herramientas y educación
+*c) "Empujoncito"; se asocia al paternalismo liberal y a ser costo-efectivo
+d) "Empujoncito"; se asocia a la coerción y a la restricción
+
+### Tema: Ejemplos de nudges costo-efectivos
+
+6. ¿Qué mostró la intervención "El tamaño importa", realizada en Dinamarca durante almuerzos de conferencias?
+a) Que separar los residuos por tipo de plato aumentó el desperdicio de alimentos
+b) Que el tamaño del plato no tuvo ningún efecto sobre el desperdicio de alimentos
+c) Que ofrecer platos más grandes redujo el desperdicio de alimentos
+*d) Que ofrecer platos más pequeños redujo significativamente el desperdicio de alimentos
+
+7. En la intervención de Mercado Libre (México), donde se buscaba que emprendedores conectaran una cuenta externa para acceder a un crédito, ¿qué mensaje dio mejores resultados?
+*a) El que apelaba al sesgo de completitud, mostrando que la motivación aumenta al acercarse al objetivo
+b) El mensaje de control, sin ningún tipo de apelación conductual
+c) El que ofrecía "decisión activa" sin información adicional sobre el crédito
+d) El que directamente advertía sobre las consecuencias de no completar el trámite
+
+### Tema: Sludges: definición y mecanismos cognitivos
+
+8. Según la clase, ¿qué significa "sludge" y qué idea resume su efecto?
+a) "Impulso"; se refiere al fortalecimiento de competencias
+b) "Empujoncito"; se refiere a un cambio positivo en la arquitectura de elección
+*c) "Lodo/barro"; se refiere a fricciones o barreras donde a veces menos es más
+d) "Lodo/barro"; se refiere a la eliminación completa de la libertad de elección
+
+9. En el ejemplo de una persona que quiere inscribirse a un plan social pero se encuentra con un formulario largo y con letra chica, ¿qué describe el concepto de "bandwidth tax" o "ancho de banda"?
+a) Que la persona le da más peso a los beneficios futuros que al esfuerzo de ahora
+b) Que la persona pierde por completo la capacidad de tomar cualquier decisión
+c) Que el formulario reduce la cantidad de trámites que la persona debe realizar
+*d) Que la escasez de tiempo y energía consume parte de la capacidad mental y dificulta procesar información
+
+10. En el ejemplo de una persona que quiere inscribirse a un plan social pero se encuentra con un formulario largo y con letra chica, ¿qué describe el concepto de "tunneling"?
+*a) Que la persona, bajo presión, se concentra solo en resolver lo inmediato y descuida lo estratégico
+b) Que la persona evita por completo cualquier tipo de trámite burocrático
+c) Que la persona mejora su capacidad de procesar información bajo presión
+d) Que la persona le da más peso a los beneficios futuros que al esfuerzo de ahora
+
+11. En el ejemplo de una persona que quiere inscribirse a un plan social pero se encuentra con un formulario largo y con letra chica, ¿qué describe el concepto de "focus dividend"?
+a) Que enfocarse en el largo plazo mejora siempre la calidad de las decisiones
+*b) Que el foco en lo urgente puede volver a la persona muy precisa con eso, aunque a costa de olvidar otros trámites importantes
+c) Que la persona recibe una recompensa económica por completar rápido un trámite
+d) Que el ancho de banda mental aumenta cuando se reduce la presión temporal
+
+12. En el ejemplo de una persona que quiere inscribirse a un plan social pero se encuentra con un formulario largo y con letra chica, ¿qué describe el "present bias" o sesgo del presente?
+a) Que se prioriza siempre el beneficio futuro por sobre el esfuerzo presente
+b) Que la persona no es capaz de recordar información reciente
+*c) Que se le da más peso al esfuerzo de ahora que a los beneficios futuros, postergando la inscripción
+d) Que la persona prefiere actuar de inmediato sin evaluar costos y beneficios
+
+### Tema: Sludge en la práctica: caso Suiza
+
+13. En la intervención sobre prácticas ambientales en Suiza, ¿qué diferencia se observó entre el pedido "Directo" (el consultor pedía los ítems en nombre de la empresa) y el pedido "Sludge" (la empresa debía completarlo por su cuenta)?
+a) Tanto la intención como la tasa real de pedidos fueron idénticas en ambos grupos
+b) La intención de pedir fue mucho menor en el grupo Sludge, pero la tasa real de pedidos fue idéntica
+c) La tasa real de pedidos aumentó en el grupo Sludge respecto al grupo Directo
+*d) La intención de pedir fue similar en ambos grupos, pero la tasa real de pedidos cayó a casi la mitad en el grupo Sludge
+
+### Tema: Boosts: definición y comparación con los nudges
+
+14. Según la clase, ¿qué significa "boost" y qué dos características se le atribuyen?
+*a) "Impulso"; se asocia a herramientas/educación y a la autonomía
+b) "Empujoncito"; se asocia al paternalismo liberal y al costo efectivo
+c) "Lodo/barro"; se asocia a fricciones o barreras
+d) "Impulso"; se asocia a la coerción y a sanciones económicas
+
+15. Según la clase, ¿cuál es el objetivo principal de un boost, a diferencia de un nudge?
+a) Modificar la conducta cambiando la arquitectura de elección, en lugar de fortalecer competencias
+*b) Fortalecer competencias, en lugar de modificar la conducta cambiando la arquitectura de elección
+c) Aplicar sanciones económicas en lugar de mejorar habilidades cognitivas
+d) Reducir la autonomía del individuo para asegurar el cumplimiento
+
+16. Según la comparación entre nudge y boost presentada en la clase, ¿qué diferencia existe respecto a la duración del efecto?
+a) Ninguno de los dos efectos persiste una vez retirada la intervención
+b) Ambos efectos persisten de la misma manera una vez retirada la intervención
+*c) El efecto del nudge se revierte si se elimina la intervención, mientras que el del boost persiste porque se aprende una habilidad
+d) El efecto del boost se revierte si se elimina la intervención, mientras que el del nudge persiste
+
+17. Según la comparación presentada en la clase, ¿en qué se basa un nudge y en qué se basa un boost?
+a) Ambos se basan exclusivamente en incentivos económicos
+b) El boost se basa en deficiencias sistemáticas, y el nudge en capacidades maleables
+c) Ambos se basan en la reestructuración del entorno físico
+*d) El nudge se basa en deficiencias sistemáticas (heurísticos), y el boost en capacidades maleables
+
+18. Según la comparación presentada en la clase, ¿qué se plantea sobre la autonomía del individuo en cada caso?
+*a) El nudge puede ser opaco o manipulativo, mientras que el boost es transparente y requiere cooperación
+b) El boost puede ser opaco o manipulativo, mientras que el nudge es transparente
+c) Ambos requieren siempre la cooperación activa del individuo
+d) Ninguno de los dos afecta de forma distinta la autonomía del individuo
+
+### Tema: Caso combinado nudge y boost: higiene de manos
+
+19. En la intervención de higiene de manos en hospitales de Países Bajos, ¿en qué consistió el componente identificado como "nudge"?
+a) En enseñar a las enfermeras a calcular probabilidades de infección
+*b) En un reencuadre positivo del mensaje ("In good hands"), presentando la higiene como cuidado del paciente
+c) En una multa para quienes no cumplieran con el protocolo
+d) En eliminar los carteles y flyers del área de trabajo
+
+20. En la misma intervención de higiene de manos en hospitales de Países Bajos, ¿en qué consistió el componente identificado como "boost"?
+a) En un reencuadre positivo del mensaje presentando la higiene como cuidado del paciente
+b) En un recordatorio automático enviado por mensaje de texto a cada enfermera
+*c) En alfabetización en riesgo, mostrando probabilidades de infección como "1 de cada 20 pacientes se infecta"
+d) En una sanción económica a quienes no cumplieran con el protocolo
+
+21. ¿Qué diferencia se observó en la intervención de higiene de manos entre los resultados del nudge y del boost, una semana después de retirar los materiales?
+a) Ambos volvieron al nivel del grupo control una semana después
+b) El boost bajó a ~55% tras retirar los materiales, mientras que el nudge se mantuvo en ~90%
+c) Ambos se mantuvieron estables en el mismo porcentaje una semana después
+*d) El nudge bajó a ~75% tras retirar los materiales, mientras que el boost se mantuvo en ~80%
+
+### Tema: Dark patterns
+
+22. Según la clase, ¿qué son los "dark patterns"?
+*a) Trucos de diseño que hacen que los usuarios hagan cosas que no tenían intención de hacer
+b) Intervenciones que fortalecen competencias y promueven la autonomía del usuario
+c) Estrategias de política pública basadas en la legislación
+d) Un tipo de boost que siempre mejora la comprensión del usuario
+
+23. Según la clase, ¿qué diferencia existe entre el uso de dark patterns a corto y a largo plazo?
+a) Nunca funcionan, ni siquiera a corto plazo
+*b) Pueden funcionar si se busca un resultado de corto plazo, pero tienen un impacto negativo en el largo plazo
+c) Siempre generan un impacto positivo tanto a corto como a largo plazo
+d) Solo tienen impacto negativo a corto plazo, pero se vuelven positivos a largo plazo
+
+24. ¿Qué patrón oscuro describe una prueba gratuita que cambia a un esquema pago sin aviso previo?
+a) Roach motel
+b) Bait & switch
+*c) Forced continuity (continuidad forzada)
+d) Roadblock
+
+25. ¿Qué patrón oscuro describe una situación en la que registrarse o suscribirse es fácil, pero darse de baja es difícil?
+a) Sneak into basket
+b) Disguised ads
+c) Forced continuity
+*d) Roach motel
+
+26. ¿Qué patrón oscuro consiste en enfocar la atención del usuario en la opción más cara y ocultar la opción más económica?
+*a) Deliberate misdirection
+b) Obscured pricing
+c) Privacy zuckering
+d) Hidden costs
+
+27. ¿Qué patrón oscuro describe la aparición de un ítem adicional en el carrito de compras sin el consentimiento del usuario?
+a) Hidden costs
+*b) Sneak into basket
+c) Bait & switch
+d) Growth hacking through spamming
+
+28. ¿Qué patrón oscuro describe la aparición de un costo nuevo e inesperado recién al momento de pagar?
+a) Obscured pricing
+b) Roadblock
+*c) Hidden costs
+d) Misinformation
+
+29. ¿Qué patrón oscuro consiste en hacer que el usuario comparta más información privada de la que desearía?
+a) Growth hacking through spamming
+b) Deliberate misdirection
+c) Disguised ads
+*d) Privacy zuckering
+
+30. ¿Qué patrón oscuro describe un anuncio publicitario diseñado para parecer otro tipo de contenido o navegación?
+*a) Disguised ads
+b) Roadblock
+c) Bait & switch
+d) Obscured pricing
+
+31. ¿Qué patrón oscuro consiste en usar una convención o patrón conocido para que el usuario asuma algo falsamente?
+a) Roach motel
+*b) Bait & switch
+c) Sneak into basket
+d) Forced continuity
+
+32. ¿Qué patrón oscuro convierte al usuario en un "spammer" sin que lo sepa?
+a) Misinformation
+b) Roadblock
+*c) Growth hacking through spamming
+d) Obscured pricing
+
+33. ¿Qué patrón oscuro describe un pop-up que interrumpe la acción que el usuario intentaba realizar?
+a) Hidden costs
+*b) Roadblock
+c) Privacy zuckering
+d) Bait & switch
+
+34. ¿Qué patrón oscuro dificulta deliberadamente la comparación de precios entre distintas opciones?
+a) Hidden costs
+*b) Obscured pricing
+c) Deliberate misdirection
+d) Roach motel
+
+35. ¿Qué patrón oscuro incluye preguntas capciosas o casillas de verificación diseñadas para confundir al usuario mediante color, contraste o lenguaje?
+a) Disguised ads
+*b) Misinformation / trick questions
+c) Forced continuity
+d) Growth hacking through spamming
+
+### Tema: Estrategias de política pública para diseñar intervenciones
+
+36. Según la clase, ¿qué caracteriza a la estrategia de "guías y recomendaciones" dentro de las herramientas de política pública?
+a) Usar procesos de planificación formal para cambiar el entorno físico o social
+b) Crear o modificar leyes, estableciendo prohibiciones, multas u obligaciones
+*c) Elaborar y difundir estándares de salud, seguridad o buenas prácticas profesionales o científicas
+d) Usar impuestos, subsidios o incentivos económicos para influir en el comportamiento
+
+37. ¿Qué caracteriza a la estrategia de "planificación del entorno físico o social"?
+a) Elaborar y difundir estándares de salud o buenas prácticas profesionales
+b) Crear nuevos servicios o adaptar los existentes para apoyar un comportamiento
+c) Establecer normas obligatorias sin llegar al nivel de ley
+*d) Usar procesos de planificación formal para cambiar el entorno físico o social, como el urbanismo
+
+38. ¿Qué caracteriza a la estrategia de "comunicación y marketing"?
+*a) Realizar campañas de información pública a través de medios digitales, impresos, audiovisuales o correspondencia
+b) Crear o modificar leyes con prohibiciones y multas
+c) Establecer normas obligatorias sin llegar al nivel de ley
+d) Usar impuestos o subsidios para influir en el comportamiento
+
+39. ¿Qué caracteriza a la estrategia de "legislación"?
+a) Elaborar guías y recomendaciones profesionales sin carácter obligatorio
+*b) Crear o modificar leyes, estableciendo prohibiciones, multas u obligaciones
+c) Crear nuevos servicios para apoyar un comportamiento
+d) Usar procesos de planificación formal para cambiar el entorno
+
+40. ¿Qué caracteriza a la estrategia de "provisión de servicios"?
+a) Establecer normas obligatorias sin llegar al nivel de ley
+b) Realizar campañas de información pública por distintos medios
+*c) Crear nuevos servicios o adaptar los existentes para apoyar un comportamiento, como puestos de vacunación móviles
+d) Usar impuestos o subsidios para influir en el comportamiento
+
+41. ¿Qué caracteriza a la estrategia de "regulación", a diferencia de la legislación?
+a) Crea o modifica leyes con prohibiciones y multas
+b) Elabora guías y recomendaciones sin carácter obligatorio
+c) Usa impuestos o subsidios económicos para influir en el comportamiento
+*d) Establece normas obligatorias sin llegar al nivel de ley, como exigir formación específica para cierto trabajo
+
+42. ¿Qué caracteriza a la estrategia de "medidas fiscales"?
+*a) Usar impuestos, subsidios o incentivos económicos para influir en el comportamiento, como el impuesto al tabaco
+b) Elaborar y difundir estándares de buenas prácticas profesionales
+c) Crear nuevos servicios para apoyar un comportamiento
+d) Establecer normas obligatorias sin llegar al nivel de ley
+
+### Tema: El blueprint DECIDE para las ciencias del comportamiento aplicadas
+
+43. Según el diagrama "DECIDE: A Blueprint for Applied Behavioral Science" presentado en la clase, ¿cuál es el orden correcto de sus seis etapas?
+a) Explorar el contexto, definir el problema, implementar la solución, diseñar la intervención, evaluar los próximos pasos y determinar el impacto
+*b) Definir el problema, explorar el contexto, diseñar la intervención, implementar la solución, determinar el impacto y evaluar los próximos pasos
+c) Diseñar la intervención, definir el problema, determinar el impacto, explorar el contexto, implementar la solución y evaluar los próximos pasos
+d) Determinar el impacto, evaluar los próximos pasos, definir el problema, explorar el contexto, diseñar la intervención e implementar la solución
+
+### Tema: El marco CREATE y sus componentes
+
+44. Según el marco CREATE presentado en la clase, ¿qué describe la etapa "Cue" (señal)?
+a) Que la persona evalúa los costos y beneficios de realizar la acción
+b) Que la persona debe tener los recursos y habilidades necesarios para actuar
+*c) Que debe ocurrir una señal, externa o interna, para que la persona comience a considerar una acción
+d) Que la experiencia pasada de la persona condiciona si finalmente actúa
+
+45. Según la clase, ¿qué diferencia hay entre las señales externas y las internas en la etapa "Cue" del marco CREATE?
+a) Las externas son estados propios como el hambre, mientras que las internas son estímulos del entorno como un mensaje
+b) Ambas se refieren exclusivamente a estímulos visuales percibidos por la persona
+c) Ambas se refieren exclusivamente a estados emocionales de la persona
+*d) Las externas son estímulos del entorno como un mensaje o la bicicleta, mientras que las internas son estados propios como el hambre
+
+46. Según la etapa "Cue" del marco CREATE, ¿qué recomendación (tip) se da respecto a las señales?
+*a) Cambiar de señal para que no sea ignorada, y evitar momentos donde compite con muchas otras señales
+b) Usar siempre la misma señal para generar un hábito más fuerte con el tiempo
+c) Reducir al mínimo la cantidad de señales externas disponibles para la persona
+d) Aumentar la frecuencia de las señales internas por sobre las externas
+
+47. Según la etapa "Reaction" del marco CREATE, ¿qué se recomienda tener en cuenta sobre el comportamiento de las personas?
+a) Que las personas ignoran completamente las interacciones sociales al reaccionar
+*b) Que hay que prestar atención a lo que la gente hace y no solo a lo que dice, y que la primera experiencia importa mucho
+c) Que las personas prefieren siempre lo novedoso por sobre lo familiar
+d) Que la reacción de las personas nunca depende de experiencias anteriores
+
+48. Según la etapa "Evaluation" del marco CREATE, ¿qué condición debe cumplir un producto o servicio para que la persona continúe con la acción?
+a) Ofrecer siempre el menor costo económico posible entre las alternativas
+b) Estar disponible únicamente a través de una aplicación para celulares
+*c) Darle al usuario algo que realmente quiere o necesita en ese momento, más que las alternativas
+d) Requerir el menor tiempo de uso posible, sin importar el resultado final
+
+49. Según la etapa "Ability" del marco CREATE, ¿qué elementos determinan si una persona puede llevar a cabo una acción?
+a) Únicamente la cantidad de dinero disponible para realizarla
+b) Únicamente la señal externa o interna que motivó la acción
+c) Únicamente la experiencia previa de la persona con esa acción
+*d) Los recursos, las habilidades necesarias y la creencia de que la acción tendrá éxito
+
+50. Según la etapa "Timing" del marco CREATE, ¿qué pregunta central se plantea respecto a la acción?
+*a) Cuándo realizar la acción, si es urgente o si puede posponerse para más tarde
+b) Qué recursos son necesarios para poder llevar a cabo la acción
+c) Qué señal externa o interna dio origen a la acción
+d) Qué experiencia pasada condiciona la decisión de actuar
+
+51. Según la etapa "Experience" del marco CREATE, ¿por qué personas distintas pueden reaccionar de forma diferente ante la misma señal?
+a) Porque todas las personas evalúan los costos y beneficios exactamente de la misma manera
+*b) Porque la experiencia es muy personal y la historia propia de cada uno condiciona el último paso
+c) Porque la señal siempre determina la reacción, sin importar la experiencia previa
+d) Porque la habilidad para realizar la acción es siempre igual entre distintas personas
+
+### Tema: Principios generales del marco CREATE y el cambio de hábitos
+
+52. Según la clase, ¿bajo qué condición la persona continúa con una acción según el marco CREATE?
+a) Solo si existe una señal externa muy fuerte, sin importar las alternativas disponibles
+b) Solo si la acción no requiere ningún tipo de recurso o habilidad
+*c) Solo si la acción es mejor que las alternativas que compiten por su atención y su tiempo
+d) Solo si la persona tuvo una experiencia negativa previa con acciones similares
+
+53. Según la clase, ¿cómo se puede aplicar el marco CREATE para cambiar hábitos o dejar de hacer algo?
+a) Aplicando únicamente la etapa de Evaluation, sin considerar las demás etapas del marco
+b) Eliminando por completo la etapa de Cue del proceso de cambio
+c) Reemplazando el marco CREATE por el modelo COM-B en todos los casos
+*d) Usando el marco CREATE al revés, entendiendo que cambiar hábitos es difícil y que la persona tiene que creer que puede lograrlo
+
+54. Según la clase, ¿qué advertencia se hace sobre la aplicación de marcos como CREATE para diseñar intervenciones?
+*a) Que no hay fórmulas mágicas, que el contexto importa mucho y que hay que testear e iterar
+b) Que estos marcos garantizan siempre el mismo resultado sin importar el contexto
+c) Que estos marcos solo se pueden aplicar a intervenciones puramente digitales
+d) Que, una vez definida la intervención, no es necesario volver a evaluarla
 `;
