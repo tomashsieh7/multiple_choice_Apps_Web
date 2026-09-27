@@ -2293,4 +2293,509 @@ c) Reemplazando el marco CREATE por el modelo COM-B en todos los casos
 b) Que estos marcos garantizan siempre el mismo resultado sin importar el contexto
 c) Que estos marcos solo se pueden aplicar a intervenciones puramente digitales
 d) Que, una vez definida la intervención, no es necesario volver a evaluarla
+
+## Nivel 8: Evaluación: determinar el impacto con experimentos
+
+### Tema: Evaluar: la etapa de determinar el impacto
+
+1. ¿En qué etapa del proceso Explorar, Definir, Diseñar, Evaluar y Escalar se ubica el tema de la clase 7?
+a) Definir, acotando el problema de comportamiento a resolver
+b) Explorar, comprendiendo el contexto donde ocurre el problema
+c) Escalar, difundiendo una intervención que ya fue validada
+*d) Evaluar, determinando el impacto de las intervenciones con experimentos
+
+2. Si una marca de shampoo cambia el color de la etiqueta y se quiere medir el impacto de ese cambio, ¿qué propone la clase en lugar de mirar solamente si subieron las ventas?
+*a) Determinar el impacto mediante experimentos que permitan atribuir el cambio a la intervención
+b) Comparar las ventas actuales con las de los años anteriores únicamente
+c) Preguntar a los clientes si notaron el cambio de color en la etiqueta
+d) Esperar varios meses más para ver si las ventas se sostienen solas
+
+### Tema: Ensayos controlados y randomizados, causalidad y correlación
+
+3. Cuando se quiere inferir causalidad, es decir, saber si A causa B, ¿qué diseño recomienda la clase?
+a) Un estudio de caso sobre un único individuo muy representativo
+b) Una encuesta de opinión entre los usuarios del producto
+*c) Un ensayo controlado y randomizado (RCT)
+d) Un análisis de la correlación entre dos variables observadas
+
+4. Según la clase, ¿cuál es una variante del ensayo controlado y randomizado?
+a) El estudio de historias clínicas
+*b) El A/B test
+c) La entrevista en profundidad
+d) El grupo focal con usuarios
+
+5. ¿Con qué nombre presenta la clase a la metodología de medición ilustrada con un sello de "Gold Standard" para saber si una intervención funciona?
+*a) Ensayo controlado y randomizado
+b) Encuesta de satisfacción con muestra representativa
+c) Análisis observacional de datos administrativos
+d) Estudio de correlación entre variables de interés
+
+6. En el ejemplo de las ventas de helados y los ataques de tiburones que suben y bajan juntos a lo largo del año, ¿qué papel cumple la temperatura elevada?
+a) Intervención que se aplica solamente al grupo tratamiento
+*b) Variable de confusión que explica ambos fenómenos a la vez
+c) Predictor que provoca directamente los ataques de tiburones
+d) Resultado que se busca predecir con las ventas de helados
+
+7. En el esquema de helados y tiburones de la clase, ¿qué rol tienen las ventas de helados?
+a) Grupo control, que no recibe ninguna intervención del estudio
+b) Variable de confusión, que explica ambos fenómenos a la vez
+c) Outcome, que es el resultado que se quiere explicar
+*d) Predictor, que se relaciona con los ataques de tiburones
+
+8. En el esquema de helados y tiburones de la clase, ¿qué rol tienen los ataques de tiburones?
+a) Variable de confusión, que explica ambos fenómenos a la vez
+b) Intervención, que se aplica al grupo tratamiento del estudio
+*c) Outcome, que es el resultado que se observa
+d) Predictor, que se supone que causa el resultado
+
+9. En el ejemplo de helados y tiburones, ¿cómo se llama la relación entre ambas variables cuando en realidad la genera una tercera variable?
+a) Causalidad directa entre ventas y ataques
+*b) Correlación espuria
+c) Sesgo de selección de los participantes
+d) Efecto de aprendizaje entre mediciones
+
+10. En la tira cómica de la clase, alguien cuenta que tomó una clase de estadística y ya no cree que correlación implique causalidad, y su interlocutor dice "suena a que la clase ayudó". ¿Qué idea ilustra?
+a) Que la causalidad solamente se puede inferir a partir de opiniones expertas
+b) Que las clases de estadística siempre cambian las creencias de las personas
+c) Que toda correlación observada demuestra una relación causal entre variables
+*d) Que dos hechos simultáneos no prueban que uno cause al otro
+
+### Tema: Estructura de un ensayo controlado y randomizado
+
+11. En el esquema de un ensayo controlado y randomizado, ¿qué ocurre con la muestra de la población en la "separación aleatoria"?
+a) Se asigna a cada sujeto al grupo que prefiere según su elección
+b) Se ordena a los sujetos por apellido y se los divide por la mitad
+*c) Se la divide al azar en un grupo tratamiento y un grupo control
+d) Se elige a los sujetos que más se van a beneficiar de la intervención
+
+12. En el esquema de un ensayo controlado y randomizado, ¿qué recibe cada grupo luego de la separación aleatoria?
+*a) El grupo tratamiento recibe la intervención y el grupo control recibe el control
+b) Ambos grupos reciben la misma intervención en el mismo momento
+c) Ambos grupos reciben el control y luego se comparan entre sí
+d) El grupo control recibe la intervención y el tratamiento recibe el control
+
+13. En el esquema de un ensayo controlado y randomizado, ¿qué se compara al final del proceso?
+a) El resultado del grupo tratamiento con datos históricos de años anteriores
+b) La muestra de la población con la población de referencia
+*c) El resultado del grupo tratamiento con el resultado del grupo control
+d) El grupo tratamiento antes y después sin considerar al grupo control del estudio
+
+### Tema: Un poco de historia: experimentos naturales y el caso de Semmelweis
+
+14. ¿Con qué concepto presenta la clase el caso del brote de cólera en Londres en 1854 asociado a John Snow?
+*a) Experimentos naturales
+b) Diseños within-subjects
+c) Ensayos con doble ciego
+d) Ensayos con placebo
+
+15. En el caso de la fiebre puerperal en Viena, ¿qué identificó Semmelweis luego de descartar varias hipótesis?
+a) Que los parteros de la segunda guardería tenían muchos más años de experiencia que los de la primera
+*b) Que los parteros de la primera hacían autopsias antes de asistir partos y los de la segunda no
+c) Que la segunda guardería tenía mejor ventilación y menos camas por sala que la primera
+d) Que las mujeres de la segunda guardería llegaban con mejor salud previa que las de la primera
+
+16. En el caso de la fiebre puerperal en Viena, ¿qué medida se implementó y qué resultado tuvo?
+a) Se trasladó a las mujeres a la guardería 2 y la mortalidad se mantuvo igual que antes
+b) Se cerró la guardería 1 y la mortalidad de la guardería 2 aumentó levemente después
+c) Se prohibieron las autopsias en el hospital y la mortalidad de la guardería 1 se duplicó
+*d) Los parteros debieron desinfectarse con lavandina y la mortalidad entre ambas guarderías se equiparó
+
+### Tema: Jonas Salk y las pruebas de la vacuna contra la polio
+
+17. ¿Por qué el enfoque de "historical controls" de las primeras pruebas de la vacuna en 1952 resultó poco confiable?
+*a) Porque la incidencia de polio fluctuaba naturalmente año a año y además había sesgo de selección
+b) Porque la vacuna se aplicaba a los niños sin autorización expresa de sus padres
+c) Porque no existían registros históricos de casos de polio con los cuales comparar
+d) Porque el grupo de niños vacunados era demasiado grande para seguir su evolución
+
+18. En 1953 se planteó seguir a niños vacunados y no vacunados desde un mismo momento. ¿Qué problema seguía teniendo esa comparación?
+a) Los médicos no lograban distinguir a los niños vacunados de los no vacunados
+b) Los registros de años anteriores no alcanzaban para comparar con los niños vacunados
+c) Los niños no vacunados eran seguidos durante muchos menos meses que los vacunados
+*d) Los niños cuyos padres permitían la vacunación podían diferir sistemáticamente de los demás, sesgando los resultados
+
+19. En el ensayo de Salk de 1954, ¿cómo se asignaba a los niños a los grupos?
+a) Según la decisión de sus padres, quienes elegían libremente entre recibir la vacuna o el placebo
+b) Según su acceso a cuidados médicos, para que ambos grupos fueran comparables
+*c) Al azar, al grupo de vacuna o al de placebo, con inyección de solución salina
+d) Según su estado de salud previo, para que ambos grupos tuvieran igual riesgo
+
+20. En el ensayo de Salk de 1954, ¿qué significa que haya sido a doble ciego?
+a) Que los padres elegían el grupo de su hijo sin informarles a los médicos
+*b) Que ni los niños, ni sus padres, ni los médicos sabían qué recibía cada niño
+c) Que dos observadores distintos medían los resultados de cada niño por separado
+d) Que solamente los médicos sabían qué recibía cada niño, pero no sus padres
+
+21. En la tabla de errores y aprendizajes de la historia de la vacuna de Salk, ¿qué aprendizaje corresponde al error inicial de comparar vacunados con datos históricos?
+a) Se necesita doble ciego para controlar al observador
+b) Se necesita ampliar el tiempo de seguimiento de los niños
+*c) Se necesita un grupo control concurrente
+d) Se necesita randomización para evitar el sesgo de selección
+
+22. En la tabla de errores y aprendizajes de la historia de la vacuna de Salk, ¿qué aprendizaje corresponde al error inicial de dejar que los padres elijan si vacunar o no?
+*a) Se necesita randomización para evitar el sesgo de selección
+b) Se necesita ampliar el tiempo de seguimiento de los niños
+c) Se necesita doble ciego para controlar al observador
+d) Se necesita un grupo control concurrente al vacunado
+
+23. En la tabla de errores y aprendizajes de la historia de la vacuna de Salk, ¿qué aprendizaje corresponde al error inicial de no controlar el sesgo del observador?
+a) Se necesita randomización de los grupos
+*b) Se necesita un diseño de doble ciego
+c) Se necesitan datos históricos de polio más completos
+d) Se necesita un grupo control concurrente
+
+24. En la tabla de errores y aprendizajes de la historia de la vacuna de Salk, ¿qué aprendizaje corresponde al error inicial de no considerar la fluctuación natural de la enfermedad?
+a) Se necesita doble ciego para el observador
+b) Se necesita aumentar mucho la cantidad de niños vacunados
+c) Se necesita comparar contra datos históricos más extensos
+*d) Se necesitan grupos equivalentes y seguimiento en paralelo
+
+### Tema: Save More Tomorrow (SMarT) y otros ejemplos de RCT
+
+25. ¿Cuál era el desafío que buscaba resolver el programa Save More Tomorrow (SMarT)?
+a) Que las empresas aumenten los salarios de sus empleados cada año
+b) Que los trabajadores reduzcan su endeudamiento con tarjetas de crédito
+c) Que los trabajadores adelanten la edad a la cual se jubilan
+*d) Que los trabajadores incrementen la cantidad de ahorros para su jubilación
+
+26. Según la cita presentada en la clase sobre SMarT, ¿por qué a las personas les cuesta ahorrar más para su jubilación?
+*a) Porque emocional e intuitivamente consideran los ahorros como una pérdida, ya que deben reducir el gasto
+b) Porque desconocen por completo cómo funcionan los planes de jubilación de su empresa
+c) Porque prefieren gastar todo su salario antes de cobrar cada uno de los aumentos
+d) Porque creen que ahorrar les hará perder el acceso a futuros beneficios laborales
+
+27. En el experimento de SMarT, ¿qué se comparaba entre el grupo tratamiento y el grupo control?
+a) Invitar por correo electrónico versus invitar de manera presencial a cada empleado
+b) Un plan de ahorro con tasa alta versus uno con tasa de ahorro baja
+*c) Invitar a un plan de ahorro automático versus no hacer la invitación
+d) Un plan de ahorro voluntario versus un plan de ahorro obligatorio
+
+28. En SMarT, ¿en qué consistía la "invitación anticipada"?
+a) Los empleados eran invitados a participar un año antes de su jubilación efectiva
+*b) Los empleados eran invitados a participar tres meses antes de un aumento salarial programado
+c) Los empleados eran invitados a participar el mismo día de su ingreso a la empresa
+d) Los empleados eran invitados a participar recién después de recibir el aumento
+
+29. En SMarT, ¿en qué consistían los "incrementos automáticos"?
+a) Los empleados debían elegir cada año cuánto aumentar su porcentaje de ahorro
+*b) Una vez inscriptos, los ahorros se incrementaban automáticamente con cada aumento de salario
+c) Los empleados eran inscriptos automáticamente en el plan el día que ingresaban
+d) La empresa depositaba automáticamente un bono adicional en cada cuenta de ahorro
+
+30. En SMarT, ¿en qué consistía la "inercia positiva"?
+*a) Las contribuciones aumentaban solas, sin requerir más acciones ni nuevas decisiones de los empleados
+b) Los empleados recibían la invitación con tres meses de anticipación a un aumento
+c) Los aumentos de la tasa de ahorro evitaban que se percibiera una baja del ingreso
+d) Los empleados podían retirar sus ahorros del plan en cualquier momento sin costo
+
+31. En SMarT, ¿en qué consistía la "baja aversión a la pérdida"?
+a) Los empleados podían retirar sus ahorros del plan en cualquier momento sin costo
+b) Las contribuciones aumentaban solas, sin requerir más acciones ni nuevas decisiones de los empleados
+*c) Los incrementos ligados a aumentos salariales evitaban que se percibiera una baja del ingreso
+d) Los empleados recibían la invitación con tres meses de anticipación a un aumento
+
+32. En el esquema de la clase sobre vacunación de niños, con aldeas asignadas a las condiciones control, clínicas móviles y clínicas móviles con incentivos, ¿cómo se asignaron las aldeas a cada condición?
+a) Según la decisión de los líderes de cada aldea
+b) Según la cercanía de cada aldea a un centro de salud
+c) Según el nivel de ingresos promedio de cada aldea
+*d) Mediante una lotería, es decir, al azar
+
+33. En el gráfico de la clase sobre niños completamente inmunizados, ¿qué ocurre al sumar incentivos (lentejas) a las clínicas móviles con vacuna?
+a) El porcentaje de niños completamente inmunizados aumenta apenas unos pocos puntos respecto del control
+*b) El porcentaje de niños completamente inmunizados resulta más del doble que con clínicas móviles solas
+c) El porcentaje de niños completamente inmunizados resulta menor que el del grupo control
+d) El porcentaje de niños completamente inmunizados se mantiene igual que con clínicas móviles solas
+
+### Tema: Población y muestra
+
+34. ¿Qué es la población en un experimento?
+a) El grupo de sujetos que fue asignado a la condición de control
+b) El grupo más pequeño de individuos de quienes recopilamos datos
+*c) El grupo completo sobre el cual queremos sacar conclusiones
+d) El grupo de sujetos que participa de todas las condiciones
+
+35. ¿Qué es la muestra en un experimento?
+a) El grupo de sujetos que participa de todas las condiciones
+b) El grupo de sujetos que fue asignado a la condición de control
+c) El grupo completo sobre el cual queremos sacar conclusiones
+*d) El grupo más pequeño de individuos de quienes vamos a recopilar datos
+
+### Tema: Diseños within-subjects y between-subjects
+
+36. ¿Qué caracteriza al diseño "within-subjects" (intra sujetos)?
+*a) Cada sujeto participa de todas las condiciones experimentales y las diferencias se miden entre condiciones
+b) Cada sujeto participa de una única condición experimental y las diferencias se miden entre grupos
+c) Cada sujeto participa de dos condiciones al azar y las diferencias se miden entre sujetos
+d) Cada grupo participa de una condición distinta y se compara con datos históricos de la población
+
+37. ¿Qué desventajas tiene el diseño "within-subjects" según la clase?
+a) Efecto de cansancio, sesgo de selección e imposibilidad de medir diferencias entre condiciones
+b) Efecto de aprendizaje, error tipo I y ausencia de un grupo control equivalente al tratamiento
+c) Costo elevado, muestra insuficiente y falta de un placebo para cada una de las condiciones
+*d) Efecto de cansancio, efecto de aprendizaje e incompatibilidad de hacer más de una condición
+
+38. ¿Qué caracteriza al diseño "between-subjects" (entre sujetos)?
+a) Cada sujeto participa de todas las condiciones experimentales y las diferencias se miden entre condiciones
+*b) Cada sujeto participa de una única condición experimental y las diferencias se miden entre grupos distintos
+c) Cada sujeto es medido en forma repetida y las diferencias se miden dentro de cada persona
+d) Cada grupo participa de todas las condiciones y las diferencias se miden entre momentos
+
+### Tema: Pasos para realizar un ensayo controlado y randomizado
+
+39. Según los pasos para hacer un ensayo controlado y randomizado, ¿qué hay que determinar en primer lugar?
+*a) La población objetivo, la intervención y el outcome que se va a medir
+b) Solamente la cantidad de participantes y el presupuesto disponible para el estudio
+c) El grupo control, el test estadístico y la fecha de finalización del experimento
+d) El nivel de confianza, la potencia y el margen de error que se tolerará
+
+40. En el primer paso para hacer un ensayo controlado y randomizado, ¿qué es el outcome?
+a) La intervención, la pieza de comunicación o el producto que se evalúa
+b) El grupo de personas que fue asignado a la condición de tratamiento
+*c) El resultado deseado de la intervención, que es lo que se va a medir
+d) El grupo de personas sobre el cual se quieren sacar las conclusiones
+
+41. Luego de determinar la población objetivo, la intervención y el outcome, ¿qué paso sigue al hacer un ensayo controlado y randomizado?
+*a) Asignar de manera azarosa a los sujetos a los dos grupos
+b) Medir qué pasa con los sujetos de ambos grupos luego de la intervención
+c) Realizar la intervención con los sujetos de ambos grupos, a doble ciego
+d) Calcular el impacto de la intervención evaluada en el estudio
+
+42. Una vez asignados de manera azarosa los sujetos a los grupos tratamiento y control, ¿qué paso sigue al hacer un ensayo controlado y randomizado?
+a) Calcular el impacto de la intervención evaluada
+*b) Realizar la intervención, a doble ciego
+c) Medir qué pasa con los sujetos de ambos grupos
+d) Determinar la población objetivo del estudio
+
+43. Luego de realizar la intervención a doble ciego, ¿qué paso sigue al hacer un ensayo controlado y randomizado?
+a) Determinar la población
+b) Asignar al azar a los sujetos
+*c) Medir qué pasa en ambos grupos
+d) Calcular el impacto sin haber medido nada
+
+44. ¿Cuál es el último paso al hacer un ensayo controlado y randomizado?
+a) Medir qué pasa luego de la intervención
+b) Asignar de manera azarosa a los sujetos
+c) Realizar la intervención
+*d) Calcular el impacto de la intervención
+
+### Tema: El ejemplo de la app de ejercicio
+
+45. Para saber si una app para hacer ejercicio es efectiva, ¿qué propone la clase en lugar de comparar directamente cuánto peso bajan quienes la usan y quienes no la usan?
+*a) Hacer un ensayo controlado y randomizado con asignación al azar
+b) Esperar a que la app acumule una mayor cantidad de descargas
+c) Comparar el peso de los usuarios antes y después sin grupo control
+d) Preguntarles a los usuarios cuánto peso creen haber bajado
+
+46. En el ejemplo de la app de ejercicio, ¿cuál es el outcome?
+a) Aumentar la cantidad de descargas de la app en tiendas
+b) Usar la app y hacer los ejercicios regularmente
+*c) Bajar de peso tras 6 semanas de usar la app
+d) Las personas que quieren bajar de peso
+
+### Tema: Tamaño de la muestra: muestra mínima viable y efecto mínimo detectable
+
+47. ¿Qué pregunta responde la "muestra mínima viable"?
+a) Con los participantes que tengo, ¿cuál es el efecto mínimo que puedo detectar?
+*b) ¿Cuántos participantes necesito incluir para detectar el tamaño de efecto esperado?
+c) ¿Cuánto nos podemos equivocar y aun así estar conformes?
+d) ¿Qué tan seguros queremos estar de que el intervalo contiene el valor real?
+
+48. ¿Qué pregunta responde el "efecto mínimo detectable"?
+a) ¿Cuántos participantes necesito incluir para detectar el tamaño de efecto esperado?
+b) ¿Cuánto nos podemos equivocar en la estimación y aun así estar conformes?
+c) ¿Qué tan seguros queremos estar de que el intervalo calculado contiene el valor real?
+*d) Con los participantes que tengo, ¿cuál es el efecto mínimo que puedo detectar?
+
+49. ¿Por qué no conviene seguir agregando personas a la muestra indefinidamente?
+a) Porque cada persona adicional aumenta mucho la probabilidad de cometer una falsa alarma
+b) Porque una muestra grande impide asignar de manera azarosa a los sujetos a los grupos
+*c) Porque llega un punto en que ya no aporta información y una muestra grande es costosa
+d) Porque el resultado se vuelve cada vez menos claro al sumar más personas a la muestra
+
+50. En el cálculo del tamaño de muestra, ¿qué tipo de pregunta es "¿qué % de hogares separa residuos?", con respuestas sí/no?
+*a) Saber un porcentaje
+b) Comparar dos grupos, A vs. B
+c) Saber un promedio
+d) Estimar la potencia del estudio
+
+51. En el cálculo del tamaño de muestra, ¿qué tipo de pregunta es "¿cuántos minutos dura, en promedio, el trámite online?", con una respuesta numérica continua?
+a) Estimar la potencia del estudio
+b) Saber un porcentaje
+c) Comparar dos grupos, A vs. B
+*d) Saber un promedio
+
+52. En el cálculo del tamaño de muestra, ¿qué tipo de pregunta es "¿el mail con asunto A tiene más clics que el B?"?
+a) Saber un porcentaje
+*b) Comparar dos grupos, A vs. B
+c) Saber un promedio
+d) Estimar la potencia estadística del estudio realizado
+
+53. En el cálculo del tamaño de muestra, ¿qué es el margen de error?
+a) La probabilidad de detectar el efecto si de verdad existe en la población
+b) El salto mínimo que nos importa notar entre los grupos comparados
+*c) Cuánto nos podemos "equivocar" y aun así estar conformes con la estimación
+d) Cuán seguros queremos estar de que el intervalo contiene el valor real
+
+54. ¿Qué implica elegir un margen de error de ±3% en lugar de uno de ±5%?
+a) Es equivalente y necesita los mismos casos
+*b) Es más exigente y necesita más casos
+c) Es el estándar de las encuestas
+d) Es más grueso y necesita muchos menos casos en total
+
+55. ¿Qué ocurre al elegir un nivel de confianza de 99% en lugar de 95%?
+a) Hay más seguridad y se necesitan los mismos casos
+b) Hay menos seguridad, pero se necesitan menos casos
+c) Hay más precisión y se necesita menos potencia
+*d) Hay más seguridad, pero se necesitan muchos más casos
+
+56. ¿Qué ocurre al elegir un nivel de confianza de 90% en lugar de 95%?
+*a) Se necesitan menos casos, pero hay menos seguridad
+b) Se necesitan menos casos y hay más seguridad
+c) Se necesitan los mismos casos y hay más precisión
+d) Se necesitan más casos y hay más seguridad
+
+57. En el cálculo del tamaño de muestra, ¿a qué se refiere el cambio o efecto a detectar?
+*a) Al salto mínimo que nos importa notar
+b) A la cantidad de grupos que vamos a comparar
+c) Al margen de error que estamos dispuestos a tolerar
+d) A cuán seguros queremos estar del resultado
+
+58. Según la clase, ¿qué tamaño de muestra requiere detectar un cambio grande, como pasar del 10% al 20%?
+a) Una muestra igual para cualquier cambio
+b) Una muestra mediana
+*c) Una muestra chica
+d) Una muestra grande
+
+59. Según la clase, ¿qué tamaño de muestra requiere detectar un cambio mediano, como pasar del 10% al 15%?
+a) Una muestra igual para cualquier cambio
+b) Una muestra grande
+c) Una muestra chica
+*d) Una muestra mediana
+
+60. Según la clase, ¿qué tamaño de muestra requiere detectar un cambio chico, como pasar del 10% al 13%?
+a) Una muestra mediana
+*b) Una muestra grande
+c) Una muestra chica
+d) Una muestra igual para cualquier cambio
+
+61. En el A/B test de un email, ¿qué ocurre si nos importa detectar una diferencia de +3 puntos de clics en lugar de una de +10 puntos?
+*a) Se necesitan muchas más personas por grupo
+b) Se necesitan muchas menos personas por grupo
+c) Se necesita la misma cantidad de personas por grupo
+d) Se necesita un único grupo con todas las personas
+
+62. En un programa de reciclaje, si se espera pasar de 40% a 55%, ¿qué tamaño de muestra debería alcanzar?
+a) Una muestra igual a la de un cambio de 40% a 45%
+b) Una muestra más grande, porque es un cambio grande
+c) Una muestra más grande, porque es un cambio chico
+*d) Una muestra más chica, porque es un cambio grande
+
+### Tema: Tamaño de muestra en el ejemplo de la app: efecto, seguridad y potencia
+
+63. En el ejemplo de la app de ejercicio, ¿de qué tres decisiones depende el tamaño de muestra?
+a) De la cantidad de semanas de uso, el margen de error y la potencia
+*b) Del cambio mínimo que queremos notar, la seguridad del resultado y la potencia
+c) Del costo de la app, la seguridad del resultado y la cantidad de grupos
+d) Del cambio mínimo que queremos notar, la línea de base y el desvío estándar
+
+64. ¿Qué es la potencia de un estudio?
+a) La seguridad de que el intervalo contiene el valor real
+b) La probabilidad de concluir que la app funciona cuando en realidad no funciona
+*c) La probabilidad de detectar el efecto si de verdad existe
+d) El cambio mínimo que nos importa notar en el resultado
+
+### Tema: Errores de tipo I y de tipo II
+
+65. Al cruzar lo que ocurre en la realidad con lo que concluimos al final del estudio, ¿cuántos casos posibles surgen?
+*a) Cuatro casos: dos aciertos y dos errores
+b) Tres casos: dos aciertos y un error
+c) Dos: un acierto y un error
+d) Cuatro casos: tres aciertos y un solo error
+
+66. En el ejemplo de la app de ejercicio, ¿qué es el error tipo I?
+a) Concluir que la app no ayuda a bajar de peso cuando en realidad sí lo hace, es decir, no ver la señal
+*b) Concluir que la app ayuda a bajar de peso cuando en realidad no lo hace, es decir, una falsa alarma
+c) Concluir que la app no ayuda a bajar de peso cuando en realidad no lo hace, es decir, un acierto
+d) Concluir que la app ayuda a bajar de peso cuando en realidad sí lo hace, es decir, un acierto
+
+67. En el ejemplo de la app de ejercicio, ¿qué es el error tipo II?
+a) Concluir que la app ayuda a bajar de peso cuando en realidad sí lo hace, es decir, un acierto
+b) Concluir que la app ayuda a bajar de peso cuando en realidad no lo hace, es decir, una falsa alarma
+c) Concluir que la app no ayuda a bajar de peso cuando en realidad no lo hace, es decir, un acierto
+*d) Concluir que la app no ayuda a bajar de peso cuando en realidad sí lo hace, es decir, no ver la señal
+
+68. ¿Cuándo ocurre con mayor frecuencia el error tipo II?
+a) Cuando el efecto es grande o la muestra es abundante
+b) Cuando el nivel de confianza elegido es de 99% en el estudio
+*c) Cuando el efecto es chiquito o la muestra es poca
+d) Cuando la asignación a los grupos se hace de manera azarosa
+
+69. ¿Cómo se expresa la potencia en función de beta?
+a) Potencia = alfa multiplicado por beta
+b) Potencia = alfa
+*c) Potencia = 1 − beta
+d) Potencia = beta ÷ alfa
+
+### Tema: Cálculo del tamaño mínimo de la muestra
+
+70. Para calcular el tamaño mínimo de la muestra en el ejemplo del peso, ¿qué se necesita saber sobre el peso antes de la intervención?
+*a) La línea de base (promedio de peso) y la varianza o ruido del peso
+b) El peso máximo y el peso mínimo que podría alcanzar cada persona
+c) El nivel de actividad física que realizan las personas antes de comenzar el estudio
+d) El promedio de peso que se espera al finalizar la intervención de 6 semanas de uso
+
+71. Para calcular el tamaño mínimo de la muestra en el ejemplo del peso, ¿qué impacto es necesario definir de antemano?
+a) El impacto que la intervención tuvo en estudios realizados sobre otras poblaciones
+b) El impacto económico que la intervención tendría para la empresa que la financia
+c) El impacto de las diferencias iniciales que existen entre ambos grupos antes de intervenir
+*d) El impacto que se espera que la intervención produzca sobre el outcome medido
+
+### Tema: Test estadístico
+
+72. Si al final del experimento el grupo tratamiento pesa en promedio 100 kg y el grupo control 108 kg, ¿qué hay que determinar mediante un test estadístico?
+a) Si la muestra elegida representa a toda la población de referencia
+*b) Si esa diferencia es estadísticamente significativa o una fluctuación propia del azar
+c) Si los participantes sabían a qué grupo habían sido asignados
+d) Si el diseño utilizado fue within-subjects o between-subjects
+
+### Tema: A tener en cuenta al hacer experimentos
+
+73. Según la clase, ¿qué advertencia se hace sobre la selección de una muestra representativa?
+a) Siempre es sencilla, porque las personas que se ofrecen a participar representan a todos
+*b) No siempre es fácil, porque ya hay un sesgo en la gente que voluntariamente realiza un experimento
+c) Solamente importa cuando se trabaja con muestras chicas de menos de cien personas
+d) Deja de ser un problema cuando se asigna a los grupos de manera azarosa
+
+74. Según la clase, ¿qué hay que tener en cuenta sobre la asignación azarosa a los grupos?
+*a) Tiene que ser azarosa de verdad y hay que chequear luego que los grupos sean homogéneos
+b) Puede hacerse dividiendo por la mitad la lista de apellidos, sin necesidad de ningún tipo de chequeo posterior
+c) Alcanza con que ambos grupos tengan igual cantidad de personas, sin importar sus características
+d) Tiene que dejar que cada participante elija el grupo, para chequear que estén conformes
+
+75. Según la clase, ¿por qué hay que asegurarse de variar solo una cosa en el experimento?
+a) Porque si se varía más de una cosa se necesita una muestra mucho más chica
+b) Porque solamente se puede medir un único outcome por cada experimento realizado
+c) Porque si se varían muchas cosas el grupo control deja de ser necesario
+*d) Porque si varían muchas cosas a la vez no se puede atribuir causalidad
+
+76. Según la clase, ¿en qué consiste hacer los experimentos a doble ciego?
+a) En que se mide dos veces el resultado de cada participante con métodos distintos
+b) En que el experimentador sabe en qué grupo está cada uno, pero los participantes no
+*c) En que ni los participantes ni el experimentador saben en qué grupo está cada participante
+d) En que los participantes saben en qué grupo están, pero el experimentador no lo sabe
+
+77. Según la clase, ¿qué recomendación se hace sobre las conclusiones de un experimento?
+a) Aplicarlas de manera idéntica a cualquier otro contexto sin nuevos ensayos
+*b) Tener cuidado con las generalizaciones de las conclusiones
+c) Evitar comunicarlas si la diferencia entre grupos resulta demasiado chica
+d) Generalizarlas siempre a toda la población, sin importar la muestra
+
+### Tema: Disclaimer: significancia estadística y significancia práctica
+
+78. Según el disclaimer de la clase, ¿en qué se diferencia el objetivo de un estudio académico del de una empresa?
+*a) El académico busca significancia estadística para publicar un paper, y la empresa busca un impacto significativo en la práctica
+b) El académico y la empresa buscan lo mismo, ya que ambos persiguen únicamente la significancia estadística
+c) El académico busca muestras chicas para reducir costos, y la empresa busca muestras grandes para publicar
+d) El académico busca un impacto significativo en la práctica, y la empresa busca significancia estadística para publicar
+
 `;
