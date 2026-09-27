@@ -35,6 +35,7 @@ Todo el contenido vive como texto plano dentro de un archivo `.js`. Las reglas s
 - La opción correcta se marca con un asterisco delante de la letra: `*c) texto`. Tiene que haber **exactamente una** por pregunta.
 - Las preguntas se separan entre sí con una **línea en blanco**.
 - (Opcional, para que los checkpoints sigan el tema real) Dentro de un nivel podés agrupar las preguntas con `### Tema: Nombre del tema`. Todas las preguntas hasta el próximo `### Tema:` (o el fin del nivel) quedan en ese tema, y cada tema se juega como un checkpoint propio en el orden en que aparece. Si no usás `### Tema:` en un nivel, ese nivel se juega entero como un único checkpoint.
+- (Opcional) Una pregunta puede llevar una imagen: agregá una línea `![texto alternativo](imagenes/archivo.png)` justo debajo del encabezado de la pregunta (antes de las 4 opciones). La ruta es relativa a la carpeta donde vive `index.html`, así que las imágenes van en una carpeta `imagenes/` en la raíz del repo.
 
 Ejemplo:
 
@@ -51,7 +52,8 @@ d) Programación dinámica
 
 ### Tema: Atributos de calidad
 
-2. ¿Qué es un atributo de calidad?
+2. ¿Qué diagrama se muestra en la imagen?
+![Diagrama de capas de una arquitectura de software](imagenes/nivel1-diagrama-capas.png)
 a) El nombre de una variable
 *b) Un requisito no funcional como la escalabilidad
 c) Un tipo de test unitario

@@ -225,6 +225,14 @@ button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   margin-bottom: 1.25rem;
 }
 
+.question-image {
+  display: block;
+  max-width: 100%;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-subtle);
+  margin-bottom: 1.25rem;
+}
+
 .options { display: flex; flex-direction: column; gap: 0.65rem; }
 
 .option {
@@ -315,6 +323,7 @@ const MATERIAS_DISPONIBLES = [
 const LEVEL_HEADER_RE  = /^##\s*Nivel\s+(\d+)\s*:\s*(.+?)\s*$/;
 const TOPIC_HEADER_RE  = /^###\s*Tema\s*:\s*(.+?)\s*$/;
 const QUESTION_HEAD_RE = /^(\d+)\.\s*(.+?)\s*$/;
+const IMAGE_LINE_RE    = /^!\[(.*?)\]\((\S+)\)\s*$/;
 const OPTION_RE        = /^(\*)?\s*([abcdABCD])\)\s*(.+?)\s*$/;
 
 // Divide el texto crudo en bloques de nivel, usando las líneas "## Nivel N: ..."
@@ -387,7 +396,17 @@ function parseQuestionBlock(blockLines, materiaNombre, levelNumber, levelName, t
   const text = headMatch[2];
   const options = [];
 
-  for (const line of lines.slice(1)) {
+  // Línea opcional de imagen ("![alt](imagenes/archivo.png)") justo después
+  // del encabezado de la pregunta, antes de las 4 opciones.
+  let restLines = lines.slice(1);
+  let image = null;
+  const imageMatch = restLines[0] && restLines[0].match(IMAGE_LINE_RE);
+  if (imageMatch) {
+    image = { alt: imageMatch[1], src: imageMatch[2] };
+    restLines = restLines.slice(1);
+  }
+
+  for (const line of restLines) {
     const optionMatch = line.match(OPTION_RE);
     if (!optionMatch) {
       console.error(`${ubicacion}, pregunta ${sourceIndex}: línea con formato de opción inválido: "${line}"`);
@@ -412,7 +431,7 @@ function parseQuestionBlock(blockLines, materiaNombre, levelNumber, levelName, t
     return null;
   }
 
-  return { levelNumber, sourceIndex, text, options };
+  return { levelNumber, sourceIndex, text, image, options };
 }
 
 // Convierte el texto crudo de una materia en su lista de niveles con preguntas.
@@ -771,6 +790,14 @@ function renderQuestion() {
   text.textContent = question.text;
   card.appendChild(text);
 
+  if (question.image) {
+    const img = document.createElement('img');
+    img.className = 'question-image';
+    img.src = question.image.src;
+    img.alt = question.image.alt;
+    card.appendChild(img);
+  }
+
   const options = document.createElement('div');
   options.className = 'options';
 
@@ -882,6 +909,7 @@ function openMateria(index) {
 function shuffleCheckpointForAttempt(checkpointQuestions) {
   return shuffleArray(checkpointQuestions).map(question => ({
     text: question.text,
+    image: question.image,
     options: shuffleArray(question.options),
   }));
 }
