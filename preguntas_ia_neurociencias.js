@@ -44,6 +44,7 @@ b) Genera de forma totalmente aleatoria los movimientos legales disponibles en c
 d) Registra el tiempo que el jugador tarda en cada movimiento
 
 7. ¿Qué hace específicamente la feature de "centro" dentro de la función de valor?
+![Tablero con las features de la función de valor coloreadas, mostrando dos ejemplos: una posición donde negras están por ganar y las features usadas en la función heurística](imagenes/nivel1-tablero-features.png)
 a) Penaliza las piezas ubicadas cerca de los bordes del tablero
 b) Cuenta cuántas veces aparece un patrón distinto de cuatro piezas alineadas en el tablero
 c) Suma los turnos que restan hasta el final de la partida
@@ -56,18 +57,21 @@ c) Para que el proceso completo de entrenamiento del modelo converja con mucha m
 d) Porque el jugador activo siempre cuenta con más piezas en juego
 
 9. ¿Qué feature de la función de valor describe dos piezas propias alineadas y adyacentes, sin ningún espacio entre ellas?
+![Tablero con las features de la función de valor coloreadas, mostrando dos ejemplos: una posición donde negras están por ganar y las features usadas en la función heurística](imagenes/nivel1-tablero-features.png)
 *a) Dos en línea conectado
 b) Dos en línea desconectado
 c) Tres en línea
 d) Cuatro en línea
 
 10. ¿Qué feature de la función de valor describe dos piezas propias alineadas pero con un espacio vacío entre ellas?
+![Tablero con las features de la función de valor coloreadas, mostrando dos ejemplos: una posición donde negras están por ganar y las features usadas en la función heurística](imagenes/nivel1-tablero-features.png)
 a) Dos en línea conectado
 *b) Dos en línea desconectado
 c) La tendencia central
 d) Tres en línea
 
 11. ¿Qué feature de la función de valor describe cuatro piezas propias alineadas, la condición de victoria del juego?
+![Tablero con las features de la función de valor coloreadas, mostrando dos ejemplos: una posición donde negras están por ganar y las features usadas en la función heurística](imagenes/nivel1-tablero-features.png)
 a) Tres en línea
 b) Dos en línea conectado
 c) Dos en línea desconectado
@@ -144,24 +148,28 @@ c) Con grabaciones de audio de los comentarios del jugador
 *d) Con los tiempos de respuesta registrados y los movimientos oculares
 
 23. ¿Qué método se usó para evaluar qué tan bien el modelo predice las elecciones humanas?
+![Posición de un juego humano contra humano con la distribución de probabilidad del próximo movimiento predicha por el modelo, junto con la precisión del modelo por participante](imagenes/nivel1-validacion-humanos.png)
 *a) Validación cruzada de cinco pliegues, prediciendo elecciones fuera de muestra
 b) Comparación directa contra un jugador de ajedrez profesional
 c) Una encuesta posterior preguntando a los jugadores si acertó
 d) Un conteo manual de coincidencias en cada partida jugada
 
 24. ¿Qué supone el modelo de "azar" (chance model) usado como punto de comparación?
+![Posición de un juego humano contra humano con la distribución de probabilidad del próximo movimiento predicha por el modelo, junto con la precisión del modelo por participante](imagenes/nivel1-validacion-humanos.png)
 a) Que el jugador siempre elige el movimiento que maximiza su ventaja
 b) Que el jugador imita el último movimiento visto del oponente
 *c) Que el jugador se mueve a una casilla desocupada elegida al azar
 d) Que el jugador repite siempre la misma jugada inicial
 
 25. ¿Qué relación se encontró entre los movimientos oculares humanos y la búsqueda del modelo?
+![Trayectoria de movimientos oculares de un jugador en un ensayo, junto con la distribución de atención estimada y la distribución de casillas visitadas por el algoritmo de búsqueda del modelo](imagenes/nivel1-movimientos-oculares.png)
 a) No se encontró ninguna relación estadística significativa entre ambas medidas registradas
 *b) Las casillas visitadas por el modelo coincidieron con la atención humana registrada
 c) Los movimientos oculares se concentraron únicamente en las esquinas del tablero de juego
 d) Los jugadores expertos movieron los ojos con mucha menor frecuencia que los novatos
 
 26. ¿Qué se utilizó como predictor del tiempo de respuesta en cada ensayo?
+![Gráficos de dispersión del tiempo de respuesta observado contra el predicho por el modelo, y de la correlación entre ambos por participante](imagenes/nivel1-tiempo-respuesta.png)
 a) La cantidad total de piezas presentes en el tablero en ese momento
 b) El rating Elo que tenía el jugador en ese momento
 c) La distancia entre las dos últimas piezas colocadas en el tablero
@@ -190,30 +198,35 @@ d) Como la proporción de movimientos legales que el modelo descarta
 ### Tema: Resultados: aprendizaje y diferencias individuales
 
 30. A lo largo de las sesiones de juego, ¿qué le sucedió a la profundidad de planificación de los participantes?
+![Gráficos del rating Elo, la profundidad de planificación, la tasa de abandono de features y la calidad heurística a lo largo de las sesiones de juego](imagenes/nivel1-resultados-sesiones.png)
 a) Se mantuvo constante a lo largo de todas las sesiones
 b) Disminuyó progresivamente a medida que aumentaba la experiencia de juego
 c) Osciló de forma irregular sin mostrar ninguna tendencia clara
 *d) Aumentó junto con el rating Elo de los participantes
 
 31. ¿Qué ocurrió con la tasa de abandono de features a lo largo de las sesiones?
+![Gráficos del rating Elo, la profundidad de planificación, la tasa de abandono de features y la calidad heurística a lo largo de las sesiones de juego](imagenes/nivel1-resultados-sesiones.png)
 *a) Disminuyó de forma progresiva a medida que avanzaban las sesiones
 b) Aumentó progresivamente junto con el rating Elo de los jugadores
 c) Se mantuvo idéntica en todas las sesiones registradas del estudio
 d) Aumentó únicamente en los participantes con menor rating inicial
 
 32. ¿Qué ocurrió con la calidad heurística de los participantes a lo largo de las sesiones?
+![Gráficos del rating Elo, la profundidad de planificación, la tasa de abandono de features y la calidad heurística a lo largo de las sesiones de juego](imagenes/nivel1-resultados-sesiones.png)
 a) Mejoró de forma sostenida junto con el rating Elo de los jugadores
 b) Empeoró de forma marcada inmediatamente después de la primera sesión
 *c) No mostró una mejora clara pese al aumento del rating Elo
 d) Se volvió indistinguible entre expertos y novatos desde el inicio
 
 33. Según la conclusión principal del estudio, ¿qué distingue a los jugadores más fuertes de los más débiles?
+![Gráficos de diferencias individuales entre jugadores: rating Elo contra profundidad de planificación, tasa de abandono de features y calidad heurística](imagenes/nivel1-diferencias-individuales.png)
 a) Conocen una mayor cantidad de aperturas memorizadas de antemano
 *b) Planifican más profundo y cometen menos lapsus de atención
 c) Utilizan exclusivamente movimientos cercanos al centro del tablero
 d) Dedican más tiempo total a cada partida que juegan
 
 34. Según los datos de diferencias individuales entre jugadores, ¿qué variable NO se correlacionó con el rating Elo?
+![Gráficos de diferencias individuales entre jugadores: rating Elo contra profundidad de planificación, tasa de abandono de features y calidad heurística](imagenes/nivel1-diferencias-individuales.png)
 a) La profundidad de planificación alcanzada por cada jugador
 b) La tasa de abandono de features de cada jugador
 c) El desempeño general medido a lo largo de las sesiones
@@ -1109,299 +1122,287 @@ d) Con la capacidad de analizar racionalmente cada emoción antes de permitirse 
 
 ## Nivel 5: Introducción a la Genética del Comportamiento
 
-### Tema: Naturaleza humana y usos históricos de la genética
-
-1. ¿Qué característica en común señala Mukherjee entre el nazismo y el lysenkoísmo, pese a sostener teorías de la herencia opuestas?
-*a) Ambos usaron una teoría de la herencia para sostener un programa político
-b) Ambos negaban por completo la existencia de los genes en el comportamiento humano
-c) Ambos basaban sus teorías en estudios de gemelos separados al nacer
-d) Ambos promovían el uso de puntajes poligénicos en toda la población
-
 ### Tema: Qué es la genética del comportamiento
 
-2. ¿Qué estudia específicamente la genética del comportamiento humano, según la definición presentada en la clase?
-a) El código genético completo y exclusivo de cada persona en particular
-*b) En qué medida el comportamiento se explica por diferencias en genes o ambientes
-c) La estructura del ADN y sus mecanismos de replicación dentro de cada célula humana
-d) El desarrollo del sistema nervioso durante toda la etapa embrionaria temprana
+1. ¿Qué estudia la genética del comportamiento humano según su definición?
+a) Las mutaciones genéticas puntuales que causan enfermedades hereditarias poco frecuentes y de aparición súbita
+b) Los tratamientos farmacológicos disponibles para los trastornos psiquiátricos graves y sus efectos secundarios
+c) La secuencia completa del genoma humano y las funciones biológicas específicas que cumple cada uno de sus genes
+*d) Las variaciones entre personas y si se deben a los genes o al ambiente
 
-3. Según la clasificación de rasgos presentada en la clase, ¿en qué categoría se incluye la estructura cerebral?
-a) Capacidades cognitivas generales, junto con la memoria de trabajo y el razonamiento abstracto
-b) Personalidad, junto con la extroversión y la apertura a experiencias
-*c) Fisiológicos, junto con la altura y la obesidad de una persona
-d) Psiquiátricos, junto con la esquizofrenia y la depresión de una persona
+2. Según la clase, ¿en qué dos fuentes de diferencias entre personas se enfoca la genética del comportamiento para explicar el comportamiento?
+a) En diferencias hormonales y en diferencias educativas recibidas durante la infancia
+*b) En diferencias en los genes y diferencias en los ambientes
+c) En diferencias culturales y en diferencias económicas entre las distintas familias
+d) En diferencias étnicas y en diferencias geográficas entre las distintas poblaciones humanas del mundo
 
-4. ¿En qué categoría de rasgos ubica la clase a la fluencia verbal?
-a) Fisiológicos, junto con la altura y la obesidad de una persona
-b) Psiquiátricos, junto con la esquizofrenia y el autismo de una persona
-c) Personalidad, junto con la extroversión y la diligencia de una persona
-*d) Capacidades cognitivas generales, junto con la memoria y la matemática
+### Tema: Rasgos estudiados en genética del comportamiento
 
-### Tema: Definición del componente genético
+3. ¿En qué categoría de rasgos estudiados por la genética del comportamiento se incluyen la altura y la estructura cerebral?
+a) Capacidades cognitivas generales
+b) Rasgos de personalidad
+*c) Rasgos fisiológicos
+d) Trastornos psiquiátricos
 
-5. Según la definición laxa presentada en la clase, ¿qué caracteriza a un rasgo con un componente genético del 100%?
-*a) Las diferencias entre personas en ese rasgo se explican totalmente por los genes
-b) El rasgo aparece exactamente en el cien por ciento de la población en total
-c) El rasgo no puede modificarse mediante ningún tratamiento médico conocido en la actualidad
-d) El rasgo se hereda de manera idéntica de ambos progenitores biológicos
+4. ¿En qué categoría de rasgos estudiados por la genética del comportamiento se incluyen la memoria y el razonamiento abstracto?
+*a) Capacidades cognitivas generales
+b) Rasgos de personalidad
+c) Trastornos psiquiátricos
+d) Rasgos fisiológicos
 
-6. ¿Cuál de los siguientes fue presentado en la clase como ejemplo de rasgo prácticamente 100% ambiental?
-a) El color de ojos de una persona adulta
-*b) El idioma en el que hablamos habitualmente
-c) La altura adulta de una persona sana
-d) El índice de masa corporal de un adulto
+5. ¿En qué categoría de rasgos estudiados por la genética del comportamiento se incluyen la extroversión y el neuroticismo?
+a) Trastornos psiquiátricos
+b) Capacidades cognitivas generales
+*c) Rasgos de personalidad
+d) Rasgos fisiológicos
 
-7. Si un rasgo tiene, según la definición laxa, un componente genético del 90%, ¿qué implica esto sobre el rasgo?
-a) Que el noventa por ciento de la población presenta ese rasgo
-b) Que el noventa por ciento de los genes participan en ese rasgo concreto
-*c) Que el rasgo es fundamentalmente genético y poco influido por el ambiente
-d) Que el rasgo se manifiesta recién luego de noventa días de vida
+6. ¿En qué categoría de rasgos estudiados por la genética del comportamiento se incluyen la esquizofrenia y el autismo?
+a) Rasgos fisiológicos
+b) Rasgos de personalidad
+c) Capacidades cognitivas generales
+*d) Trastornos psiquiátricos
 
-8. Según la clase, ¿qué factor puede hacer variar el componente genético estimado para un mismo rasgo?
-a) El tamaño de la muestra utilizada en el estudio concreto de gemelos
-b) El tipo de test psicológico empleado para medir el rasgo
-c) La cantidad de cromosomas analizados en el estudio genético
-*d) La población en la que se realiza la medición del rasgo
+### Tema: Definición laxa del componente genético
 
-9. En la fórmula rigurosa del componente genético, CG = VG / (VG + VA), ¿qué representa el denominador (VG + VA)?
-*a) La variación total del rasgo, sumando su parte genética y ambiental
-b) La variación genética heredada exclusivamente por vía materna en la familia
-c) La variación explicada únicamente por el ambiente compartido de la familia
-d) El número total de genes que participan en ese rasgo del comportamiento
+7. Según la definición laxa de componente genético, ¿qué caracteriza a un rasgo "100% genético"?
+a) Que el rasgo no puede modificarse con ningún tipo de tratamiento
+*b) Que las diferencias entre personas se explican totalmente por diferencias genéticas
+c) Que todos los genes del organismo participan en su expresión
+d) Que el rasgo está presente en el 100% de la población mundial
 
-10. Según la definición rigurosa de componente genético, ¿para qué contexto es válido un valor de CG calculado?
-a) Es un valor universal, válido para cualquier población y cualquier época
-*b) Es válido para una población determinada en un momento determinado
-c) Es válido únicamente cuando se estudia a gemelos idénticos criados juntos
-d) Es válido solamente si se mide dentro de una única familia
+8. Según la definición laxa de componente genético, ¿qué caracteriza a un rasgo "100% ambiental"?
+*a) Que las diferencias entre personas se deben enteramente al ambiente y nada a los genes
+b) Que el rasgo aparece únicamente en un ambiente específico y no en otros ambientes distintos a ese
+c) Que el rasgo depende del clima o la geografía del lugar exacto de nacimiento de la persona
+d) Que el rasgo desaparece siempre por completo al cambiar de ambiente, incluso si la persona vuelve después al ambiente original
 
-11. ¿Cómo se define el Ambiente Compartido dentro de la variación ambiental total (VA)?
-a) Los factores ambientales exclusivos de cada individuo, no compartidos con nadie más
-b) La proporción de variación de un rasgo explicada por los genes de la familia
-*c) Los factores ambientales que hacen que una familia se parezca, como el barrio
-d) Los factores prenatales que afectan únicamente a los gemelos idénticos criados juntos desde el nacimiento
+9. La clase usa el ejemplo de la altura para ilustrar un rasgo con componente genético parcial. ¿Qué significa esto?
+*a) Que las diferencias en altura se deben en parte a los genes y en parte al ambiente
+b) Que la altura solo tiene componente genético en las poblaciones europeas actuales y no en el resto del mundo
+c) Que la altura es en realidad un rasgo 100% ambiental que solo parece genético
+d) Que la altura no varía en absoluto entre las distintas poblaciones humanas del mundo
 
-12. ¿Cómo se define el Ambiente No Compartido?
-a) Los factores que hacen que dos hermanos criados juntos se parezcan mucho entre sí desde niños
-b) Los factores genéticos heredados de forma exclusiva por uno solo de los hijos
-c) La correlación entre el ambiente familiar y el componente genético de un rasgo
-*d) Todo lo que no es genético ni se comparte entre los miembros de una familia
+10. Según la clase, ¿de qué depende el valor del componente genético calculado para un rasgo?
+a) Es un valor universal, fijo para toda la humanidad sin excepciones
+*b) Puede variar según la población y el momento en que se mida
+c) Es siempre idéntico entre distintas generaciones de la misma familia
+d) Depende únicamente del tamaño de la muestra utilizada y de cómo fue seleccionada en el estudio
+
+### Tema: Definición rigurosa del componente genético y del ambiente
+
+11. Según la definición rigurosa vista en la clase, ¿cómo se calcula el componente genético (C_G) de un rasgo?
+a) Sumando la variación del ambiente compartido y del ambiente no compartido de todos los miembros de la familia
+b) Multiplicando la variación genética por la cantidad de genes involucrados directamente en la expresión del rasgo
+c) Restando la variación ambiental total a la variación genética total observada en toda la muestra
+*d) Dividiendo la variación debida a los genes por la variación total, genética más ambiental
+
+12. ¿Qué se entiende por "ambiente compartido" en genética del comportamiento?
+a) El ambiente intrauterino que comparten los hermanos nacidos en partos múltiples, como los mellizos o los trillizos
+b) Los genes que dos hermanos comparten siempre por herencia biológica directa, sin que el ambiente influya en absoluto
+*c) Los factores no genéticos que hacen que los miembros de una familia se parezcan entre sí
+d) El conjunto de experiencias idénticas que tienen dos gemelos criados en hogares completamente distintos
+
+13. ¿Qué se entiende por "ambiente no compartido" en genética del comportamiento?
+a) El ambiente genético que dos hermanos no comparten al no ser gemelos idénticos
+b) El barrio o la clase social de la familia, por ser un factor externo al hogar
+c) El estilo parental aplicado por igual a todos los hijos de una familia
+*d) Los factores no genéticos que no se comparten entre miembros de una misma familia
+
+14. La clase presenta la fórmula V_A = V_AC + V_ANC para la variación ambiental total. ¿Qué representan V_AC y V_ANC?
+*a) La variación debida al ambiente compartido y la debida al ambiente no compartido, respectivamente
+b) La variación debida al ambiente actual y la debida al ambiente anterior del individuo
+c) La variación atribuible a los abuelos y la atribuible a los padres
+d) La variación genética aditiva y la variación genética no aditiva
 
 ### Tema: Métodos clásicos: comparación entre gemelos y mellizos
 
-13. Según el método clásico de comparación entre gemelos y mellizos, ¿qué resultado sugiere que un rasgo tiene componente genético?
-*a) Que la correlación entre gemelos sea mayor que la correlación entre mellizos
-b) Que la correlación entre mellizos sea mayor que la correlación entre gemelos
-c) Que gemelos y mellizos presenten exactamente la misma correlación entre sí
-d) Que la correlación entre padres e hijos supere a la de los gemelos
+15. En el diseño clásico que compara gemelos con mellizos, ¿qué sugiere que un rasgo tiene componente genético?
+a) Que la similitud entre mellizos sea mayor que la similitud entre gemelos
+b) Que gemelos y mellizos tengan exactamente la misma similitud en el rasgo
+*c) Que la similitud entre gemelos sea mayor que la similitud entre mellizos
+d) Que el rasgo no se pueda observar en mellizos criados juntos
 
-14. ¿Cómo se calcula el componente genético (CG) en el método de comparación entre gemelos y mellizos?
-a) CG = Corr(gemelos) − Corr(mellizos), sin ningún otro factor adicional
-*b) CG = 2 x [Corr(gemelos) − Corr(mellizos)]
-c) CG = Corr(padres e hijos biológicos) − Corr(padres e hijos adoptivos)
-d) CG = Corr(gemelos) dividido la Corr(mellizos) de ese mismo estudio
+16. Uno de los problemas del diseño gemelos-mellizos es que asume que los ambientes causantes de similitud son los mismos para ambos grupos. Si los gemelos comparten ambientes más similares entre sí que los mellizos, ¿qué consecuencia tiene esto?
+a) El método deja de poder calcular el componente de ambiente compartido
+b) El método subestima el componente genético del rasgo
+c) El método subestima únicamente el componente de ambiente no compartido
+*d) El método sobreestima el componente genético del rasgo
 
-15. Uno de los problemas del método señala que los ambientes de los gemelos podrían ser más parecidos entre sí que los de los mellizos. ¿Qué efecto tiene esto sobre la estimación del componente genético?
-a) Subestima el componente genético del rasgo que se está estudiando actualmente
-b) No genera ningún efecto sobre la estimación final del componente
-*c) Sobreestima el componente genético del rasgo que se está estudiando
-d) Sobreestima únicamente el componente del ambiente no compartido
+17. Otro problema del diseño gemelos-mellizos es que los ambientes intrauterinos son más similares entre mellizos que entre gemelos. ¿Qué efecto tiene esto sobre la estimación del componente genético?
+a) No tiene ningún efecto, porque el ambiente intrauterino no se considera parte del ambiente relevante para este cálculo
+b) Lo vuelve imposible de calcular con la fórmula habitual usada en los estudios clásicos
+*c) Lo subestima, porque reduce la diferencia de similitud entre gemelos y mellizos
+d) Lo sobreestima, porque exagera la similitud atribuida a los mellizos criados en el mismo hogar
 
-16. Respecto a los ambientes intrauterinos, ¿qué problema señala la clase sobre este método de comparación?
-a) Al ser más similares entre gemelos, el método sobreestima el componente genético
-b) Al ser idénticos en ambos grupos, no generan ningún sesgo en la estimación
-c) Al no poder medirse, obligan a descartar por completo este método clásico
-*d) Al ser más similares entre mellizos, el método subestima el componente genético
+18. ¿Cuál es el "problema de la generalización" señalado para el diseño gemelos-mellizos?
+*a) Que los resultados no son generalizables a la población general, porque hay más partos prematuros y ambientes intrauterinos adversos
+b) Que los resultados solo son válidos para el rasgo de la altura estudiado en la clase y no se pueden extender a otros rasgos
+c) Que el diseño no puede aplicarse nunca fuera del país donde se realizó el estudio original, ni siquiera en países culturalmente similares
+d) Que no existen suficientes pares de gemelos en el mundo para realizar el estudio con la potencia estadística necesaria
 
-17. ¿En qué consiste el problema de generalización de este método de comparación entre gemelos y mellizos?
-*a) En que los resultados no son generalizables, por la mayor prematurez en gemelos y mellizos
-b) En que gemelos y mellizos no pueden compararse estadísticamente entre sí de ningún modo posible realmente
-c) En que el método solamente puede aplicarse a rasgos de tipo psiquiátrico o cognitivo
-d) En que las agencias de adopción seleccionan familias parecidas a las familias biológicas
+19. Comparando gemelos con mellizos también es posible saber si la correlación entre dos rasgos distintos, por ejemplo extroversión y "belleza", tiene base genética. ¿Bajo qué condición se concluye eso?
+a) Cuando la correlación entre los dos rasgos es igual en gemelos y en mellizos
+*b) Cuando la correlación cruzada entre los dos rasgos es mayor en gemelos que en mellizos
+c) Cuando ambos rasgos tienen, cada uno por separado, un componente genético superior al 50%
+d) Cuando los dos rasgos no muestran ninguna correlación en la población general estudiada, ni siquiera una correlación débil
 
-### Tema: Métodos clásicos: padres e hijos criados juntos
+### Tema: Métodos clásicos: comparación entre padres e hijos
 
-18. En el diseño que compara padres (biológicos o adoptivos) e hijos criados juntos, ¿qué resultado sugiere un componente genético del rasgo?
-a) Que la correlación entre padres e hijos adoptivos supere claramente a la biológica
-*b) Que la correlación entre padres e hijos biológicos supere a la adoptiva
-c) Que ambas correlaciones resulten exactamente idénticas entre sí en el estudio
-d) Que no exista correlación alguna en ninguno de los dos grupos comparados
+20. En el diseño que compara padres e hijos biológicos y adoptivos criados juntos, ¿qué sugiere que un rasgo tiene componente genético?
+a) Que no haya ninguna similitud ni entre padres e hijos biológicos ni entre adoptivos
+b) Que la similitud entre padres e hijos adoptivos sea mayor que entre padres e hijos biológicos
+c) Que la similitud sea exactamente idéntica entre ambos tipos de familia estudiados
+*d) Que la similitud entre padres e hijos biológicos sea mayor que entre padres e hijos adoptivos
 
-19. En el diseño de padres e hijos criados juntos, ¿cómo se estima el componente del Ambiente Compartido (CAC)?
-a) Restando el componente genético completo a la correlación entre gemelos del estudio
-b) Multiplicando por dos la correlación entre padres e hijos biológicos
-*c) Como la correlación entre padres e hijos adoptivos de ese diseño
-d) Restando a uno la correlación entre padres e hijos biológicos
+21. En el diseño que compara padres biológicos con hijos dados en adopción al nacer, ¿qué relación permite estimar el componente genético del rasgo?
+a) La similitud entre los padres adoptivos y los hijos que adoptaron, sin importar si comparten algún gen
+b) La similitud entre dos hijos adoptados por la misma familia, aunque no compartan ningún gen entre ellos
+*c) La similitud entre los padres biológicos y los hijos que dieron en adopción
+d) La similitud entre los padres biológicos y los padres adoptivos que criaron finalmente al mismo niño
 
-### Tema: Métodos clásicos: padres e hijos dados en adopción al nacer
+22. En el diseño que compara padres biológicos con hijos dados en adopción al nacer, ¿qué componente estima la similitud entre padres adoptivos e hijos adoptivos?
+a) El componente genético del rasgo
+b) El componente de ambiente intrauterino exclusivamente
+c) El componente de ambiente no compartido exclusivamente
+*d) El componente ambiental del rasgo
 
-20. En el diseño con hijos dados en adopción al nacer, ¿cómo se estima el componente genético (CG), a diferencia del diseño con gemelos y mellizos?
-a) Multiplicando por dos la correlación entre padres adoptivos e hijos en este diseño
-b) Restando a la unidad la correlación entre padres adoptivos e hijos
-c) Dividiendo la correlación entre padres biológicos por la de los adoptivos
-*d) Directamente como la correlación entre padres biológicos e hijos adoptados, sin duplicar
+23. Uno de los problemas señalados para los diseños con hijos adoptivos es la "colocación selectiva". ¿En qué consiste?
+a) En que los hijos adoptados eligen ellos mismos a qué familia ser asignados según sus propias preferencias personales
+b) En que los padres adoptivos siempre reciben menos apoyo estatal que los biológicos
+*c) En que las agencias de adopción buscan familias adoptivas parecidas a las biológicas, sobreestimando el componente genético
+d) En que las agencias de adopción priorizan exclusivamente el componente ambiental del rasgo
 
-21. ¿En qué consiste el problema de la colocación selectiva en los diseños con hijos adoptivos?
-*a) Que las agencias buscan familias adoptivas parecidas a las biológicas, sobreestimando el componente genético
-b) Que los hijos adoptivos nunca llegan a parecerse a sus padres adoptivos en nada
-c) Que los padres biológicos nunca pueden ser localizados para participar del estudio
-d) Que los ambientes intrauterinos son siempre idénticos entre las familias adoptivas
+24. Otro problema señalado para los diseños con hijos adoptivos es el ambiente intrauterino. ¿Qué efecto puede tener sobre la estimación del componente genético del rasgo?
+a) Anularlo casi por completo, haciendo que el componente genético sea siempre cero, sin importar el rasgo
+*b) Sobreestimarlo, porque parte de esa similitud se debe al ambiente intrauterino y no solo a los genes
+c) Subestimarlo, porque reduce artificialmente la similitud observada entre padres biológicos e hijos criados en la misma casa
+d) No tener ningún efecto, porque el ambiente intrauterino ya se excluye por completo del cálculo en todos los diseños
 
-22. Según la clase, ¿qué solución se propone frente al problema de la colocación selectiva en los estudios de adopción?
-a) Descartar por completo los estudios que incluyan hijos adoptivos en la muestra
-*b) Evaluar cuán parecidos son entre sí los padres biológicos y los adoptivos
-c) Multiplicar por dos todas las correlaciones obtenidas en el estudio
-d) Utilizar únicamente gemelos criados juntos en reemplazo de los hijos adoptivos
+### Tema: Métodos modernos: correlación entre genes y rasgos
 
-23. ¿Qué problema puede generar el ambiente intrauterino en los diseños con hijos adoptivos?
-a) Puede llevar a subestimar el componente del ambiente no compartido del rasgo
-b) Puede hacer que la correlación entre padres adoptivos e hijos sea negativa
-*c) Puede llevar a sobreestimar el componente genético del rasgo estudiado
-d) Puede impedir por completo calcular cualquier tipo de correlación en el estudio
-
-### Tema: Métodos clásicos: análisis multivariado entre rasgos
-
-24. Comparando gemelos con mellizos, ¿cómo se determina si la correlación entre dos rasgos (por ejemplo, extraversión y belleza) tiene una base genética?
-a) Viendo si ambos rasgos, por separado, superan un componente genético del 50%
-b) Viendo si los dos rasgos aparecen siempre juntos dentro de la población general
-c) Viendo si ambos rasgos se transmiten exclusivamente por vía materna en la familia
-*d) Viendo si la correlación cruzada entre ambos rasgos es mayor en gemelos que en mellizos
-
-### Tema: Métodos modernos: correlación entre alelos de genes y rasgos
-
-25. ¿Qué es un SNP (single nucleotide polymorphism), según lo explicado en la clase?
+25. En los métodos modernos de genética del comportamiento, ¿qué es un SNP?
 *a) Una variante en un nucleótido del ADN, con hasta cuatro versiones posibles
-b) Un gen completo que determina por sí solo un rasgo del comportamiento
-c) Un cromosoma adicional presente únicamente en algunas personas de la población
-d) Un tipo de mutación que ocurre solamente en el ADN mitocondrial
+b) Un tipo especial de gen exclusivo del sistema nervioso central
+c) Una proteína que regula la expresión de múltiples genes al mismo tiempo, actuando como interruptor genético
+d) Un fragmento de ADN no codificante sin ninguna función biológica conocida
 
-26. Según el ejemplo de puntaje poligénico sobre logro educativo, ¿qué diferencia de probabilidad de ir a la universidad se observó entre el 20% más y el 20% menos suertudo genéticamente?
-a) 50% contra 40% de probabilidad de asistir a la universidad en total
-*b) 50% contra 10% de probabilidad de asistir a la universidad
-c) 90% contra 50% de probabilidad de asistir a la universidad
-d) 30% contra 20% de probabilidad de asistir a la universidad aproximadamente
+26. Frente al problema de que correlación no implica causalidad, ¿qué dos estrategias se mencionan para evaluar si una correlación entre genes y un rasgo es causal?
+*a) Controlar las variables demográficas y estudiar el puente biológico entre el gen y el comportamiento
+b) Aumentar el tamaño muestral y repetir el estudio en otro país con una población distinta
+c) Eliminar del análisis a los individuos con rasgos atípicos y promediar los resultados obtenidos en el resto de la muestra
+d) Comparar los resultados únicamente con estudios de gemelos separados al nacer en distintos países
 
-27. Según la clase, ¿cuáles son las dos formas mencionadas para saber si una correlación entre genes y un rasgo implica causalidad?
-a) Aumentar el tamaño muestral y repetir el estudio en otra población
-b) Comparar únicamente gemelos que fueron criados dentro del mismo hogar
-*c) Controlar variables demográficas y estudiar el puente biológico entre gen y conducta
-d) Calcular el componente del ambiente compartido y del no compartido
+27. Como ejemplo del "puente" entre gen y comportamiento, la clase menciona que muchos genes asociados al logro educativo se expresan en ciertas regiones cerebrales. ¿Cuáles?
+a) La corteza visual primaria y el tálamo, vinculados a la visión
+*b) La corteza prefrontal y el hipocampo, implicados en la comunicación neuronal
+c) El tronco encefálico y la médula espinal, vinculados al reflejo
+d) El cerebelo y la amígdala, vinculados al control motor y a las respuestas emocionales del organismo
 
-28. Según el ejemplo dado en la clase, ¿en qué regiones del cerebro se expresan muchos de los genes que correlacionan con el logro educativo?
-a) En la retina y en el cerebelo del cerebro humano
-b) En el tronco encefálico y la médula espinal humana
-c) En el núcleo accumbens y la amígdala del cerebro
-*d) En la corteza prefrontal y el hipocampo del cerebro
+28. Los genes que correlacionan con dislexia, según la clase, se expresan en regiones cerebrales asociadas a:
+a) La percepción del dolor
+b) El control motor fino de las manos
+*c) El reconocimiento de sonidos
+d) La regulación del sueño
 
-29. ¿En qué regiones se expresan los genes que correlacionan con la dislexia, según el ejemplo presentado en la clase?
-*a) En regiones asociadas al reconocimiento de sonidos del habla
-b) En regiones asociadas al control motor fino de las manos
-c) En regiones asociadas a la memoria autobiográfica de largo plazo
-d) En regiones asociadas a la regulación de las emociones
+29. Los genes que correlacionan con extroversión también correlacionan con la altura. ¿Qué ilustra este ejemplo?
+a) Un caso de interacción genotipo-ambiente ya confirmada por varios estudios longitudinales realizados en distintos países
+b) Un caso claro de correlación genotipo-ambiente de tipo evocativa
+c) Un caso de heredabilidad faltante todavía sin explicación conocida
+*d) Un caso de influencia genética indirecta, mediada por la cultura
 
-30. ¿Qué es un puntaje poligénico, según la definición dada en la clase?
-a) Una medida directa del porcentaje de genes compartidos entre dos familiares
-*b) Un resultado que combina lectura de ADN con análisis matemático de probabilidad
-c) El número total de SNPs presentes en el genoma de una persona
-d) Un diagnóstico clínico basado exclusivamente en síntomas observables del paciente
+### Tema: Puntaje poligénico y heredabilidad faltante
 
-31. Según la clase, ¿con qué se compara el funcionamiento del puntaje poligénico, en cuanto a cómo se combinan variantes poco significativas por separado?
-a) Con un diagnóstico médico basado en un único análisis de sangre
-b) Con un examen de opción múltiple donde solo cuenta la más difícil
-*c) Con un test de personalidad, donde cada pregunta individual aporta poco por sí sola
-d) Con una prueba de coeficiente intelectual reducida a una sola pregunta
+30. ¿Cómo se construye el puntaje poligénico de una persona para un rasgo?
+*a) Combinando la presencia de muchos SNPs asociados al rasgo, aunque cada uno no sea significativo por sí solo
+b) Identificando un único gen responsable del rasgo y midiendo siempre su presencia o ausencia
+c) Promediando el componente genético medido en distintos estudios de gemelos, de adopción y de puntaje poligénico realizados previamente
+d) Secuenciando el genoma completo y comparándolo con un solo genoma de referencia fijo
 
-32. ¿Qué es la heredabilidad faltante, según lo explicado en la clase?
-a) La parte de la heredabilidad que se pierde al comparar mellizos con gemelos
-b) La heredabilidad de rasgos que todavía no fueron estudiados por la ciencia
-c) La diferencia entre el componente genético y el ambiente compartido de un rasgo
-*d) La diferencia entre la heredabilidad de estudios de gemelos y la explicada por el GWAS
+31. ¿Qué se entiende por "heredabilidad faltante"?
+a) La heredabilidad de aquellos rasgos que todavía no fueron estudiados por ningún investigador en el mundo
+b) La parte de la heredabilidad de un rasgo que se pierde entre una generación y la siguiente
+*c) La diferencia entre la heredabilidad estimada por estudios familiares y la explicada por los estudios de asociación del genoma completo
+d) La diferencia entre el componente genético medido en distintas poblaciones humanas del mundo actual y en distintas épocas históricas
 
 ### Tema: Correlación genotipo-ambiente
 
-33. ¿Qué es la correlación genotipo-ambiente de tipo evocativa?
-*a) Que otras personas tratan a los chicos de acuerdo a sus propensiones genéticas
-b) Que los chicos crean activamente ambientes que correlacionan con sus propios genes
-c) Que los chicos reciben de sus padres genes que ya correlacionan con el ambiente
-d) Que los chicos modifican la expresión de sus propios genes según el ambiente
+32. ¿Qué se entiende por correlación genotipo-ambiente?
+a) El fenómeno por el cual el ambiente modifica directamente la secuencia completa del ADN de una persona
+b) El fenómeno por el cual dos genes distintos producen exactamente el mismo rasgo
+c) El fenómeno por el cual dos ambientes distintos producen siempre rasgos genéticamente idénticos
+*d) El fenómeno por el cual los genes influyen sobre los ambientes de una persona
 
-34. ¿Qué es la correlación genotipo-ambiente de tipo activa?
-a) Que los padres eligen el ambiente familiar en función de sus propios genes
-*b) Que los chicos crean ambientes que correlacionan con sus propias propensiones genéticas
-c) Que otras personas tratan al chico de forma diferente según su aspecto físico
-d) Que los genes de los padres determinan directamente el ambiente escolar del niño
+33. La correlación genotipo-ambiente "evocativa" se ilustra con el ejemplo de un chico con facilidad para la matemática. ¿En qué consiste este tipo de correlación?
+a) En que el chico mismo busca y crea ambientes acordes a su propensión, por ejemplo pidiendo juguetes con números
+*b) En que otras personas tratan al chico de acuerdo a sus propensiones genéticas, por ejemplo regalándole juegos con números
+c) En que el chico hereda de sus padres tanto los genes matemáticos como los libros y juegos relacionados con la matemática
+d) En que el ambiente escolar modifica poco a poco la propensión genética original del chico
 
-35. ¿Qué es la correlación genotipo-ambiente de tipo pasiva?
-a) Que los chicos buscan activamente ambientes que se ajusten a sus propios genes
-b) Que otras personas tratan al chico de forma diferente según su genética
-*c) Que los chicos reciben genes que correlacionan con el ambiente en que viven
-d) Que el ambiente modifica de forma directa la expresión de los genes del chico
+34. La correlación genotipo-ambiente "activa" se ilustra con el mismo ejemplo del chico con facilidad para la matemática. ¿En qué consiste este tipo de correlación?
+*a) En que el chico mismo crea o busca ambientes que correlacionan con su propensión, por ejemplo queriendo juguetes con números
+b) En que el chico recibe de sus padres los alelos junto con un ambiente ya cargado de estímulos matemáticos
+c) En que otras personas le regalan de manera constante al chico juegos con números por su propensión genética, sin que él lo pida
+d) En que el ambiente familiar reduce cada vez más la propensión genética original del chico a medida que crece
 
-36. Según la clase, ¿cuál es una de las consecuencias importantes de que los genes influyan sobre los ambientes?
-a) Que el componente genético deja de poder medirse mediante estudios de gemelos
-b) Que el ambiente compartido y el no compartido pasan a ser exactamente iguales
-c) Que los estudios de adopción dejan de ser útiles para medir el componente genético
-*d) Que el componente genético puede darse de forma indirecta y ser modificable
+35. La correlación genotipo-ambiente "pasiva" se ilustra con el ejemplo de alelos que predisponen a la lectura. ¿En qué consiste este tipo de correlación?
+a) En que el chico modifica el ambiente de sus padres una vez que aprende a leer bien y empieza a pedir más libros
+b) En que el ambiente escolar recompensa al chico por su habilidad lectora con más libros y materiales de lectura
+c) En que el chico busca siempre activamente libros para leer por su propia iniciativa, sin que nadie se lo pida
+*d) En que los padres comparten esos alelos con el chico y también tienden a tener más libros en la casa
 
-37. Según la clase, ¿por qué muchos ambientes que correlacionan con ciertos rasgos podrían no reflejar una influencia ambiental directa?
-*a) Que los genes influyen en ambientes y rasgos simultáneamente, de forma pasiva
-b) Errores sistemáticos de medición cometidos en los estudios de gemelos y mellizos realizados
-c) La colocación selectiva de las agencias de adopción, de forma exclusiva
-d) La imposibilidad práctica de calcular el componente del ambiente compartido
+36. ¿Cuál es una de las consecuencias importantes de que los genes influyan sobre los ambientes?
+a) Que los ambientes compartido y no compartido pasan a tener siempre el mismo peso
+b) Que la heredabilidad faltante desaparece siempre por completo en presencia de cualquier tipo de correlación genotipo-ambiente detectada
+*c) Que el componente genético de un rasgo, al ser indirecto, puede modificarse cambiando la influencia del gen sobre el ambiente
+d) Que el componente genético de un rasgo deja de poder medirse mediante estudios de gemelos
 
-38. Según el método clásico para detectar correlación genotipo-ambiente pasiva, ¿qué se compara?
-a) La correlación entre rasgos de dos gemelos criados en hogares distintos
-*b) La correlación entre ambiente familiar y rasgos, en familias biológicas y adoptivas
-c) El componente genético de los padres biológicos frente al de los adoptivos
-d) El ambiente intrauterino de los gemelos frente al de los mellizos
+37. Otra consecuencia de la correlación genotipo-ambiente es que muchos ambientes que correlacionan con ciertos rasgos podrían no ser causales del rasgo. ¿Por qué motivo, según la clase?
+a) Porque los ambientes correlacionados nunca se pueden medir con total precisión científica
+*b) Porque los genes influyen en los ambientes y en los rasgos al mismo tiempo, mediante una correlación pasiva
+c) Porque la correlación entre ambiente y rasgo siempre se debe a errores de medición
+d) Porque los ambientes correlacionados solo aparecen en estudios con muestras muy pequeñas y poco confiables realizados hace décadas
 
-39. Para detectar las correlaciones genotipo-ambiente evocativa y activa mediante métodos clásicos, ¿qué se mide?
-a) La correlación entre el ambiente intrauterino y el componente genético del rasgo
-b) La correlación entre el ambiente compartido y el ambiente no compartido de la familia
-*c) La correlación entre rasgos de los padres biológicos y el ambiente de la familia adoptiva
-d) La correlación entre gemelos criados juntos y mellizos criados por separado
+38. Para medir la correlación genotipo-ambiente pasiva con métodos clásicos, ¿qué se compara?
+a) La correlación entre el rasgo del niño biológico y el rasgo del niño adoptivo de la misma familia
+*b) La correlación entre ambientes familiares y rasgos de los niños, comparando familias con hijos biológicos y adoptivos
+c) La correlación entre los rasgos de los padres biológicos y los rasgos de los padres adoptivos
+d) La correlación entre el puntaje poligénico del padre y el de la madre biológica
 
-40. En el estudio sobre abandono paterno, hábito de fumar durante el embarazo y depresión en los hijos, ¿qué explicación alternativa a la causalidad directa se propone?
-a) Que el abandono paterno y el hábito de fumar no están asociados con la depresión
-b) Que la depresión de los hijos se debe solamente al ambiente no compartido
-c) Que el estudio no logró calcular ningún puntaje poligénico en la muestra utilizada
-*d) Que los padres tenían mayor propensión genética a la depresión y los hijos la heredaron
+39. Para medir las correlaciones genotipo-ambiente evocativa y activa con métodos clásicos, ¿qué se compara?
+a) Los ambientes de las familias biológicas con los ambientes de las familias adoptivas correspondientes
+b) Los rasgos de los hijos biológicos con los rasgos de los hijos adoptivos que crecieron juntos en la misma familia
+c) Los rasgos de los padres adoptivos con los ambientes de las familias biológicas de origen
+*d) Los rasgos de los padres biológicos con los ambientes de las familias adoptivas que criaron a esos hijos
 
-41. En el estudio sobre abandono paterno, hábito de fumar durante el embarazo y depresión en los hijos, ¿qué ocurrió con la relación entre abandono paterno y depresión al controlar por el puntaje poligénico de depresión de los propios niños?
-*a) La relación entre ambas variables desapareció por completo del análisis
-b) La relación se hizo todavía más fuerte de lo que era antes
-c) La relación se mantuvo exactamente igual a como era antes
-d) La relación se volvió negativa en lugar de positiva como antes
-
-42. En ese mismo estudio sobre abandono paterno, hábito de fumar durante el embarazo y depresión en los hijos, ¿qué ocurrió al controlar por el puntaje poligénico de depresión de los padres, en lugar del de los hijos?
-a) La relación entre abandono paterno y depresión también desapareció del análisis
-*b) La relación entre abandono paterno y depresión no desapareció del análisis
-c) La relación se volvió considerablemente más significativa que al principio
-d) Dejó de poder calcularse el puntaje poligénico de los propios hijos
+40. En el estudio sobre abandono paterno, tabaquismo materno durante el embarazo y depresión de los hijos, ¿qué se observó al controlar por el puntaje poligénico de depresión de los padres?
+a) Que el tabaquismo materno dejaba de tener cualquier asociación con la depresión de los hijos
+b) Que la relación entre esos factores y la depresión de los hijos se hacía aún más fuerte
+*c) Que la relación entre esos factores ambientales y la depresión de los hijos desaparecía, sugiriendo una correlación genotipo-ambiente pasiva
+d) Que el abandono paterno pasaba a ser la única causa comprobada de esa depresión infantil, sin ninguna influencia genética
 
 ### Tema: Interacción genotipo-ambiente
 
-43. ¿Qué se entiende por interacción genotipo-ambiente, según la clase?
-a) Que los genes influyen sobre los ambientes en los que vive una persona
-b) Que ambiente y genes explican, cada uno, la mitad exacta de un rasgo
-*c) Que la influencia del ambiente sobre un rasgo puede variar según el alelo del gen
-d) Que dos hermanos comparten tanto sus genes como su ambiente familiar
+41. ¿Qué se entiende por interacción genotipo-ambiente?
+*a) Que el efecto de un ambiente sobre un rasgo puede depender del alelo, o que el efecto de un alelo puede depender del ambiente
+b) Que el ambiente modifica siempre de forma directa la secuencia de nucleótidos del ADN desde el momento de la concepción
+c) Que dos personas con exactamente el mismo genotipo siempre desarrollan el mismo rasgo en cualquier ambiente en el que hayan crecido
+d) Que los genes determinan por completo y para siempre el ambiente en que una persona va a vivir, sin ninguna influencia del azar
 
-44. En el ejemplo (catalogado como dudoso) sobre el gen MAOA y el maltrato infantil, ¿qué patrón se observa en el gráfico sobre conducta antisocial?
-a) La conducta antisocial resulta idéntica en ambos grupos, sin importar el maltrato sufrido
-b) La actividad alta de MAOA aumenta la conducta antisocial más que la actividad baja
-c) El maltrato solo afecta la conducta antisocial en personas sin ninguna copia del gen MAOA
-*d) Con más maltrato, la baja actividad de MAOA muestra un aumento mayor de conducta antisocial
+42. En el ejemplo, calificado como dudoso en la clase, sobre el gen MAOA y el maltrato infantil, ¿qué se observó respecto del comportamiento antisocial?
+a) Que la actividad de MAOA no tuvo relación alguna con el comportamiento antisocial en ningún nivel de maltrato
+b) Que el maltrato infantil solo afectó el comportamiento antisocial en las personas con alta actividad de MAOA, y no en las demás
+*c) Que el maltrato infantil severo se asoció a más comportamiento antisocial, y ese efecto fue mayor en personas con baja actividad de MAOA
+d) Que el comportamiento antisocial fue exactamente idéntico en todos los niveles de maltrato, sin importar el gen
 
-45. En el ejemplo (catalogado como dudoso) sobre el gen transportador de serotonina y los eventos de vida estresantes, ¿qué se observa sobre la probabilidad de un episodio de depresión mayor?
-*a) El genotipo s/s aumenta más su probabilidad de depresión que el genotipo l/l
-b) El genotipo l/l muestra el aumento más pronunciado ante más eventos estresantes
-c) Todos los genotipos muestran la misma probabilidad sin importar los eventos estresantes posibles registrados
-d) La probabilidad de depresión disminuye a medida que aumentan los eventos estresantes
+43. En el ejemplo, calificado como dudoso en la clase, sobre los genotipos s/s, s/l y l/l y los eventos estresantes de vida, ¿qué se observó respecto de la depresión?
+a) Que los eventos estresantes solo influyeron en la depresión en ausencia total del genotipo s en la muestra estudiada por los investigadores
+b) Que la probabilidad de depresión fue igual para los tres genotipos en todos los niveles de eventos estresantes
+c) Que solo el genotipo l/l mostró una mayor probabilidad de depresión al aumentar los eventos estresantes de vida
+*d) Que a mayor número de eventos estresantes, la probabilidad de depresión mayor aumentó más en el genotipo s/s que en el l/l
 
-46. En el estudio que midió interacción genotipo-ambiente con puntaje poligénico para TDAH y maltrato infantil, ¿qué se concluyó?
-a) Que el maltrato solo aumenta los síntomas en quienes tienen puntaje poligénico alto
-*b) Que el maltrato aumenta los síntomas independientemente del puntaje, sin interacción detectada
-c) Que el puntaje poligénico predice los síntomas mejor de lo que predice el maltrato
-d) Que no existe ninguna relación entre el maltrato infantil y los síntomas de TDAH
+44. En el estudio que combinó puntaje poligénico para TDAH y maltrato infantil, ¿qué se concluyó sobre la interacción genotipo-ambiente?
+*a) Que no se detectó interacción: el maltrato aumentó los síntomas de TDAH de forma similar en los tres niveles de puntaje poligénico
+b) Que el puntaje poligénico para TDAH perdió toda su capacidad predictiva al incluir el maltrato en el modelo final
+c) Que el maltrato infantil solo tuvo efecto significativo en las personas con puntaje poligénico bajo para TDAH
+d) Que existió una interacción fuerte: el maltrato solo aumentó los síntomas de TDAH en el grupo con puntaje poligénico alto para ese trastorno
 `;
