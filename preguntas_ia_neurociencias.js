@@ -265,6 +265,7 @@ d) El aprendizaje supervisado y el aprendizaje por refuerzo automático
 ### Tema: Aprendizaje en redes neuronales artificiales
 
 3. Según el esquema comparativo presentado, ¿qué elemento de la neurona artificial corresponde a las dendritas?
+![Diagrama comparativo entre una neurona biológica y el modelo matemático de una neurona artificial](imagenes/nivel2-q03-neurona-bio-artificial.png)
 a) La capa de salida, que produce el resultado final
 b) El axón, que transmite la señal hacia otras neuronas
 c) La función de no linealidad aplicada a la suma
@@ -279,12 +280,14 @@ d) Una selección aleatoria de entradas y un promedio simple de todas ellas
 ### Tema: Estudios con neuronas biológicas: organoides y neuronas in vitro
 
 5. ¿Qué propone el estudio sobre "brainoware" (organoides cerebrales) mencionado en la clase?
+![Diagrama de un sistema de reconocimiento que procesa una señal de audio a través de organoides cerebrales (brainoware)](imagenes/nivel2-q05-brainoware-diagrama.png)
 a) Que las computadoras cuánticas pueden reemplazar a las neuronas
 b) Que los organoides cerebrales pueden reemplazar el ADN humano
 *c) Que los organoides cerebrales pueden funcionar como hardware de cómputo para IA
 d) Que las redes neuronales artificiales podrían algún día cultivarse en un laboratorio especializado
 
 6. ¿Qué demostró el estudio de neuronas in vitro que jugaron al videojuego Pong?
+![Esquema del sistema de circuito cerrado con neuronas in vitro jugando al videojuego Pong](imagenes/nivel2-q06-pong-neuronas-invitro.png)
 a) Que las neuronas cultivadas no pueden responder a ningún estímulo externo
 *b) Que las neuronas modifican su actividad para reducir la impredictibilidad del entorno
 c) Que las neuronas artificiales superan siempre a las neuronas biológicas
@@ -293,12 +296,14 @@ d) Que el videojuego Pong no puede ser aprendido por ningún tipo de sistema bio
 ### Tema: Priors innatos y aprendizaje rápido en humanos
 
 7. Según un estudio mencionado en la clase sobre videojuegos, ¿qué pregunta central lo motiva?
+![Portada del estudio sobre priors humanos para jugar videojuegos, con una captura del videojuego utilizado](imagenes/nivel2-q07-estudio-videojuego.png)
 a) Por qué las computadoras siempre prefieren jugar videojuegos simples en vez de los complejos
 b) Por qué los videojuegos antiguos son más difíciles que los modernos
 c) Por qué los jugadores expertos memorizan más niveles que los novatos
 *d) Por qué los humanos aprenden un videojuego mucho más rápido que una computadora
 
 8. En el ejemplo de las víboras y las flores, ¿qué ilustra el hecho de que las detectemos más rápido?
+![Grillas de imágenes de víboras camufladas entre flores, y de flores camufladas entre víboras](imagenes/nivel2-q08-viboras-flores.png)
 *a) Que tenemos priors evolutivos que orientan la atención hacia estímulos relevantes para la supervivencia
 b) Que las flores son objetos visualmente mucho más simples de reconocer que las víboras venenosas
 c) Que el color rojo capta más la atención que el color verde
@@ -311,6 +316,7 @@ b) Que los bebés prefieren los sonidos graves a los agudos
 d) Que los bebés imitan automáticamente los gestos de los adultos
 
 10. En el experimento con la pelota de color, ¿qué indica que los bebés miren más tiempo cuando cae la bola menos probable?
+![Diagrama del experimento con cajas y bolitas de colores usado para estudiar la intuición numérica y de probabilidad de los bebés](imagenes/nivel2-q10-pelota-probabilidad.png)
 a) Que los bebés distinguen los colores primarios sin dificultad
 *b) Que los bebés tienen una noción intuitiva de la probabilidad
 c) Que los bebés prefieren los objetos que se mueven lentamente
@@ -323,6 +329,7 @@ c) A la modalidad gustativa, distinguiendo sabores por cantidad
 *d) A la modalidad auditiva, prefiriendo imágenes con la misma cantidad
 
 12. ¿Qué mostró el estudio sobre precursores del razonamiento lógico en bebés preverbales?
+![Portada del estudio sobre precursores del razonamiento lógico en bebés preverbales, con el diseño experimental y un gráfico de resultados](imagenes/nivel2-q12-razonamiento-logico-bebes.png)
 *a) Que los bebés tienen nociones de sumas, restas y conservación de las cosas
 b) Que los bebés pueden resolver pequeñas ecuaciones simples antes de aprender a hablar correctamente
 c) Que los bebés reconocen letras del alfabeto desde bastante temprano
@@ -351,6 +358,7 @@ c) Que los bebés instintivamente imitan sonidos de animales conocidos y comunes
 ### Tema: Evolución y selección natural
 
 16. ¿Cómo se define la evolución según la clase?
+![Diagrama de una población de individuos representados como puntos de colores, que cambia con el paso del tiempo](imagenes/nivel2-q16-evolucion-diagrama.png)
 *a) Como el cambio en los organismos de una población en el tiempo
 b) Como el aumento en el tamaño del cerebro de una especie
 c) Como la extinción progresiva y natural de las especies menos aptas para sobrevivir
@@ -383,6 +391,7 @@ b) De la capacidad reproductiva del organismo portador
 d) Del número de cromosomas presentes en cada célula
 
 21. ¿Qué tres condiciones deben darse para que ocurra un proceso de selección natural, según la clase?
+![Diagramas de puntos que ilustran variación entre individuos, herencia de rasgos y cambio de una población con el tiempo y el ambiente](imagenes/nivel2-q21-condiciones-seleccion-natural.png)
 a) Mutación, recombinación y extinción
 *b) Variabilidad, heredabilidad y adaptabilidad
 c) Competencia, cooperación y territorialidad
@@ -391,6 +400,7 @@ d) Reproducción, migración y aislamiento
 ### Tema: Selección de comportamientos: adaptaciones, subproductos y ruido
 
 22. Según la clase, ¿qué tres "frutos" puede tener un proceso evolutivo darwinista?
+![Grilla de fotografías de ombligos con formas variadas](imagenes/nivel2-q22-ruido-ombligos.png)
 *a) Adaptaciones, subproductos y ruido
 b) Mutaciones, selecciones y extinciones
 c) Genes, cromosomas y proteínas
@@ -477,6 +487,7 @@ d) El gusto por el azúcar
 ### Tema: Cómo se seleccionan los comportamientos: Darwin, Lamarck y la estructura del cerebro
 
 36. ¿Cuál es la principal diferencia entre la teoría de Lamarck y la de Darwin?
+![Diagrama comparativo de jirafas alimentándose de un árbol a lo largo de generaciones, bajo lamarckismo y darwinismo](imagenes/nivel2-q36-lamarck-darwin-jirafas.png)
 a) Lamarck negaba que existiera la herencia biológica en absoluto
 *b) Para Lamarck los rasgos adquiridos se heredan; para Darwin no
 c) Darwin negaba que las especies pudieran extinguirse con el tiempo
@@ -521,18 +532,21 @@ c) El cerebelo y el tronco encefálico inferior
 d) La corteza visual primaria y la corteza auditiva secundaria del cerebro
 
 43. Según la clase, ¿a qué función cognitiva se asocia el surco intraparietal (intraparietal sulcus)?
+![Diagrama cerebral que señala la ubicación del surco intraparietal en ambos hemisferios](imagenes/nivel2-q43-surco-intraparietal.png)
 a) Al reconocimiento de caras familiares y conocidas
 b) Al procesamiento del lenguaje hablado y escrito
 *c) A la numerosidad, es decir, la noción de cantidad
 d) A la coordinación motora fina de las manos
 
 44. ¿Qué dilema se menciona en la clase como ejemplo de módulo moral?
+![Ilustración clásica del dilema del tranvía, con una persona junto a la palanca y un grupo de personas en las vías](imagenes/nivel2-q44-dilema-tranvia.png)
 a) El dilema del prisionero en teoría de juegos
 *b) El dilema del tranvía, sobre desviar o no un vehículo
 c) El dilema del huevo y la gallina en la biología evolutiva
 d) El dilema de Monty Hall sobre probabilidades condicionales
 
 45. Según la clase, ¿qué técnica se menciona para estudiar el módulo del amor romántico en el cerebro?
+![Captura de la charla TED de Helen Fisher sobre el cerebro enamorado](imagenes/nivel2-q45-amor-romantico-ted.png)
 *a) Resonancias magnéticas a personas enamoradas y a personas recién separadas
 b) Registros de actividad eléctrica cerebral durante citas a ciegas recientemente organizadas
 c) Seguimiento ocular durante conversaciones íntimas de pareja
@@ -565,6 +579,7 @@ c) Como la creación de neuronas completamente nuevas para cada habilidad
 d) Como la transferencia de memorias entre distintas regiones del cerebro humano adulto
 
 50. Según el desarrollo de la clase, ¿qué explicaría la "paradoja de la lectura"?
+![Portada del libro "El cerebro lector" de Stanislas Dehaene junto al planteo de la paradoja de la lectura](imagenes/nivel2-q50-paradoja-lectura.png)
 a) Que la lectura es en realidad un comportamiento instintivo
 b) Que la selección natural favoreció directamente la lectura
 c) Que los genes de la lectura mutaron muy recientemente
@@ -613,6 +628,7 @@ c) La cantidad de búsquedas que se hacen por día
 ### Tema: Logros extraordinarios requieren esfuerzo
 
 57. Según el paper mencionado sobre atletas mentales ("mental athletes"), ¿qué argumentan los autores sobre sus habilidades?
+![Encabezado del paper "Dazzled by the Mystery of Mentalism: The Cognitive Neuroscience of Mental Athletes"](imagenes/nivel2-q57-atletas-mentales-paper.png)
 a) Que sus habilidades son completamente innatas y no pueden entrenarse
 b) Que sus habilidades dependen de una estructura cerebral única e irrepetible
 *c) Que sus habilidades se basan en trucos que cualquier persona puede aprender
@@ -713,6 +729,7 @@ c) La práctica cronometrada bajo presión
 *d) La práctica deliberada
 
 15. Según el gráfico de habilidad en función del tiempo presentado en la clase, ¿qué ocurre cuando alguien deja de prestar atención tras alcanzar cierto nivel de desempeño?
+![Gráfico de habilidad en función del tiempo, mostrando las etapas Amateur, OK Plateau y Expert](imagenes/nivel3-q15-ok-plateau-grafico.png)
 *a) Se estanca en una meseta y no sigue mejorando
 b) Retrocede automáticamente por completo hasta el nivel de principiante otra vez
 c) Alcanza el nivel de experto de forma acelerada
@@ -815,12 +832,14 @@ c) Como la capacidad de recordar información sin ningún esfuerzo
 *d) Como la tolerancia cognitiva frente a cambios cerebrales por edad o patología
 
 31. Según la cita presentada en la clase, ¿qué son las "Zonas Azules"?
+![Mapamundi con la ubicación de las Zonas Azules mencionadas en la clase](imagenes/nivel3-q31-zonas-azules-mapa.png)
 *a) Regiones del mundo con algunas de las poblaciones más longevas
 b) Regiones del mundo con los mayores niveles de contaminación
 c) Zonas cerebrales asociadas al procesamiento del color azul
 d) Países con los sistemas educativos mejor calificados del mundo
 
 32. ¿Cuáles de las siguientes son "Zonas Azules" mencionadas en la clase?
+![Mapamundi con la ubicación de las Zonas Azules mencionadas en la clase](imagenes/nivel3-q32-zonas-azules-mapa.png)
 a) París (Francia), Londres (Reino Unido) y Berlín (Alemania)
 *b) Cerdeña (Italia), Okinawa (Japón) e Icaria (Grecia)
 c) Tokio (Japón), Nueva York (Estados Unidos) y Londres (Reino Unido)
@@ -845,12 +864,14 @@ b) Actividades físicas
 d) Actividades de consolidación espaciada
 
 36. Según el estudio de desempeño en un test matemático a distintas edades mencionado en la clase, ¿qué relación se observa entre el nivel educativo y el desempeño a mayor edad?
+![Gráfico de desempeño en un test matemático según la edad, con curvas separadas por nivel educativo (primario, secundario, universidad, posgrado)](imagenes/nivel3-q36-desempeno-edad-educacion.png)
 a) El nivel educativo no tiene relación con el desempeño en la vejez
 b) A mayor nivel educativo, el desempeño cae más rápido con la edad
 *c) A mayor nivel educativo, el desempeño se mantiene más alto con la edad
 d) El desempeño es igual para todos los niveles educativos en la vejez
 
 37. Según la clase, ¿qué tipo de habilidad midió el test matemático usado en el estudio de desempeño por edad?
+![Gráfico de desempeño en el test matemático según la edad, con curvas separadas por nivel educativo](imagenes/nivel3-q37-desempeno-grafico-solo.png)
 a) La memoria de trabajo de corto plazo
 b) El razonamiento verbal
 c) La memoria episódica autobiográfica
@@ -967,6 +988,7 @@ c) Cuestionarios de autopercepción completados de forma individual y voluntaria
 ### Tema: Patrones de desarrollo y envejecimiento
 
 17. Según el gráfico presentado en el material, que compara datos propios con datos de Harvard, ¿qué patrón se observa en el desempeño a lo largo de la edad?
+![Gráfico que compara, con datos de Harvard y datos propios, el desempeño en función de la edad, con una curva de aumento, meseta y descenso](imagenes/nivel4-patrones-desarrollo-envejecimiento.png)
 a) Un descenso continuo desde la infancia hasta la vejez, sin ninguna meseta intermedia en ninguno de los dos conjuntos de datos
 b) Un patrón completamente distinto entre ambos conjuntos de datos, sin ningún punto de coincidencia entre ellos a lo largo de toda la vida
 *c) Un patrón similar de aumento en la juventud, una meseta en la adultez y un descenso hacia edades avanzadas, en ambos conjuntos de datos
@@ -999,6 +1021,7 @@ c) El control de los movimientos voluntarios
 d) El procesamiento de la información sensorial
 
 22. Según el diagrama del sistema nervioso presentado en el material, ¿qué controla el sistema nervioso autónomo en su conjunto?
+![Diagrama de los sistemas parasimpático y simpático, con los órganos internos que cada uno regula (pupilas, pulmones, corazón, estómago, hígado, intestino, vejiga)](imagenes/nivel4-sistema-nervioso-organos.png)
 a) El procesamiento de información sensorial y los movimientos voluntarios del cuerpo humano
 *b) Los movimientos musculares involuntarios y los órganos viscerales internos del cuerpo
 c) Los reflejos espinales exclusivamente, sin ninguna otra función asociada
@@ -1011,12 +1034,14 @@ b) De la respuesta de lucha o huida ante amenazas externas inmediatas percibidas
 d) De la relajación y la recuperación completa del organismo en reposo prolongado y profundo
 
 24. Según el material, ¿cómo se definen los nervios en el diagrama del sistema nervioso?
+![Ilustración de una silueta humana con el cerebro y la médula espinal ramificándose en una extensa red de nervios](imagenes/nivel4-nervios-manojos-axones.png)
 a) Como conjuntos de cuerpos neuronales
 b) Como redes de sinapsis exclusivamente centrales
 c) Como estructuras compuestas solo por células gliales
 *d) Como manojos organizados de axones nerviosos
 
 25. Según el material, ¿de qué sistema forma parte la denominada "parte reptiliana" del cerebro?
+![Íconos de un cohete y una palmera representando, respectivamente, al sistema simpático y al parasimpático](imagenes/nivel4-simpatico-parasimpatico-iconos.png)
 a) Del sistema nervioso somático
 *b) Del sistema nervioso autónomo central y periférico
 c) De la corteza prefrontal
@@ -1095,6 +1120,7 @@ c) Disminuye la capacidad de sentir emociones negativas por completo
 ### Tema: Manejo emocional, razón y consideración moral
 
 36. Según el material, ¿qué diferencia al altruismo humano del de otras especies animales?
+![Fotografía de un experimento de investigación con un primate en un laboratorio](imagenes/nivel4-altruismo-animal-foto.png)
 *a) El altruismo humano puede basarse en la razón, mientras que el de otras especies es fundamentalmente instintivo
 b) El altruismo humano es puramente instintivo, igual que ocurre en el resto de las otras especies animales
 c) Solo los animales no humanos son capaces de actuar de forma verdaderamente altruista y desinteresada con otros seres
