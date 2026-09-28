@@ -1243,6 +1243,7 @@ d) La variación genética aditiva y la variación genética no aditiva
 ### Tema: Métodos clásicos: comparación entre gemelos y mellizos
 
 15. En el diseño clásico que compara gemelos con mellizos, ¿qué sugiere que un rasgo tiene componente genético?
+![Diagrama con dos cajas "Gemelo 1" y "Gemelo 2" unidas por una flecha rotulada "Similitud", y debajo dos cajas "Mellizo 1" y "Mellizo 2" unidas de la misma forma por una flecha rotulada "Similitud"](imagenes/ian-nivel5-gemelos-mellizos-diseno.png)
 a) Que la similitud entre mellizos sea mayor que la similitud entre gemelos
 b) Que gemelos y mellizos tengan exactamente la misma similitud en el rasgo
 *c) Que la similitud entre gemelos sea mayor que la similitud entre mellizos
@@ -1401,6 +1402,7 @@ c) Los rasgos de los padres adoptivos con los ambientes de las familias biológi
 *d) Los rasgos de los padres biológicos con los ambientes de las familias adoptivas que criaron a esos hijos
 
 40. En el estudio sobre abandono paterno, tabaquismo materno durante el embarazo y depresión de los hijos, ¿qué se observó al controlar por el puntaje poligénico de depresión de los padres?
+![Encabezado de un artículo científico real: "The Journal of Child Psychology and Psychiatry", título "Polygenic scores for schizophrenia and major depression are associated with psychosocial risk factors in children: evidence of gene-environment correlation", con sus autores](imagenes/ian-nivel5-paper-abandono-paterno.png)
 a) Que el tabaquismo materno dejaba de tener cualquier asociación con la depresión de los hijos
 b) Que la relación entre esos factores y la depresión de los hijos se hacía aún más fuerte
 *c) Que la relación entre esos factores ambientales y la depresión de los hijos desaparecía, sugiriendo una correlación genotipo-ambiente pasiva
@@ -1415,18 +1417,21 @@ c) Que dos personas con exactamente el mismo genotipo siempre desarrollan el mis
 d) Que los genes determinan por completo y para siempre el ambiente en que una persona va a vivir, sin ninguna influencia del azar
 
 42. En el ejemplo, calificado como dudoso en la clase, sobre el gen MAOA y el maltrato infantil, ¿qué se observó respecto del comportamiento antisocial?
+![Gráfico real del estudio: eje vertical "Composite index of antisocial behavior (z scores)", eje horizontal "Childhood maltreatment" con los niveles None, Probable y Severe, y dos líneas correspondientes a "Low MAOA activity" y "High MAOA activity"](imagenes/ian-nivel5-grafico-maoa-maltrato.png)
 a) Que la actividad de MAOA no tuvo relación alguna con el comportamiento antisocial en ningún nivel de maltrato
 b) Que el maltrato infantil solo afectó el comportamiento antisocial en las personas con alta actividad de MAOA, y no en las demás
 *c) Que el maltrato infantil severo se asoció a más comportamiento antisocial, y ese efecto fue mayor en personas con baja actividad de MAOA
 d) Que el comportamiento antisocial fue exactamente idéntico en todos los niveles de maltrato, sin importar el gen
 
 43. En el ejemplo, calificado como dudoso en la clase, sobre los genotipos s/s, s/l y l/l y los eventos estresantes de vida, ¿qué se observó respecto de la depresión?
+![Gráfico real del estudio: eje vertical "Probability of major depression episode", eje horizontal "Number of stressful life events" (de 0 a 4 o más), con tres líneas correspondientes a los genotipos s/s, s/l y l/l](imagenes/ian-nivel5-grafico-serotonina-estres.png)
 a) Que los eventos estresantes solo influyeron en la depresión en ausencia total del genotipo s en la muestra estudiada por los investigadores
 b) Que la probabilidad de depresión fue igual para los tres genotipos en todos los niveles de eventos estresantes
 c) Que solo el genotipo l/l mostró una mayor probabilidad de depresión al aumentar los eventos estresantes de vida
 *d) Que a mayor número de eventos estresantes, la probabilidad de depresión mayor aumentó más en el genotipo s/s que en el l/l
 
 44. En el estudio que combinó puntaje poligénico para TDAH y maltrato infantil, ¿qué se concluyó sobre la interacción genotipo-ambiente?
+![Gráfico real del estudio: eje vertical "ADHD Total Symptoms (count)", eje horizontal "Maltreatment Factor Score", con tres rectas de ajuste correspondientes a puntaje poligénico "high", "medium" y "low" para TDAH](imagenes/ian-nivel5-grafico-tdah-maltrato.png)
 *a) Que no se detectó interacción: el maltrato aumentó los síntomas de TDAH de forma similar en los tres niveles de puntaje poligénico
 b) Que el puntaje poligénico para TDAH perdió toda su capacidad predictiva al incluir el maltrato en el modelo final
 c) Que el maltrato infantil solo tuvo efecto significativo en las personas con puntaje poligénico bajo para TDAH
