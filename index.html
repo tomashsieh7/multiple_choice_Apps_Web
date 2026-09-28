@@ -249,7 +249,18 @@ button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .option:hover:not(:disabled) { border-color: var(--accent); }
 .option:disabled { cursor: default; }
 
+.option--selected {
+  background: var(--bg-panel);
+  border-color: var(--accent);
+}
+
 .option__letter { font-weight: 700; color: var(--text-muted); flex: 0 0 auto; }
+
+.question-hint {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin: -0.75rem 0 1rem;
+}
 
 .option--correct {
   background: var(--correct-bg);
@@ -324,7 +335,7 @@ const LEVEL_HEADER_RE  = /^##\s*Nivel\s+(\d+)\s*:\s*(.+?)\s*$/;
 const TOPIC_HEADER_RE  = /^###\s*Tema\s*:\s*(.+?)\s*$/;
 const QUESTION_HEAD_RE = /^(\d+)\.\s*(.+?)\s*$/;
 const IMAGE_LINE_RE    = /^!\[(.*?)\]\((\S+)\)\s*$/;
-const OPTION_RE        = /^(\*)?\s*([abcdABCD])\)\s*(.+?)\s*$/;
+const OPTION_RE        = /^(\*)?\s*([a-fA-F])\)\s*(.+?)\s*$/;
 
 // Divide el texto crudo en bloques de nivel, usando las líneas "## Nivel N: ..."
 // como separadores. Devuelve el texto que hay entre cada header y el siguiente.
@@ -420,18 +431,22 @@ function parseQuestionBlock(blockLines, materiaNombre, levelNumber, levelName, t
   }
 
   const letters = new Set(options.map(o => o.letter));
-  if (options.length !== 4 || letters.size !== 4) {
-    console.error(`${ubicacion}, pregunta ${sourceIndex}: se esperaban exactamente 4 opciones distintas (a, b, c, d), se encontraron ${options.length}.`);
+  if (options.length < 2 || options.length > 6 || letters.size !== options.length) {
+    console.error(`${ubicacion}, pregunta ${sourceIndex}: se esperaban entre 2 y 6 opciones distintas (a-f), se encontraron ${options.length}.`);
     return null;
   }
 
   const correctCount = options.filter(o => o.isCorrect).length;
-  if (correctCount !== 1) {
-    console.error(`${ubicacion}, pregunta ${sourceIndex}: se encontraron ${correctCount} opciones marcadas como correctas (se esperaba exactamente 1, con "*" delante de la letra).`);
+  if (correctCount < 1) {
+    console.error(`${ubicacion}, pregunta ${sourceIndex}: no se encontró ninguna opción marcada como correcta (con "*" delante de la letra).`);
     return null;
   }
 
-  return { levelNumber, sourceIndex, text, image, options };
+  // Una sola opción correcta: pregunta clásica de respuesta única. Dos o más:
+  // pregunta de "elegir todas las correctas" (selección múltiple, todo o nada).
+  const multi = correctCount > 1;
+
+  return { levelNumber, sourceIndex, text, image, options, multi };
 }
 
 // Convierte el texto crudo de una materia en su lista de niveles con preguntas.
@@ -588,7 +603,7 @@ const state = {
   currentQuestionIndex: 0,
   correctCount: 0,
   answered: false,
-  selectedLetter: null,
+  selectedLetters: [],      // letras elegidas en la pregunta actual (una o varias, según question.multi)
 };
 
 // Fisher-Yates, sin mutar el array original.
@@ -599,6 +614,15 @@ function shuffleArray(array) {
     [copy[i], copy[j]] = [copy[j], copy[i]];
   }
   return copy;
+}
+
+// Acierto exacto: para preguntas de una sola respuesta, alcanza con haber
+// elegido la correcta. Para preguntas de selección múltiple ("multi"), hay
+// que haber marcado EXACTAMENTE las correctas, ni de más ni de menos.
+function isCorrectSelection(question, selectedLetters) {
+  const correctLetters = question.options.filter(o => o.isCorrect).map(o => o.letter);
+  if (selectedLetters.length !== correctLetters.length) return false;
+  return correctLetters.every(letter => selectedLetters.includes(letter));
 }
 
 function escapeHtml(text) {
@@ -798,37 +822,60 @@ function renderQuestion() {
     card.appendChild(img);
   }
 
+  if (question.multi) {
+    const hint = document.createElement('div');
+    hint.className = 'question-hint';
+    hint.textContent = 'Elegí todas las opciones correctas.';
+    card.appendChild(hint);
+  }
+
+  const OPTION_LETTERS = 'abcdef';
   const options = document.createElement('div');
   options.className = 'options';
 
   question.options.forEach((option, i) => {
     const button = document.createElement('button');
     button.className = 'option';
+    const elegida = state.selectedLetters.includes(option.letter);
 
-    // Con la respuesta ya dada: se marca la elegida y, si se falló, también la correcta.
     if (state.answered) {
       button.disabled = true;
-      const elegida = option.letter === state.selectedLetter;
       if (option.isCorrect) button.classList.add('option--correct');
       else if (elegida) button.classList.add('option--incorrect');
+    } else if (question.multi) {
+      // Selección múltiple: cada click prende/apaga la opción, sin responder todavía.
+      if (elegida) button.classList.add('option--selected');
+      button.addEventListener('click', () => handleOptionToggle(option));
     } else {
       button.addEventListener('click', () => handleOptionClick(option));
     }
 
     button.innerHTML =
-      `<span class="option__letter">${'abcd'[i]})</span><span>${escapeHtml(option.text)}</span>`;
+      `<span class="option__letter">${OPTION_LETTERS[i]})</span><span>${escapeHtml(option.text)}</span>`;
     options.appendChild(button);
   });
 
   card.appendChild(options);
 
+  if (question.multi && !state.answered) {
+    const row = document.createElement('div');
+    row.className = 'btn-row';
+    const confirm = document.createElement('button');
+    confirm.className = 'btn-primary';
+    confirm.textContent = 'Confirmar respuesta';
+    confirm.disabled = state.selectedLetters.length === 0;
+    confirm.addEventListener('click', handleConfirmMulti);
+    row.appendChild(confirm);
+    card.appendChild(row);
+  }
+
   if (state.answered) {
-    const acerto = question.options.some(o => o.isCorrect && o.letter === state.selectedLetter);
+    const acerto = isCorrectSelection(question, state.selectedLetters);
     const feedback = document.createElement('div');
     feedback.className = 'feedback ' + (acerto ? 'feedback--correct' : 'feedback--incorrect');
     feedback.textContent = acerto
       ? '¡Correcto!'
-      : 'Incorrecto — la respuesta correcta está marcada en verde. Vas a reintentar este checkpoint desde el principio.';
+      : 'Incorrecto — la(s) respuesta(s) correcta(s) están marcadas en verde. Vas a reintentar este checkpoint desde el principio.';
     card.appendChild(feedback);
 
     const esUltimaPreguntaDelCheckpoint = state.currentQuestionIndex + 1 === total;
@@ -910,6 +957,7 @@ function shuffleCheckpointForAttempt(checkpointQuestions) {
   return shuffleArray(checkpointQuestions).map(question => ({
     text: question.text,
     image: question.image,
+    multi: question.multi,
     options: shuffleArray(question.options),
   }));
 }
@@ -929,7 +977,7 @@ function enterCheckpoint(index) {
   state.currentQuestionIndex = 0;
   state.correctCount = getBankedCorrectCount();
   state.answered = false;
-  state.selectedLetter = null;
+  state.selectedLetters = [];
 }
 
 // Los checkpoints salen directo de los temas del nivel ("### Tema: ...", ya
@@ -943,17 +991,36 @@ function startLevel(levelIndex) {
   render();
 }
 
+// Pregunta de respuesta única: elegir una opción responde al instante.
 function handleOptionClick(option) {
   if (state.answered) return;
   state.answered = true;
-  state.selectedLetter = option.letter;
+  state.selectedLetters = [option.letter];
   if (option.isCorrect) state.correctCount++;
+  render();
+}
+
+// Pregunta de selección múltiple: cada click prende/apaga esa opción, sin
+// responder todavía — hace falta "Confirmar respuesta" para eso.
+function handleOptionToggle(option) {
+  if (state.answered) return;
+  const index = state.selectedLetters.indexOf(option.letter);
+  if (index === -1) state.selectedLetters.push(option.letter);
+  else state.selectedLetters.splice(index, 1);
+  render();
+}
+
+function handleConfirmMulti() {
+  if (state.answered || state.selectedLetters.length === 0) return;
+  const question = state.sessionQuestions[state.currentQuestionIndex];
+  state.answered = true;
+  if (isCorrectSelection(question, state.selectedLetters)) state.correctCount++;
   render();
 }
 
 function goToNextQuestion() {
   const question = state.sessionQuestions[state.currentQuestionIndex];
-  const acerto = question.options.some(o => o.isCorrect && o.letter === state.selectedLetter);
+  const acerto = isCorrectSelection(question, state.selectedLetters);
 
   if (!acerto) {
     // Falló una pregunta del checkpoint: se reinicia ESE checkpoint desde el
@@ -966,7 +1033,7 @@ function goToNextQuestion() {
   if (state.currentQuestionIndex + 1 < state.sessionQuestions.length) {
     state.currentQuestionIndex++;
     state.answered = false;
-    state.selectedLetter = null;
+    state.selectedLetters = [];
     render();
   } else if (state.currentCheckpointIndex + 1 < state.checkpointSets.length) {
     enterCheckpoint(state.currentCheckpointIndex + 1);

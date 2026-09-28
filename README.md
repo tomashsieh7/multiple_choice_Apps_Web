@@ -19,8 +19,8 @@ README.md        ← este archivo
 1. **Materias**: elegís la materia que querés repasar.
 2. **Niveles**: cada nivel es una clase o tema. El nivel 1 siempre está disponible; el resto se desbloquea al aprobar el anterior. Los bloqueados aparecen atenuados con un candado 🔒 y no se pueden abrir.
 3. **Checkpoints**: las preguntas de cada nivel se agrupan según los **temas** que se declaren con `### Tema: Nombre` dentro del nivel — cada tema es un checkpoint, y se juegan en el orden en que aparecen en el archivo (no al azar ni en bloques de tamaño parejo). Un nivel que todavía no tenga ningún `### Tema:` se juega entero como un único checkpoint.
-4. **Preguntas**: dentro de un checkpoint, sus preguntas se juegan en orden aleatorio y con las 4 opciones también mezcladas. Después de responder ves enseguida si acertaste; si fallaste, se resalta en verde cuál era la correcta y **se reinicia ese checkpoint desde el principio** (se vuelven a barajar sus preguntas y opciones) — no perdés lo ya aprobado en checkpoints anteriores, ni se te obliga a rehacer el nivel entero por un solo error. Avanzás con un botón (no hay temporizador en ningún momento).
-5. **Resultado**: al completar los 4 checkpoints el nivel siempre queda aprobado (con checkpoints es imposible terminarlo sin haber acertado cada pregunta, aunque haya sido en un reintento) y se desbloquea el siguiente. Desde ahí podés continuar al siguiente nivel, jugar de nuevo este por repasar, o volver a la lista de niveles.
+4. **Preguntas**: dentro de un checkpoint, sus preguntas se juegan en orden aleatorio y con las opciones también mezcladas. La mayoría son de **respuesta única** (elegís una opción y respondés al instante), pero también puede haber preguntas de **selección múltiple** ("Elegí todas las opciones correctas"): ahí marcás una o más opciones y confirmás con un botón — para acertar hay que marcar exactamente las correctas, ni de más ni de menos. Después de responder ves enseguida si acertaste; si fallaste, se resalta en verde cuál(es) era(n) la(s) correcta(s) y **se reinicia ese checkpoint desde el principio** (se vuelven a barajar sus preguntas y opciones) — no perdés lo ya aprobado en checkpoints anteriores, ni se te obliga a rehacer el nivel entero por un solo error. Avanzás con un botón (no hay temporizador en ningún momento).
+5. **Resultado**: al completar todos los checkpoints el nivel siempre queda aprobado (con checkpoints es imposible terminarlo sin haber acertado cada pregunta, aunque haya sido en un reintento) y se desbloquea el siguiente. Desde ahí podés continuar al siguiente nivel, jugar de nuevo este por repasar, o volver a la lista de niveles.
 6. **Saltar nivel**: si no querés responder un nivel en este momento, cada tarjeta de nivel tiene un botón **"Saltar nivel"** (con confirmación) que lo marca como aprobado sin jugarlo y desbloquea el siguiente. Funciona en cualquier nivel, incluso bloqueados, y desaparece una vez que el nivel ya está aprobado (saltado o jugado).
 
 ---
@@ -31,8 +31,8 @@ Todo el contenido vive como texto plano dentro de un archivo `.js`. Las reglas s
 
 - Cada nivel arranca con una línea `## Nivel N: Nombre de la clase` (N secuencial, empezando en 1).
 - Dentro de un nivel, cada pregunta arranca con un número, punto y el texto: `1. ¿Cuál es...?`
-- Cada pregunta tiene **exactamente cuatro opciones**, una por línea: `a) texto`, `b) texto`, `c) texto`, `d) texto`.
-- La opción correcta se marca con un asterisco delante de la letra: `*c) texto`. Tiene que haber **exactamente una** por pregunta.
+- Cada pregunta tiene **entre 2 y 6 opciones**, una por línea: `a) texto`, `b) texto`, `c) texto`, etc. (hasta `f`).
+- La(s) opción(es) correcta(s) se marca(n) con un asterisco delante de la letra: `*c) texto`. Si hay **una sola** opción marcada, la pregunta es de respuesta única (la clásica); si hay **dos o más**, la app la trata automáticamente como pregunta de selección múltiple ("Elegí todas las opciones correctas") — no hace falta ningún marcador extra en el texto, alcanza con poner más de un asterisco.
 - Las preguntas se separan entre sí con una **línea en blanco**.
 - (Opcional, para que los checkpoints sigan el tema real) Dentro de un nivel podés agrupar las preguntas con `### Tema: Nombre del tema`. Todas las preguntas hasta el próximo `### Tema:` (o el fin del nivel) quedan en ese tema, y cada tema se juega como un checkpoint propio en el orden en que aparece. Si no usás `### Tema:` en un nivel, ese nivel se juega entero como un único checkpoint.
 - (Opcional) Una pregunta puede llevar una imagen: agregá una línea `![texto alternativo](imagenes/archivo.png)` justo debajo del encabezado de la pregunta (antes de las 4 opciones). La ruta es relativa a la carpeta donde vive `index.html`, así que las imágenes van en una carpeta `imagenes/` en la raíz del repo.
@@ -69,8 +69,8 @@ Podés pegar esto en otro chat junto con el material de la clase:
 > - Cada nivel arranca con una línea `## Nivel N: Nombre de la clase` (N secuencial empezando en 1).
 > - Dentro de cada nivel, agrupá las preguntas por subtema real del material usando `### Tema: Nombre del tema` antes de cada grupo (no repartas en bloques de tamaño parejo ni al azar: cada `### Tema:` debe corresponder a un tema o sección real del contenido).
 > - Cada pregunta arranca con un número seguido de punto: `1. texto de la pregunta`.
-> - Cada pregunta tiene exactamente cuatro opciones, una por línea: `a) texto`, `b) texto`, `c) texto`, `d) texto`.
-> - La opción correcta se marca con un asterisco antes de la letra: `*c) texto`. Exactamente una por pregunta.
+> - Cada pregunta tiene entre 2 y 6 opciones, una por línea: `a) texto`, `b) texto`, `c) texto`, etc. (hasta `f`).
+> - La(s) opción(es) correcta(s) se marca(n) con un asterisco antes de la letra: `*c) texto`. La mayoría de las preguntas deben tener una sola opción correcta (respuesta única); ocasionalmente, cuando tenga sentido, generá alguna con dos o más opciones correctas (selección múltiple) marcando cada una con su asterisco.
 > - Las preguntas se separan entre sí con una línea en blanco.
 
 ---
