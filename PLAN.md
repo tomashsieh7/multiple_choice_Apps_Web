@@ -3,13 +3,14 @@
 ## Estado
 
 ### En curso
-- **Rediseño del frontend** — se investigan referencias de UX/UI y se presentan propuestas de diseño; no se implementa nada hasta que el usuario elija una.
+- **Rediseño del frontend, dirección C («Recorrido con juego»)**, fases 2 y 3. Fase 2: puntos, meta semanal e insignias. Fase 3: Repaso del día (calendario de repaso por pregunta). Cada fase se publica y se prueba antes de pasar a la siguiente; la fase 2 espera la confirmación del usuario.
 
 ### Pendientes
 - **Agregar materias/niveles reales adicionales** a medida que el usuario curse nuevas clases, siguiendo el patrón ya documentado en el README.
 - **Revisar el recorte de `imagenes/iap2-nivel3-arbol-parsing.png`**, que corta la parte superior del árbol (no se ve la raíz). Es un tema del archivo de imagen, no del código.
 
 ### Completadas
+- 2026-10-21 — Rediseño C, fase 1: base visual, niveles sin candado, guardado por checkpoint, tope de 8 preguntas por checkpoint, resumen con estrellas y ajustes de juego
 - 2026-10-21 — Feedback detallado en selección múltiple (bien marcada / faltó marcar / no correspondía)
 - 2026-10-21 — Materia nueva "IA y Neuro p. 2" (3 niveles, 9 imágenes, sufijo `_IAN2`)
 - 2026-09-28 — Preguntas de selección múltiple ("elegí todas las correctas") y opciones variables (2 a 6)
@@ -22,6 +23,12 @@
 - 2026-09-05 — Checkpoints agrupados por tema (`### Tema:`) en vez de por tamaño parejo
 
 ## Bitácora de decisiones
+
+### 2026-10-21 — Rediseño C en tres fases, con tres cambios en la estructura de los niveles
+**Contexto:** el usuario eligió la dirección C entre tres propuestas, pidió sumarle componentes lúdicos y preguntó si la estructura de los niveles se podía mejorar. Con los números reales (22 niveles, 221 checkpoints) se vio que: la posición dentro de un nivel nunca se guardaba (cinco niveles pasan de 64 preguntas, hasta 78); los checkpoints van de 1 a 19 preguntas (59 tienen una o dos y 16 tienen diez o más); y el candado entre niveles no protege nada porque «Saltar nivel» funciona incluso en niveles bloqueados.
+**Decisión:** *Guardado por checkpoint:* al completar cada checkpoint se guarda en el almacenamiento del navegador la posición, los reintentos y los aciertos a la primera, con una firma del contenido del nivel; si el archivo de preguntas cambia y la firma no coincide, el avance guardado se descarta. El nivel muestra «Continuar» y la opción de empezar de nuevo. *Tope de tamaño:* los temas de más de 8 preguntas se parten en partes parejas, en el orden del archivo (19 pasan a 7, 6 y 6), con el nombre «Tema (parte 1 de 3)». Los temas chicos no se fusionan, para respetar la decisión del 2026-09-05 de que los checkpoints sigan los temas reales. El avance del nivel se muestra en preguntas respondidas y el tema queda como etiqueta, en vez de contar checkpoints. *Sin candado:* todos los niveles quedan abiertos y el primero sin aprobar se destaca como siguiente recomendado. Además, tanto las preguntas de respuesta única como las de selección múltiple pasan a dos pasos (elegir y «Comprobar»), con la barra inferior fija con el resultado, como en la maqueta aprobada. Las estrellas dependen de los reintentos de checkpoint: tres con ninguno, dos con 1 a 3, una con 4 o más, y ninguna en un nivel saltado. El interruptor de «Elementos de juego» apaga estrellas y celebraciones; sonido y vibración vienen apagados. Los datos nuevos son opcionales y compatibles con el progreso ya guardado.
+**Alternativas descartadas:** reintentar solo la pregunta fallada (el usuario pidió bloques desde el 2026-08-28); fusionar checkpoints chicos (rompe la coherencia por tema); dejar el candado (agrega un paso sin proteger nada).
+**Revisión post-implementación (fase 1):** salió como lo planeado, con un ajuste: al comprobar una respuesta la barra inferior fija podía tapar la última opción, y se resolvió desplazando la página lo justo en `checkAnswer`. Se verificó con una batería de 49 comprobaciones en un navegador (partición de temas, niveles abiertos, tres y dos estrellas, nivel saltado, reanudar tras recargar, firma distinta que descarta el avance, progreso viejo compatible, selección múltiple con teclado, y ancho de celular sin desborde ni objetivos menores a 44 px). Las fases 2 y 3 siguen pendientes.
 
 ### 2026-10-21 — Feedback de selección múltiple: cuatro estados con etiqueta de texto
 **Contexto:** al fallar una pregunta de selección múltiple, todas las correctas se pintaban igual en verde, y no se podía distinguir cuáles había marcado el usuario y cuáles le faltaron.

@@ -20,12 +20,15 @@ README.md                          ← este archivo
 
 ## Cómo se juega
 
-1. **Materias**: elegís la materia que querés repasar.
-2. **Niveles**: cada nivel es una clase o tema. El nivel 1 siempre está disponible; el resto se desbloquea al aprobar el anterior. Los bloqueados aparecen atenuados con un candado 🔒 y no se pueden abrir.
-3. **Checkpoints**: las preguntas de cada nivel se agrupan según los **temas** que se declaren con `### Tema: Nombre` dentro del nivel — cada tema es un checkpoint, y se juegan en el orden en que aparecen en el archivo (no al azar ni en bloques de tamaño parejo). Un nivel que todavía no tenga ningún `### Tema:` se juega entero como un único checkpoint.
-4. **Preguntas**: dentro de un checkpoint, sus preguntas se juegan en orden aleatorio y con las opciones también mezcladas. La mayoría son de **respuesta única** (elegís una opción y respondés al instante), pero también puede haber preguntas de **selección múltiple** ("Elegí todas las opciones correctas"): ahí marcás una o más opciones y confirmás con un botón — para acertar hay que marcar exactamente las correctas, ni de más ni de menos. Después de responder ves enseguida si acertaste; si fallaste, se resalta en verde cuál(es) era(n) la(s) correcta(s) y **se reinicia ese checkpoint desde el principio** (se vuelven a barajar sus preguntas y opciones) — no perdés lo ya aprobado en checkpoints anteriores, ni se te obliga a rehacer el nivel entero por un solo error. Avanzás con un botón (no hay temporizador en ningún momento).
-5. **Resultado**: al completar todos los checkpoints el nivel siempre queda aprobado (con checkpoints es imposible terminarlo sin haber acertado cada pregunta, aunque haya sido en un reintento) y se desbloquea el siguiente. Desde ahí podés continuar al siguiente nivel, jugar de nuevo este por repasar, o volver a la lista de niveles.
-6. **Saltar nivel**: si no querés responder un nivel en este momento, cada tarjeta de nivel tiene un botón **"Saltar nivel"** (con confirmación) que lo marca como aprobado sin jugarlo y desbloquea el siguiente. Funciona en cualquier nivel, incluso bloqueados, y desaparece una vez que el nivel ya está aprobado (saltado o jugado).
+1. **Materias**: elegís la materia que querés repasar. Cada una muestra cuántos niveles aprobaste.
+2. **Niveles**: cada nivel es una clase o tema y se muestran como un camino. **Todos están abiertos**: no hace falta aprobar uno para entrar al siguiente. El primero sin aprobar aparece destacado como «Siguiente». Cada nivel muestra si está aprobado o saltado y, si lo jugaste, sus estrellas.
+3. **Checkpoints**: las preguntas de cada nivel se agrupan según los **temas** que se declaren con `### Tema: Nombre` dentro del nivel. Cada tema es un checkpoint y se juegan en el orden en que aparecen en el archivo. Un tema con **más de 8 preguntas se parte en partes parejas** (por ejemplo, 19 preguntas pasan a 7, 6 y 6, con el nombre «Tema (parte 1 de 3)»), para que un error no obligue a repetir demasiado. Un nivel sin ningún `### Tema:` se divide igual en partes de hasta 8.
+4. **Preguntas**: dentro de un checkpoint, las preguntas se juegan en orden aleatorio y con las opciones también mezcladas. En todas se **elige y después se toca «Comprobar»** (así un toque sin querer no cuenta como respuesta). La mayoría son de **respuesta única**; las de **selección múltiple** dicen «Elegí todas las correctas» y para acertar hay que marcar exactamente las correctas, ni de más ni de menos. Con teclado, las letras eligen una opción y Enter comprueba y continúa.
+5. **Resultado de cada pregunta**: una barra inferior fija muestra si acertaste. Si fallaste, se resalta lo correcto y **se reinicia ese checkpoint desde el principio** (se vuelven a barajar sus preguntas y opciones), sin tocar los checkpoints anteriores. En selección múltiple cada opción indica si estaba bien marcada, si faltó marcarla o si no correspondía. No hay temporizador en ningún momento.
+6. **Avance guardado**: al completar cada checkpoint se guarda dónde quedaste. Si cerrás la página, el nivel muestra «Continuar» con cuántas preguntas llevás (también podés «Empezar de nuevo»). Si salís en medio de un checkpoint, se retoma desde el comienzo de ese checkpoint. Si cambiás el contenido del nivel en el archivo de preguntas, el avance guardado de ese nivel se descarta solo.
+7. **Resumen y estrellas**: al completar todos los checkpoints el nivel queda aprobado. El resumen muestra cuántas preguntas acertaste a la primera (la primera vez que las viste) y cuántos reintentos hubo. Las estrellas dependen de los reintentos de checkpoint: **tres sin ninguno, dos con 1 a 3, una con 4 o más**. Si volvés a jugar el nivel se guarda tu mejor marca. Desde ahí podés continuar al siguiente nivel, jugar de nuevo o volver a la lista.
+8. **Saltar nivel**: cada nivel sin aprobar tiene un botón **«Saltar nivel»** (con confirmación) que lo marca como aprobado sin jugarlo. Queda como «Saltado», sin estrellas.
+9. **Ajustes de juego** (ícono de engranaje): un interruptor apaga las estrellas y las celebraciones. El sonido al responder y la vibración vienen apagados. Los ajustes se guardan en el dispositivo.
 
 ---
 
@@ -110,7 +113,7 @@ d) Fugas de memoria
 `;
 ```
 
-4. Guardá el archivo y recargá `index.html` en el navegador (F5). El nivel nuevo aparece automáticamente, bloqueado hasta que apruebes el anterior. Los `### Tema:` son opcionales: si el nivel nuevo no los usa, se juega entero como un único checkpoint.
+4. Guardá el archivo y recargá `index.html` en el navegador (F5). El nivel nuevo aparece automáticamente, abierto desde el primer momento. Los `### Tema:` son opcionales: si el nivel nuevo no los usa, se juega entero como un único checkpoint (y se parte en tandas de hasta 8 preguntas si es más largo).
 
 > ⚠️ Ojo con el texto de las preguntas: si una pregunta contiene el carácter de comilla invertida (`` ` ``) o la secuencia `${`, hay que escaparlos con `\` porque el contenido va dentro de un template literal de JavaScript. En la práctica casi nunca pasa.
 
