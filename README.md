@@ -35,6 +35,12 @@ README.md                          ← este archivo
 
 ---
 
+## Pruebas
+
+`tests/juego.test.js` prueba puntos, meta semanal, insignias y avisos en un navegador real. Con la app servida (`python3 -m http.server 8765`), se corre con `QUIZ_URL=http://127.0.0.1:8765/index.html node tests/juego.test.js` y necesita Playwright (`npm i playwright`).
+
+---
+
 ## Formato de las preguntas
 
 Todo el contenido vive como texto plano dentro de un archivo `.js`. Las reglas son:
