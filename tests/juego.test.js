@@ -106,6 +106,39 @@ async function answer(page, correct) {
     await page.context().close();
   }
 
+  // Repaso del día: una pregunta vencida sube de paso al acertar, y un error la devuelve al paso 1,
+  // se repite una sola vez al final y no reinicia nada.
+  {
+    const page = await open(browser, { time: new Date(2026, 2, 10, 12).getTime() });
+    const seedOne = box => page.evaluate(b => {
+      const [key, entry] = Array.from(reviewIndex().entries())[0];
+      state.review.items[key] = { m: entry.materia.id, box: b, due: todayKey() };
+      saveReview(state.review);
+      render();
+      return key;
+    }, box);
+    const key = await seedOne(1);
+    await page.click('[data-act="start-review"]');
+    await answer(page, true);
+    await page.click('[data-act="next"]');
+    let r = await store(page, 'quizAppReview_v1');
+    check('repaso: acertar en el paso 1 la pasa al paso 2, a 3 días', r.items[key].box === 2 && r.items[key].due === '2026-03-13', r.items[key]);
+    check('repaso: 5 puntos por acierto a la primera', (await store(page, 'quizAppGame_v1')).points === 5);
+
+    await seedOne(3);
+    await page.click('[data-act="start-review"]');
+    await answer(page, false);
+    check('repaso: un error no pide reiniciar nada', !/Reintentar checkpoint/.test(await page.innerText('.dock')));
+    await page.click('[data-act="next"]');
+    const repeated = await page.evaluate(() => state.sessionQuestions.length === 2 && state.sessionQuestions[1].repeat);
+    check('repaso: la pregunta fallada se repite una vez al final', repeated);
+    await answer(page, true);
+    await page.click('[data-act="next"]');
+    r = await store(page, 'quizAppReview_v1');
+    check('repaso: tras el error queda en el paso 1, a mañana, y la repetición no suma puntos', r.items[key].box === 1 && r.items[key].due === '2026-03-11' && (await store(page, 'quizAppGame_v1')).points === 5, r.items[key]);
+    await page.context().close();
+  }
+
   await browser.close();
   console.log(`${passed} bien, ${failed} mal`);
   process.exit(failed ? 1 : 0);
