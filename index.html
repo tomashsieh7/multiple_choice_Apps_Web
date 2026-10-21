@@ -238,11 +238,49 @@ button:disabled { cursor: default; }
 .sw[aria-checked="true"] i { background: var(--pt); border-color: var(--pt); }
 .sw[aria-checked="true"] i::after { left: 25px; background: #fff; }
 .empty { color: var(--mu); }
+.set li.stack { grid-template-columns: minmax(0, 1fr); }
+.goalpick { display: flex; gap: 8px; }
+.goalpick button { min-width: 48px; min-height: 48px; border: 2px solid var(--ctl); border-radius: 8px; background: var(--sf); font-weight: 700; font-size: 18px; text-align: center; }
+.goalpick button[aria-checked="true"] { background: var(--pt); border-color: var(--pt); color: #fff; }
+
+/* --------------------------------------------------------------------------
+   Meta semanal, puntos e insignias
+   -------------------------------------------------------------------------- */
+.goal { background: var(--sf); border: 2px solid var(--ctl); border-radius: 8px; padding: 14px 16px; display: flex; flex-direction: column; gap: 12px; }
+.goal__top { display: flex; justify-content: space-between; align-items: center; gap: 4px 12px; flex-wrap: wrap; }
+.goal__top b { font-size: 18px; }
+.goal__top span { color: var(--mu); font-size: 15px; }
+.week { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; }
+.week li { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 13px; font-weight: 700; color: var(--mu); }
+.week .dot { width: 100%; max-width: 38px; aspect-ratio: 1; border-radius: 50%; border: 2px solid var(--ctl); display: grid; place-items: center; color: #fff; font-size: 16px; }
+.week .on .dot { background: var(--pt); border-color: var(--pt); }
+.week .today .dot { box-shadow: 0 0 0 3px var(--sf), 0 0 0 5px var(--sun); }
+.week .today { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+.goal__bot { display: flex; justify-content: space-between; align-items: center; gap: 4px 12px; flex-wrap: wrap; }
+.goal__pts { font-size: 15px; color: var(--mu); }
+.goal__pts b { font-size: 24px; line-height: 1.1; color: var(--ink); }
+.badges { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.badge { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 14px; align-items: center; background: var(--sf); border: 2px solid var(--ctl); border-radius: 8px; padding: 14px 16px; }
+.badge__ic { width: 48px; height: 48px; border-radius: 50%; background: var(--sun); color: var(--ink); display: grid; place-items: center; font-size: 26px; }
+.badge--off { border-style: dashed; }
+.badge--off .badge__ic { background: var(--trk); color: var(--mu); }
+.badge b { display: block; font-size: 17px; }
+.badge .d { display: block; font-size: 15px; color: var(--mu); }
+.badge .st { display: block; font-size: 14px; font-weight: 700; margin-top: 2px; }
+.newb { display: flex; flex-direction: column; gap: 10px; }
+.newb h2 { font-size: 18px; }
+.stats--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.toast { position: fixed; z-index: 10; top: max(12px, env(safe-area-inset-top, 0px)); left: 50%; transform: translateX(-50%); width: min(calc(100% - 32px), 440px); display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 12px; align-items: center; background: var(--ink); color: #fff; border-radius: 10px; padding: 8px 8px 8px 14px; font-size: 16px; }
+.toast .ic { font-size: 24px; color: var(--sun); }
+.toast b { display: block; }
+.toast button { min-width: 44px; min-height: 44px; display: grid; place-items: center; border-radius: 8px; font-size: 18px; }
+.toast :focus-visible { outline-color: #fff; }
 </style>
 </head>
 <body>
 <div id="app"></div>
 <div id="live" class="sr-only" aria-live="polite"></div>
+<div id="toast"></div>
 
 <!-- Archivos de materias. Cada uno define MATERIA_ID_*, MATERIA_NOMBRE_* y PREGUNTAS_RAW_*.
      Para agregar una materia nueva: copiá preguntas.js con otro sufijo de variables,
@@ -528,13 +566,17 @@ function saveProgress(progress) {
   }
 }
 
+const GOAL_OPTIONS = [2, 3, 4, 5];
+
 function loadSettings() {
-  const defaults = { game: true, sound: false, vibration: false };
+  const defaults = { game: true, sound: false, vibration: false, goal: 3 };
   try {
     const stored = localStorage.getItem(SETTINGS_KEY);
     if (!stored) return defaults;
     const parsed = JSON.parse(stored);
-    return Object.assign(defaults, parsed && typeof parsed === 'object' ? parsed : {});
+    const settings = Object.assign(defaults, parsed && typeof parsed === 'object' ? parsed : {});
+    if (!GOAL_OPTIONS.includes(settings.goal)) settings.goal = 3;
+    return settings;
   } catch (error) {
     return defaults;
   }
@@ -624,6 +666,7 @@ function getSavedProgress(materiaId, level, progress) {
     cp: saved.cp,
     retries: Number.isInteger(saved.retries) ? saved.retries : 0,
     firstTry: Number.isInteger(saved.firstTry) ? saved.firstTry : 0,
+    points: Number.isInteger(saved.points) && saved.points > 0 ? saved.points : 0,
   };
 }
 
@@ -636,15 +679,142 @@ function clearSavedProgress(materiaId, levelNumber, progress) {
 }
 
 // ===========================================================================
+// PUNTOS, DÍAS DE ESTUDIO E INSIGNIAS (globales: no pertenecen a una materia)
+// ===========================================================================
+
+const GAME_KEY = 'quizAppGame_v1';
+const POINTS_FIRST_TRY = 10;
+const WEEKS_FOR_BADGE = 4;
+const DATE_KEY_RE = /^\d{4}-\d{2}-\d{2}$/;
+const DAY_LABELS = ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa', 'Do'];
+const DAY_NAMES = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo'];
+
+// Cada insignia es un objeto con su condición. "progress" es opcional y
+// devuelve un texto cuando la insignia se gana de a poco.
+const BADGES = [
+  {
+    id: 'primer-nivel', name: 'Primer nivel',
+    desc: 'Jugá un nivel hasta aprobarlo.',
+    earned: () => state.materias.some(m => {
+      const mp = getMateriaProgress(m.id, state.progress);
+      return mp.passedLevels.some(n => !mp.skipped.includes(n));
+    }),
+  },
+  {
+    id: 'nivel-perfecto', name: 'Nivel perfecto',
+    desc: 'Aprobá un nivel con tres estrellas, sin ningún reintento.',
+    earned: () => state.materias.some(m => Object.values(getMateriaProgress(m.id, state.progress).stars).includes(3)),
+  },
+  {
+    id: 'materia-completa', name: 'Materia completa',
+    desc: 'Aprobá jugando todos los niveles de una materia, sin saltear ninguno.',
+    earned: () => state.materias.some(m => {
+      const levels = playableLevels(m);
+      const mp = getMateriaProgress(m.id, state.progress);
+      return levels.length > 0 && levels.every(l => mp.passedLevels.includes(l.number) && !mp.skipped.includes(l.number));
+    }),
+  },
+  {
+    id: 'cuatro-semanas', name: 'Cuatro semanas con meta',
+    desc: 'Cumplí tu meta semanal en cuatro semanas, seguidas o no.',
+    earned: () => state.game.weeksMet.length >= WEEKS_FOR_BADGE,
+    progress: () => `${Math.min(state.game.weeksMet.length, WEEKS_FOR_BADGE)} de ${WEEKS_FOR_BADGE} semanas`,
+  },
+];
+
+function getDefaultGame() {
+  return { version: 1, points: 0, studyDays: [], weeksMet: [], badges: {} };
+}
+
+function loadGame() {
+  const game = getDefaultGame();
+  try {
+    const parsed = JSON.parse(localStorage.getItem(GAME_KEY));
+    if (!parsed || typeof parsed !== 'object') return game;
+    const dates = list => Array.isArray(list)
+      ? Array.from(new Set(list.filter(d => typeof d === 'string' && DATE_KEY_RE.test(d))))
+      : [];
+    if (Number.isInteger(parsed.points) && parsed.points >= 0) game.points = parsed.points;
+    game.studyDays = dates(parsed.studyDays);
+    game.weeksMet = dates(parsed.weeksMet);
+    if (parsed.badges && typeof parsed.badges === 'object') {
+      BADGES.forEach(b => {
+        const at = parsed.badges[b.id];
+        if (typeof at === 'string' && DATE_KEY_RE.test(at)) game.badges[b.id] = at;
+      });
+    }
+  } catch (error) { /* sin datos o ilegibles: se empieza de cero */ }
+  return game;
+}
+
+function saveGame(game) {
+  try {
+    localStorage.setItem(GAME_KEY, JSON.stringify(game));
+  } catch (error) {
+    console.error('No se pudieron guardar los puntos y las insignias.', error);
+  }
+}
+
+// Fecha local como AAAA-MM-DD (se compara bien como texto).
+function dateKey(date) {
+  const two = n => String(n).padStart(2, '0');
+  return `${date.getFullYear()}-${two(date.getMonth() + 1)}-${two(date.getDate())}`;
+}
+
+// Los siete días, de lunes a domingo, de la semana que contiene a `date`.
+function weekDays(date) {
+  const offset = (date.getDay() + 6) % 7;
+  return Array.from({ length: 7 }, (_, i) =>
+    dateKey(new Date(date.getFullYear(), date.getMonth(), date.getDate() - offset + i)));
+}
+
+function studiedThisWeek(now) {
+  const days = weekDays(now);
+  return days.filter(d => state.game.studyDays.includes(d));
+}
+
+// Una semana cuenta como cumplida al llegar a la meta, y sigue contando aunque
+// después se cambie la meta.
+function refreshWeeksMet(now) {
+  const monday = weekDays(now)[0];
+  if (studiedThisWeek(now).length >= state.settings.goal && !state.game.weeksMet.includes(monday)) {
+    state.game.weeksMet.push(monday);
+  }
+}
+
+function unlockBadges() {
+  const today = dateKey(new Date());
+  const fresh = BADGES.filter(b => !state.game.badges[b.id] && b.earned());
+  fresh.forEach(b => { state.game.badges[b.id] = today; });
+  saveGame(state.game);
+  return fresh;
+}
+
+// Al completar un checkpoint: suma los puntos, marca el día como de estudio y
+// devuelve las insignias que se ganaron con eso.
+function bankCheckpoint(points) {
+  const now = new Date();
+  const days = weekDays(now);
+  const game = state.game;
+  game.points += points;
+  game.studyDays = game.studyDays.filter(d => d >= days[0] && d <= days[6]);
+  const today = dateKey(now);
+  if (!game.studyDays.includes(today)) game.studyDays.push(today);
+  refreshWeeksMet(now);
+  return unlockBadges();
+}
+
+// ===========================================================================
 // ESTADO Y UTILIDADES
 // ===========================================================================
 
 const state = {
-  screen: 'subjects',       // 'subjects' | 'levels' | 'question' | 'result' | 'settings'
+  screen: 'subjects',       // 'subjects' | 'levels' | 'question' | 'result' | 'settings' | 'badges'
   settingsFrom: 'subjects',
   materias: [],
   progress: null,
   settings: null,
+  game: null,
   currentMateriaIndex: -1,
   currentLevelIndex: -1,
   checkpointSets: [],       // checkpoints del nivel activo (temas, partidos si son grandes)
@@ -657,6 +827,7 @@ const state = {
   cpFirstTry: 0,            // aciertos a la primera del checkpoint activo
   firstTry: 0,              // aciertos a la primera de los checkpoints ya completados
   retries: 0,               // reinicios de checkpoint durante este nivel
+  levelPoints: 0,           // puntos sumados por los checkpoints ya completados del nivel
   lastResult: null,
 };
 
@@ -707,6 +878,7 @@ const ICON = {
   x:     '<path d="M4 4l8 8M12 4l-8 8"/>',
   back:  '<path d="M10 3L5 8l5 5"/>',
   fwd:   '<path d="M6 3l5 5-5 5"/>',
+  medal: '<circle cx="8" cy="6" r="3.8"/><path d="M5.6 9.4L4.4 14.5 8 12.6l3.6 1.9-1.2-5.1"/>',
   gear:  '<circle cx="8" cy="8" r="2.2"/><path d="M8 1.5v1.8M8 12.7v1.8M1.5 8h1.8M12.7 8h1.8M3.4 3.4l1.3 1.3M11.3 11.3l1.3 1.3M12.6 3.4l-1.3 1.3M4.7 11.3l-1.3 1.3"/>',
 };
 
@@ -757,6 +929,26 @@ function announce(text) {
   setTimeout(() => { live.textContent = text; }, 40);
 }
 
+// Aviso breve al ganar una insignia fuera del resultado de un nivel.
+let toastTimer = null;
+
+function hideToast() {
+  clearTimeout(toastTimer);
+  document.getElementById('toast').innerHTML = '';
+}
+
+function showBadgeToast(badges) {
+  if (!state.settings.game || badges.length === 0) return;
+  const names = badges.map(b => b.name).join(', ');
+  const label = badges.length === 1 ? 'Insignia nueva' : 'Insignias nuevas';
+  document.getElementById('toast').innerHTML =
+    `<div class="toast">${icon('medal')}<div><b>${label}</b>${escapeHtml(names)}</div>` +
+    `<button data-act="close-toast" aria-label="Cerrar aviso">${icon('x')}</button></div>`;
+  announce(`${label}: ${names}`);
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(hideToast, 6000);
+}
+
 // ===========================================================================
 // RENDER
 // ===========================================================================
@@ -771,6 +963,7 @@ function render(opts = {}) {
   else if (state.screen === 'question') renderQuestion();
   else if (state.screen === 'result') renderResult();
   else if (state.screen === 'settings') renderSettings();
+  else if (state.screen === 'badges') renderBadges();
 
   if (opts.top) window.scrollTo(0, 0);
 
@@ -815,6 +1008,39 @@ function approvedCount(materia) {
   return playableLevels(materia).filter(l => passed.includes(l.number)).length;
 }
 
+function goalCardHtml() {
+  const now = new Date();
+  const today = dateKey(now);
+  const days = weekDays(now);
+  const goal = state.settings.goal;
+  const studied = studiedThisWeek(now);
+  const met = studied.length >= goal;
+  const earned = BADGES.filter(b => state.game.badges[b.id]).length;
+
+  const dots = days.map((day, i) => {
+    const on = studied.includes(day);
+    const isToday = day === today;
+    return `<li class="${on ? 'on' : ''}${isToday ? ' today' : ''}">
+        <span class="dot" aria-hidden="true">${on ? icon('check') : ''}</span>
+        <span aria-hidden="true">${DAY_LABELS[i]}</span>
+        <span class="sr-only">${DAY_NAMES[i]}${isToday ? ' (hoy)' : ''}: ${on ? 'estudiaste' : 'sin estudiar'}</span>
+      </li>`;
+  }).join('');
+
+  const summary = met
+    ? `<span class="tag tag--ok">${icon('check')}Meta cumplida</span>`
+    : `<span>${studied.length} de ${plural(goal, 'día', 'días')}</span>`;
+
+  return `<section class="goal" aria-label="Tu semana">
+      <div class="goal__top"><b>Esta semana</b>${summary}</div>
+      <ol class="week">${dots}</ol>
+      <div class="goal__bot">
+        <span class="goal__pts"><b>${state.game.points.toLocaleString('es-AR')}</b> ${state.game.points === 1 ? 'punto' : 'puntos'}</span>
+        <button class="link" data-act="open-badges">Insignias · ${earned} de ${BADGES.length}</button>
+      </div>
+    </section>`;
+}
+
 function renderSubjects() {
   const items = state.materias.map((materia, index) => {
     const jugables = playableLevels(materia).length;
@@ -836,6 +1062,7 @@ function renderSubjects() {
 
   app.innerHTML = bandHtml({ title: 'Repaso', sub: 'Elegí una materia para empezar.' }) +
     `<main class="page">${renderParseNoticeHtml()}` +
+    (state.settings.game ? goalCardHtml() : '') +
     (state.materias.length === 0
       ? '<p class="empty">No hay materias cargadas. Revisá el registro MATERIAS_DISPONIBLES en index.html y el README.</p>'
       : `<ul class="subjects">${items}</ul>`) +
@@ -985,7 +1212,11 @@ function renderQuestion() {
 
     let message;
     if (ok) {
-      message = isLastInCp ? (checkpoint.name ? `Completaste «${checkpoint.name}».` : 'Completaste este bloque.') : '';
+      const pts = state.settings.game ? POINTS_FIRST_TRY * state.cpFirstTry : 0;
+      message = isLastInCp
+        ? (checkpoint.name ? `Completaste «${checkpoint.name}».` : 'Completaste este bloque.') +
+          (pts > 0 ? ` Sumás ${plural(pts, 'punto', 'puntos')}.` : '')
+        : '';
     } else if (question.multi) {
       const correctas = question.options.filter(o => o.isCorrect);
       const aciertos = correctas.filter(o => state.selectedLetters.includes(o.letter)).length;
@@ -1053,16 +1284,46 @@ function renderResult() {
         ${game ? `<div class="big" role="img" aria-label="${result.stars} de 3 estrellas">${starsRow(result.stars, true)}</div>` : ''}
         <p>${escapeHtml(level.name)} · ${caption}.${improved}</p>
       </div>
-      <div class="stats">
+      <div class="stats${game ? ' stats--3' : ''}">
         <div class="stat"><b>${result.firstTry}/${result.total}</b><span>a la primera</span></div>
         <div class="stat"><b>${result.retries}</b><span>${result.retries === 1 ? 'reintento' : 'reintentos'}</span></div>
+        ${game ? `<div class="stat"><b>+${result.points}</b><span>${result.points === 1 ? 'punto' : 'puntos'}</span></div>` : ''}
       </div>
+      ${game && result.badges.length ? `<section class="newb" aria-label="Insignias nuevas">
+        <h2>${result.badges.length === 1 ? 'Insignia nueva' : 'Insignias nuevas'}</h2>
+        <ul class="badges">${result.badges.map(b => badgeCardHtml(b, state.game.badges[b.id])).join('')}</ul>
+      </section>` : ''}
       <div class="result-actions">
         ${canContinue ? `<button class="go block" data-act="next-level">Continuar al nivel ${nextLevel.number}</button>` : ''}
         <button class="${canContinue ? 'link' : 'go block'}" data-act="replay-level">Jugar de nuevo</button>
         <button class="link" data-act="back-levels">Volver a los niveles</button>
       </div>
     </main>`;
+}
+
+function formatDate(key) {
+  const [y, m, d] = key.split('-');
+  return `${d}/${m}/${y}`;
+}
+
+function badgeCardHtml(badge, earnedAt) {
+  const status = earnedAt
+    ? `Ganada el ${formatDate(earnedAt)}`
+    : 'Sin ganar' + (badge.progress ? ` · ${badge.progress()}` : '');
+  return `<li class="badge${earnedAt ? '' : ' badge--off'}">
+      <span class="badge__ic" aria-hidden="true">${icon('medal')}</span>
+      <div><b>${escapeHtml(badge.name)}</b><span class="d">${escapeHtml(badge.desc)}</span><span class="st">${status}</span></div>
+    </li>`;
+}
+
+function renderBadges() {
+  const earned = BADGES.filter(b => state.game.badges[b.id]).length;
+  app.innerHTML = bandHtml({
+      title: 'Insignias',
+      sub: `${earned} de ${BADGES.length} ganadas`,
+      back: { act: 'back-subjects', label: 'Materias' },
+    }) +
+    `<main class="page"><ul class="badges">${BADGES.map(b => badgeCardHtml(b, state.game.badges[b.id])).join('')}</ul></main>`;
 }
 
 function switchHtml(key, on) {
@@ -1079,7 +1340,10 @@ function renderSettings() {
     </div></header>
     <main class="page">
       <ul class="set">
-        <li><div><b>Elementos de juego</b><span class="d">Estrellas y celebraciones al completar niveles.</span></div>${switchHtml('game', s.game)}</li>
+        <li><div><b>Elementos de juego</b><span class="d">Estrellas, puntos, meta semanal, insignias y celebraciones. Apagados, siguen registrándose pero no se muestran.</span></div>${switchHtml('game', s.game)}</li>
+        <li class="stack"><div><b>Meta semanal</b><span class="d">Días de estudio por semana, de lunes a domingo. Un día cuenta al completar un checkpoint.</span></div>
+          <div class="goalpick" role="radiogroup" aria-label="Días de estudio por semana">${GOAL_OPTIONS.map(n =>
+            `<button role="radio" aria-checked="${n === s.goal}" aria-label="${n} días" data-act="set-goal" data-n="${n}">${n}</button>`).join('')}</div></li>
         <li><div><b>Sonido al responder</b><span class="d">Un tono corto al acertar o fallar.</span></div>${switchHtml('sound', s.sound)}</li>
         <li><div><b>Vibración</b><span class="d">Solo en celulares que la permiten.</span></div>${switchHtml('vibration', s.vibration)}</li>
       </ul>
@@ -1125,6 +1389,7 @@ function startLevel(levelIndex, resume) {
   state.retries = 0;
   state.firstTry = 0;
   state.cpFirstTry = 0;
+  state.levelPoints = 0;
 
   let startAt = 0;
   const saved = resume ? getSavedProgress(materia.id, level, state.progress) : null;
@@ -1132,6 +1397,7 @@ function startLevel(levelIndex, resume) {
     startAt = saved.cp;
     state.retries = saved.retries;
     state.firstTry = saved.firstTry;
+    state.levelPoints = saved.points;
   } else {
     clearSavedProgress(materia.id, level.number, state.progress);
   }
@@ -1200,22 +1466,29 @@ function goToNextQuestion() {
 
   // Checkpoint completado: sus aciertos a la primera quedan asegurados.
   state.firstTry += state.cpFirstTry;
+  const gained = POINTS_FIRST_TRY * state.cpFirstTry;
+  state.levelPoints += gained;
+  const unlocked = bankCheckpoint(gained);
   const next = state.currentCheckpointIndex + 1;
   if (next < state.checkpointSets.length) {
     saveCheckpointProgress(currentMateria().id, currentLevel(),
-      { cp: next, retries: state.retries, firstTry: state.firstTry }, state.progress);
+      { cp: next, retries: state.retries, firstTry: state.firstTry, points: state.levelPoints }, state.progress);
     enterCheckpoint(next, true);
     render({ top: true, focus: 'q' });
+    showBadgeToast(unlocked);
   } else {
-    finishLevel();
+    finishLevel(unlocked);
   }
 }
 
-function finishLevel() {
+function finishLevel(unlockedEarlier) {
   const total = levelQuestions(currentLevel()).length;
   const outcome = recordCompletion(currentMateria().id, currentLevel().number, total,
     state.firstTry, state.retries, state.progress);
-  state.lastResult = Object.assign({ total, firstTry: state.firstTry, retries: state.retries }, outcome);
+  const badges = unlockedEarlier.concat(unlockBadges());
+  state.lastResult = Object.assign({ total, firstTry: state.firstTry, retries: state.retries,
+    points: state.levelPoints, badges }, outcome);
+  hideToast();
   state.screen = 'result';
   render({ top: true, focus: 'title' });
 }
@@ -1242,7 +1515,7 @@ function handleSkipLevel(materia, level) {
 }
 
 // Una sola escucha para todos los botones de la app, según su data-act.
-app.addEventListener('click', event => {
+document.addEventListener('click', event => {
   const el = event.target.closest('[data-act]');
   if (!el || el.disabled) return;
   const act = el.dataset.act;
@@ -1255,6 +1528,19 @@ app.addEventListener('click', event => {
       state.screen = 'subjects'; render({ top: true, focus: 'title' }); break;
     case 'open-settings':
       state.settingsFrom = state.screen; state.screen = 'settings'; render({ top: true, focus: 'title' }); break;
+    case 'open-badges':
+      state.screen = 'badges'; render({ top: true, focus: 'title' }); break;
+    case 'close-toast': hideToast(); break;
+    case 'set-goal': {
+      state.settings.goal = Number(el.dataset.n);
+      saveSettings(state.settings);
+      refreshWeeksMet(new Date());
+      const unlocked = unlockBadges();
+      render();
+      app.querySelector(`[data-n="${el.dataset.n}"]`).focus({ preventScroll: true });
+      showBadgeToast(unlocked);
+      break;
+    }
     case 'close-settings':
       state.screen = state.settingsFrom; render({ top: true, focus: 'title' }); break;
     case 'toggle-setting':
@@ -1314,6 +1600,7 @@ function init() {
   });
   state.progress = loadProgress();
   state.settings = loadSettings();
+  state.game = loadGame();
   state.screen = 'subjects';
   render();
 }
