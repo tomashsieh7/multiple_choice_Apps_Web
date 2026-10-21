@@ -3,12 +3,14 @@
 ## Estado
 
 ### En curso
+- **Rediseño del frontend** — se investigan referencias de UX/UI y se presentan propuestas de diseño; no se implementa nada hasta que el usuario elija una.
 
 ### Pendientes
 - **Agregar materias/niveles reales adicionales** a medida que el usuario curse nuevas clases, siguiendo el patrón ya documentado en el README.
 - **Revisar el recorte de `imagenes/iap2-nivel3-arbol-parsing.png`**, que corta la parte superior del árbol (no se ve la raíz). Es un tema del archivo de imagen, no del código.
 
 ### Completadas
+- 2026-10-21 — Feedback detallado en selección múltiple (bien marcada / faltó marcar / no correspondía)
 - 2026-10-21 — Materia nueva "IA y Neuro p. 2" (3 niveles, 9 imágenes, sufijo `_IAN2`)
 - 2026-09-28 — Preguntas de selección múltiple ("elegí todas las correctas") y opciones variables (2 a 6)
 - 2026-09-27 — Imágenes dentro de las preguntas, desde la carpeta `imagenes/`
@@ -20,6 +22,12 @@
 - 2026-09-05 — Checkpoints agrupados por tema (`### Tema:`) en vez de por tamaño parejo
 
 ## Bitácora de decisiones
+
+### 2026-10-21 — Feedback de selección múltiple: cuatro estados con etiqueta de texto
+**Contexto:** al fallar una pregunta de selección múltiple, todas las correctas se pintaban igual en verde, y no se podía distinguir cuáles había marcado el usuario y cuáles le faltaron.
+**Decisión:** tras responder, cada opción queda en uno de cuatro estados: *bien marcada* (verde lleno, "✓ Bien marcada"), *faltó marcar* (borde verde punteado sin relleno, "Faltó marcar"), *no correspondía* (rojo, "✗ No correspondía") y *no marcada y no correcta* (atenuada). Cada estado lleva una etiqueta de texto además del color, para no depender de distinguir verde de rojo. El mensaje de error resume el resultado ("marcaste 1 de las 3 correctas y 1 opción que no correspondía"). Las preguntas de respuesta única no cambian, salvo que el mensaje de error pasó al singular ("la respuesta correcta está marcada en verde").
+**Alternativas descartadas:** distinguir los estados solo con el color (se pierde para quien confunde verde y rojo); agregar las etiquetas también a las de respuesta única (ahí no hay ambigüedad: hay una sola correcta y una sola elegida).
+**Revisión post-implementación:** salió tal cual lo planeado; se probó en escritorio y en ancho de celular con un caso mixto.
 
 ### 2026-10-21 — Materia nueva "IA y Neuro p. 2": archivo y sufijo propios, registrada a mano
 **Contexto:** el usuario subió una clase nueva (`preguntas_ia_neurociencias_p2.js`) que no continúa la materia "Inteligencia Artificial y Neurociencias" sino que define una materia distinta, con su propio id (`ia-neurociencias-p2`) y sufijo de variables (`_IAN2`).

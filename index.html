@@ -269,6 +269,19 @@ button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 }
 .option--correct .option__letter { color: var(--correct-fg); }
 
+.option__body { display: flex; flex-direction: column; gap: 0.2rem; }
+.option__tag { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.02em; }
+
+/* Selección múltiple, ya respondida: correcta que faltó marcar (borde
+   punteado, sin relleno) y opción incorrecta que no se marcó (atenuada). */
+.option--missed {
+  background: transparent;
+  border: 1px dashed var(--correct-fg);
+  color: var(--correct-fg);
+}
+.option--missed .option__letter { color: var(--correct-fg); }
+.option--neutral { opacity: 0.6; }
+
 .option--incorrect {
   background: var(--incorrect-bg);
   border-color: var(--incorrect-fg);
@@ -840,9 +853,19 @@ function renderQuestion() {
     button.className = 'option';
     const elegida = state.selectedLetters.includes(option.letter);
 
+    // En selección múltiple, tras responder cada opción cae en uno de cuatro
+    // estados, con etiqueta de texto además del color: bien marcada, faltó
+    // marcar, no correspondía, o no marcada (y no era correcta).
+    let tag = '';
+
     if (state.answered) {
       button.disabled = true;
-      if (option.isCorrect) button.classList.add('option--correct');
+      if (question.multi) {
+        if (option.isCorrect && elegida) { button.classList.add('option--correct'); tag = '✓ Bien marcada'; }
+        else if (option.isCorrect) { button.classList.add('option--missed'); tag = 'Faltó marcar'; }
+        else if (elegida) { button.classList.add('option--incorrect'); tag = '✗ No correspondía'; }
+        else button.classList.add('option--neutral');
+      } else if (option.isCorrect) button.classList.add('option--correct');
       else if (elegida) button.classList.add('option--incorrect');
     } else if (question.multi) {
       // Selección múltiple: cada click prende/apaga la opción, sin responder todavía.
@@ -853,7 +876,10 @@ function renderQuestion() {
     }
 
     button.innerHTML =
-      `<span class="option__letter">${OPTION_LETTERS[i]})</span><span>${escapeHtml(option.text)}</span>`;
+      `<span class="option__letter">${OPTION_LETTERS[i]})</span>` +
+      `<span class="option__body"><span>${escapeHtml(option.text)}</span>` +
+      (tag ? `<span class="option__tag">${tag}</span>` : '') +
+      '</span>';
     options.appendChild(button);
   });
 
@@ -875,9 +901,21 @@ function renderQuestion() {
     const acerto = isCorrectSelection(question, state.selectedLetters);
     const feedback = document.createElement('div');
     feedback.className = 'feedback ' + (acerto ? 'feedback--correct' : 'feedback--incorrect');
-    feedback.textContent = acerto
-      ? '¡Correcto!'
-      : 'Incorrecto — la(s) respuesta(s) correcta(s) están marcadas en verde. Vas a reintentar este checkpoint desde el principio.';
+    if (acerto) {
+      feedback.textContent = '¡Correcto!';
+    } else if (question.multi) {
+      const correctas = question.options.filter(o => o.isCorrect);
+      const aciertos = correctas.filter(o => state.selectedLetters.includes(o.letter)).length;
+      const sobrantes = state.selectedLetters.length - aciertos;
+      feedback.textContent =
+        `Incorrecto — marcaste ${aciertos} de las ${correctas.length} correctas` +
+        (sobrantes > 0
+          ? ` y ${sobrantes} ${sobrantes === 1 ? 'opción que no correspondía' : 'opciones que no correspondían'}`
+          : '') +
+        '. Vas a reintentar este checkpoint desde el principio.';
+    } else {
+      feedback.textContent = 'Incorrecto — la respuesta correcta está marcada en verde. Vas a reintentar este checkpoint desde el principio.';
+    }
     card.appendChild(feedback);
 
     const esUltimaPreguntaDelCheckpoint = state.currentQuestionIndex + 1 === total;
