@@ -9,9 +9,13 @@ Hacé doble clic en `index.html` desde el explorador de archivos. Se abre en el 
 Los archivos deben quedar siempre en la misma carpeta:
 
 ```
-index.html        ← la app
-preguntas.js     ← contenido de la materia "Arquitectura de Aplicaciones Web"
-README.md        ← este archivo
+index.html                         ← la app
+preguntas.js                       ← materia "Arquitectura de Aplicaciones Web"
+preguntas_ciencia_comportamiento.js ← materia "Ciencia del Comportamiento Aplicada"
+preguntas_ia_neurociencias.js      ← materia "Inteligencia Artificial y Neurociencias"
+preguntas_ia_neurociencias_p2.js   ← materia "IA y Neuro p. 2"
+imagenes/                          ← imágenes que usan las preguntas
+README.md                          ← este archivo
 ```
 
 ## Cómo se juega

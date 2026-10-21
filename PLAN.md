@@ -5,10 +5,14 @@
 ### En curso
 
 ### Pendientes
-- **Habilitar GitHub Pages** — falta que el usuario confirme si el repo pasa a público (hoy es privado, y Pages gratis lo requiere) y que active Pages manualmente en Settings (branch `main`, carpeta raíz). No hay herramienta disponible en esta sesión para cambiar visibilidad del repo ni la config de Pages.
 - **Agregar materias/niveles reales adicionales** a medida que el usuario curse nuevas clases, siguiendo el patrón ya documentado en el README.
+- **Revisar el recorte de `imagenes/iap2-nivel3-arbol-parsing.png`**, que corta la parte superior del árbol (no se ve la raíz). Es un tema del archivo de imagen, no del código.
 
 ### Completadas
+- 2026-10-21 — Materia nueva "IA y Neuro p. 2" (3 niveles, 9 imágenes, sufijo `_IAN2`)
+- 2026-09-28 — Preguntas de selección múltiple ("elegí todas las correctas") y opciones variables (2 a 6)
+- 2026-09-27 — Imágenes dentro de las preguntas, desde la carpeta `imagenes/`
+- 2026-09-27 — Publicación en GitHub Pages (`quiz.html` pasó a llamarse `index.html` el 2026-09-09 para que Pages la sirva en la raíz)
 - 2026-09-10 — Botón "Saltar nivel" para desbloquear el siguiente nivel sin responder preguntas
 - 2026-08-19 — App de estudio multiple-choice multi-materia (Arquitectura de Aplicaciones Web)
 - 2026-08-28 — Cargar contenido real de "Arquitectura de Aplicaciones Web" (4 niveles) y crear la materia "Ciencia del Comportamiento Aplicada" (3 niveles)
@@ -16,6 +20,24 @@
 - 2026-09-05 — Checkpoints agrupados por tema (`### Tema:`) en vez de por tamaño parejo
 
 ## Bitácora de decisiones
+
+### 2026-10-21 — Materia nueva "IA y Neuro p. 2": archivo y sufijo propios, registrada a mano
+**Contexto:** el usuario subió una clase nueva (`preguntas_ia_neurociencias_p2.js`) que no continúa la materia "Inteligencia Artificial y Neurociencias" sino que define una materia distinta, con su propio id (`ia-neurociencias-p2`) y sufijo de variables (`_IAN2`).
+**Decisión:** se agregó como materia independiente siguiendo el patrón de registro manual ya documentado (un `<script src>` más y una entrada más en `MATERIAS_DISPONIBLES`), sin tocar la materia "IAN" existente. Sus 9 imágenes usan el prefijo `iap2-` para no chocar con las de otras materias. Es el primer contenido real con muchas preguntas de selección múltiple (21 solo en el Nivel 3), así que se validó de punta a punta en un navegador: carga de las 4 materias, juego del Nivel 3 completo, toggle y confirmación de selección múltiple, respuesta incompleta que reinicia el checkpoint, y carga de las imágenes en escritorio y en ancho de celular.
+**Alternativas descartadas:** sumar este contenido como niveles 6 en adelante de la materia "IAN" (el usuario lo entregó con id y nombre de materia propios, y mezclar clases distintas dentro de una materia contradice cómo viene organizado el resto).
+**Revisión post-implementación:** salió tal cual lo planeado.
+
+### 2026-09-28 — Selección múltiple detectada por la cantidad de asteriscos, con acierto todo-o-nada
+**Contexto:** el usuario pidió sumar preguntas de "elegir las correctas entre varias", además de las de respuesta única.
+**Decisión:** no hay un marcador nuevo en el texto: una pregunta con un solo `*` sigue siendo de respuesta única (se responde al hacer clic) y una con dos o más pasa sola a selección múltiple (`question.multi`), con opciones que se prenden y apagan, una pista "Elegí todas las opciones correctas" y un botón "Confirmar respuesta". Se acierta solo si se marcan exactamente las correctas, ni de más ni de menos (`isCorrectSelection`), y un error reinicia el checkpoint igual que antes. De paso se amplió el rango de opciones de 4 fijas a entre 2 y 6 (letras a-f), y se exige al menos una correcta. El estado `selectedLetter` pasó a ser `selectedLetters` (arreglo). Se verificó que las 884 preguntas ya cargadas siguieran parseando idéntico y sin ninguna marcada como múltiple por error. También se actualizaron el README, el prompt para el generador de preguntas y la skill `preguntas-multiple-choice-conceptuales` (esta última hay que guardarla a mano desde claude.ai, porque la copia local no se sincroniza hacia la cuenta).
+**Alternativas descartadas:** un marcador explícito en el texto, por ejemplo `[multi]` (agregaba una sintaxis más para el generador sin aportar nada que los asteriscos no den); puntaje parcial (se propuso el criterio todo-o-nada y el usuario lo aceptó, coherente con el resto de la app, donde cualquier error reinicia el checkpoint; el puntaje parcial no se llegó a plantear).
+**Revisión post-implementación:** salió tal cual lo planeado. Pendiente de mejora opcional: en una respuesta incorrecta de selección múltiple, todas las correctas se marcan en verde sin distinguir cuáles había marcado el usuario y cuáles no.
+
+### 2026-09-27 — Imágenes en las preguntas como archivos aparte, no embebidas en base64
+**Contexto:** el usuario quería usar imágenes de las diapositivas dentro de las preguntas.
+**Decisión:** una línea opcional `![texto alternativo](imagenes/archivo.png)` justo después del enunciado y antes de las opciones. El parser la separa de las opciones y la app muestra un `<img>` con ancho máximo del contenedor. Los archivos viven en la carpeta `imagenes/` de la raíz del repo, con nombres sin espacios que incluyen nivel y tema (y un prefijo de materia cuando hace falta evitar choques).
+**Alternativas descartadas:** embeber las imágenes en base64 dentro de los `.js` (cada una agrega miles de caracteres ilegibles, el archivo de preguntas deja de poder editarse a mano y el generador puede cortar el texto a la mitad).
+**Revisión post-implementación:** salió tal cual lo planeado. Las imágenes que llegan en `.webp` se convierten a `.png` para que coincidan con la ruta que ya referencia el texto.
 
 ### 2026-09-10 — Botón "Saltar nivel": disponible en cualquier nivel, en cualquier momento
 **Contexto:** el usuario pidió una forma de avanzar de nivel sin tener que responder sus preguntas (por ejemplo, para repasar contenido más adelante sin quedar trabado en un nivel que no le interesa rendir en ese momento).
