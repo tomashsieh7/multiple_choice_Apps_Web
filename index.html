@@ -269,6 +269,11 @@ button:disabled { cursor: default; }
 .badge .st { display: block; font-size: 14px; font-weight: 700; margin-top: 2px; }
 .newb { display: flex; flex-direction: column; gap: 10px; }
 .newb h2 { font-size: 18px; }
+.review { background: var(--sf); border: 2px solid var(--ctl); border-radius: 8px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
+.review--due { border-color: var(--pt); }
+.review h2 { font-size: 18px; }
+.review p { font-size: 15px; color: var(--mu); }
+.review .go { align-self: flex-start; }
 .stats--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .toast { position: fixed; z-index: 10; top: max(12px, env(safe-area-inset-top, 0px)); left: 50%; transform: translateX(-50%); width: min(calc(100% - 32px), 440px); display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 12px; align-items: center; background: var(--ink); color: #fff; border-radius: 10px; padding: 8px 8px 8px 14px; font-size: 16px; }
 .toast .ic { font-size: 24px; color: var(--sun); }
@@ -685,6 +690,8 @@ function clearSavedProgress(materiaId, levelNumber, progress) {
 const GAME_KEY = 'quizAppGame_v1';
 const POINTS_FIRST_TRY = 10;
 const WEEKS_FOR_BADGE = 4;
+const REVIEWS_FOR_BADGE = 5;
+const RECOVERED_FOR_BADGE = 25;
 const DATE_KEY_RE = /^\d{4}-\d{2}-\d{2}$/;
 const DAY_LABELS = ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa', 'Do'];
 const DAY_NAMES = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo'];
@@ -720,10 +727,22 @@ const BADGES = [
     earned: () => state.game.weeksMet.length >= WEEKS_FOR_BADGE,
     progress: () => `${Math.min(state.game.weeksMet.length, WEEKS_FOR_BADGE)} de ${WEEKS_FOR_BADGE} semanas`,
   },
+  {
+    id: 'cinco-repasos', name: 'Cinco repasos',
+    desc: 'Completá cinco sesiones del repaso del día.',
+    earned: () => state.game.reviews >= REVIEWS_FOR_BADGE,
+    progress: () => `${Math.min(state.game.reviews, REVIEWS_FOR_BADGE)} de ${REVIEWS_FOR_BADGE} repasos`,
+  },
+  {
+    id: 'veinticinco-recuperadas', name: '25 recuperadas',
+    desc: 'Acertá en un repaso 25 preguntas distintas que habías fallado en un nivel.',
+    earned: () => state.review.recovered.length >= RECOVERED_FOR_BADGE,
+    progress: () => `${Math.min(state.review.recovered.length, RECOVERED_FOR_BADGE)} de ${RECOVERED_FOR_BADGE} preguntas`,
+  },
 ];
 
 function getDefaultGame() {
-  return { version: 1, points: 0, studyDays: [], weeksMet: [], badges: {} };
+  return { version: 1, points: 0, studyDays: [], weeksMet: [], badges: {}, reviews: 0 };
 }
 
 function loadGame() {
@@ -735,6 +754,7 @@ function loadGame() {
       ? Array.from(new Set(list.filter(d => typeof d === 'string' && DATE_KEY_RE.test(d))))
       : [];
     if (Number.isInteger(parsed.points) && parsed.points >= 0) game.points = parsed.points;
+    if (Number.isInteger(parsed.reviews) && parsed.reviews >= 0) game.reviews = parsed.reviews;
     game.studyDays = dates(parsed.studyDays);
     game.weeksMet = dates(parsed.weeksMet);
     if (parsed.badges && typeof parsed.badges === 'object') {
@@ -805,6 +825,117 @@ function bankCheckpoint(points) {
 }
 
 // ===========================================================================
+// REPASO DEL DÍA (cola de preguntas falladas con calendario de 1, 3, 7 y 14 días)
+// ===========================================================================
+
+const REVIEW_KEY = 'quizAppReview_v1';
+const REVIEW_INTERVALS = [1, 3, 7, 14];   // días de espera de cada paso (1 a 4)
+const REVIEW_SESSION_MAX = 10;
+const POINTS_REVIEW = 5;
+
+function getDefaultReview() {
+  return { version: 1, items: {}, recovered: [] };
+}
+
+function loadReview() {
+  const review = getDefaultReview();
+  try {
+    const parsed = JSON.parse(localStorage.getItem(REVIEW_KEY));
+    if (!parsed || typeof parsed !== 'object') return review;
+    if (parsed.items && typeof parsed.items === 'object') {
+      Object.keys(parsed.items).forEach(key => {
+        const item = parsed.items[key];
+        if (item && typeof item.m === 'string' && Number.isInteger(item.box) && item.box >= 1 && item.box <= REVIEW_INTERVALS.length
+            && typeof item.due === 'string' && DATE_KEY_RE.test(item.due)) {
+          review.items[key] = { m: item.m, box: item.box, due: item.due };
+        }
+      });
+    }
+    if (Array.isArray(parsed.recovered)) {
+      review.recovered = Array.from(new Set(parsed.recovered.filter(k => typeof k === 'string')));
+    }
+  } catch (error) { /* sin datos o ilegibles: se empieza de cero */ }
+  return review;
+}
+
+function saveReview(review) {
+  try {
+    localStorage.setItem(REVIEW_KEY, JSON.stringify(review));
+  } catch (error) {
+    console.error('No se pudo guardar la cola de repaso.', error);
+  }
+}
+
+// Fecha local `days` días después de la fecha AAAA-MM-DD dada.
+function addDays(key, days) {
+  const [y, m, d] = key.split('-').map(Number);
+  return dateKey(new Date(y, m - 1, d + days));
+}
+
+function todayKey() { return dateKey(new Date()); }
+
+// La pregunta se identifica por materia y texto, no por su posición en el archivo.
+function reviewKey(materiaId, text) {
+  return hashString(materiaId + '\u0001' + text);
+}
+
+// Todas las preguntas cargadas, por clave, para saber a cuál corresponde cada
+// entrada de la cola. Una entrada cuyo texto ya no existe simplemente no aparece.
+let reviewIndexCache = null;
+function reviewIndex() {
+  if (reviewIndexCache) return reviewIndexCache;
+  const index = new Map();
+  state.materias.forEach(materia => materia.levels.forEach(level => levelQuestions(level).forEach(question => {
+    index.set(reviewKey(materia.id, question.text), { materia, level, question });
+  })));
+  reviewIndexCache = index;
+  return index;
+}
+
+// Una pregunta fallada en un nivel entra a la cola con vencimiento mañana; si ya
+// estaba, vuelve al paso 1 con el vencimiento más cercano.
+function scheduleFailure(key, materiaId) {
+  const tomorrow = addDays(todayKey(), 1);
+  const items = state.review.items;
+  const current = items[key];
+  items[key] = { m: materiaId, box: 1, due: current && current.due < tomorrow ? current.due : tomorrow };
+  saveReview(state.review);
+}
+
+// Preguntas vencidas hoy (o antes) que todavía existen, las más atrasadas primero.
+function dueItems() {
+  const today = todayKey();
+  const index = reviewIndex();
+  return Object.keys(state.review.items)
+    .filter(key => state.review.items[key].due <= today && index.has(key))
+    .sort((a, b) => state.review.items[a].due.localeCompare(state.review.items[b].due) || a.localeCompare(b))
+    .map(key => Object.assign({ key }, index.get(key)));
+}
+
+// Fecha del próximo vencimiento posterior a hoy, con cuántas preguntas vencen ese día.
+function nextDue() {
+  const today = todayKey();
+  const index = reviewIndex();
+  const future = Object.keys(state.review.items)
+    .filter(key => state.review.items[key].due > today && index.has(key))
+    .map(key => state.review.items[key].due)
+    .sort();
+  if (future.length === 0) return null;
+  return { due: future[0], count: future.filter(d => d === future[0]).length };
+}
+
+// Número de día de una fecha AAAA-MM-DD, para restar fechas sin depender de la zona horaria.
+function dayNumber(key) {
+  const [y, m, d] = key.split('-').map(Number);
+  return Date.UTC(y, m - 1, d) / 864e5;
+}
+
+function dueText(key) {
+  const days = dayNumber(key) - dayNumber(todayKey());
+  return days === 1 ? 'mañana' : `en ${days} días`;
+}
+
+// ===========================================================================
 // ESTADO Y UTILIDADES
 // ===========================================================================
 
@@ -815,6 +946,9 @@ const state = {
   progress: null,
   settings: null,
   game: null,
+  review: null,             // cola del repaso del día (ver REPASO DEL DÍA)
+  mode: 'level',            // 'level' | 'review': qué se está jugando en la pantalla de pregunta
+  reviewRun: null,          // sesión de repaso en curso
   currentMateriaIndex: -1,
   currentLevelIndex: -1,
   checkpointSets: [],       // checkpoints del nivel activo (temas, partidos si son grandes)
@@ -1041,6 +1175,25 @@ function goalCardHtml() {
     </section>`;
 }
 
+function reviewCardHtml() {
+  const due = dueItems().length;
+  const next = nextDue();
+  if (due > 0) {
+    return `<section class="review review--due" aria-label="Repaso del día">
+        <h2>Repaso del día</h2>
+        <p>${due === 1 ? 'Hoy vence 1 pregunta' : `Hoy vencen ${due} preguntas`} de las que fallaste.${due > REVIEW_SESSION_MAX ? ` Cada repaso toma hasta ${REVIEW_SESSION_MAX}.` : ''}</p>
+        <button class="go" data-act="start-review">Empezar repaso</button>
+      </section>`;
+  }
+  const hint = next
+    ? `La próxima vence ${dueText(next.due)} (${plural(next.count, 'pregunta', 'preguntas')}).`
+    : 'Cuando falles una pregunta en un nivel, va a volver acá para repasarla.';
+  return `<section class="review" aria-label="Repaso del día">
+      <h2>Repaso del día</h2>
+      <p>No hay nada para repasar hoy. ${hint}</p>
+    </section>`;
+}
+
 function renderSubjects() {
   const items = state.materias.map((materia, index) => {
     const jugables = playableLevels(materia).length;
@@ -1063,6 +1216,7 @@ function renderSubjects() {
   app.innerHTML = bandHtml({ title: 'Repaso', sub: 'Elegí una materia para empezar.' }) +
     `<main class="page">${renderParseNoticeHtml()}` +
     (state.settings.game ? goalCardHtml() : '') +
+    (state.materias.length ? reviewCardHtml() : '') +
     (state.materias.length === 0
       ? '<p class="empty">No hay materias cargadas. Revisá el registro MATERIAS_DISPONIBLES en index.html y el README.</p>'
       : `<ul class="subjects">${items}</ul>`) +
@@ -1155,16 +1309,19 @@ function renderLevels() {
 }
 
 function renderQuestion() {
-  const level = currentLevel();
+  const review = state.mode === 'review';
+  const level = review ? null : currentLevel();
   const question = currentQuestion();
-  const checkpoint = state.checkpointSets[state.currentCheckpointIndex];
-  const totalLevel = levelQuestions(level).length;
+  const checkpoint = review ? null : state.checkpointSets[state.currentCheckpointIndex];
+  const totalLevel = review ? state.sessionQuestions.length : levelQuestions(level).length;
   const sizeCp = state.sessionQuestions.length;
   const isLastInCp = state.currentQuestionIndex + 1 === sizeCp;
-  const isLastCp = state.currentCheckpointIndex + 1 === state.checkpointSets.length;
+  const isLastCp = review ? true : state.currentCheckpointIndex + 1 === state.checkpointSets.length;
   const ok = state.answered && isCorrectSelection(question, state.selectedLetters);
 
-  const doneInLevel = bankedQuestions() + state.currentQuestionIndex + (ok ? 1 : 0);
+  const doneInLevel = review
+    ? state.currentQuestionIndex + (state.answered ? 1 : 0)
+    : bankedQuestions() + state.currentQuestionIndex + (ok ? 1 : 0);
   const pct = Math.round((doneInLevel / totalLevel) * 100);
 
   const letters = 'abcdef';
@@ -1205,13 +1362,19 @@ function renderQuestion() {
       </div></div>`;
   } else {
     let label;
-    if (!ok) label = 'Reintentar checkpoint';
+    if (review) label = isLastInCp ? 'Ver resultado' : 'Continuar';
+    else if (!ok) label = 'Reintentar checkpoint';
     else if (!isLastInCp) label = 'Continuar';
     else if (!isLastCp) label = 'Siguiente tema';
     else label = 'Ver resultado';
 
+    const retryTail = review
+      ? (question.repeat ? 'Vuelve a aparecer mañana.' : 'Va a volver a aparecer al final de este repaso.')
+      : 'Vas a reintentar este checkpoint desde el principio.';
     let message;
-    if (ok) {
+    if (ok && review) {
+      message = state.settings.game && !question.repeat ? `Sumás ${plural(POINTS_REVIEW, 'punto', 'puntos')}.` : '';
+    } else if (ok) {
       const pts = state.settings.game ? POINTS_FIRST_TRY * state.cpFirstTry : 0;
       message = isLastInCp
         ? (checkpoint.name ? `Completaste «${checkpoint.name}».` : 'Completaste este bloque.') +
@@ -1223,9 +1386,9 @@ function renderQuestion() {
       const sobrantes = state.selectedLetters.length - aciertos;
       message = `Marcaste ${aciertos} de las ${correctas.length} correctas` +
         (sobrantes > 0 ? ` y ${sobrantes} ${sobrantes === 1 ? 'opción que no correspondía' : 'opciones que no correspondían'}` : '') +
-        '. Vas a reintentar este checkpoint desde el principio.';
+        `. ${retryTail}`;
     } else {
-      message = 'La respuesta correcta está marcada en verde. Vas a reintentar este checkpoint desde el principio.';
+      message = `La respuesta correcta está marcada en verde. ${retryTail}`;
     }
 
     dockHtml = `<div class="dock ${ok ? 'dock--good' : 'dock--bad'}"><div class="dock__in">
@@ -1235,17 +1398,22 @@ function renderQuestion() {
       </div></div>`;
   }
 
-  const cpLabel = (checkpoint.name ? checkpoint.name + ' · ' : '') + `${state.currentQuestionIndex + 1} de ${sizeCp}`;
+  const cpLabel = review ? '' : (checkpoint.name ? checkpoint.name + ' · ' : '') + `${state.currentQuestionIndex + 1} de ${sizeCp}`;
+  const chipsHtml = review
+    ? `<span class="chip">${escapeHtml(`Repaso del día · ${question.repeat ? 'para repetir' : `${state.currentQuestionIndex + 1} de ${state.reviewRun.initial}`}`)}</span>
+          <span class="chip">${escapeHtml(`${question.materiaNombre} · Nivel ${question.levelNumber}`)}</span>`
+    : `<span class="chip">${escapeHtml(`Nivel ${level.number} · ${doneInLevel} de ${totalLevel}`)}</span>
+          <span class="chip">${escapeHtml(cpLabel)}</span>`;
 
   app.innerHTML = `<div class="qscreen">
       <div class="top">
-        <button class="x" data-act="exit-level" aria-label="Salir al listado de niveles">${icon('x')}</button>
-        <div class="levelbar" role="progressbar" aria-label="Avance del nivel" aria-valuemin="0" aria-valuemax="${totalLevel}" aria-valuenow="${doneInLevel}"><i style="width:${pct}%"></i></div>
+ 
+        <button class="x" data-act="exit-level" aria-label="${review ? 'Salir del repaso' : 'Salir al listado de niveles'}">${icon('x')}</button>
+        <div class="levelbar" role="progressbar" aria-label="${review ? 'Avance del repaso' : 'Avance del nivel'}" aria-valuemin="0" aria-valuemax="${totalLevel}" aria-valuenow="${doneInLevel}"><i style="width:${pct}%"></i></div>
       </div>
       <div class="qa">
         <div class="tags">
-          <span class="chip">${escapeHtml(`Nivel ${level.number} · ${doneInLevel} de ${totalLevel}`)}</span>
-          <span class="chip">${escapeHtml(cpLabel)}</span>
+          ${chipsHtml}
           ${question.multi ? '<span class="chip chip--sun">Elegí todas las correctas</span>' : ''}
         </div>
         <p class="q" data-q tabindex="-1">${escapeHtml(question.text)}</p>
@@ -1263,7 +1431,41 @@ const CONFETTI = [
   [88, 14, '#F2C230', -35], [93, 44, '#0F5A2A', 20], [3, 46, '#0E5A5A', 50], [52, 48, '#0F5A2A', -20],
 ];
 
+function renderReviewResult() {
+  const result = state.lastResult;
+  const game = state.settings.game;
+  const remaining = dueItems().length;
+  const next = nextDue();
+  const caption = remaining > 0
+    ? `Todavía ${remaining === 1 ? 'vence 1 pregunta' : `vencen ${remaining} preguntas`} hoy.`
+    : (next ? `La próxima vence ${dueText(next.due)} (${plural(next.count, 'pregunta', 'preguntas')}).` : 'No quedan preguntas pendientes.');
+
+  app.innerHTML =
+    (game ? `<div class="burst" aria-hidden="true">${CONFETTI.map(([x, y, c, r]) =>
+      `<i style="left:${x}%;top:${y}px;background:${c};transform:rotate(${r}deg)"></i>`).join('')}</div>` : '') +
+    `<main class="page">
+      <div class="cele">
+        <h1 data-title tabindex="-1">Repaso completo</h1>
+        <p>${escapeHtml(caption)}</p>
+      </div>
+      <div class="stats${game ? ' stats--3' : ''}">
+        <div class="stat"><b>${result.firstTry}/${result.total}</b><span>a la primera</span></div>
+        <div class="stat"><b>${result.recovered}</b><span>${result.recovered === 1 ? 'recuperada' : 'recuperadas'}</span></div>
+        ${game ? `<div class="stat"><b>+${result.points}</b><span>${result.points === 1 ? 'punto' : 'puntos'}</span></div>` : ''}
+      </div>
+      ${game && result.badges.length ? `<section class="newb" aria-label="Insignias nuevas">
+        <h2>${result.badges.length === 1 ? 'Insignia nueva' : 'Insignias nuevas'}</h2>
+        <ul class="badges">${result.badges.map(b => badgeCardHtml(b, state.game.badges[b.id])).join('')}</ul>
+      </section>` : ''}
+      <div class="result-actions">
+        ${remaining > 0 ? '<button class="go block" data-act="start-review">Hacer otro repaso</button>' : ''}
+        <button class="${remaining > 0 ? 'link' : 'go block'}" data-act="back-subjects">Volver a las materias</button>
+      </div>
+    </main>`;
+}
+
 function renderResult() {
+  if (state.lastResult.review) { renderReviewResult(); return; }
   const materia = currentMateria();
   const level = currentLevel();
   const nextLevel = materia.levels[state.currentLevelIndex + 1];
@@ -1383,6 +1585,7 @@ function enterCheckpoint(index, isNew) {
 
 function startLevel(levelIndex, resume) {
   const materia = currentMateria();
+  state.mode = 'level';
   state.currentLevelIndex = levelIndex;
   const level = currentLevel();
   state.checkpointSets = level.checkpoints;
@@ -1421,13 +1624,77 @@ function selectOption(letter) {
   render({ focus: `opt:${index}` });
 }
 
+// Calendario y puntos de una pregunta del repaso, al comprobar la respuesta.
+// Solo cuenta la primera vez que aparece en la sesión (no su repetición final).
+function applyReviewAnswer(question, ok) {
+  const run = state.reviewRun;
+  const items = state.review.items;
+  const item = items[question.key];
+  if (!ok) {
+    if (item) items[question.key] = { m: item.m, box: 1, due: addDays(todayKey(), 1) };
+    // vuelve a aparecer una sola vez, al final de la sesión
+    state.sessionQuestions.push(Object.assign({}, question, { repeat: true, options: shuffleArray(question.options) }));
+  } else {
+    run.firstTry++;
+    run.points += POINTS_REVIEW;
+    state.game.points += POINTS_REVIEW;
+    if (item) {
+      if (item.box >= REVIEW_INTERVALS.length) delete items[question.key];
+      else items[question.key] = { m: item.m, box: item.box + 1, due: addDays(todayKey(), REVIEW_INTERVALS[item.box]) };
+    }
+    if (!state.review.recovered.includes(question.key)) {
+      state.review.recovered.push(question.key);
+      run.recovered++;
+    }
+    saveGame(state.game);
+  }
+  saveReview(state.review);
+}
+
+function startReview() {
+  const due = dueItems().slice(0, REVIEW_SESSION_MAX);
+  if (due.length === 0) return;
+  state.mode = 'review';
+  state.reviewRun = { initial: due.length, firstTry: 0, recovered: 0, points: 0 };
+  state.sessionQuestions = shuffleArray(due).map(entry => ({
+    text: entry.question.text,
+    image: entry.question.image,
+    multi: entry.question.multi,
+    options: shuffleArray(entry.question.options),
+    key: entry.key,
+    materiaNombre: entry.materia.nombre,
+    levelNumber: entry.level.number,
+    repeat: false,
+  }));
+  state.currentQuestionIndex = 0;
+  state.answered = false;
+  state.selectedLetters = [];
+  state.screen = 'question';
+  render({ top: true, focus: 'q' });
+}
+
+function finishReview() {
+  const run = state.reviewRun;
+  state.game.reviews++;
+  const badges = bankCheckpoint(0);
+  state.lastResult = { review: true, total: run.initial, firstTry: run.firstTry, recovered: run.recovered, points: run.points, badges };
+  state.screen = 'result';
+  hideToast();
+  render({ top: true, focus: 'title' });
+}
+
 function checkAnswer() {
   if (state.answered || state.selectedLetters.length === 0) return;
   const question = currentQuestion();
   const ok = isCorrectSelection(question, state.selectedLetters);
-  const firstTime = !state.seen.has(question.origIdx);
-  state.seen.add(question.origIdx);
-  if (ok && firstTime) state.cpFirstTry++;
+  if (state.mode === 'review') {
+    if (!question.repeat) applyReviewAnswer(question, ok);
+  } else {
+    const firstTime = !state.seen.has(question.origIdx);
+    state.seen.add(question.origIdx);
+    if (ok && firstTime) state.cpFirstTry++;
+    if (!ok && firstTime) scheduleFailure(reviewKey(currentMateria().id, question.text), currentMateria().id);
+  }
   state.answered = true;
   feedbackEffects(ok);
   announce(ok ? 'Correcto' : 'Incorrecto');
@@ -1443,7 +1710,20 @@ function checkAnswer() {
   }
 }
 
+// En el repaso un error no reinicia nada: se sigue con la próxima pregunta.
+function goToNextReviewQuestion() {
+  if (state.currentQuestionIndex + 1 < state.sessionQuestions.length) {
+    state.currentQuestionIndex++;
+    state.answered = false;
+    state.selectedLetters = [];
+    render({ top: true, focus: 'q' });
+  } else {
+    finishReview();
+  }
+}
+
 function goToNextQuestion() {
+  if (state.mode === 'review') { goToNextReviewQuestion(); return; }
   const question = currentQuestion();
   const ok = isCorrectSelection(question, state.selectedLetters);
 
@@ -1496,11 +1776,15 @@ function finishLevel(unlockedEarlier) {
 function handleReset(materia) {
   const confirmado = window.confirm(
     `¿Seguro que querés reiniciar tu progreso en "${materia.nombre}"?\n\n` +
-    'Se borran los niveles aprobados, las estrellas y el avance guardado de esa materia. ' +
+    'Se borran los niveles aprobados, las estrellas, el avance guardado y las preguntas pendientes de repaso de esa materia. ' +
     'El progreso de las otras materias no se toca.'
   );
   if (!confirmado) return;
   resetMateriaProgress(materia.id, state.progress);
+  Object.keys(state.review.items).forEach(key => {
+    if (state.review.items[key].m === materia.id) delete state.review.items[key];
+  });
+  saveReview(state.review);
   render();
 }
 
@@ -1555,7 +1839,8 @@ document.addEventListener('click', event => {
     case 'skip-level': handleSkipLevel(currentMateria(), currentMateria().levels[i]); break;
     case 'reset-materia': handleReset(currentMateria()); break;
     case 'exit-level':
-      state.screen = 'levels'; render({ top: true, focus: 'title' }); break;
+      state.screen = state.mode === 'review' ? 'subjects' : 'levels'; render({ top: true, focus: 'title' }); break;
+    case 'start-review': startReview(); break;
     case 'select-opt': selectOption(el.dataset.letter); break;
     case 'check': checkAnswer(); break;
     case 'next': goToNextQuestion(); break;
@@ -1601,6 +1886,7 @@ function init() {
   state.progress = loadProgress();
   state.settings = loadSettings();
   state.game = loadGame();
+  state.review = loadReview();
   state.screen = 'subjects';
   render();
 }
