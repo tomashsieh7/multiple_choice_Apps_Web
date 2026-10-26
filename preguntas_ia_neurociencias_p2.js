@@ -1032,4 +1032,588 @@ b) OpenCV
 d) Matplotlib
 *e) FreeLing
 f) Selenium
+
+## Nivel 4: Fundamentos de LLMs #1
+
+### Tema: Repaso preliminar: softmax
+
+1. ¿Qué hace la función softmax con un vector z ∈ R^k?
+a) Lo reemplaza por un vector con solo la componente máxima
+*b) Lo mapea a una distribución de probabilidades
+c) Lo ordena de menor a mayor
+d) Lo lleva a media 0 y desvío estándar 1
+
+2. ¿Cómo se llaman los componentes del vector z ∈ R^k que softmax mapea a una distribución de probabilidades?
+a) Los embeddings de los tokens
+*b) Los logits
+c) Las keys y values
+d) Queries
+
+3. Si los logits son puntajes crudos asignados a cada palabra de un vocabulario, ¿cómo se calcula con softmax la probabilidad de la palabra i?
+a) Dividiendo su logit por la suma de los logits de todas las palabras que componen el vocabulario completo del modelo
+*b) Elevando e a su logit y dividiendo por la suma de e elevado a cada logit del vocabulario
+c) Restando a su logit la media de los logits y dividiendo por el desvío estándar de todos
+d) Calculando el logaritmo de su logit y dividiéndolo por el logit más grande del vocabulario completo
+
+4. En el ejemplo con Vocab = {gato, perro, loro, pez} y logits 2, 1, 0,5 y −1, ¿qué se cumple luego de aplicar softmax?
+a) Las cuatro palabras reciben la misma probabilidad al normalizar
+b) Perro y loro reciben igual probabilidad por tener logits positivos
+*c) Gato recibe la mayor probabilidad y las cuatro probabilidades suman 1
+d) Pez recibe una probabilidad negativa porque su logit es −1
+
+### Tema: Tokenización: ¿cuál es la unidad básica?
+
+5. ¿Cuáles de las siguientes unidades básicas de tokenización se presentan en la clase con un problema?
+*a) Palabras completas
+b) Fragmentos (subwords)
+*c) Caracteres
+
+6. ¿Qué problema presenta usar palabras completas como unidad básica de tokenización?
+a) Exige construir el vocabulario fusionando los pares de símbolos más frecuentes dentro del corpus
+b) Se pierde totalmente el significado de lo que se lee
+*c) Es poco eficiente, porque no está claro qué hacer con las palabras desconocidas
+d) Divide cada palabra en fragmentos como anti, uber e ización
+
+7. ¿Qué problema presenta usar caracteres como unidad básica de tokenización?
+a) Exige fusionar pares de símbolos frecuentes
+b) Trata cada palabra como un símbolo único
+*c) Se pierde totalmente el significado
+d) Es poco eficiente
+
+8. ¿Cuál de las siguientes unidades básicas de tokenización se aproxima a la morfología?
+a) Caracteres
+*b) Fragmentos (subwords)
+c) Las palabras completas
+
+9. En el ejemplo de la clase, ¿cómo se divide la palabra «antiuberización» en fragmentos?
+a) an · ti · uber · ización
+b) antiuberi · zación
+*c) anti · uber · ización
+d) antiu · beri · zación
+
+10. ¿Para qué se usa BPE (Byte-Pair Encoding)?
+*a) Para construir el vocabulario de fragmentos a partir de frecuencias
+b) Para llevar cada vector a media 0 y desvío estándar 1
+c) Para convertir cada token en su embedding mediante una matriz entrenada
+d) Para asignar probabilidades a cada palabra del vocabulario completo del modelo
+
+11. ¿Con qué vocabulario base empieza BPE, que trabaja con textos en UTF-8?
+a) Con las sílabas más frecuentes que aparecen en el corpus
+b) Con las filas de la matriz E
+*c) Con los 256 valores posibles de un byte
+d) Con todas las palabras distintas que aparecen en el corpus
+
+12. ¿Qué se hace en BPE con los pares de símbolos más frecuentes de un corpus?
+a) Se separan en los bytes individuales del corpus
+b) Se descartan para quedarse con los símbolos más raros
+*c) Se fusionan iterativamente en un nuevo token
+d) Se reemplazan por la palabra completa que los contiene
+
+13. En el ejemplo de BPE de la clase, ¿qué fusión aparece luego de t+h → th?
+a) Fusionar th+t en tht al final del proceso
+b) Fusionar h+e en he
+*c) Fusionar th+e para formar the
+d) Fusionar t+e para formar te
+
+14. ¿Hasta cuándo se repiten las fusiones de BPE?
+a) Hasta que no queden pares de símbolos en el corpus
+*b) Hasta alcanzar el tamaño de vocabulario deseado
+c) Hasta que cada palabra sea un único token
+d) Hasta que la pérdida se estabiliza por completo
+
+### Tema: Embeddings
+
+15. ¿Cómo se obtiene el embedding de un token a partir de su id?
+a) Sumando todas las columnas de la matriz de embeddings entre sí
+b) Aplicando softmax sobre su id y la matriz de embeddings
+*c) Seleccionando su fila correspondiente en la matriz de embeddings
+d) Multiplicando su id por la matriz feedforward
+
+16. En la matriz de embeddings E ∈ R^{|Vocab|×d}, ¿qué representa d?
+*a) La dimensión del embedding
+b) La cantidad de cabezas de atención
+c) La cantidad de tokens ingresados
+d) El tamaño total del vocabulario
+
+17. ¿Cómo se entrena la matriz de embeddings E?
+a) Se fija de antemano y no se modifica durante el entrenamiento
+b) Se entrena aparte, mediante BPE, antes de entrenar el resto de la red
+*c) Junto con el resto de los pesos de la red, punta a punta
+d) Se calcula con el promedio de los vectores de cada token en el corpus
+
+18. ¿Qué información se le suma al token embedding?
+a) La probabilidad que el modelo le asigna a cada token
+b) La distribución de probabilidad sobre todo el vocabulario
+*c) Un vector que codifica el lugar del token en la secuencia
+d) El embedding del token que viene a continuación
+
+19. ¿Cómo se obtiene el embedding de entrada x_i del i-ésimo token?
+a) Restando el positional embedding al token embedding
+b) Multiplicando el token embedding por el positional embedding de la secuencia
+*c) Sumando el token embedding y el positional embedding
+d) Concatenando el token embedding con el positional embedding
+
+### Tema: Atención: intuición central
+
+20. ¿Por qué los embeddings estáticos no codifican bien el significado de las palabras?
+a) Porque cada token se representa con una dimensión d demasiado chica
+b) Porque el vocabulario fijo no incluye palabras desconocidas
+*c) Porque el significado de las palabras depende del contexto
+d) Porque la información posicional se suma al token embedding
+
+21. Al leer una oración de izquierda a derecha, ¿qué vamos haciendo con la interpretación de las palabras?
+a) La reemplazamos por la del token que viene a continuación
+b) La fijamos desde la primera lectura y no la cambiamos más
+c) La descartamos cada vez que aparece un token nuevo en la oración
+*d) La vamos refinando a medida que tenemos más información del contexto
+
+22. ¿Qué es la atención según la clase?
+a) Un mecanismo que lleva cada vector a media 0 y desvío estándar 1 para estabilizar el aprendizaje
+b) Un mecanismo que asigna probabilidad 1 a la próxima palabra y 0 a las demás palabras del vocabulario completo del modelo
+*c) Un mecanismo que pondera y combina representaciones de tokens en el contexto para enriquecer la de un token dado
+d) Un mecanismo que convierte los logits en una distribución de probabilidades sobre todo el vocabulario de palabras
+
+23. En el ejemplo «La grúa llevó el auto al taller», ¿en qué pasa a convertirse «taller» una vez enriquecido con el contexto?
+*a) Un taller mecánico
+b) Un espacio de artesanías
+c) Un curso
+
+### Tema: Atención: primera versión simplificada
+
+24. En la primera versión simplificada de la atención, ¿cómo se calcula a_i?
+a) Como la suma de todos los x_j posteriores a i de la secuencia, cada uno multiplicado por α_ij
+b) Como el producto de todos los x_j de la secuencia, incluidos los posteriores a i
+c) Como el último x_j de la secuencia de entrada, multiplicado por un peso α_ij
+*d) Como la suma de los x_j con j ≤ i, cada uno multiplicado por un peso α_ij
+
+25. En self-attention causal, ¿a qué entradas atiende el modelo al procesar la entrada x_i?
+*a) A todas las entradas hasta x_i, incluyendo a x_i
+b) Solo a la entrada x_i actual
+c) Solo a las anteriores a x_i, sin x_i
+d) A todas las entradas, incluidas las posteriores
+
+26. En la primera versión de la atención, ¿qué métrica de similitud se propone para score(x_i, x_j)?
+*a) El producto escalar x_i · x_j
+b) La resta x_i − x_j
+c) La suma x_i + x_j
+d) El producto de x_i por la matriz W^K
+
+27. ¿Cómo se obtienen los α_ij a partir de los scores en la primera versión?
+*a) Normalizándolos con softmax para todo j ≤ i
+b) Aplicando ReLU a cada score de toda la secuencia
+c) Aplicando LayerNorm a cada score
+d) Dividiendo cada score por la cantidad de tokens N
+
+28. En el ejemplo a_3 = α_31 x_1 + α_32 x_2 + α_33 x_3, ¿qué cumplen los pesos α?
+a) Cada uno es mayor que 1 y su suma es igual a 3
+*b) Cada uno está entre 0 y 1 y su suma es 1
+c) Valen 1 para x_1, x_2 y x_3 por igual en toda la secuencia de entrada
+d) Pueden ser negativos y su suma total es igual a 0 para cualquier secuencia
+
+### Tema: Atención: consultas, claves y valores
+
+29. ¿Qué rol cumple el vector query q_i = x_i W^Q?
+*a) Responde a qué busca x_i
+b) Responde a qué ofrece x_j
+c) Responde a qué información aporta x_j
+d) Indica la posición
+
+30. ¿Qué rol cumple el vector key k_j = x_j W^K?
+a) Responde a qué información aporta x_j si es elegido
+*b) Responde a qué ofrece x_j para ser encontrado
+c) Responde a qué lugar ocupa x_j en la secuencia
+d) Responde a qué busca x_i
+
+31. ¿Qué rol cumple el vector value v_j = x_j W^V?
+a) Responde a qué ofrece x_j para ser encontrado
+b) Responde a qué busca x_i en la secuencia
+*c) Responde a qué información aporta x_j si es elegido
+d) Responde a qué lugar ocupa x_j
+
+32. Con query, key y value, ¿cómo se calcula score(x_i, x_j)?
+a) Con el producto escalar de q_i y k_j, multiplicado por √d_k
+b) Con el producto escalar de q_i y v_j, luego dividido por √d_k
+c) Con el producto de k_i y v_j, dividido por √d_k
+*d) Con el producto escalar de q_i y k_j, dividido por √d_k
+
+33. En la clase, ¿qué rótulos acompañan a la división del score por √d_k y a la matriz W^O, respectivamente?
+a) Reshaping para la división y scaling
+b) Masking para la división y reshaping para la matriz W^O
+*c) Scaling para la división y reshaping para W^O
+d) Scaling para la división y masking para W^O
+
+34. ¿Qué vectores se ponderan con los α_ij para obtener a_i en la versión completa de la atención?
+*a) Los values v_j, antes de multiplicar por W^O
+b) Las queries q_j de la secuencia
+c) Los embeddings x_j originales, como en la primera versión
+d) Las keys k_j de la secuencia
+
+35. ¿Qué forma tienen las matrices W^Q y W^K?
+*a) De forma d × d_k
+b) De forma d_k × d_v
+c) De d_v × d
+d) De forma d × d_v, como W^V
+
+36. ¿Qué forma tiene la matriz W^V?
+a) De forma d × d_k
+*b) De forma d × d_v
+c) De d_v × d
+d) De forma d_k × d_v, igual que W^O
+
+37. ¿Qué forma tiene la matriz W^O?
+a) De d × d_k
+b) De forma d_k × d_v, igual que W^V
+*c) De forma d_v × d
+d) De forma d × d_v
+
+### Tema: Self-attention
+
+38. En la figura de self-attention causal que calcula a_3, el tercer elemento de la secuencia, ¿qué se genera para cada entrada en el primer paso?
+a) Los pesos α mediante softmax
+b) Los scores divididos por √d_k
+*c) Los vectores key, query y value
+d) La salida de self-attention reformada a 1 × d
+
+39. En la figura que calcula a_3 con self-attention causal, ¿qué se compara con las keys de x_1, x_2 y x_3 en el segundo paso?
+a) La salida a_3
+*b) La query de x_3
+c) El embedding del cuarto token x_4
+d) El value de x_3
+
+40. En la figura que calcula a_3 con self-attention causal, ¿qué se hace con el score escalar luego de comparar la query con las keys?
+a) Se lo suma
+*b) Se lo divide por √d_k
+c) Se lo reforma a 1 × d
+d) Se lo multiplica por x_3
+
+41. En la figura que calcula a_3 con self-attention causal, ¿qué se hace con los scores una vez divididos por √d_k?
+a) Se los reforma a 1 × d
+*b) Se los convierte en pesos α_{3,j} mediante softmax
+c) Se los suma directamente entre sí
+d) Se los multiplica por W^O
+
+42. En la figura que calcula a_3 con self-attention causal, ¿qué se hace con cada vector value una vez obtenidos los pesos α?
+*a) Se lo pondera
+b) Se lo divide por √d_k
+c) Se genera
+d) Se lo reforma
+
+43. En la figura que calcula a_3 con self-attention causal, ¿qué se hace con los vectores value ya ponderados?
+a) Se descartan
+*b) Se los suma
+c) Se los compara con keys
+d) Se los pasa por softmax
+
+44. En la figura que calcula a_3 con self-attention causal, ¿a qué dimensión se reformatea el vector sumado para obtener la salida a_3?
+a) Una fila de 1 × |Vocab|
+b) Un vector 1 × d_v
+c) Una fila de 1 × d_k de cada cabeza
+*d) Una fila de 1 × d
+
+### Tema: Multi-head attention
+
+45. ¿Cómo operan las A cabezas de atención de una capa multi-head?
+a) En paralelo, y todas atienden de la misma manera al contexto completo
+b) Solo una está activa por token, elegida con softmax en cada capa
+c) Una detrás de otra, y cada una usa la salida de la anterior
+*d) En paralelo, y cada una atiende de manera distinta al contexto
+
+46. ¿Qué tiene cada cabeza de atención en multi-head attention?
+a) Su propia matriz de embeddings de entrada
+b) Su propia matriz W^O de proyección final
+c) Sus propios parámetros γ y β de normalización por cada capa
+*d) Sus propias matrices de pesos de query, key y value
+
+47. ¿Qué se hace con las salidas de las cabezas de atención para obtener a_i?
+*a) Se concatenan y se proyectan con W^O
+b) Se suman elemento a elemento y se enmascaran
+c) Se eligen por softmax y se reformatean
+d) Se promedian y se normalizan
+
+48. Si d_v = d/A, ¿qué forma tiene la matriz W^O en multi-head attention?
+a) Rectangular, de forma d × A
+b) Rectangular, de A × d_v
+c) Un solo vector
+*d) Cuadrada, de d × d
+
+### Tema: Transformer Block
+
+49. ¿Cuáles de los siguientes componentes combina cada bloque Transformer según la clase?
+*a) Layer Norm
+b) Language Model Head
+*c) Multi-head attention
+d) Pérdida de entropía cruzada
+*e) Feed forward
+*f) Conexiones residuales
+
+50. ¿Qué se hace con los bloques Transformer en el modelo?
+a) Se reemplazan por uno
+*b) Se apilan unos sobre otros
+c) Se reducen a uno solo con pesos compartidos
+d) Se aplican en paralelo y se concatenan
+
+51. En la versión del bloque Transformer que usa la clase (prenorm), ¿dónde ocurren las layer norms?
+*a) Antes de las capas de atención y de feedforward
+b) Después de las capas de atención y de feedforward de cada bloque
+c) Solo después de la última capa de feedforward
+d) Solo antes de la primera capa de atención
+
+52. Según la figura del bloque Transformer, ¿qué módulo es el único sensible a la información de otras posiciones previas de tokens?
+a) Feedforward
+b) La layer norm
+*c) La atención
+d) La conexión residual
+
+### Tema: Transformer Block: Layer Norm y Feedforward
+
+53. ¿A qué valores lleva LayerNorm las componentes del vector x?
+a) A media 1 y desvío estándar igual a √d_k
+b) A media 0 y desvío estándar igual a d
+*c) A media 0 y desvío estándar 1
+d) A media 1 y desvío estándar de 0
+
+54. ¿Cómo se aplica la normalización de LayerNorm?
+a) Sobre todos los vectores a la vez
+b) Solo sobre el último vector, para estabilizar el aprendizaje
+c) Sobre cada matriz de pesos, para estabilizar el aprendizaje
+*d) De forma independiente para cada vector, para estabilizar el aprendizaje
+
+55. ¿Qué son γ y β en LayerNorm?
+a) Constantes fijas que se eligen de antemano en cada capa
+b) La media y el desvío estándar de las componentes de x
+c) Las matrices de pesos del feedforward de cada bloque Transformer
+*d) Vectores de parámetros que se aprenden, uno por capa
+
+56. ¿Qué es el feedforward de un bloque Transformer?
+a) Una red fully-connected de 1 sola capa, sin ninguna capa oculta
+b) Una red recurrente que procesa los tokens de a uno, en orden
+*c) Una red fully-connected de 2 capas, con una capa oculta de dimensión d_ff
+d) Una capa de atención con A cabezas que trabajan en paralelo
+
+57. En Feedforward(x) = W_2 · ReLU(W_1 · x + b_1) + b_2, ¿qué función de activación se aplica entre las dos capas?
+a) La función de softmax
+b) Una capa LayerNorm
+*c) La función ReLU
+d) La máscara
+
+58. Si la atención mezcla información contextual entre tokens, ¿qué hace la feedforward según la intuición de la clase?
+a) Normaliza cada vector a media 0 y desvío estándar 1
+b) Convierte los logits en probabilidades sobre el vocabulario
+*c) Almacena o codifica conocimiento sobre los tokens
+d) También mezcla información contextual entre tokens
+
+59. ¿Cómo interactúan la atención y la feedforward con el residual stream?
+a) Lo normalizan a media 0 y desvío estándar 1 en cada bloque
+b) Lo reemplazan por completo con su propia salida en cada bloque del modelo
+c) Lo recorren una sola vez, al final de todos los bloques del modelo
+*d) Le agregan (suman) información, y cada componente lee de él y escribe sobre él
+
+### Tema: Forma matricial
+
+60. En la forma matricial, ¿qué representa X ∈ R^{N×d}?
+a) Los embeddings de los d tokens del vocabulario completo
+b) Los logits de los N tokens siguientes de la secuencia
+c) Los pesos de las N cabezas de atención de la capa multi-head
+*d) Los embeddings de los N tokens de la secuencia de entrada
+
+61. En la forma matricial, ¿cómo se obtienen Q, K y V?
+*a) Multiplicando X por W^Q, W^K y W^V, respectivamente
+b) Multiplicando X por W^O siempre
+c) Aplicando softmax sobre X siempre
+d) Multiplicando X por sí misma y por su transpuesta
+
+62. En la forma matricial de la atención, ¿qué se aplica sobre QK^T/√d_k antes del softmax?
+*a) La máscara
+b) LayerNorm
+c) La matriz W^O
+d) ReLU
+
+63. En la forma matricial, ¿cómo se calcula head?
+a) Con el softmax de la máscara aplicada a QK^T/√d_k, multiplicado luego por la matriz Q
+*b) Con el softmax de la máscara aplicada a QK^T/√d_k, multiplicado por la matriz V
+c) Con el softmax de la máscara aplicada a QK^T/√d_k, multiplicado por K
+d) Con el softmax de la máscara aplicada a QK^T/√d_k, multiplicado por W^Q
+
+64. En la forma matricial, ¿cómo se obtiene A a partir de head?
+a) Aplicando LayerNorm a head
+*b) Multiplicando head por W^O
+c) Multiplicando head por la transpuesta E^T
+d) Sumando X
+
+### Tema: Máscara causal
+
+65. ¿Qué oculta la máscara causal?
+*a) La información futura
+b) La información de las keys anteriores
+c) La información de la query
+d) Los logits
+
+66. ¿Qué valor pone la máscara causal en las posiciones j > i?
+a) El mismo valor S_ij
+b) 0
+c) El valor 1
+*d) El valor −∞
+
+67. En la definición de mask(S)_ij, ¿qué valor conserva la máscara cuando j ≤ i?
+a) 0
+b) El valor −∞
+c) El valor 1 siempre
+*d) El valor S_ij
+
+68. ¿Qué probabilidad le asigna el softmax a las posiciones con −∞?
+a) La misma que las demás
+b) Una probabilidad negativa
+c) Máxima
+*d) Probabilidad 0
+
+69. ¿Qué ocurre con la suma de cada fila de pesos de atención luego de aplicar la máscara?
+a) Suma 0
+*b) Sigue sumando 1
+c) Pasa a ser menor que 1
+d) Pasa a valer −∞
+
+### Tema: Language Model Head
+
+70. Para estimar P(tres | No hay dos sin), ¿qué vector se usa para predecir w_5?
+a) h^L_5
+b) El vector h^1_4
+c) El vector h^L_1 inicial
+*d) El vector h^L_4
+
+71. ¿Qué información codifica h^L_N?
+a) La posición del token N en la secuencia
+b) La distribución sobre el vocabulario
+c) La pérdida de entropía cruzada del token N
+*d) Información contextual útil para predecir w_{N+1}
+
+72. ¿Qué convierte la LM Head a h^L_N?
+a) En el embedding del token que viene luego en la secuencia
+*b) En una distribución de probabilidad sobre las |Vocab| palabras
+c) En los pesos de atención de la secuencia
+d) En la matriz de embeddings E del modelo
+
+73. ¿Cómo se obtienen los logits u en la LM Head?
+a) Aplicando softmax
+b) Multiplicando h^L_N por la matriz W^O
+c) Multiplicando h^L_N por E
+*d) Multiplicando h^L_N por E^T
+
+74. En la figura de la LM Head, ¿qué relación hay entre la unembedding layer U y la matriz de embeddings E?
+a) U se entrena aparte, sin ninguna relación con la matriz E
+b) U es la inversa de la matriz de embeddings E original
+c) U es igual a la matriz de embeddings E original
+*d) U es la transpuesta de E (U = E^T)
+
+75. En la figura de la LM Head, ¿en qué orden se transforma h^L_N hasta obtener las probabilidades de las palabras?
+a) Logits → unembedding layer → softmax → probabilidades
+b) Softmax → logits → unembedding layer
+c) Unembedding layer → softmax
+*d) Unembedding layer → logits → softmax
+
+76. Una vez obtenida la distribución y = softmax(u), ¿qué se hace?
+a) Se aplica antes una máscara causal sobre y
+b) Se suma y al residual stream de la última capa del modelo
+c) Se multiplica y por la matriz W^O de salida
+*d) Se muestrea el siguiente token w_{N+1} a partir de y
+
+77. ¿Hacia qué empuja el entrenamiento a h^L_n?
+a) A tener norma igual a cero en cada capa del modelo
+*b) A parecerse al embedding del token que viene a continuación
+c) A tener media 0 y desvío estándar 1 en cada capa
+d) A parecerse al embedding del token que vino justo antes que él
+
+78. En la decodificación en inferencia, ¿qué token elige el método greedy?
+*a) El token más probable
+b) Un token al azar del vocabulario
+c) Al azar entre los k más probables
+d) El menos probable
+
+79. En la decodificación en inferencia, ¿cómo elige el token el método Random / Top-k random?
+*a) Al azar sobre los k más probables, según la distribución del softmax
+b) Toma el token que ocupa la posición k del vocabulario
+c) Siempre toma el token más probable según el softmax
+d) Al azar sobre todo el vocabulario, con igual probabilidad
+
+80. ¿Cómo se calcula y al usar una temperatura τ?
+*a) y = softmax(u / τ)
+b) y = u / τ
+c) y = softmax(τ)
+d) y = softmax(u) multiplicado por τ
+
+81. Con una temperatura τ < 1, ¿hacia qué tiende la distribución y?
+a) Queda igual
+*b) Hacia la decodificación greedy
+c) Hacia probabilidad 0 para cada token
+d) Hacia la decodificación al azar
+
+82. Con una temperatura τ > 1, ¿hacia qué tiende la distribución y?
+*a) Hacia la decodificación al azar
+b) Hacia la decodificación greedy
+c) Queda idéntica a softmax(u)
+d) Hacia probabilidad 1 para el token más probable
+
+83. ¿Cuáles de los siguientes métodos de decodificación en inferencia figuran en la clase?
+*a) Greedy
+b) Teacher forcing
+*c) Random / Top-k random
+d) Máscara causal
+*e) Temperatura
+
+### Tema: Transformer LLM
+
+84. Según el pie de la figura del Transformer LLM, ¿qué tipo de modelo de lenguaje es?
+a) Encoder-only
+*b) Un modelo decoder-only
+c) Un modelo de tipo encoder-decoder
+d) Una red recurrente
+
+85. Según la figura del Transformer LLM, ¿qué hace el modelo con el token de entrada w_i?
+a) Lo mapea a un token anterior w_{i−1} con un bloque
+b) Lo reemplaza por su embedding sin pasar por bloques
+c) Lo clasifica en una categoría gramatical mediante la LM Head
+*d) Lo mapea, apilando bloques Transformer, a un token siguiente predicho w_{i+1}
+
+86. En la figura del Transformer LLM, ¿qué aparece luego de la capa L y antes de la LM Head?
+*a) Una layer norm extra
+b) Una capa de embeddings adicional
+c) Una máscara causal extra
+d) Otra capa feedforward
+
+### Tema: Entrenamiento: pérdida de entropía cruzada
+
+87. En la pérdida de entropía cruzada, ¿qué vale y[w]?
+*a) 1 para la próxima palabra w_{N+1} y 0 para las demás
+b) 0 para la próxima palabra w_{N+1} y 1 para las demás palabras
+c) 1 para todas las palabras del vocabulario completo
+d) La probabilidad que el modelo le asigna a w
+
+88. ¿A qué se reduce L_CE(ŷ, y) cuando y vale 1 solo para la próxima palabra w_{N+1}?
+a) A −log de la probabilidad asignada a la palabra más probable
+b) A la suma de los logaritmos de todas las probabilidades de la distribución ŷ completa
+c) Al logaritmo de la probabilidad más alta que predice el modelo
+*d) A −log ŷ[w_{N+1}], el logaritmo negativo de la probabilidad asignada a la palabra correcta
+
+89. Si el modelo recibe «no hay dos sin», ¿cómo es la pérdida cuando le asigna probabilidad 0,9 a «tres» y cuando le asigna 0,1?
+a) Baja en ambos casos
+b) Alta con 0,9 y muy baja con 0,1
+*c) Baja con 0,9 y alta con 0,1
+d) Alta en ambos casos
+
+90. ¿Qué recibe como entrada el modelo durante el entrenamiento con teacher forcing?
+a) Los N tokens, pero con el último ocultado
+*b) La secuencia correcta completa de N tokens
+c) Solo el primer token
+d) La secuencia que el propio modelo fue generando
+
+91. ¿Qué se produce en una sola pasada con teacher forcing?
+a) N pares y un único gradiente
+*b) N pares (predicción, token correcto) y N gradientes
+c) Un único par (predicción, token correcto) y N gradientes
+d) Un único par (predicción, token correcto) y un único gradiente
+
+92. ¿Cómo se define la pérdida completa en el entrenamiento?
+a) Como la cross-entropy del último token de la secuencia de entrada completa
+b) Como el máximo de la cross-entropy entre todas las N posiciones del modelo
+c) Como la suma de todas las probabilidades que el modelo asigna a los N tokens dados
+*d) Como el promedio sobre las N posiciones de la cross-entropy entre predicción y token correcto
 `;

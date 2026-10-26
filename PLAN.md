@@ -8,6 +8,7 @@
 - **Agregar materias/niveles reales adicionales** a medida que el usuario curse nuevas clases, siguiendo el patrón ya documentado en el README.
 
 ### Completadas
+- 2026-10-26 — «IA y Neuro p. 2»: Nivel 4 «Fundamentos de LLMs #1» (9 temas, 92 preguntas, sin imágenes nuevas)
 - 2026-10-21 — Rediseño C, fase 3: Repaso del día (calendario de 1, 3, 7 y 14 días) y las insignias «Cinco repasos» y «25 recuperadas»; con esto el rediseño C queda terminado
 - 2026-10-21 — Imagen del árbol de parsing (`iap2-nivel3-arbol-parsing.png`) reemplazada por la versión completa, con la raíz visible
 - 2026-10-21 — Rediseño C, fase 2: puntos, meta semanal (2 a 5 días) y cuatro insignias, con datos globales en `quizAppGame_v1`
@@ -24,6 +25,12 @@
 - 2026-09-05 — Checkpoints agrupados por tema (`### Tema:`) en vez de por tamaño parejo
 
 ## Bitácora de decisiones
+
+### 2026-10-26 — «IA y Neuro p. 2»: se suma el Nivel 4 reemplazando el archivo de la materia
+**Contexto:** el usuario subió una versión de `preguntas_ia_neurociencias_p2.js` con un Nivel 4 nuevo («Fundamentos de LLMs #1», 9 temas, 92 preguntas, 3 de selección múltiple) y los tres primeros niveles idénticos a los publicados.
+**Decisión:** se reemplazó el archivo tal cual. Como el avance guardado se compara por la huella de cada nivel, el progreso de los niveles 1 a 3 se conserva (se comprobó que las tres huellas no cambian) y el Nivel 4 aparece sin aprobar.
+**Alternativas descartadas:** ninguna; es solo contenido nuevo, sin cambios de código.
+**Revisión post-implementación:** salió tal cual lo planeado. Carga sin errores de formato, los 92 ítems se parsean y el nivel arranca en celular y escritorio.
 
 ### 2026-10-21 — Rediseño C en tres fases, con tres cambios en la estructura de los niveles
 **Contexto:** el usuario eligió la dirección C entre tres propuestas, pidió sumarle componentes lúdicos y preguntó si la estructura de los niveles se podía mejorar. Con los números reales (22 niveles, 221 checkpoints) se vio que: la posición dentro de un nivel nunca se guardaba (cinco niveles pasan de 64 preguntas, hasta 78); los checkpoints van de 1 a 19 preguntas (59 tienen una o dos y 16 tienen diez o más); y el candado entre niveles no protege nada porque «Saltar nivel» funciona incluso en niveles bloqueados.
