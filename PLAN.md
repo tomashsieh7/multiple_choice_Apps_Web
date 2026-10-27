@@ -8,6 +8,7 @@
 - **Agregar materias/niveles reales adicionales** a medida que el usuario curse nuevas clases, siguiendo el patrón ya documentado en el README.
 
 ### Completadas
+- 2026-10-27 — «IA y Neuro p. 2» reorganizada en 9 niveles (333 preguntas) con 30 imágenes nuevas
 - 2026-10-26 — «IA y Neuro p. 2»: Nivel 4 «Fundamentos de LLMs #1» (9 temas, 92 preguntas, sin imágenes nuevas)
 - 2026-10-21 — Rediseño C, fase 3: Repaso del día (calendario de 1, 3, 7 y 14 días) y las insignias «Cinco repasos» y «25 recuperadas»; con esto el rediseño C queda terminado
 - 2026-10-21 — Imagen del árbol de parsing (`iap2-nivel3-arbol-parsing.png`) reemplazada por la versión completa, con la raíz visible
@@ -25,6 +26,12 @@
 - 2026-09-05 — Checkpoints agrupados por tema (`### Tema:`) en vez de por tamaño parejo
 
 ## Bitácora de decisiones
+
+### 2026-10-27 — «IA y Neuro p. 2»: reorganización en 9 niveles y 30 imágenes nuevas
+**Contexto:** el usuario subió una versión actualizada de `preguntas_ia_neurociencias_p2.js` y un zip de imágenes. El Nivel 3 viejo se parte en los niveles 3 y 4, el Nivel 4 en los niveles 5 a 9, y muchas preguntas de los niveles 1 a 3 pasan a apoyarse en una imagen en lugar de repetir el enunciado.
+**Decisión:** se reemplazó el archivo y se sumaron las 30 imágenes citadas (las existentes no cambiaron). El avance guardado se indexa por número de nivel, así que un nivel aprobado antes sigue marcado con su número, y el avance a mitad de nivel y las preguntas de la cola de repaso con texto reformulado se descartan por su huella. Se le recomendó al usuario reiniciar el progreso de la materia.
+**Alternativas descartadas:** migrar el avance guardado entre la numeración vieja y la nueva (no hay forma fiable de saber qué parte del nivel viejo corresponde a cada nivel nuevo, y es solo contenido).
+**Revisión post-implementación:** salió tal cual lo planeado. Los 9 niveles se leen sin errores, las 39 imágenes distintas cargan y la pregunta con imagen se ve bien en celular y escritorio.
 
 ### 2026-10-26 — «IA y Neuro p. 2»: se suma el Nivel 4 reemplazando el archivo de la materia
 **Contexto:** el usuario subió una versión de `preguntas_ia_neurociencias_p2.js` con un Nivel 4 nuevo («Fundamentos de LLMs #1», 9 temas, 92 preguntas, 3 de selección múltiple) y los tres primeros niveles idénticos a los publicados.

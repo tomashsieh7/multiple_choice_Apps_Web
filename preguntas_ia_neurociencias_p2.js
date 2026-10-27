@@ -120,13 +120,15 @@ b) Las rutas pedidas, como /admin o /login
 *c) Las direcciones IP, como 203.0.113.66
 d) Las fechas, como 07/Oct/2026
 
-19. En la versión de Python del ejemplo, ¿qué rol cumplen re.findall(patron, linea) y Counter(ips).most_common(), respectivamente?
+19. En el código de Python de la imagen, ¿qué rol cumplen re.findall(patron, linea) y Counter(ips).most_common(), respectivamente?
+![Programa en Python que lee access.log, extrae coincidencias de un patrón con re.findall y cuenta repeticiones con Counter](imagenes/iap2-nivel1-python-ips.png)
 a) Reemplazar las coincidencias del patrón y eliminar las IPs repetidas del resultado
 b) Validar que la línea cumpla el patrón y ordenar las IPs alfabéticamente
 c) Contar las líneas del archivo y filtrar las IPs que se repiten en él
 *d) Extraer todas las coincidencias del patrón y listarlas de mayor a menor frecuencia
 
-20. En la versión SQL del ejemplo, ¿qué logran en conjunto regexp_matches con el patrón, GROUP BY m[1], count(*) y ORDER BY n DESC?
+20. En la consulta SQL de la imagen, ¿qué logran en conjunto regexp_matches con el patrón, GROUP BY m[1], count(*) y ORDER BY n DESC?
+![Consulta SQL con count(*), regexp_matches sobre la tabla logs, GROUP BY m[1] y ORDER BY n DESC](imagenes/iap2-nivel1-sql-ips.png)
 a) Reemplazan cada IP por su cantidad y luego ordenan todas las líneas de forma alfabética
 b) Agrupan las líneas por fecha y devuelven solamente la primera IP de cada grupo
 *c) Extraen las IPs, cuentan cuántas veces aparece cada una y las ordenan de más a menos frecuente
@@ -182,19 +184,22 @@ b) Las cadenas de terminales derivables desde cualquier variable de G
 c) Todas las cadenas de T* aunque no se puedan derivar desde S
 *d) Las cadenas formadas solo por terminales que se pueden derivar desde S
 
-29. ¿Qué lenguaje genera la gramática regular con producciones S → 0A, A → 1B, A → ε y B → 0A?
+29. ¿Qué lenguaje genera la gramática regular de la imagen?
+![Cuatro producciones: S → 0A, A → 1B, A → ε y B → 0A](imagenes/iap2-nivel1-gramatica-0a.png)
 *a) El lenguaje 0(10)*, con un 0 inicial
 b) El lenguaje 0(1+0)*, un 0 seguido de ceros y unos
 c) El lenguaje (01)*, sin ningún 0 inicial
 d) El lenguaje 0(01)*, con un 0 inicial
 
-30. En la gramática con producciones S → 0A, A → 1B, A → ε y B → 0A, ¿cuál es una derivación válida de la cadena 010?
+30. En la gramática de la imagen, ¿cuál es una derivación válida de la cadena 010?
+![Cuatro producciones: S → 0A, A → 1B, A → ε y B → 0A](imagenes/iap2-nivel1-gramatica-0a.png)
 a) S ⇒ 0A ⇒ 01B ⇒ 010
 *b) S ⇒ 0A ⇒ 01B ⇒ 010A ⇒ 010
 c) S ⇒ 0A ⇒ 01B ⇒ 010B ⇒ 010A ⇒ 010
 d) S ⇒ 0A ⇒ 1B ⇒ 10A ⇒ 010
 
-31. En la gramática con producciones S → 0A, A → 1B, A → ε y B → 0A, ¿por qué la cadena 01 no pertenece al lenguaje generado?
+31. En la gramática de la imagen, ¿por qué la cadena 01 no pertenece al lenguaje generado?
+![Cuatro producciones: S → 0A, A → 1B, A → ε y B → 0A](imagenes/iap2-nivel1-gramatica-0a.png)
 a) Porque S solo puede reemplazarse por 0A y eso impide generar cadenas de longitud par
 *b) Porque tras generar 01 queda la variable B, que no se puede eliminar sin otro 0
 c) Porque la producción A → ε obliga a que toda cadena termine en 0 antes del 1
@@ -206,7 +211,8 @@ a) Genera un lenguaje libre de contexto que en general no es regular
 c) Solo puede generar lenguajes finitos, porque w tiene una longitud fija
 d) No puede generar un lenguaje regular salvo que w tenga un único símbolo
 
-33. ¿Qué lenguaje genera la gramática regular con producciones S → 0A, A → 10A y A → ε?
+33. ¿Qué lenguaje genera la gramática regular de la imagen?
+![Tres producciones: S → 0A, A → 10A y A → ε](imagenes/iap2-nivel1-gramatica-10a.png)
 *a) El lenguaje 0(10)*, con un 0 inicial
 b) El lenguaje (0+10)*, con cualquier cantidad de bloques
 c) El lenguaje 0(1+0)*, con cualquier mezcla de 1 y 0
@@ -298,7 +304,8 @@ a) S → ab dos veces y después S → aSb una vez, en ese orden
 c) S → aSb tres veces seguidas, una por cada par a-b
 d) S → ab tres veces seguidas, una por cada par a-b
 
-8. Sea la gramática S → aSa | T, T → bTb | W, W → cWc | c. ¿Cuáles de las siguientes cadenas pertenecen a su lenguaje?
+8. ¿Cuáles de las siguientes cadenas pertenecen al lenguaje de la gramática de la imagen?
+![Producciones S → aSa | T, T → bTb | W y W → cWc | c](imagenes/iap2-nivel2-glc-ejercicio.png)
 *a) c
 b) abccba
 *c) aabcbaa
@@ -306,25 +313,29 @@ d) abcab
 *e) ccc
 f) ε
 
-9. En la gramática de expresiones con las producciones <expresión> → <expresión> + <expresión>, <expresión> → <expresión> * <expresión>, <expresión> → (<expresión>) y <expresión> → id, ¿qué producción hay que aplicar primero para derivar (id + id) * id?
+9. En la gramática de expresiones de la imagen, ¿qué producción hay que aplicar primero para derivar (id + id) * id?
+![Cuatro producciones de una gramática de expresiones con suma, producto, paréntesis e id](imagenes/iap2-nivel2-glc-expresiones.png)
 a) <expresión> → <expresión> + <expresión>
 *b) <expresión> → <expresión> * <expresión>
 c) <expresión> → id
 d) <expresión> → (<expresión>)
 
-10. En esa gramática de expresiones, ¿qué producción permite generar subexpresiones entre paréntesis, como (id + id)?
+10. En la gramática de expresiones de la imagen, ¿qué producción permite generar subexpresiones entre paréntesis, como (id + id)?
+![Cuatro producciones de una gramática de expresiones con suma, producto, paréntesis e id](imagenes/iap2-nivel2-glc-expresiones.png)
 *a) <expresión> → (<expresión>)
 b) <expresión> → <expresión> + <expresión>
 c) <expresión> → id
 d) <expresión> → <expresión> * <expresión>
 
-11. En esa gramática de expresiones, ¿qué producción cierra una rama de la derivación, generando un terminal y sin dejar variables?
+11. En la gramática de expresiones de la imagen, ¿qué producción cierra una rama de la derivación, generando un terminal y sin dejar variables?
+![Cuatro producciones de una gramática de expresiones con suma, producto, paréntesis e id](imagenes/iap2-nivel2-glc-expresiones.png)
 *a) <expresión> → id
 b) <expresión> → (<expresión>)
 c) <expresión> → <expresión> + <expresión>
 d) <expresión> → <expresión> * <expresión>
 
-12. En esa gramática de expresiones, ¿qué producción interviene para derivar una suma como id + id?
+12. En la gramática de expresiones de la imagen, ¿qué producción interviene para derivar una suma como id + id?
+![Cuatro producciones de una gramática de expresiones con suma, producto, paréntesis e id](imagenes/iap2-nivel2-glc-expresiones.png)
 a) <expresión> → (<expresión>)
 *b) <expresión> → <expresión> + <expresión>
 c) <expresión> → id
@@ -419,7 +430,8 @@ a) Porque en sus oraciones no puede repetirse ninguna palabra más de una vez
 c) Porque tienen más símbolos de los que puede contener cualquier alfabeto finito de caracteres posibles
 d) Porque sus palabras son demasiado largas para describirse con una ER
 
-26. Las oraciones como «El gato [que el perro [que Juan adoptó] persiguió] escapó» tienen una estructura de subordinadas anidadas. ¿Qué forma general responde a ese patrón?
+26. Las oraciones de la imagen tienen una estructura de subordinadas anidadas. ¿Qué forma general responde a ese patrón?
+![Dos oraciones en español con subordinadas anidadas marcadas con corchetes de colores](imagenes/iap2-nivel2-oraciones-anidadas.png)
 a) a1 b1 a2 b2 a3 b3, con cada dependencia contigua a su par
 b) a1 a2 a3 b1 b2 b3, con dependencias cruzadas entre los símbolos de cada par
 *c) a1 a2 a3 b3 b2 b1, con dependencias anidadas parecidas a un palíndromo
@@ -480,7 +492,8 @@ b) Todas son iguales entre sí, para que ninguna regla tenga ventaja
 c) Cada una es menor que 0,5, para que ninguna regla domine las demás
 *d) Suman 1 entre todas las producciones que expanden a la variable A
 
-35. En la GLCP de juguete, Sustantivo → sapo [0,4], Sustantivo → piel [0,3] y Sustantivo → pelo [0,1] son algunas producciones de Sustantivo. ¿Qué se puede concluir?
+35. En la GLCP de juguete de la imagen, ¿qué se puede concluir sobre las producciones de Sustantivo que aparecen con sus probabilidades?
+![Producciones de Oración y de Sustantivo con probabilidades entre corchetes](imagenes/iap2-nivel2-glcp-sustantivos.png)
 a) La palabra sapo es siempre el sustantivo más frecuente en cualquier oración dada
 *b) Existen otras producciones de Sustantivo cuyas probabilidades suman lo que falta para completar 1
 c) La probabilidad de que una oración cualquiera contenga algún sustantivo es 0,8
@@ -510,7 +523,7 @@ b) Minimizar la cantidad de variables de una gramática sin cambiar el lenguaje 
 c) Convertir una expresión regular en una gramática regular equivalente a ella
 d) Demostrar que un lenguaje no es regular encontrando una variable que se repite
 
-## Nivel 3: Modelado computacional del lenguaje
+## Nivel 3: Modelado computacional del lenguaje (parte 1)
 
 ### Tema: Tareas y aplicaciones del Procesamiento del Lenguaje Natural
 
@@ -596,13 +609,15 @@ d) Porque las GLCP aprenden sus propias reglas mediante redes neuronales recurre
 
 ### Tema: Tokenización
 
-12. ¿Cuántas palabras tiene la oración «El Dr. Gómez cobró $1.250,00 el 09/12 por el análisis de ADN.»?
+12. ¿Cuántas palabras tiene la oración de la imagen?
+![Oración «El Dr. Gómez cobró $1.250,00 el 09/12 por el análisis de ADN.»](imagenes/iap2-nivel3-oracion-tokenizar.png)
 a) Las mismas en cualquier tokenizador, porque la definición de palabra es única y universal
 b) Exactamente las que resultan de separar el texto por los espacios en blanco
 c) Exactamente una por cada secuencia de letras, ignorando por completo los números y los símbolos
 *d) Depende de cómo se tokenice la abreviatura, el monto, la fecha y la sigla
 
-13. ¿Cuáles de los elementos de la oración «El Dr. Gómez cobró $1.250,00 el 09/12 por el análisis de ADN.» son casos problemáticos para tokenizar?
+13. ¿Cuáles de los elementos de la oración de la imagen son casos problemáticos para tokenizar?
+![Oración «El Dr. Gómez cobró $1.250,00 el 09/12 por el análisis de ADN.»](imagenes/iap2-nivel3-oracion-tokenizar.png)
 *a) Dr.
 b) cobró
 *c) $1.250,00
@@ -714,7 +729,8 @@ b) Que tengan la misma cantidad de sílabas y la misma terminación
 c) Que aparezcan con la misma frecuencia dentro de un corpus de gran tamaño
 d) Que provengan de la misma raíz y compartan un mismo significado
 
-29. ¿En qué consiste el POS tagging?
+29. ¿En qué consiste el POS tagging que se ilustra en la imagen?
+![Oración «El informe dice que no hay evidencia» con una clase de palabra escrita debajo de cada palabra](imagenes/iap2-nivel3-pos-etiquetas.png)
 a) En reducir cada palabra a su raíz cortando el final de la palabra
 *b) En asignar a cada palabra una etiqueta que indica su clase gramatical
 c) En identificar y clasificar menciones a entidades del mundo real
@@ -742,7 +758,8 @@ b) Que esas palabras deben eliminarse del vocabulario antes de etiquetar el text
 c) Que el etiquetador debe asignarles todas las clases posibles a la vez
 d) Que esas palabras pertenecen siempre a la clase más frecuente del corpus de entrenamiento
 
-33. En «La compra se concretó», «la» es un artículo y «compra» un sustantivo, pero en «La compra con crédito», «la» es un pronombre y «compra» un verbo. ¿Qué ilustran estos ejemplos?
+33. ¿Qué ilustran los ejemplos de la imagen sobre las clases que reciben «la» y «compra»?
+![Dos oraciones con «la compra» y las clases de palabra asignadas a «la» y a «compra» en cada una](imagenes/iap2-nivel3-la-compra.png)
 a) Que el POS tagging se resuelve con un diccionario que asigna una clase por palabra
 b) Que los pronombres aparecen siempre antes de un verbo en todas las oraciones del idioma español
 c) Que las palabras cambian de significado al flexionarse con distintos sufijos y desinencias
@@ -814,28 +831,33 @@ c) Textos periodísticos formales
 *e) Las variantes dialectales
 f) Oraciones simples y frecuentes
 
+## Nivel 4: Modelado computacional del lenguaje (parte 2)
+
 ### Tema: Análisis sintáctico
 
-44. En el análisis sintáctico de «El informe dice que no hay evidencia», las reglas se aplican sobre etiquetas como DT, NN y VB. ¿Qué representan esas etiquetas?
+1. En el análisis sintáctico de la imagen, ¿qué representan las etiquetas rojas que acompañan a cada palabra de la oración?
+![Reglas de gramática a la izquierda y la oración «El informe dice que no hay evidencia» con etiquetas rojas sobre cada palabra](imagenes/iap2-nivel4-reglas-etiquetas.png)
 *a) La clase de palabra de cada palabra
 b) Las entidades nombradas que aparecen en la oración
 c) La forma de diccionario de cada palabra
 d) Los constituyentes del árbol
 
-45. Con las reglas NP → DT NP y NP → NN, ¿cómo se analiza «El informe» una vez etiquetado como DT NN?
+2. Con las reglas de la imagen, ¿cómo se analiza «El informe» una vez etiquetado como DT NN?
+![Reglas de gramática a la izquierda y la oración «El informe dice que no hay evidencia» con etiquetas rojas sobre cada palabra](imagenes/iap2-nivel4-reglas-etiquetas.png)
 a) «El» forma un NP con DT y luego «informe» se agrega a ese NP como un VP
 b) «El informe» forma un solo PP, porque contiene un determinante seguido de un sustantivo común
 *c) «informe» forma un NP con NN y luego «El» y ese NP forman otro NP con DT NP
 d) «informe» forma un NP con NN y «El» forma otro NP sin ninguna relación entre ambos dentro del árbol
 
-46. La figura muestra el parsing completo de «El informe dice que no hay evidencia». ¿Qué ofrece un parsing completo que no ofrece un chunking?
+3. La figura muestra el parsing completo de «El informe dice que no hay evidencia». ¿Qué ofrece un parsing completo que no ofrece un chunking?
 ![Árbol de parsing completo de la oración El informe dice que no hay evidencia, con la raíz S, los constituyentes NP, VP y PP, y las reglas de la gramática a la izquierda](imagenes/iap2-nivel3-arbol-parsing.png)
 *a) Un árbol que relaciona todos los constituyentes hasta llegar al símbolo inicial S
 b) Una lista de las entidades nombradas que aparecen en toda la oración
 c) La forma de diccionario de cada palabra, que el chunking no calcula
 d) Etiquetas de clase de palabra para cada palabra, que el chunking no llega a asignar
 
-47. ¿Por qué a veces se usa shallow parsing o chunking en lugar de un parsing completo?
+4. La imagen muestra un chunking de la oración. ¿Por qué a veces se usa shallow parsing o chunking en lugar de un parsing completo?
+![Fragmentos de árbol NP y VP sobre la oración etiquetada «El informe dice que no hay evidencia», sin raíz S](imagenes/iap2-nivel4-chunking.png)
 a) Porque el parsing completo no admite oraciones con varios verbos
 b) Porque el chunking devuelve el árbol completo con menos etiquetas
 c) Porque el parsing completo requiere gramáticas regulares limitadas
@@ -843,25 +865,25 @@ c) Porque el parsing completo requiere gramáticas regulares limitadas
 
 ### Tema: Modelos de lenguaje
 
-48. ¿Qué provee un modelo de lenguaje?
+5. ¿Qué provee un modelo de lenguaje?
 *a) Una medida de cuán probable es una secuencia de palabras
 b) Una traducción de cada oración a otro idioma
 c) Una lista de las palabras válidas del idioma con su clase gramatical
 d) Un árbol de derivación para cada oración que se le presenta
 
-49. Según un modelo de lenguaje, ¿qué relación esperamos entre P(el gato come pescado) y P(pescado come gato el)?
+6. Según un modelo de lenguaje, ¿qué relación esperamos entre P(el gato come pescado) y P(pescado come gato el)?
 *a) La primera es mayor que la segunda
 b) Ninguna de las dos puede calcularse
 c) La segunda es mayor que la primera en cualquier modelo
 d) Ambas son iguales porque tienen las mismas palabras
 
-50. Un sistema de reconocimiento del habla genera varias transcripciones posibles de lo que dijo el usuario. ¿Qué problema resuelve el modelo de lenguaje en ese caso?
+7. Un sistema de reconocimiento del habla genera varias transcripciones posibles de lo que dijo el usuario. ¿Qué problema resuelve el modelo de lenguaje en ese caso?
 a) Reducir cada transcripción a su forma de diccionario para poder compararlas
 b) Etiquetar cada palabra de la transcripción con su clase gramatical
 c) Identificar las entidades nombradas de las transcripciones
 *d) Elegir la más plausible entre las hipótesis generadas
 
-51. ¿Cuáles de las siguientes son aplicaciones clásicas de los modelos de lenguaje según la clase?
+8. ¿Cuáles de las siguientes son aplicaciones clásicas de los modelos de lenguaje según la clase?
 *a) Reconocimiento automático del habla
 *b) Traducción automática
 c) Reducción de palabras con stemming
@@ -871,20 +893,20 @@ f) Cálculo de similitud coseno entre documentos
 
 ### Tema: Gramáticas libres de contexto probabilísticas
 
-52. Usando la GLCP de la figura, ¿cuál es la probabilidad de la derivación S → VP, VP → Verb, Verb → book?
+9. Usando la GLCP de la figura, ¿cuál es la probabilidad de la derivación S → VP, VP → Verb, Verb → book?
 ![Tabla de una gramática libre de contexto probabilística con reglas y probabilidades entre corchetes, y un léxico con probabilidades por palabra](imagenes/iap2-nivel3-pcfg-tabla.png)
 a) 0,70, la suma de las probabilidades de las tres reglas
 b) 0,0175, el producto de las probabilidades de las dos primeras reglas
 *c) 0,00525, el producto de las probabilidades de las tres reglas
 d) 0,05, la probabilidad de la primera regla aplicada
 
-53. Una oración tiene dos árboles de parsing con probabilidades 0,002 y 0,003 según una GLCP. ¿Cuál es la probabilidad de la oración?
+10. Una oración tiene dos árboles de parsing con probabilidades 0,002 y 0,003 según una GLCP. ¿Cuál es la probabilidad de la oración?
 a) 0,0025, el promedio de las probabilidades de ambos árboles
 *b) 0,005, la suma de las probabilidades de ambos árboles
 c) 0,003, la probabilidad del árbol más probable de los dos
 d) 0,000006, el producto de las probabilidades de ambos
 
-54. ¿Para cuáles de las siguientes tareas se menciona que una GLCP resulta útil como modelo del lenguaje?
+11. ¿Para cuáles de las siguientes tareas se menciona que una GLCP resulta útil como modelo del lenguaje?
 *a) Reconocimiento del habla
 b) Stemming de palabras
 *c) Traducción automática
@@ -894,7 +916,7 @@ e) Cálculo de la similitud coseno
 
 ### Tema: Predicción de palabras
 
-55. ¿Cuáles de las siguientes asociaciones entre tipo de conocimiento usado para predecir palabras y lo que abarca son correctas?
+12. ¿Cuáles de las siguientes asociaciones entre tipo de conocimiento usado para predecir palabras y lo que abarca son correctas?
 *a) Léxico: conocimiento de las palabras
 b) Léxico: conocimiento de los significados
 *c) Sintáctico: conocimiento de la estructura
@@ -902,7 +924,7 @@ d) Sintáctico: conocimiento de las palabras y sus significados
 *e) Semántico: conocimiento de los significados
 f) Semántico: conocimiento de la estructura y las palabras
 
-56. Además de los conocimientos léxico, sintáctico y semántico, ¿qué otro conocimiento usamos las personas para predecir palabras futuras?
+13. Además de los conocimientos léxico, sintáctico y semántico, ¿qué otro conocimiento usamos las personas para predecir palabras futuras?
 *a) Conocimiento del mundo
 b) Conocimiento morfológico
 c) Conocimiento fonético del habla
@@ -910,43 +932,43 @@ d) Conocimiento estadístico de corpus
 
 ### Tema: N-gramas
 
-57. ¿Qué permite la regla de la cadena aplicada a la probabilidad de una oración?
+14. ¿Qué permite la regla de la cadena aplicada a la probabilidad de una oración?
 a) Calcularla como la probabilidad de la palabra más frecuente de la oración
 b) Estimarla contando cuántas veces aparece la oración completa en el corpus
 *c) Descomponerla en un producto de probabilidades de cada palabra dadas las anteriores
 d) Calcularla como la suma de las probabilidades de cada palabra tomada de forma aislada
 
-58. ¿Qué afirma la suposición de Markov que se usa en los N-gramas?
+15. ¿Qué afirma la suposición de Markov que se usa en los N-gramas?
 *a) Que la probabilidad de una palabra depende solo de las N−1 palabras anteriores
 b) Que la probabilidad de una palabra depende de todas las palabras
 c) Que la probabilidad de una palabra es independiente de las palabras que la rodean
 d) Que la probabilidad de una palabra depende solo de las N palabras que la siguen
 
-59. Con un modelo de bigramas, ¿con qué se aproxima P(viernes | está abierto de lunes a)?
+16. Con un modelo de bigramas, ¿con qué se aproxima P(viernes | está abierto de lunes a)?
 a) P(viernes | está abierto), que usa las dos primeras palabras
 *b) P(viernes | a), que usa solo la palabra anterior
 c) P(viernes | de lunes a), que usa las tres palabras anteriores
 d) P(viernes | lunes a), que usa dos palabras
 
-60. Con un modelo de trigramas, ¿con qué se aproxima P(viernes | está abierto de lunes a)?
+17. Con un modelo de trigramas, ¿con qué se aproxima P(viernes | está abierto de lunes a)?
 a) P(viernes | de lunes a), que usa las tres palabras anteriores
 b) P(viernes | está abierto), que usa las dos primeras palabras
 c) P(viernes | a), que usa solo la palabra anterior
 *d) P(viernes | lunes a), que usa las dos palabras anteriores
 
-61. Al estimar con bigramas P(está abierto de lunes a viernes), ¿qué factores aparecen en los extremos de la fórmula?
+18. Al estimar con bigramas P(está abierto de lunes a viernes), ¿qué factores aparecen en los extremos de la fórmula?
 a) P(<start>) al comienzo y P(<end>) al final, sin condicionar
 *b) P(está | <start>) al comienzo y P(<end> | viernes) al final
 c) P(<start> | está) al comienzo y P(viernes | <end>) al final del producto
 d) P(está) al comienzo y P(viernes) al final, sin ningún marcador de límites
 
-62. ¿Cómo se estima P(abierto | está) con bigramas a partir de las frecuencias de un corpus grande?
+19. ¿Cómo se estima P(abierto | está) con bigramas a partir de las frecuencias de un corpus grande?
 a) Como #(abierto) / #(está), contando solo palabras sueltas
 b) Como el cociente #(está abierto) / #(abierto) del corpus
 *c) Como el cociente #(está abierto) / #(está)
 d) Como #(está) / #(está abierto), invertido
 
-63. En un corpus, la palabra «está» aparece 200 veces y el par «está abierto» aparece 50 veces. Con bigramas, ¿cuánto vale P(abierto | está) y qué significa?
+20. En un corpus, la palabra «está» aparece 200 veces y el par «está abierto» aparece 50 veces. Con bigramas, ¿cuánto vale P(abierto | está) y qué significa?
 a) 0,75, la proporción de veces que «está» no va seguida de «abierto»
 *b) 0,25, la proporción de veces que «está» va seguida de «abierto»
 c) 4, la cantidad de veces que «está» aparece por par
@@ -954,19 +976,20 @@ d) 0,25, la proporción de veces que «abierto» aparece en cualquier posición 
 
 ### Tema: Semántica vectorial
 
-64. ¿Qué dice la hipótesis distribucional?
+21. ¿Qué dice la hipótesis distribucional?
 a) Que las palabras más frecuentes de un corpus son siempre las más importantes
 b) Que las palabras de la misma clase gramatical se distribuyen de forma muy pareja
 *c) Que las palabras que se usan en contextos similares suelen tener significados similares
 d) Que las palabras con la misma raíz tienen significados parecidos entre sí
 
-65. Entre los intentos de representar documentos como vectores listados en la clase, ¿cuál se ilustra con una matriz con documentos (d1, d2, ...) y términos (w1, w2, ...)?
+22. Entre los intentos de representar documentos como vectores listados en la clase, ¿cuál se ilustra con la matriz de la imagen?
+![Matriz con filas d1 a d5 y columnas w1 a w5 con valores numéricos](imagenes/iap2-nivel4-matriz-doc-termino.png)
 a) LSA (Latent Semantic Analysis)
 b) PMI (Pointwise Mutual Information)
 c) TF-IDF (Term Frequency–Inverse Document Frequency)
 *d) La matriz documento-término (Bag of Words)
 
-66. ¿Cuáles de las siguientes técnicas se listan como intentos de representación vectorial anteriores a los word embeddings?
+23. ¿Cuáles de las siguientes técnicas se listan como intentos de representación vectorial anteriores a los word embeddings?
 *a) TF-IDF
 *b) PMI
 *c) LSA
@@ -974,15 +997,19 @@ c) TF-IDF (Term Frequency–Inverse Document Frequency)
 e) GloVe
 f) BERT
 
-67. ¿Cuáles de las siguientes asociaciones entre técnica y tipo de representación son correctas?
-*a) Word2Vec: word embedding
-b) GloVe: embedding contextual
-*c) GloVe: word embedding
-*d) ELMo: embedding contextual
-e) BERT: word embedding
-*f) BERT: embedding contextual
+24. ¿Cuáles de las siguientes técnicas se presentan en la clase como word embeddings?
+*a) Word2Vec
+b) ELMo
+*c) GloVe
+d) BERT
 
-68. ¿Cómo se define la similitud coseno entre dos vectores A y B, que forman un ángulo θ?
+25. ¿Cuáles de las siguientes técnicas se presentan en la clase como embeddings contextuales?
+a) Word2Vec
+*b) ELMo
+c) GloVe
+*d) BERT
+
+26. ¿Cómo se define la similitud coseno entre dos vectores A y B, que forman un ángulo θ?
 ![Dos vectores A y B que parten del origen y forman un ángulo θ, con una naranja en el extremo de A y una manzana en el extremo de B](imagenes/iap2-nivel3-vectores-angulo.png)
 a) Como el seno del ángulo θ entre ambos, dividido por la suma de las normas
 b) Como el producto A·B, sin dividir por las normas de ambos vectores
@@ -991,32 +1018,32 @@ d) Como la distancia entre los extremos de A y B, dividida por θ
 
 ### Tema: Modelos neuronales recurrentes
 
-69. La figura muestra una red neuronal recurrente (RNN) y su versión desplegada. ¿Qué lugar ocupaban las RNN en el PLN hasta 2017-18?
+27. La figura muestra una red neuronal recurrente (RNN) y su versión desplegada. ¿Qué lugar ocupaban las RNN en el PLN hasta 2017-18?
 ![Red neuronal recurrente con un bucle sobre el estado oculto h y su versión desplegada en varios pasos de tiempo con entradas x, estados h y salidas o](imagenes/iap2-nivel3-rnn-desplegada.png)
 a) Eran un método estadístico anterior a los n-gramas
 b) Eran una técnica simbólica basada en reglas escritas a mano
 c) Eran la técnica que reemplazaba a los transformers
 *d) Eran el estado del arte del procesamiento del lenguaje
 
-70. Según la clase, ¿qué problema solucionó la variante LSTM de las RNN?
+28. Según la clase, ¿qué problema solucionó la variante LSTM de las RNN?
 a) La secuencialidad
 b) La falta de datos de entrenamiento
 c) El cuello de botella en seq2seq
 *d) El gradiente desvaneciente
 
-71. ¿Qué significa que la secuencialidad figure como problema de las RNN?
+29. ¿Qué significa que la secuencialidad figure como problema de las RNN?
 a) Que exigen palabras ordenadas alfabéticamente
 b) Que solo procesan secuencias de longitud fija conocida
 *c) Que procesan un token por vez
 d) Que solo predicen la palabra siguiente de la secuencia
 
-72. En «la profesora que diseñó el plan de estudios de la nueva carrera de humanidades estaba preocupado», el final de la oración depende de «la profesora», que está muy lejos. ¿Qué problema de las RNN ilustra la clase con este ejemplo?
+30. En «la profesora que diseñó el plan de estudios de la nueva carrera de humanidades estaba preocupado», el final de la oración depende de «la profesora», que está muy lejos. ¿Qué problema de las RNN ilustra la clase con este ejemplo?
 a) La secuencialidad
 b) El gradiente desvaneciente
 c) El cuello de botella en seq2seq
 *d) Las dependencias largas
 
-73. En el esquema encoder–decoder de la figura, ¿qué problema de las RNN señala el signo de exclamación?
+31. En el esquema encoder–decoder de la figura, ¿qué problema de las RNN señala el signo de exclamación?
 ![Esquema encoder-decoder de una RNN que traduce the dog eats al francés, con un signo de exclamación sobre el estado que conecta el encoder con el decoder](imagenes/iap2-nivel3-seq2seq.png)
 *a) El cuello de botella en seq2seq
 b) La secuencialidad de procesar un token por vez
@@ -1025,7 +1052,7 @@ d) Las dependencias largas entre palabras
 
 ### Tema: Herramientas
 
-74. ¿Cuáles de las siguientes herramientas figuran en la lista de la clase?
+32. ¿Cuáles de las siguientes herramientas figuran en la lista de la clase?
 *a) NLTK
 b) OpenCV
 *c) spaCy
@@ -1033,33 +1060,34 @@ d) Matplotlib
 *e) FreeLing
 f) Selenium
 
-## Nivel 4: Fundamentos de LLMs #1
+## Nivel 5: Fundamentos de LLMs #1 (parte 1)
 
 ### Tema: Repaso preliminar: softmax
 
 1. ¿Qué hace la función softmax con un vector z ∈ R^k?
-a) Lo reemplaza por un vector con solo la componente máxima
-*b) Lo mapea a una distribución de probabilidades
+a) Lo lleva a media 0 y desvío estándar 1
+b) Lo reemplaza por un vector con solo la componente máxima
 c) Lo ordena de menor a mayor
-d) Lo lleva a media 0 y desvío estándar 1
+*d) Lo mapea a una distribución de probabilidades
 
 2. ¿Cómo se llaman los componentes del vector z ∈ R^k que softmax mapea a una distribución de probabilidades?
 a) Los embeddings de los tokens
 *b) Los logits
-c) Las keys y values
-d) Queries
+c) Queries
+d) Las keys y values
 
 3. Si los logits son puntajes crudos asignados a cada palabra de un vocabulario, ¿cómo se calcula con softmax la probabilidad de la palabra i?
-a) Dividiendo su logit por la suma de los logits de todas las palabras que componen el vocabulario completo del modelo
-*b) Elevando e a su logit y dividiendo por la suma de e elevado a cada logit del vocabulario
+*a) Elevando e a su logit y dividiendo por la suma de e elevado a cada logit del vocabulario
+b) Calculando el logaritmo de su logit y dividiéndolo por el logit más grande del vocabulario completo
 c) Restando a su logit la media de los logits y dividiendo por el desvío estándar de todos
-d) Calculando el logaritmo de su logit y dividiéndolo por el logit más grande del vocabulario completo
+d) Dividiendo su logit por la suma de los logits de todas las palabras que componen el vocabulario completo del modelo
 
-4. En el ejemplo con Vocab = {gato, perro, loro, pez} y logits 2, 1, 0,5 y −1, ¿qué se cumple luego de aplicar softmax?
-a) Las cuatro palabras reciben la misma probabilidad al normalizar
-b) Perro y loro reciben igual probabilidad por tener logits positivos
-*c) Gato recibe la mayor probabilidad y las cuatro probabilidades suman 1
-d) Pez recibe una probabilidad negativa porque su logit es −1
+4. En el ejemplo de la imagen, ¿qué ocurre con «pez», la palabra de menor logit, al aplicar softmax?
+![Tabla con logits, e elevado al logit y probabilidad de gato, perro, loro y pez, junto a un gráfico de barras](imagenes/iap2-nivel5-softmax-ejemplo.png)
+a) Recibe una probabilidad negativa, porque su logit es −1
+*b) Recibe la menor probabilidad, pero sigue siendo positiva
+c) Recibe probabilidad 0, porque su logit es el menor del vocabulario
+d) Recibe la misma probabilidad que loro, por tener logit parecido
 
 ### Tema: Tokenización: ¿cuál es la unidad básica?
 
@@ -1070,38 +1098,38 @@ b) Fragmentos (subwords)
 
 6. ¿Qué problema presenta usar palabras completas como unidad básica de tokenización?
 a) Exige construir el vocabulario fusionando los pares de símbolos más frecuentes dentro del corpus
-b) Se pierde totalmente el significado de lo que se lee
+b) Divide cada palabra en fragmentos como anti, uber e ización
 *c) Es poco eficiente, porque no está claro qué hacer con las palabras desconocidas
-d) Divide cada palabra en fragmentos como anti, uber e ización
+d) Se pierde totalmente el significado de lo que se lee
 
 7. ¿Qué problema presenta usar caracteres como unidad básica de tokenización?
-a) Exige fusionar pares de símbolos frecuentes
-b) Trata cada palabra como un símbolo único
-*c) Se pierde totalmente el significado
+*a) Se pierde totalmente el significado
+b) Exige fusionar pares de símbolos frecuentes
+c) Trata cada palabra como un símbolo único
 d) Es poco eficiente
 
 8. ¿Cuál de las siguientes unidades básicas de tokenización se aproxima a la morfología?
-a) Caracteres
-*b) Fragmentos (subwords)
-c) Las palabras completas
+*a) Fragmentos (subwords)
+b) Las palabras completas
+c) Caracteres
 
 9. En el ejemplo de la clase, ¿cómo se divide la palabra «antiuberización» en fragmentos?
-a) an · ti · uber · ización
-b) antiuberi · zación
+a) antiuberi · zación
+b) an · ti · uber · ización
 *c) anti · uber · ización
 d) antiu · beri · zación
 
 10. ¿Para qué se usa BPE (Byte-Pair Encoding)?
-*a) Para construir el vocabulario de fragmentos a partir de frecuencias
-b) Para llevar cada vector a media 0 y desvío estándar 1
-c) Para convertir cada token en su embedding mediante una matriz entrenada
-d) Para asignar probabilidades a cada palabra del vocabulario completo del modelo
+a) Para llevar cada vector a media 0 y desvío estándar 1
+b) Para convertir cada token en su embedding mediante una matriz entrenada
+c) Para asignar probabilidades a cada palabra del vocabulario completo del modelo
+*d) Para construir el vocabulario de fragmentos a partir de frecuencias
 
 11. ¿Con qué vocabulario base empieza BPE, que trabaja con textos en UTF-8?
-a) Con las sílabas más frecuentes que aparecen en el corpus
+a) Con todas las palabras distintas que aparecen en el corpus
 b) Con las filas de la matriz E
-*c) Con los 256 valores posibles de un byte
-d) Con todas las palabras distintas que aparecen en el corpus
+c) Con las sílabas más frecuentes que aparecen en el corpus
+*d) Con los 256 valores posibles de un byte
 
 12. ¿Qué se hace en BPE con los pares de símbolos más frecuentes de un corpus?
 a) Se separan en los bytes individuales del corpus
@@ -1111,104 +1139,106 @@ d) Se reemplazan por la palabra completa que los contiene
 
 13. En el ejemplo de BPE de la clase, ¿qué fusión aparece luego de t+h → th?
 a) Fusionar th+t en tht al final del proceso
-b) Fusionar h+e en he
-*c) Fusionar th+e para formar the
+*b) Fusionar th+e para formar the
+c) Fusionar h+e en he
 d) Fusionar t+e para formar te
 
 14. ¿Hasta cuándo se repiten las fusiones de BPE?
-a) Hasta que no queden pares de símbolos en el corpus
-*b) Hasta alcanzar el tamaño de vocabulario deseado
-c) Hasta que cada palabra sea un único token
-d) Hasta que la pérdida se estabiliza por completo
+a) Hasta que cada palabra sea un único token
+b) Hasta que no queden pares de símbolos en el corpus
+c) Hasta que la pérdida se estabiliza por completo
+*d) Hasta alcanzar el tamaño de vocabulario deseado
 
 ### Tema: Embeddings
 
 15. ¿Cómo se obtiene el embedding de un token a partir de su id?
-a) Sumando todas las columnas de la matriz de embeddings entre sí
+*a) Seleccionando su fila correspondiente en la matriz de embeddings
 b) Aplicando softmax sobre su id y la matriz de embeddings
-*c) Seleccionando su fila correspondiente en la matriz de embeddings
-d) Multiplicando su id por la matriz feedforward
+c) Multiplicando su id por la matriz feedforward
+d) Sumando todas las columnas de la matriz de embeddings entre sí
 
 16. En la matriz de embeddings E ∈ R^{|Vocab|×d}, ¿qué representa d?
 *a) La dimensión del embedding
-b) La cantidad de cabezas de atención
-c) La cantidad de tokens ingresados
-d) El tamaño total del vocabulario
+b) La cantidad de tokens ingresados
+c) El tamaño total del vocabulario
+d) La cantidad de cabezas de atención
 
 17. ¿Cómo se entrena la matriz de embeddings E?
 a) Se fija de antemano y no se modifica durante el entrenamiento
-b) Se entrena aparte, mediante BPE, antes de entrenar el resto de la red
-*c) Junto con el resto de los pesos de la red, punta a punta
-d) Se calcula con el promedio de los vectores de cada token en el corpus
+b) Se calcula con el promedio de los vectores de cada token en el corpus
+c) Se entrena aparte, mediante BPE, antes de entrenar el resto de la red
+*d) Junto con el resto de los pesos de la red, punta a punta
 
 18. ¿Qué información se le suma al token embedding?
 a) La probabilidad que el modelo le asigna a cada token
 b) La distribución de probabilidad sobre todo el vocabulario
-*c) Un vector que codifica el lugar del token en la secuencia
-d) El embedding del token que viene a continuación
+c) El embedding del token que viene a continuación
+*d) Un vector que codifica el lugar del token en la secuencia
 
 19. ¿Cómo se obtiene el embedding de entrada x_i del i-ésimo token?
-a) Restando el positional embedding al token embedding
-b) Multiplicando el token embedding por el positional embedding de la secuencia
-*c) Sumando el token embedding y el positional embedding
-d) Concatenando el token embedding con el positional embedding
+*a) Sumando el token embedding y el positional embedding
+b) Restando el positional embedding al token embedding
+c) Concatenando el token embedding con el positional embedding
+d) Multiplicando el token embedding por el positional embedding de la secuencia
 
 ### Tema: Atención: intuición central
 
 20. ¿Por qué los embeddings estáticos no codifican bien el significado de las palabras?
-a) Porque cada token se representa con una dimensión d demasiado chica
-b) Porque el vocabulario fijo no incluye palabras desconocidas
-*c) Porque el significado de las palabras depende del contexto
-d) Porque la información posicional se suma al token embedding
+a) Porque el vocabulario fijo no incluye palabras desconocidas
+b) Porque cada token se representa con una dimensión d demasiado chica
+c) Porque la información posicional se suma al token embedding
+*d) Porque el significado de las palabras depende del contexto
 
 21. Al leer una oración de izquierda a derecha, ¿qué vamos haciendo con la interpretación de las palabras?
-a) La reemplazamos por la del token que viene a continuación
-b) La fijamos desde la primera lectura y no la cambiamos más
-c) La descartamos cada vez que aparece un token nuevo en la oración
-*d) La vamos refinando a medida que tenemos más información del contexto
+a) La fijamos desde la primera lectura y no la cambiamos más
+b) La reemplazamos por la del token que viene a continuación
+*c) La vamos refinando a medida que tenemos más información del contexto
+d) La descartamos cada vez que aparece un token nuevo en la oración
 
 22. ¿Qué es la atención según la clase?
 a) Un mecanismo que lleva cada vector a media 0 y desvío estándar 1 para estabilizar el aprendizaje
-b) Un mecanismo que asigna probabilidad 1 a la próxima palabra y 0 a las demás palabras del vocabulario completo del modelo
+b) Un mecanismo que convierte los logits en una distribución de probabilidades sobre todo el vocabulario de palabras
 *c) Un mecanismo que pondera y combina representaciones de tokens en el contexto para enriquecer la de un token dado
-d) Un mecanismo que convierte los logits en una distribución de probabilidades sobre todo el vocabulario de palabras
+d) Un mecanismo que asigna probabilidad 1 a la próxima palabra y 0 a las demás palabras del vocabulario completo del modelo
 
 23. En el ejemplo «La grúa llevó el auto al taller», ¿en qué pasa a convertirse «taller» una vez enriquecido con el contexto?
-*a) Un taller mecánico
-b) Un espacio de artesanías
-c) Un curso
+a) Un curso
+*b) Un taller mecánico
+c) Un espacio de artesanías
 
 ### Tema: Atención: primera versión simplificada
 
 24. En la primera versión simplificada de la atención, ¿cómo se calcula a_i?
-a) Como la suma de todos los x_j posteriores a i de la secuencia, cada uno multiplicado por α_ij
-b) Como el producto de todos los x_j de la secuencia, incluidos los posteriores a i
-c) Como el último x_j de la secuencia de entrada, multiplicado por un peso α_ij
-*d) Como la suma de los x_j con j ≤ i, cada uno multiplicado por un peso α_ij
+![Capa de self-attention con entradas x1 a x5 y salidas a1 a a5, con flechas desde las entradas hacia cada salida](imagenes/iap2-nivel5-atencion-causal.png)
+*a) Como la suma de los x_j con j ≤ i, cada uno multiplicado por un peso α_ij
+b) Como el último x_j de la secuencia de entrada, multiplicado por un peso α_ij
+c) Como el producto de todos los x_j de la secuencia, incluidos los posteriores a i
+d) Como la suma de todos los x_j posteriores a i de la secuencia, cada uno multiplicado por α_ij
 
-25. En self-attention causal, ¿a qué entradas atiende el modelo al procesar la entrada x_i?
-*a) A todas las entradas hasta x_i, incluyendo a x_i
-b) Solo a la entrada x_i actual
-c) Solo a las anteriores a x_i, sin x_i
-d) A todas las entradas, incluidas las posteriores
+25. En la figura de la capa de self-attention causal, ¿a qué entradas atiende el modelo para calcular a_3?
+![Capa de self-attention con entradas x1 a x5 y salidas a1 a a5, con flechas desde las entradas hacia cada salida](imagenes/iap2-nivel5-atencion-causal.png)
+a) Solo a x_1 y x_2, sin la entrada x_3
+b) A las cinco entradas, de x_1 a x_5
+c) A x_3, x_4 y x_5, desde la entrada actual
+*d) A x_1, x_2 y x_3, hasta la entrada actual
 
 26. En la primera versión de la atención, ¿qué métrica de similitud se propone para score(x_i, x_j)?
-*a) El producto escalar x_i · x_j
-b) La resta x_i − x_j
-c) La suma x_i + x_j
+a) La resta x_i − x_j
+b) La suma x_i + x_j
+*c) El producto escalar x_i · x_j
 d) El producto de x_i por la matriz W^K
 
 27. ¿Cómo se obtienen los α_ij a partir de los scores en la primera versión?
 *a) Normalizándolos con softmax para todo j ≤ i
-b) Aplicando ReLU a cada score de toda la secuencia
-c) Aplicando LayerNorm a cada score
-d) Dividiendo cada score por la cantidad de tokens N
+b) Dividiendo cada score por la cantidad de tokens N
+c) Aplicando ReLU a cada score de toda la secuencia
+d) Aplicando LayerNorm a cada score
 
 28. En el ejemplo a_3 = α_31 x_1 + α_32 x_2 + α_33 x_3, ¿qué cumplen los pesos α?
-a) Cada uno es mayor que 1 y su suma es igual a 3
-*b) Cada uno está entre 0 y 1 y su suma es 1
-c) Valen 1 para x_1, x_2 y x_3 por igual en toda la secuencia de entrada
-d) Pueden ser negativos y su suma total es igual a 0 para cualquier secuencia
+*a) Cada uno está entre 0 y 1 y su suma es 1
+b) Valen 1 para x_1, x_2 y x_3 por igual en toda la secuencia de entrada
+c) Pueden ser negativos y su suma total es igual a 0 para cualquier secuencia
+d) Cada uno es mayor que 1 y su suma es igual a 3
 
 ### Tema: Atención: consultas, claves y valores
 
@@ -1219,46 +1249,46 @@ c) Responde a qué información aporta x_j
 d) Indica la posición
 
 30. ¿Qué rol cumple el vector key k_j = x_j W^K?
-a) Responde a qué información aporta x_j si es elegido
-*b) Responde a qué ofrece x_j para ser encontrado
-c) Responde a qué lugar ocupa x_j en la secuencia
-d) Responde a qué busca x_i
+*a) Responde a qué ofrece x_j para ser encontrado
+b) Responde a qué información aporta x_j si es elegido
+c) Responde a qué busca x_i
+d) Responde a qué lugar ocupa x_j en la secuencia
 
 31. ¿Qué rol cumple el vector value v_j = x_j W^V?
-a) Responde a qué ofrece x_j para ser encontrado
-b) Responde a qué busca x_i en la secuencia
-*c) Responde a qué información aporta x_j si es elegido
-d) Responde a qué lugar ocupa x_j
+*a) Responde a qué información aporta x_j si es elegido
+b) Responde a qué lugar ocupa x_j
+c) Responde a qué busca x_i en la secuencia
+d) Responde a qué ofrece x_j para ser encontrado
 
 32. Con query, key y value, ¿cómo se calcula score(x_i, x_j)?
-a) Con el producto escalar de q_i y k_j, multiplicado por √d_k
-b) Con el producto escalar de q_i y v_j, luego dividido por √d_k
-c) Con el producto de k_i y v_j, dividido por √d_k
-*d) Con el producto escalar de q_i y k_j, dividido por √d_k
+a) Con el producto escalar de q_i y v_j, luego dividido por √d_k
+b) Con el producto de k_i y v_j, dividido por √d_k
+*c) Con el producto escalar de q_i y k_j, dividido por √d_k
+d) Con el producto escalar de q_i y k_j, multiplicado por √d_k
 
 33. En la clase, ¿qué rótulos acompañan a la división del score por √d_k y a la matriz W^O, respectivamente?
 a) Reshaping para la división y scaling
-b) Masking para la división y reshaping para la matriz W^O
-*c) Scaling para la división y reshaping para W^O
-d) Scaling para la división y masking para W^O
+*b) Scaling para la división y reshaping para W^O
+c) Scaling para la división y masking para W^O
+d) Masking para la división y reshaping para la matriz W^O
 
 34. ¿Qué vectores se ponderan con los α_ij para obtener a_i en la versión completa de la atención?
-*a) Los values v_j, antes de multiplicar por W^O
-b) Las queries q_j de la secuencia
-c) Los embeddings x_j originales, como en la primera versión
-d) Las keys k_j de la secuencia
+a) Las queries q_j de la secuencia
+b) Las keys k_j de la secuencia
+*c) Los values v_j, antes de multiplicar por W^O
+d) Los embeddings x_j originales, como en la primera versión
 
 35. ¿Qué forma tienen las matrices W^Q y W^K?
 *a) De forma d × d_k
-b) De forma d_k × d_v
-c) De d_v × d
-d) De forma d × d_v, como W^V
+b) De forma d × d_v, como W^V
+c) De forma d_k × d_v
+d) De d_v × d
 
 36. ¿Qué forma tiene la matriz W^V?
 a) De forma d × d_k
-*b) De forma d × d_v
-c) De d_v × d
-d) De forma d_k × d_v, igual que W^O
+b) De d_v × d
+c) De forma d_k × d_v, igual que W^O
+*d) De forma d × d_v
 
 37. ¿Qué forma tiene la matriz W^O?
 a) De d × d_k
@@ -1266,45 +1296,54 @@ b) De forma d_k × d_v, igual que W^V
 *c) De forma d_v × d
 d) De forma d × d_v
 
+## Nivel 6: Fundamentos de LLMs #1 (parte 2)
+
 ### Tema: Self-attention
 
-38. En la figura de self-attention causal que calcula a_3, el tercer elemento de la secuencia, ¿qué se genera para cada entrada en el primer paso?
+1. En la figura de self-attention causal que calcula a_3, el tercer elemento de la secuencia, ¿qué se genera para cada entrada en el primer paso?
+![Cálculo de a_3 con self-attention causal en ocho pasos numerados, desde x_1, x_2 y x_3 hasta la salida](imagenes/iap2-nivel6-self-attention-a3.png)
 a) Los pesos α mediante softmax
 b) Los scores divididos por √d_k
 *c) Los vectores key, query y value
 d) La salida de self-attention reformada a 1 × d
 
-39. En la figura que calcula a_3 con self-attention causal, ¿qué se compara con las keys de x_1, x_2 y x_3 en el segundo paso?
+2. En la figura que calcula a_3 con self-attention causal, ¿qué se compara con las keys de x_1, x_2 y x_3 en el segundo paso?
+![Cálculo de a_3 con self-attention causal en ocho pasos numerados, desde x_1, x_2 y x_3 hasta la salida](imagenes/iap2-nivel6-self-attention-a3.png)
 a) La salida a_3
 *b) La query de x_3
 c) El embedding del cuarto token x_4
 d) El value de x_3
 
-40. En la figura que calcula a_3 con self-attention causal, ¿qué se hace con el score escalar luego de comparar la query con las keys?
+3. En la figura que calcula a_3 con self-attention causal, ¿qué se hace con el score escalar luego de comparar la query con las keys?
+![Cálculo de a_3 con self-attention causal en ocho pasos numerados, desde x_1, x_2 y x_3 hasta la salida](imagenes/iap2-nivel6-self-attention-a3.png)
 a) Se lo suma
 *b) Se lo divide por √d_k
 c) Se lo reforma a 1 × d
 d) Se lo multiplica por x_3
 
-41. En la figura que calcula a_3 con self-attention causal, ¿qué se hace con los scores una vez divididos por √d_k?
+4. En la figura que calcula a_3 con self-attention causal, ¿qué se hace con los scores una vez divididos por √d_k?
+![Cálculo de a_3 con self-attention causal en ocho pasos numerados, desde x_1, x_2 y x_3 hasta la salida](imagenes/iap2-nivel6-self-attention-a3.png)
 a) Se los reforma a 1 × d
 *b) Se los convierte en pesos α_{3,j} mediante softmax
 c) Se los suma directamente entre sí
 d) Se los multiplica por W^O
 
-42. En la figura que calcula a_3 con self-attention causal, ¿qué se hace con cada vector value una vez obtenidos los pesos α?
+5. En la figura que calcula a_3 con self-attention causal, ¿qué se hace con cada vector value una vez obtenidos los pesos α?
+![Cálculo de a_3 con self-attention causal en ocho pasos numerados, desde x_1, x_2 y x_3 hasta la salida](imagenes/iap2-nivel6-self-attention-a3.png)
 *a) Se lo pondera
 b) Se lo divide por √d_k
 c) Se genera
 d) Se lo reforma
 
-43. En la figura que calcula a_3 con self-attention causal, ¿qué se hace con los vectores value ya ponderados?
+6. En la figura que calcula a_3 con self-attention causal, ¿qué se hace con los vectores value ya ponderados?
+![Cálculo de a_3 con self-attention causal en ocho pasos numerados, desde x_1, x_2 y x_3 hasta la salida](imagenes/iap2-nivel6-self-attention-a3.png)
 a) Se descartan
 *b) Se los suma
 c) Se los compara con keys
 d) Se los pasa por softmax
 
-44. En la figura que calcula a_3 con self-attention causal, ¿a qué dimensión se reformatea el vector sumado para obtener la salida a_3?
+7. En la figura que calcula a_3 con self-attention causal, ¿a qué dimensión se reformatea el vector sumado para obtener la salida a_3?
+![Cálculo de a_3 con self-attention causal en ocho pasos numerados, desde x_1, x_2 y x_3 hasta la salida](imagenes/iap2-nivel6-self-attention-a3.png)
 a) Una fila de 1 × |Vocab|
 b) Un vector 1 × d_v
 c) Una fila de 1 × d_k de cada cabeza
@@ -1312,25 +1351,25 @@ c) Una fila de 1 × d_k de cada cabeza
 
 ### Tema: Multi-head attention
 
-45. ¿Cómo operan las A cabezas de atención de una capa multi-head?
+8. ¿Cómo operan las A cabezas de atención de una capa multi-head?
 a) En paralelo, y todas atienden de la misma manera al contexto completo
 b) Solo una está activa por token, elegida con softmax en cada capa
 c) Una detrás de otra, y cada una usa la salida de la anterior
 *d) En paralelo, y cada una atiende de manera distinta al contexto
 
-46. ¿Qué tiene cada cabeza de atención en multi-head attention?
+9. ¿Qué tiene cada cabeza de atención en multi-head attention?
 a) Su propia matriz de embeddings de entrada
 b) Su propia matriz W^O de proyección final
 c) Sus propios parámetros γ y β de normalización por cada capa
 *d) Sus propias matrices de pesos de query, key y value
 
-47. ¿Qué se hace con las salidas de las cabezas de atención para obtener a_i?
+10. ¿Qué se hace con las salidas de las cabezas de atención para obtener a_i?
 *a) Se concatenan y se proyectan con W^O
 b) Se suman elemento a elemento y se enmascaran
 c) Se eligen por softmax y se reformatean
 d) Se promedian y se normalizan
 
-48. Si d_v = d/A, ¿qué forma tiene la matriz W^O en multi-head attention?
+11. Si d_v = d/A, ¿qué forma tiene la matriz W^O en multi-head attention?
 a) Rectangular, de forma d × A
 b) Rectangular, de A × d_v
 c) Un solo vector
@@ -1338,7 +1377,8 @@ c) Un solo vector
 
 ### Tema: Transformer Block
 
-49. ¿Cuáles de los siguientes componentes combina cada bloque Transformer según la clase?
+12. ¿Cuáles de los siguientes componentes combina cada bloque Transformer según la clase?
+![Bloque Transformer en las posiciones i-2, i-1 e i, con residual stream, layer norms, multi-head attention y feedforward](imagenes/iap2-nivel6-bloque-transformer.png)
 *a) Layer Norm
 b) Language Model Head
 *c) Multi-head attention
@@ -1346,19 +1386,21 @@ d) Pérdida de entropía cruzada
 *e) Feed forward
 *f) Conexiones residuales
 
-50. ¿Qué se hace con los bloques Transformer en el modelo?
+13. ¿Qué se hace con los bloques Transformer en el modelo?
 a) Se reemplazan por uno
 *b) Se apilan unos sobre otros
 c) Se reducen a uno solo con pesos compartidos
 d) Se aplican en paralelo y se concatenan
 
-51. En la versión del bloque Transformer que usa la clase (prenorm), ¿dónde ocurren las layer norms?
+14. En la versión del bloque Transformer que usa la clase (prenorm), ¿dónde ocurren las layer norms?
+![Bloque Transformer en las posiciones i-2, i-1 e i, con residual stream, layer norms, multi-head attention y feedforward](imagenes/iap2-nivel6-bloque-transformer.png)
 *a) Antes de las capas de atención y de feedforward
 b) Después de las capas de atención y de feedforward de cada bloque
 c) Solo después de la última capa de feedforward
 d) Solo antes de la primera capa de atención
 
-52. Según la figura del bloque Transformer, ¿qué módulo es el único sensible a la información de otras posiciones previas de tokens?
+15. Según la figura del bloque Transformer, ¿qué módulo es el único sensible a la información de otras posiciones previas de tokens?
+![Bloque Transformer en las posiciones i-2, i-1 e i, con residual stream, layer norms, multi-head attention y feedforward](imagenes/iap2-nivel6-bloque-transformer.png)
 a) Feedforward
 b) La layer norm
 *c) La atención
@@ -1366,43 +1408,44 @@ d) La conexión residual
 
 ### Tema: Transformer Block: Layer Norm y Feedforward
 
-53. ¿A qué valores lleva LayerNorm las componentes del vector x?
+16. ¿A qué valores lleva LayerNorm las componentes del vector x?
 a) A media 1 y desvío estándar igual a √d_k
 b) A media 0 y desvío estándar igual a d
 *c) A media 0 y desvío estándar 1
 d) A media 1 y desvío estándar de 0
 
-54. ¿Cómo se aplica la normalización de LayerNorm?
+17. ¿Cómo se aplica la normalización de LayerNorm?
 a) Sobre todos los vectores a la vez
 b) Solo sobre el último vector, para estabilizar el aprendizaje
 c) Sobre cada matriz de pesos, para estabilizar el aprendizaje
 *d) De forma independiente para cada vector, para estabilizar el aprendizaje
 
-55. ¿Qué son γ y β en LayerNorm?
+18. ¿Qué son γ y β en LayerNorm?
 a) Constantes fijas que se eligen de antemano en cada capa
 b) La media y el desvío estándar de las componentes de x
 c) Las matrices de pesos del feedforward de cada bloque Transformer
 *d) Vectores de parámetros que se aprenden, uno por capa
 
-56. ¿Qué es el feedforward de un bloque Transformer?
+19. ¿Qué es el feedforward de un bloque Transformer?
 a) Una red fully-connected de 1 sola capa, sin ninguna capa oculta
 b) Una red recurrente que procesa los tokens de a uno, en orden
 *c) Una red fully-connected de 2 capas, con una capa oculta de dimensión d_ff
 d) Una capa de atención con A cabezas que trabajan en paralelo
 
-57. En Feedforward(x) = W_2 · ReLU(W_1 · x + b_1) + b_2, ¿qué función de activación se aplica entre las dos capas?
+20. En Feedforward(x) = W_2 · ReLU(W_1 · x + b_1) + b_2, ¿qué función de activación se aplica entre las dos capas?
 a) La función de softmax
 b) Una capa LayerNorm
 *c) La función ReLU
 d) La máscara
 
-58. Si la atención mezcla información contextual entre tokens, ¿qué hace la feedforward según la intuición de la clase?
+21. Si la atención mezcla información contextual entre tokens, ¿qué hace la feedforward según la intuición de la clase?
 a) Normaliza cada vector a media 0 y desvío estándar 1
 b) Convierte los logits en probabilidades sobre el vocabulario
 *c) Almacena o codifica conocimiento sobre los tokens
 d) También mezcla información contextual entre tokens
 
-59. ¿Cómo interactúan la atención y la feedforward con el residual stream?
+22. ¿Cómo interactúan la atención y la feedforward con el residual stream?
+![Bloque Transformer en las posiciones i-2, i-1 e i, con residual stream, layer norms, multi-head attention y feedforward](imagenes/iap2-nivel6-bloque-transformer.png)
 a) Lo normalizan a media 0 y desvío estándar 1 en cada bloque
 b) Lo reemplazan por completo con su propia salida en cada bloque del modelo
 c) Lo recorren una sola vez, al final de todos los bloques del modelo
@@ -1410,149 +1453,168 @@ c) Lo recorren una sola vez, al final de todos los bloques del modelo
 
 ### Tema: Forma matricial
 
-60. En la forma matricial, ¿qué representa X ∈ R^{N×d}?
+23. En la forma matricial, ¿qué representa X ∈ R^{N×d}?
 a) Los embeddings de los d tokens del vocabulario completo
 b) Los logits de los N tokens siguientes de la secuencia
 c) Los pesos de las N cabezas de atención de la capa multi-head
 *d) Los embeddings de los N tokens de la secuencia de entrada
 
-61. En la forma matricial, ¿cómo se obtienen Q, K y V?
+24. En la forma matricial, ¿cómo se obtienen Q, K y V?
 *a) Multiplicando X por W^Q, W^K y W^V, respectivamente
 b) Multiplicando X por W^O siempre
 c) Aplicando softmax sobre X siempre
 d) Multiplicando X por sí misma y por su transpuesta
 
-62. En la forma matricial de la atención, ¿qué se aplica sobre QK^T/√d_k antes del softmax?
-*a) La máscara
-b) LayerNorm
-c) La matriz W^O
-d) ReLU
+25. En la forma matricial de la atención, ¿qué se le suma a QK^T/√d_k dentro del softmax?
+a) La matriz de proyección W^O
+*b) La matriz M
+c) La matriz V de values
+d) La matriz E
 
-63. En la forma matricial, ¿cómo se calcula head?
-a) Con el softmax de la máscara aplicada a QK^T/√d_k, multiplicado luego por la matriz Q
-*b) Con el softmax de la máscara aplicada a QK^T/√d_k, multiplicado por la matriz V
-c) Con el softmax de la máscara aplicada a QK^T/√d_k, multiplicado por K
-d) Con el softmax de la máscara aplicada a QK^T/√d_k, multiplicado por W^Q
+26. En la forma matricial, ¿cómo se calcula head?
+a) Con el softmax de QK^T/√d_k + M, multiplicado luego por la matriz Q
+*b) Con el softmax de QK^T/√d_k + M, multiplicado por la matriz V
+c) Con el softmax de QK^T/√d_k + M, multiplicado por K
+d) Con el softmax de QK^T/√d_k + M, multiplicado por W^Q
 
-64. En la forma matricial, ¿cómo se obtiene A a partir de head?
+27. En la forma matricial, ¿cómo se obtiene A a partir de head?
 a) Aplicando LayerNorm a head
 *b) Multiplicando head por W^O
 c) Multiplicando head por la transpuesta E^T
 d) Sumando X
 
+28. En la práctica, ¿qué forma se suele buscar que tengan las matrices W^Q, W^K, W^V y W^O?
+a) Todas de forma d × A, una por cabeza
+b) Todas de forma N × d, como la matriz X
+*c) Todas cuadradas, de d × d
+d) Todas de forma |Vocab| × d, como E
+
 ### Tema: Máscara causal
 
-65. ¿Qué oculta la máscara causal?
+29. En la matriz de la imagen, ¿qué oculta la máscara causal?
+![Matriz de 5×5 con ceros en celdas verdes y −∞ en celdas rosadas, con i (query) en las filas y j (key) en las columnas](imagenes/iap2-nivel6-mascara-causal.png)
 *a) La información futura
 b) La información de las keys anteriores
 c) La información de la query
 d) Los logits
 
-66. ¿Qué valor pone la máscara causal en las posiciones j > i?
-a) El mismo valor S_ij
-b) 0
-c) El valor 1
-*d) El valor −∞
+30. ¿Qué valor y qué posiciones corresponden a las celdas rosadas de la matriz M de la imagen?
+![Matriz de 5×5 con ceros en celdas verdes y −∞ en celdas rosadas, con i (query) en las filas y j (key) en las columnas](imagenes/iap2-nivel6-mascara-causal.png)
+a) El valor 0, en las posiciones donde j > i
+*b) El valor −∞, en las posiciones donde j > i
+c) El valor −∞, en las posiciones donde j ≤ i
+d) El valor 1, en las posiciones de la diagonal principal
 
-67. En la definición de mask(S)_ij, ¿qué valor conserva la máscara cuando j ≤ i?
-a) 0
-b) El valor −∞
-c) El valor 1 siempre
-*d) El valor S_ij
+31. En la matriz M de la imagen, ¿qué valor tiene M en las celdas verdes?
+![Matriz de 5×5 con ceros en celdas verdes y −∞ en celdas rosadas, con i (query) en las filas y j (key) en las columnas](imagenes/iap2-nivel6-mascara-causal.png)
+a) El valor −∞
+b) El valor 1 siempre
+c) El valor S_ij
+*d) 0
 
-68. ¿Qué probabilidad le asigna el softmax a las posiciones con −∞?
+32. ¿Qué probabilidad le asigna el softmax a las posiciones con −∞?
 a) La misma que las demás
 b) Una probabilidad negativa
 c) Máxima
 *d) Probabilidad 0
 
-69. ¿Qué ocurre con la suma de cada fila de pesos de atención luego de aplicar la máscara?
-a) Suma 0
-*b) Sigue sumando 1
-c) Pasa a ser menor que 1
-d) Pasa a valer −∞
+33. Con la máscara M, ¿qué valor queda en α_ij cuando j > i?
+a) Conserva su valor
+b) Pasa a valer −∞
+c) Pasa a valer 1
+*d) Queda en 0
+
+34. Con la máscara M, cuando j > i, ¿qué ocurre con el value v_j en el cálculo de a_i?
+a) Aporta a a_i con peso máximo
+*b) No aporta nada a a_i
+c) Se reemplaza por −∞ en a_i
+d) Aporta a a_i como los demás
+
+## Nivel 7: Fundamentos de LLMs #1 (parte 3)
 
 ### Tema: Language Model Head
 
-70. Para estimar P(tres | No hay dos sin), ¿qué vector se usa para predecir w_5?
+1. Para estimar P(tres | No hay dos sin), ¿qué vector se usa para predecir w_5?
 a) h^L_5
 b) El vector h^1_4
 c) El vector h^L_1 inicial
 *d) El vector h^L_4
 
-71. ¿Qué información codifica h^L_N?
+2. ¿Qué información codifica h^L_N?
 a) La posición del token N en la secuencia
 b) La distribución sobre el vocabulario
 c) La pérdida de entropía cruzada del token N
 *d) Información contextual útil para predecir w_{N+1}
 
-72. ¿Qué convierte la LM Head a h^L_N?
+3. ¿Qué convierte la LM Head a h^L_N?
 a) En el embedding del token que viene luego en la secuencia
 *b) En una distribución de probabilidad sobre las |Vocab| palabras
 c) En los pesos de atención de la secuencia
 d) En la matriz de embeddings E del modelo
 
-73. ¿Cómo se obtienen los logits u en la LM Head?
+4. ¿Cómo se obtienen los logits u en la LM Head?
 a) Aplicando softmax
 b) Multiplicando h^L_N por la matriz W^O
 c) Multiplicando h^L_N por E
 *d) Multiplicando h^L_N por E^T
 
-74. En la figura de la LM Head, ¿qué relación hay entre la unembedding layer U y la matriz de embeddings E?
-a) U se entrena aparte, sin ninguna relación con la matriz E
-b) U es la inversa de la matriz de embeddings E original
-c) U es igual a la matriz de embeddings E original
-*d) U es la transpuesta de E (U = E^T)
+5. En la figura de la LM Head, ¿qué forma tiene la unembedding layer U y qué relación guarda con la matriz de embeddings E?
+![Esquema de la Language Model Head con la unembedding layer, los logits, el softmax y las probabilidades de palabras](imagenes/iap2-nivel7-lm-head.png)
+a) Forma |V| × d, y es igual a la matriz E
+b) Forma d × d, y se entrena aparte de la matriz E
+*c) Forma d × |V|, y es la transpuesta de la matriz E
+d) Forma 1 × |V|, y es la inversa de la matriz E
 
-75. En la figura de la LM Head, ¿en qué orden se transforma h^L_N hasta obtener las probabilidades de las palabras?
+6. En la figura de la LM Head, ¿en qué orden se transforma h^L_N hasta obtener las probabilidades de las palabras?
+![Esquema de la Language Model Head con la unembedding layer, los logits, el softmax y las probabilidades de palabras](imagenes/iap2-nivel7-lm-head.png)
 a) Logits → unembedding layer → softmax → probabilidades
 b) Softmax → logits → unembedding layer
 c) Unembedding layer → softmax
 *d) Unembedding layer → logits → softmax
 
-76. Una vez obtenida la distribución y = softmax(u), ¿qué se hace?
+7. Una vez obtenida la distribución y = softmax(u), ¿qué se hace?
 a) Se aplica antes una máscara causal sobre y
 b) Se suma y al residual stream de la última capa del modelo
 c) Se multiplica y por la matriz W^O de salida
-*d) Se muestrea el siguiente token w_{N+1} a partir de y
+*d) Se muestrea el siguiente token ŵ_{N+1} a partir de y
 
-77. ¿Hacia qué empuja el entrenamiento a h^L_n?
+8. ¿Hacia qué empuja el entrenamiento a h^L_n?
 a) A tener norma igual a cero en cada capa del modelo
 *b) A parecerse al embedding del token que viene a continuación
 c) A tener media 0 y desvío estándar 1 en cada capa
 d) A parecerse al embedding del token que vino justo antes que él
 
-78. En la decodificación en inferencia, ¿qué token elige el método greedy?
+9. En la decodificación en inferencia, ¿qué token elige el método greedy?
 *a) El token más probable
 b) Un token al azar del vocabulario
 c) Al azar entre los k más probables
 d) El menos probable
 
-79. En la decodificación en inferencia, ¿cómo elige el token el método Random / Top-k random?
+10. En la decodificación en inferencia, ¿cómo elige el token el método Random / Top-k random?
 *a) Al azar sobre los k más probables, según la distribución del softmax
 b) Toma el token que ocupa la posición k del vocabulario
 c) Siempre toma el token más probable según el softmax
 d) Al azar sobre todo el vocabulario, con igual probabilidad
 
-80. ¿Cómo se calcula y al usar una temperatura τ?
+11. ¿Cómo se calcula y al usar una temperatura τ?
 *a) y = softmax(u / τ)
 b) y = u / τ
 c) y = softmax(τ)
 d) y = softmax(u) multiplicado por τ
 
-81. Con una temperatura τ < 1, ¿hacia qué tiende la distribución y?
+12. Con una temperatura τ < 1, ¿hacia qué tiende la distribución y?
 a) Queda igual
 *b) Hacia la decodificación greedy
 c) Hacia probabilidad 0 para cada token
 d) Hacia la decodificación al azar
 
-82. Con una temperatura τ > 1, ¿hacia qué tiende la distribución y?
+13. Con una temperatura τ > 1, ¿hacia qué tiende la distribución y?
 *a) Hacia la decodificación al azar
 b) Hacia la decodificación greedy
 c) Queda idéntica a softmax(u)
 d) Hacia probabilidad 1 para el token más probable
 
-83. ¿Cuáles de los siguientes métodos de decodificación en inferencia figuran en la clase?
+14. ¿Cuáles de los siguientes métodos de decodificación en inferencia figuran en la clase?
 *a) Greedy
 b) Teacher forcing
 *c) Random / Top-k random
@@ -1561,59 +1623,638 @@ d) Máscara causal
 
 ### Tema: Transformer LLM
 
-84. Según el pie de la figura del Transformer LLM, ¿qué tipo de modelo de lenguaje es?
+15. ¿Qué tipo de modelo de lenguaje es el Transformer LLM de la imagen?
+![Esquema de un Transformer LLM con el token de entrada w_i, el input encoding, las capas 1 a L, la LM Head y el token w_{i+1}](imagenes/iap2-nivel7-transformer-llm.png)
 a) Encoder-only
 *b) Un modelo decoder-only
 c) Un modelo de tipo encoder-decoder
 d) Una red recurrente
 
-85. Según la figura del Transformer LLM, ¿qué hace el modelo con el token de entrada w_i?
+16. Según la figura del Transformer LLM, ¿qué hace el modelo con el token de entrada w_i?
+![Esquema de un Transformer LLM con el token de entrada w_i, el input encoding, las capas 1 a L, la LM Head y el token w_{i+1}](imagenes/iap2-nivel7-transformer-llm.png)
 a) Lo mapea a un token anterior w_{i−1} con un bloque
 b) Lo reemplaza por su embedding sin pasar por bloques
 c) Lo clasifica en una categoría gramatical mediante la LM Head
 *d) Lo mapea, apilando bloques Transformer, a un token siguiente predicho w_{i+1}
 
-86. En la figura del Transformer LLM, ¿qué aparece luego de la capa L y antes de la LM Head?
-*a) Una layer norm extra
-b) Una capa de embeddings adicional
-c) Una máscara causal extra
-d) Otra capa feedforward
+17. En la figura del Transformer LLM, ¿qué módulos atraviesa el vector dentro de la capa L y después de ella, de abajo hacia arriba, hasta llegar a la LM Head?
+![Esquema de un Transformer LLM con el token de entrada w_i, el input encoding, las capas 1 a L, la LM Head y el token w_{i+1}](imagenes/iap2-nivel7-transformer-llm.png)
+*a) Layer norm, atención, layer norm, feedforward y una layer norm extra
+b) Atención, layer norm, feedforward, layer norm y una capa de embeddings
+c) Layer norm, feedforward, layer norm, atención y una máscara causal extra
+d) Atención, feedforward, layer norm y luego una segunda LM Head
 
 ### Tema: Entrenamiento: pérdida de entropía cruzada
 
-87. En la pérdida de entropía cruzada, ¿qué vale y[w]?
+18. En la pérdida de entropía cruzada, ¿qué vale y[w]?
 *a) 1 para la próxima palabra w_{N+1} y 0 para las demás
 b) 0 para la próxima palabra w_{N+1} y 1 para las demás palabras
 c) 1 para todas las palabras del vocabulario completo
 d) La probabilidad que el modelo le asigna a w
 
-88. ¿A qué se reduce L_CE(ŷ, y) cuando y vale 1 solo para la próxima palabra w_{N+1}?
+19. ¿A qué se reduce L_CE(ŷ, y) cuando y vale 1 solo para la próxima palabra w_{N+1}?
 a) A −log de la probabilidad asignada a la palabra más probable
 b) A la suma de los logaritmos de todas las probabilidades de la distribución ŷ completa
 c) Al logaritmo de la probabilidad más alta que predice el modelo
 *d) A −log ŷ[w_{N+1}], el logaritmo negativo de la probabilidad asignada a la palabra correcta
 
-89. Si el modelo recibe «no hay dos sin», ¿cómo es la pérdida cuando le asigna probabilidad 0,9 a «tres» y cuando le asigna 0,1?
+20. Si el modelo recibe «no hay dos sin», ¿cómo es la pérdida cuando le asigna probabilidad 0,9 a «tres» y cuando le asigna 0,1?
 a) Baja en ambos casos
 b) Alta con 0,9 y muy baja con 0,1
 *c) Baja con 0,9 y alta con 0,1
 d) Alta en ambos casos
 
-90. ¿Qué recibe como entrada el modelo durante el entrenamiento con teacher forcing?
-a) Los N tokens, pero con el último ocultado
-*b) La secuencia correcta completa de N tokens
+21. ¿Qué recibe como entrada el modelo durante el entrenamiento con teacher forcing?
+a) Los T tokens, pero con el último ocultado
+*b) Una secuencia correcta completa de T tokens
 c) Solo el primer token
 d) La secuencia que el propio modelo fue generando
 
-91. ¿Qué se produce en una sola pasada con teacher forcing?
-a) N pares y un único gradiente
-*b) N pares (predicción, token correcto) y N gradientes
-c) Un único par (predicción, token correcto) y N gradientes
+22. ¿Qué se produce en una sola pasada con teacher forcing?
+a) T pares y un único gradiente
+*b) T pares (predicción, token correcto) y T gradientes
+c) Un único par (predicción, token correcto) y T gradientes
 d) Un único par (predicción, token correcto) y un único gradiente
 
-92. ¿Cómo se define la pérdida completa en el entrenamiento?
+23. ¿Cómo se define la pérdida completa en el entrenamiento?
 a) Como la cross-entropy del último token de la secuencia de entrada completa
-b) Como el máximo de la cross-entropy entre todas las N posiciones del modelo
-c) Como la suma de todas las probabilidades que el modelo asigna a los N tokens dados
-*d) Como el promedio sobre las N posiciones de la cross-entropy entre predicción y token correcto
+b) Como el máximo de la cross-entropy entre todas las T posiciones del modelo
+c) Como la suma de todas las probabilidades que el modelo asigna a los T tokens dados
+*d) Como el promedio sobre las T posiciones de la cross-entropy entre predicción y token correcto
+
+### Tema: Algunos números
+
+24. Según la observación de la clase, ¿cómo se relaciona el largo del contexto N con el número de parámetros del modelo?
+a) Crece en proporción directa con N
+b) Crece con el cuadrado de N
+*c) No depende del largo del contexto N
+d) Disminuye a medida que aumenta N
+
+25. Según la observación de la clase, ¿qué aspecto del modelo sí se ve afectado por el largo del contexto N?
+a) El número de parámetros del modelo, que crece con N
+b) El tamaño del vocabulario |V|, usado por la LM Head
+*c) El tiempo de cómputo, ya que la inferencia es O(N²)
+d) La dimensión d de los embeddings de cada token
+
+26. En la tabla de configuraciones de la imagen, ¿qué representa la columna L?
+![Tabla con modelos de lenguaje (GPT-2 XL, GPT-3, Qwen3 y Llama 3.1) y las columnas Year, L, d, A, d_ff, |V|, Context y Params](imagenes/iap2-nivel7-tabla-configuraciones.png)
+a) La dimensión del modelo completo
+b) El número de cabezas de atención
+*c) El número de capas
+d) El tamaño del vocabulario
+
+27. En la tabla de configuraciones de la imagen, ¿qué representa la columna d?
+![Tabla con modelos de lenguaje (GPT-2 XL, GPT-3, Qwen3 y Llama 3.1) y las columnas Year, L, d, A, d_ff, |V|, Context y Params](imagenes/iap2-nivel7-tabla-configuraciones.png)
+a) El número de capas del modelo
+b) La dimensión del bloque feedforward
+c) El largo del contexto
+*d) La dimensión del modelo
+
+28. En la tabla de configuraciones de la imagen, ¿qué representa la columna A?
+![Tabla con modelos de lenguaje (GPT-2 XL, GPT-3, Qwen3 y Llama 3.1) y las columnas Year, L, d, A, d_ff, |V|, Context y Params](imagenes/iap2-nivel7-tabla-configuraciones.png)
+a) El número de capas apiladas
+*b) El número de cabezas de atención
+c) La dimensión de la capa feedforward del bloque
+d) El tamaño del vocabulario del modelo
+
+29. En la tabla de configuraciones de la imagen, ¿qué representa la columna d_ff?
+![Tabla con modelos de lenguaje (GPT-2 XL, GPT-3, Qwen3 y Llama 3.1) y las columnas Year, L, d, A, d_ff, |V|, Context y Params](imagenes/iap2-nivel7-tabla-configuraciones.png)
+a) La dimensión del modelo completo
+b) El número de cabezas de atención
+c) El largo del contexto máximo
+*d) La dimensión del feedforward
+
+30. En la tabla de configuraciones de la imagen, ¿qué representa la columna |V|?
+![Tabla con modelos de lenguaje (GPT-2 XL, GPT-3, Qwen3 y Llama 3.1) y las columnas Year, L, d, A, d_ff, |V|, Context y Params](imagenes/iap2-nivel7-tabla-configuraciones.png)
+a) El número de capas del modelo
+b) La dimensión de la capa feedforward
+*c) El tamaño del vocabulario
+d) El número de cabezas de atención
+
+31. ¿Cuáles de las siguientes columnas figuran en la tabla de configuraciones de modelos de lenguaje transformer de la clase?
+a) Costo de entrenamiento
+*b) Año del modelo
+*c) Cantidad de parámetros
+d) Cantidad de GPUs utilizadas
+*e) Largo del contexto
+
+32. ¿Cuáles de los siguientes modelos figuran en la tabla de configuraciones de modelos de lenguaje transformer de la clase?
+*a) GPT-2 XL
+b) ResNet-50
+*c) Qwen3-0.6B
+*d) GPT-3
+e) AlexNet
+*f) Qwen3-32B
+
+33. ¿Cuáles de los siguientes modelos figuran también en la tabla de configuraciones de modelos de lenguaje transformer de la clase?
+a) Stable Diffusion 1.5
+*b) Llama 3.1 405B
+c) Segment Anything 2
+*d) Llama 3.1 8B
+e) YOLO versión 3
+
+## Nivel 8: Fundamentos de LLMs #2 (parte 1)
+
+### Tema: Arquitecturas de Transformers
+
+1. ¿Qué hace un transformer decoder?
+![Tres esquemas rotulados Decoder, Encoder y Encoder-Decoder, con las conexiones entre tokens de entrada y de salida](imagenes/iap2-nivel8-arquitecturas.png)
+a) Clasifica los tokens de la entrada sin generar ningún texto
+b) Procesa toda la entrada con un encoder y genera la salida con cross-attention
+*c) Toma una serie de tokens y genera iterativamente un token de salida por vez
+d) Mapea una secuencia de input embeddings a embeddings contextuales de igual longitud
+
+2. ¿Por qué se dice que los decoders son modelos generativos y causales?
+a) Porque atienden al encoder con cross-attention
+*b) Porque la información fluye de izquierda a derecha
+c) Porque la información fluye de derecha a izquierda del texto
+d) Porque cada token recibe la información de toda la entrada
+
+3. ¿Qué hace un transformer encoder?
+![Tres esquemas rotulados Decoder, Encoder y Encoder-Decoder, con las conexiones entre tokens de entrada y de salida](imagenes/iap2-nivel8-arquitecturas.png)
+a) Genera la salida token por token, prestándole atención a otro módulo
+*b) Mapea una secuencia de input embeddings a embeddings contextuales de la misma longitud
+c) Toma una serie de tokens y genera iterativamente un token de salida por vez
+d) Calcula la probabilidad de la palabra siguiente a partir de los tokens anteriores
+
+4. ¿Qué información contienen los embeddings contextuales que produce un encoder?
+*a) La de toda la entrada
+b) Ninguna del contexto
+c) La de los tokens ya generados
+d) Solo la de los tokens anteriores
+
+5. ¿Para qué se usa un encoder, que no genera texto?
+a) Para prestarle atención a un decoder mediante la cross-attention
+b) Para generar la secuencia de salida un token por vez
+c) Para predecir iterativamente el siguiente token de una secuencia
+*d) Para clasificar o tomar decisiones sobre los tokens, como sentimiento o NER
+
+6. ¿Cómo funciona un modelo encoder-decoder?
+![Tres esquemas rotulados Decoder, Encoder y Encoder-Decoder, con las conexiones entre tokens de entrada y de salida](imagenes/iap2-nivel8-arquitecturas.png)
+a) Un decoder procesa toda la secuencia de entrada y un encoder genera la salida un token por vez
+*b) Un encoder procesa toda la entrada y un decoder genera la salida un token por vez
+c) Un solo módulo causal procesa la entrada y genera la salida de izquierda a derecha
+d) Dos encoders procesan la entrada y la salida, sin generar texto token por token
+
+7. ¿Mediante qué mecanismo el decoder de un encoder-decoder le presta atención al encoder?
+a) Self-attention causal
+b) Masked language modeling
+c) Denoising
+*d) La cross-attention
+
+8. ¿Cuáles de los siguientes modelos figuran como ejemplos de decoder en la clase?
+*a) GPT
+b) BERT
+*c) Claude
+d) Whisper
+*e) Llama
+
+9. ¿Cuáles de los siguientes modelos figuran como ejemplos de encoder en la clase?
+*a) BERT
+b) GPT
+*c) RoBERTa
+d) BART
+*e) RoBERTuito
+
+10. ¿Cuáles de los siguientes modelos figuran como ejemplos de encoder-decoder en la clase?
+a) Llama
+*b) BART
+c) RoBERTa
+*d) Whisper
+
+11. Según la figura de las tres arquitecturas, ¿qué produce un encoder como salida?
+![Tres esquemas rotulados Decoder, Encoder y Encoder-Decoder, con las conexiones entre tokens de entrada y de salida](imagenes/iap2-nivel8-arquitecturas.png)
+a) Una serie de tokens generada de a uno por vez
+b) Una única etiqueta para toda la entrada
+c) Una distribución de probabilidad sobre el vocabulario del siguiente token
+*d) Una codificación: una representación vectorial de cada token
+
+### Tema: Encoders bidireccionales (BERT)
+
+12. ¿Qué usan los encoders bidireccionales para mapear los input embeddings (x_1, …, x_n) a los output embeddings (h_1, …, h_n)?
+a) Una red recurrente
+b) Cross-attention
+*c) La self-attention
+d) Una máscara causal
+
+13. ¿Qué diferencia a los output embeddings de BERT de los de GPT?
+a) Se generan de a uno por vez, como los tokens de salida de un decoder
+*b) Contienen información contextual de toda la secuencia, no solo de los tokens anteriores
+c) Contienen información contextual solo de los tokens anteriores, como en GPT
+d) Tienen una longitud distinta a la de la secuencia de input embeddings
+
+14. ¿Para qué tareas son útiles los encoders bidireccionales?
+*a) Para hacer clasificaciones o tomar decisiones basadas en los tokens y sus contextos
+b) Para generar texto de izquierda a derecha, un token por vez
+c) Para traducir una secuencia del source language al target language
+d) Para predecir el token siguiente a partir de los tokens anteriores
+
+15. En la figura del transformer causal (a) de self-attention, ¿qué información usa el cálculo de la atención en cada token?
+![Dos capas de self-attention con entradas x1 a x5, una causal (a) y una bidireccional (b), con las conexiones hacia a3](imagenes/iap2-nivel8-atencion-causal-bidireccional.png)
+*a) Solo la información vista antes en el contexto
+b) Solo la de los output embeddings calculados
+c) La información de todos los tokens, tanto anteriores como posteriores
+d) Solo la información de los tokens que siguen al token actual
+
+16. En la figura del modelo de atención bidireccional (b), ¿a qué entradas atiende el modelo al procesar cada token?
+![Dos capas de self-attention con entradas x1 a x5, una causal (a) y una bidireccional (b), con las conexiones hacia a3](imagenes/iap2-nivel8-atencion-causal-bidireccional.png)
+a) Solo a las entradas posteriores al token actual
+b) Solo a las entradas anteriores al token actual
+*c) A todas las entradas, tanto las anteriores como las posteriores
+d) Solo al token actual de la secuencia
+
+### Tema: Implementación: se elimina la máscara
+
+17. ¿Cómo se implementa la atención bidireccional a partir de la atención causal?
+a) Reemplazando el softmax por una función que ignora los tokens futuros
+*b) Eliminando la máscara que impide a la atención mirar a tokens futuros
+c) Agregando una máscara que impide mirar a los tokens pasados
+d) Sumando −∞ en todas las posiciones de la matriz de scores
+
+18. En head = softmax(QK^T/√d_k + M)V del decoder causal, ¿qué valores tiene la matriz M?
+a) 0 en las posiciones j > i y −∞ en las j ≤ i
+b) −∞ en todas las posiciones de la matriz de scores QK^T
+c) 0 en todas las posiciones de la matriz de scores QK^T
+*d) 0 en las posiciones j ≤ i y −∞ en las posiciones j > i
+
+19. En las matrices M de la imagen, donde cada fila corresponde a un token, ¿a qué posiciones puede atender el primer token en el Decoder y en el Encoder?
+![Dos matrices de 5×5 rotuladas Decoder y Encoder, con celdas verdes de valor 0 y celdas rosadas de valor −∞](imagenes/iap2-nivel8-matrices-mascara.png)
+*a) Solo a sí mismo en el Decoder, y a todas en el Encoder
+b) A todas en el Decoder, y solo a sí mismo en el Encoder
+c) A todas las posiciones, tanto en el Decoder como en el Encoder
+d) Solo a sí mismo, tanto en el Decoder como en el Encoder
+
+### Tema: Entrenamiento de BERT: Denoising + NSP
+
+20. ¿En qué consiste el denoising en el entrenamiento de BERT?
+*a) Se corrompe la entrada y el modelo debe reconstruir los tokens originales
+b) Se genera el token siguiente y el modelo debe predecir si pertenece al texto
+c) Se eliminan las oraciones repetidas y el modelo las genera
+d) Se agrega ruido a los pesos y el modelo debe recuperar su valor original
+
+21. ¿Cómo se corrompe la entrada en el denoising?
+a) Se reordenan los tokens y se enmascara la segunda oración completa
+b) Se eliminan algunos tokens de la secuencia y se acortan sus embeddings
+*c) Algunos tokens se enmascaran y otros se reemplazan por otros al azar
+d) Se enmascaran todos los tokens y se reemplaza solo el último al azar
+
+22. ¿En qué consiste NSP (Next Sentence Prediction)?
+a) Dada una oración, el modelo debe reconstruir los tokens que fueron enmascarados
+b) Dadas dos oraciones, el modelo debe generar la oración que sigue a la segunda
+c) Dadas dos oraciones, el modelo debe predecir si una de ellas contiene tokens al azar
+*d) Dadas dos oraciones, el modelo debe predecir si la segunda sigue a la primera
+
+23. ¿Con qué formato se arma un ejemplo de entrenamiento de BERT?
+*a) [CLS] segmento A [SEP] segmento B [SEP]
+b) [CLS] segmento A segmento B [SEP]
+c) [SEP] segmento A [CLS] segmento B [CLS] [SEP]
+d) [CLS] segmento A [CLS] segmento B
+
+24. ¿Con qué dos objetivos simultáneos se preentrena BERT?
+a) MLM y cross-attention
+b) NSP y teacher forcing
+*c) MLM y NSP
+d) Solo NSP
+
+25. ¿Desde qué vector se predice en BERT si el segmento B sigue al segmento A?
+*a) Desde h[CLS]
+b) Desde el último token de B
+c) Desde el primer token de B
+d) Desde el primer [SEP]
+
+26. ¿Cómo se define la pérdida de preentrenamiento de BERT?
+a) Solo como L_MLM, porque NSP no tiene pérdida
+b) Como el producto de ambas pérdidas
+c) Solo como L_NSP, porque MLM no tiene pérdida
+*d) Como la suma de L_MLM y L_NSP
+
+27. En la figura de la clase sobre masked language model training, ¿qué tokens entran en la pérdida de entrenamiento?
+![Entrenamiento de masked language model con tokens enmascarados o reemplazados, un encoder bidireccional y pérdidas de entropía cruzada](imagenes/iap2-nivel8-mlm.png)
+a) Solo los dos tokens que fueron enmascarados en la secuencia
+b) Solo el único token que fue reemplazado por una palabra ajena
+c) Todos los tokens de entrada de la secuencia de ejemplo
+*d) Solo los tres tokens seleccionados: dos enmascarados y uno reemplazado por una palabra ajena
+
+### Tema: Fine-tuning, ejemplo 1: clasificación de sentimiento
+
+28. En el ejemplo de fine-tuning de clasificación de sentimiento, ¿cuál es la tarea?
+![Encoder bidireccional con la entrada [CLS] entirely predictable and lacks energy y una cabeza de clasificación de sentimiento](imagenes/iap2-nivel8-sentimiento.png)
+*a) Dada una oración, asignar una de las clases positivo, negativo o neutro
+b) Dada una oración, generar su traducción completa al target language
+c) Dados dos segmentos, predecir si el segundo sigue al primero
+d) Dada una secuencia, asignar una etiqueta BIO a cada uno de sus tokens
+
+29. ¿Qué head se usa en el ejemplo de clasificación de sentimiento?
+![Encoder bidireccional con la entrada [CLS] entirely predictable and lacks energy y una cabeza de clasificación de sentimiento](imagenes/iap2-nivel8-sentimiento.png)
+*a) Una single feedforward layer con W_c ∈ R^{d×3}
+b) Una single feedforward layer con W_c ∈ R^{d×d} de salida
+c) Una red recurrente con tres estados
+d) Una capa de cross-attention con tres cabezas
+
+30. ¿Qué vector se le pasa a la capa W_c en y = softmax(h^L_CLS W_c)?
+![Encoder bidireccional con la entrada [CLS] entirely predictable and lacks energy y una cabeza de clasificación de sentimiento](imagenes/iap2-nivel8-sentimiento.png)
+a) El promedio de los output embeddings de todos los tokens
+b) El input embedding del token [CLS] de entrada
+c) El output embedding del último token de la oración
+*d) El output embedding del token [CLS]
+
+31. ¿Cómo se entrena la clasificación de sentimiento?
+a) Con texto sin etiquetas y una pérdida que suma MLM y NSP
+b) Con datos etiquetados y una pérdida basada en la máscara causal
+c) Con datos sin etiquetar y teacher forcing sobre cada token
+*d) Con datos etiquetados y cross-entropy loss entre el output y la respuesta correcta
+
+32. ¿Cómo se ajusta la matriz W_c en el fine-tuning de clasificación de sentimiento?
+a) Se ajusta tras congelar la red
+b) Se ajusta antes que el resto, que se entrena después
+*c) Junto con el resto de la red
+d) Se fija de antemano y no se ajusta
+
+33. ¿Cuál es la alternativa más barata que menciona la clase para el fine-tuning de clasificación?
+a) Ajustar solo el token [CLS], dejando W_c congelada
+*b) Ajustar solo W_c, dejando el resto congelado
+c) Ajustar todo el modelo salvo la matriz W_c
+d) Ajustar solo A y B, dejando W_c congelada
+
+34. ¿Qué alternativa mejor menciona la clase para el fine-tuning?
+a) La técnica NSP de preentrenamiento
+b) La capa cross-attention
+c) La técnica QLoRA de cuantización
+*d) La técnica LoRA de bajo rango
+
+## Nivel 9: Fundamentos de LLMs #2 (parte 2)
+
+### Tema: Fine-tuning, ejemplo 2: NER
+
+1. ¿Cuál es la tarea de NER en el ejemplo de fine-tuning?
+![Encoder bidireccional con la entrada [CLS] Jane Villanueva of United Airlines Holding discussed y una cabeza de NER sobre cada token](imagenes/iap2-nivel9-ner.png)
+a) Dada una oración, generar la oración que sigue en el texto original
+b) Dada una oración, predecir si la segunda sigue a la primera
+*c) Dada una oración, asignar a cada token una etiqueta que forma una secuencia BIO
+d) Dada una oración, asignar una única clase entre positivo, negativo o neutro
+
+2. En el esquema de etiquetas BIO, ¿qué indica la etiqueta B?
+a) Que está fuera de toda entidad
+*b) El comienzo de una entidad
+c) Que es el final de una entidad
+d) La continuación de una entidad previa
+
+3. En el esquema de etiquetas BIO, ¿qué indica la etiqueta I?
+*a) La continuación de una entidad
+b) Que es un lugar
+c) Que está fuera de toda entidad
+d) El comienzo de una nueva entidad
+
+4. En el esquema de etiquetas BIO, ¿qué indica la etiqueta O?
+a) Que el token es una organización cualquiera
+b) El comienzo de una entidad cualquiera
+c) La continuación de una entidad previa
+*d) Que el token está fuera de toda entidad
+
+5. En las etiquetas de NER del ejemplo, ¿qué indican PER y LOC?
+*a) PER indica una persona y LOC indica un lugar
+b) PER indica la continuación de una entidad y LOC su comienzo
+c) PER indica un lugar y LOC indica una persona concreta
+d) PER indica el comienzo de una entidad y LOC su fin
+
+6. En la oración «Gabriel García Márquez nació en Aracataca, Colombia, y vivió en la Ciudad de México.», ¿qué etiquetas reciben «Gabriel García Márquez»?
+*a) B-PER, I-PER e I-PER
+b) B-PER, B-PER, B-PER
+c) B-PER, I-PER y después O
+d) B-LOC, I-LOC, I-LOC
+
+7. En la oración «Gabriel García Márquez nació en Aracataca, Colombia, y vivió en la Ciudad de México.», ¿qué etiquetas reciben «Aracataca» y «Colombia»?
+a) I-LOC e I-LOC, respectivamente
+b) B-LOC e I-LOC, respectivamente
+*c) B-LOC y B-LOC
+d) B-PER y B-LOC, respectivamente
+
+8. En la oración «Gabriel García Márquez nació en Aracataca, Colombia, y vivió en la Ciudad de México.», ¿qué etiquetas reciben «Ciudad de México»?
+*a) B-LOC, I-LOC e I-LOC
+b) B-LOC, I-LOC y después O
+c) B-LOC, B-LOC, B-LOC
+d) B-PER, I-PER, I-PER
+
+9. En la oración «Gabriel García Márquez nació en Aracataca, Colombia, y vivió en la Ciudad de México.», ¿qué etiqueta reciben «nació» y «vivió»?
+a) B-PER
+*b) La etiqueta O
+c) La etiqueta I-PER
+d) La etiqueta B-LOC, de lugar
+
+10. En el fine-tuning de NER, ¿qué head se usa?
+![Encoder bidireccional con la entrada [CLS] Jane Villanueva of United Airlines Holding discussed y una cabeza de NER sobre cada token](imagenes/iap2-nivel9-ner.png)
+a) Una red recurrente con k estados
+b) Una capa de cross-attention con k cabezas
+*c) Una single feedforward layer con W_NER ∈ R^{d×k}
+d) Una single feedforward layer con W_NER ∈ R^{d×3}, como antes
+
+11. En W_NER ∈ R^{d×k}, ¿qué representa k?
+*a) El número de etiquetas para la tarea
+b) La cantidad de entidades de la oración
+c) La cantidad de tokens de toda la oración
+d) La dimensión de los embeddings
+
+12. En y_i = softmax(h^L_i W_NER), ¿qué es y_i?
+![Encoder bidireccional con la entrada [CLS] Jane Villanueva of United Airlines Holding discussed y una cabeza de NER sobre cada token](imagenes/iap2-nivel9-ner.png)
+a) Un vector con la etiqueta elegida para el token i
+*b) Una distribución de probabilidades sobre las k etiquetas
+c) Una distribución de probabilidades sobre los tokens del vocabulario
+d) Una distribución de probabilidades sobre las posiciones de la oración
+
+13. En t_i = argmax_k y_i[k], ¿cómo se elige la etiqueta del token i?
+![Encoder bidireccional con la entrada [CLS] Jane Villanueva of United Airlines Holding discussed y una cabeza de NER sobre cada token](imagenes/iap2-nivel9-ner.png)
+a) Se elige la etiqueta con menor probabilidad
+*b) Se elige la etiqueta con mayor probabilidad
+c) Se muestrea una etiqueta al azar según la distribución y_i
+d) Se elige la del token anterior
+
+14. ¿Cómo se ajusta la matriz W_NER en el fine-tuning de NER?
+a) Solo cuando el resto de la red cambia
+b) Junto con la matriz W_c de clasificación
+c) Antes de entrenar el resto de la red
+*d) Junto con el resto de la red, o bien sola
+
+15. ¿Qué métodos menciona la clase como algo más sofisticado para elegir la secuencia más probable en NER?
+*a) Viterbi y CRF
+b) Greedy y Top-k random
+c) NSP junto con MLM
+d) LoRA y también QLoRA
+
+16. En la figura de NER con un encoder bidireccional, ¿qué se le pasa a la NER head?
+![Encoder bidireccional con la entrada [CLS] Jane Villanueva of United Airlines Holding discussed y una cabeza de NER sobre cada token](imagenes/iap2-nivel9-ner.png)
+a) Solo el output vector del token [CLS]
+b) Los input embeddings de todos los tokens
+*c) El output vector de cada token de entrada
+d) Solo el output vector del último token
+
+17. En la figura de NER con un encoder bidireccional, ¿cómo se interpretan las etiquetas que reciben «United», «Airlines» y «Holding»?
+![Encoder bidireccional con la entrada [CLS] Jane Villanueva of United Airlines Holding discussed y una cabeza de NER sobre cada token](imagenes/iap2-nivel9-ner.png)
+*a) Como una única entidad de tipo organización
+b) Como tres entidades de tipo organización, una por token
+c) Como una persona seguida de dos lugares
+d) Como tres tokens que quedan fuera de toda entidad
+
+### Tema: Encoder-decoder: cross-attention
+
+18. En cross-attention, ¿de dónde vienen las queries y de dónde las keys y values?
+a) Las queries, keys y values vienen todas del mismo encoder
+b) Las queries, keys y values vienen todas del mismo decoder
+*c) Las queries vienen del decoder y las keys y values del encoder
+d) Las queries vienen del encoder y las keys y los values vienen del decoder
+
+19. En cross-attention, ¿cómo se calculan Q, K y V?
+a) Q = H_enc W^Q, K = H_dec W^K, V = H_dec
+b) Q = H_enc W^Q, K = H_enc W^K y V = H_dec W^V
+*c) Q = H_dec W^Q, K = H_enc W^K, V = H_enc W^V
+d) Q = H_dec W^Q, K = H_dec W^K y V = H_enc W^V
+
+20. ¿Qué le permite cross-attention al decoder?
+a) Ignorar las palabras del source language mientras genera en el target language
+*b) Prestar atención a todas las palabras del source language mientras genera en el target language
+c) Prestar atención solo a las palabras del target language que ya generó
+d) Generar todas las palabras del target language en una sola pasada
+
+21. ¿Cómo presta atención la multi-head attention en el encoder de un encoder-decoder?
+a) Solo al token actual, porque no tiene masking
+*b) Hacia adelante y hacia atrás, porque no tiene masking
+c) Solo hacia atrás, porque usa una máscara causal
+d) Solo hacia adelante, porque ve la entrada completa
+
+### Tema: Encoder-decoder: traducción automática
+
+22. Según el pie de la figura de traducción automática, ¿qué bloque usa el decoder?
+![Encoder con la oración The green witch arrived y decoder con su entrada y salida en español, conectados por cross-attention](imagenes/iap2-nivel9-traduccion.png)
+a) Un bloque sin self-attention, que solo atiende a todas las palabras del encoder
+b) El mismo bloque que el encoder, sin ninguna capa extra de atención cruzada
+c) Un bloque con una máscara bidireccional, sin cross-attention hacia las palabras del encoder
+*d) Un bloque más potente, con una capa extra de cross-attention que atiende a las palabras del encoder
+
+23. Según el pie de la figura de traducción automática, ¿qué bloques usa el encoder?
+![Encoder con la oración The green witch arrived y decoder con su entrada y salida en español, conectados por cross-attention](imagenes/iap2-nivel9-traduccion.png)
+a) Bloques sin self-attention
+b) Bloques más potentes que los del decoder
+*c) Los bloques transformer que ya vimos
+d) Bloques con cross-attention
+
+24. En la figura de traducción automática, ¿qué relación hay entre la entrada y la salida del decoder?
+![Encoder con la oración The green witch arrived y decoder con su entrada y salida en español, conectados por cross-attention](imagenes/iap2-nivel9-traduccion.png)
+a) La entrada es la secuencia que entra al encoder, sin cambios
+*b) La entrada es la salida desplazada una posición hacia la derecha
+c) La entrada es la salida escrita en orden inverso, de derecha a izquierda
+d) La entrada y la salida son siempre idénticas, posición por posición
+
+25. En la figura de traducción automática, ¿qué tokens especiales aparecen al comienzo de la entrada del decoder y al final de su salida?
+a) </s> primero y <s> al final
+b) [SEP] al comienzo y [CLS] al final del todo
+c) [CLS] al comienzo y [SEP] al final
+*d) <s> al comienzo y </s> al final
+
+### Tema: LoRA (Low-Rank Adaptation)
+
+26. En el fine-tuning completo, ¿qué debe aprender cada matriz W ∈ R^{d×d}?
+*a) Una actualización ΔW del mismo tamaño que W
+b) Dos matrices más chicas que W, en lugar de actualizar W
+c) Una corrección de rango bajo de menor tamaño que W
+d) Una actualización ΔW de tamaño r × r, con r ≪ d
+
+27. ¿Qué se congela y qué se aprende en el fine-tuning con LoRA?
+![Pesos preentrenados W de d×d, matrices A y B de rango r con sus inicializaciones, entrada x y salida h](imagenes/iap2-nivel9-lora.png)
+a) Se congelan A y B y se aprende una actualización completa de W
+*b) Se congela W y se aprende solo una corrección de rango bajo de la matriz
+c) Se aprende una actualización completa de W y se congelan A y B
+d) Se congela el modelo entero y se aprende solo la matriz de embeddings
+
+28. En LoRA, ¿cómo se expresa la matriz adaptada W'?
+![Pesos preentrenados W de d×d, matrices A y B de rango r con sus inicializaciones, entrada x y salida h](imagenes/iap2-nivel9-lora.png)
+*a) W' = W + ΔW = W + AB
+b) W' = W − ΔW = W − AB, restando la corrección
+c) W' = W · ΔW = W · AB
+d) W' = ΔW = AB, sin sumar W
+
+29. En LoRA, ¿qué dimensiones tienen las matrices A y B?
+![Pesos preentrenados W de d×d, matrices A y B de rango r con sus inicializaciones, entrada x y salida h](imagenes/iap2-nivel9-lora.png)
+*a) A ∈ R^{d×r} y B ∈ R^{r×d}, con r ≪ d
+b) A ∈ R^{d×r} y B ∈ R^{r×d}, con r mucho mayor que d
+c) A ∈ R^{r×d} y B ∈ R^{d×r}, r ≪ d
+d) A ∈ R^{d×d} y B ∈ R^{r×r}, siendo r ≪ d
+
+30. Para una matriz W ∈ R^{d×d}, ¿cuántos parámetros se entrenan con LoRA con rango r?
+a) r · r parámetros
+b) d · d parámetros, como en W
+*c) 2 · d · r parámetros
+d) d · r² parámetros
+
+31. ¿Qué intuición hay detrás de LoRA?
+*a) Que la actualización necesaria para adaptar un modelo tiene rango intrínsecamente bajo
+b) Que W debe actualizarse en tantas direcciones como su tamaño
+c) Que la actualización necesaria para adaptar un modelo tiene rango intrínsecamente alto
+d) Que hay que mover los pesos en todas las direcciones posibles del espacio
+
+32. Según la intuición de LoRA, ¿en cuántas direcciones hace falta mover los pesos?
+a) En ninguna dirección
+b) En la mitad de las direcciones
+c) En todas las direcciones
+*d) Solo en unas pocas
+
+33. En el entrenamiento con LoRA, ¿qué matrices reciben gradientes?
+a) Solo B, mientras A y W quedan congeladas durante el entrenamiento
+*b) Solo A y B, mientras W queda congelada
+c) Solo W, mientras A y B quedan congeladas
+d) W, A y B, sin matrices congeladas
+
+34. Según la figura de LoRA, ¿cómo se inicializan las matrices B y A?
+*a) B en cero y A con una distribución normal N(0, σ²)
+b) B con una distribución normal N(0, σ²) y A inicializada en cero
+c) Ambas con una distribución normal N(0, σ²), como W
+d) Ambas inicializadas en cero, igual que la matriz W
+
+35. En LoRA, ¿qué ventaja de eficiencia computacional se menciona?
+a) La optimización no requiere calcular ningún gradiente
+b) La optimización incluye W completa, además de A y B
+c) La optimización se hace solo sobre W
+*d) La optimización se hace solo sobre A y B
+
+36. ¿Qué se dice de LoRA respecto del costo en inferencia?
+a) Tiene un costo extra en inferencia, porque hay que calcular A y B aparte
+*b) No tiene costo extra en inferencia, porque la corrección se fusiona con W
+c) No tiene costo extra en inferencia, porque elimina el decoder entero
+d) Tiene un costo extra en inferencia, porque se descongela W entera
+
+37. ¿Qué se puede intercambiar por tarea, dominio o dialecto con LoRA?
+a) Los datos de preentrenamiento
+*b) Los adaptadores, que son chicos
+c) El modelo base completo, que es chico
+d) Las matrices W, que son chicas
+
+38. ¿Cómo es el rendimiento de LoRA respecto del fine-tuning completo?
+a) Peor en inferencia pero mejor en entrenamiento
+b) Notablemente mejor, a cambio de más parámetros
+c) Notablemente peor, a cambio de menos parámetros
+*d) Comparable al del fine-tuning completo
+
+39. ¿Cuáles de las siguientes ventajas de LoRA figuran en la clase?
+*a) Mayor eficiencia computacional
+b) Actualiza todos los pesos de W
+*c) Sin costo extra en inferencia
+d) Necesita una ΔW del tamaño de W
+*e) Adaptadores chicos e intercambiables
+*f) Rendimiento comparable al fine-tuning completo
+
+40. ¿En qué consiste QLoRA?
+a) Modelo base en 16 bits, sin ningún adaptador LoRA
+b) Modelo base en 16 bits, adaptadores LoRA cuantizados a 4 bits
+c) Modelo base cuantizado a 4 bits, adaptadores LoRA también cuantizados a 4 bits
+*d) Modelo base cuantizado a 4 bits, adaptadores LoRA entrenados en 16 bits
+
+41. ¿Qué ahorro y qué costo tiene QLoRA?
+a) Acelera mucho el entrenamiento, a costa de usar más memoria
+b) Gasta más memoria, a costa de un entrenamiento un poco más lento
+*c) Ahorra memoria, a costa de un entrenamiento un poco más lento
+d) Ahorra memoria sin ningún costo en el entrenamiento
+
+42. ¿Qué permite hacer QLoRA?
+a) Fine-tunear modelos sin necesidad de ninguna GPU
+*b) Fine-tunear modelos muy grandes en una sola GPU
+c) Fine-tunear modelos chicos en varias GPU a la vez
+d) Preentrenar modelos desde cero sin datos etiquetados
 `;
