@@ -2257,4 +2257,756 @@ a) Fine-tunear modelos sin necesidad de ninguna GPU
 *b) Fine-tunear modelos muy grandes en una sola GPU
 c) Fine-tunear modelos chicos en varias GPU a la vez
 d) Preentrenar modelos desde cero sin datos etiquetados
+
+## Nivel 10: Fundamentos de LLMs #3 (parte 1)
+
+### Tema: Arquitecturas de Transformers
+
+1. ¿Qué significa que un decoder genere texto de manera autorregresiva?
+a) Genera todos los tokens de salida a la vez a partir de la secuencia completa de entrada
+b) Convierte la secuencia recibida en embeddings contextuales de la misma longitud que la entrada
+c) Genera cada token de salida condicionado por un encoder mediante cross-attention en cada paso
+*d) Genera un token de salida por vez, de forma iterativa, a partir de la secuencia recibida
+
+2. En un decoder, que es un modelo generativo y causal, ¿hacia dónde fluye la información?
+a) Desde un encoder auxiliar hacia el decoder, mediante cross-attention
+*b) De izquierda a derecha, desde el comienzo del texto hacia el final
+c) De derecha a izquierda, desde el final del texto hacia el comienzo
+d) En ambos sentidos a la vez, desde cada token hacia todos los demás
+
+3. ¿Cuáles de los siguientes modelos figuran como ejemplos de decoder en la clase?
+*a) GPT
+b) BERT
+*c) Claude
+d) Whisper
+*e) Llama
+f) BART
+
+4. ¿Qué produce un encoder a partir de la secuencia de tokens que recibe como entrada?
+*a) Una secuencia de embeddings contextuales de la misma longitud, con información de toda la entrada
+b) Un token de salida por vez, condicionado por todos los tokens ya generados antes
+c) Una secuencia de tokens nueva, de longitud distinta y generada de izquierda a derecha
+d) Una distribución de probabilidad sobre el vocabulario para predecir el siguiente token
+
+5. ¿Para qué se usa un encoder, dado que no genera texto?
+a) Para predecir el siguiente token a partir de los tokens anteriores
+b) Para condicionar la generación de un decoder mediante cross-attention sobre su salida
+*c) Para clasificar o tomar decisiones sobre la entrada, como sentimiento o NER
+d) Para generar la secuencia de salida de a un token por vez
+
+6. ¿Cuáles de los siguientes modelos figuran como ejemplos de encoder en la clase?
+a) Llama
+*b) BERT
+*c) RoBERTa
+d) Claude
+*e) RoBERTuito
+
+7. ¿Cómo se reparten el trabajo el encoder y el decoder en un modelo encoder-decoder?
+a) El decoder procesa toda la entrada y el encoder genera la salida de a un token por vez
+*b) El encoder procesa toda la entrada y el decoder genera la salida token por token mediante cross-attention
+c) Ambos procesan toda la entrada y generan juntos la salida completa en una sola pasada
+d) Un único módulo causal procesa la entrada y genera la salida de izquierda a derecha, sin cross-attention
+
+8. ¿Cuáles de los siguientes modelos figuran como ejemplos de encoder-decoder en la clase?
+a) GPT
+*b) BART
+c) BERT
+*d) Whisper
+e) Claude
+
+### Tema: Ajuste fino supervisado (SFT)
+
+9. En la figura, ¿en qué momento intervienen los datos de fine-tuning?
+![Esquema de preentrenamiento con libros como datos, un modelo preentrenado, una flecha de fine-tuning que recibe un cilindro de datos y el modelo resultante](imagenes/iap2-nivel10-sft-figura.png)
+a) Antes del preentrenamiento, junto con los libros de la primera etapa
+b) Durante el preentrenamiento, mezclados con los datos de los libros
+c) Solo al final, para evaluar el modelo que ya quedó ajustado
+*d) Después del preentrenamiento, sobre el modelo que ya fue preentrenado
+
+10. Según el pie de la figura de preentrenamiento y fine-tuning, ¿a qué se puede ajustar un modelo preentrenado?
+![Esquema de preentrenamiento con libros como datos, un modelo preentrenado, una flecha de fine-tuning que recibe un cilindro de datos y el modelo resultante](imagenes/iap2-nivel10-sft-figura.png)
+*a) A un dominio o a un dataset en particular
+b) A un idioma que no figura en los datos
+c) A una arquitectura distinta de la original
+d) A un tamaño de vocabulario distinto del preentrenado
+
+11. ¿Cuáles de las siguientes formas de ajustar un modelo preentrenado se mencionan en el pie de la figura?
+![Esquema de preentrenamiento con libros como datos, un modelo preentrenado, una flecha de fine-tuning que recibe un cilindro de datos y el modelo resultante](imagenes/iap2-nivel10-sft-figura.png)
+*a) Actualizar todos los parámetros del modelo preentrenado
+b) Reiniciar los pesos al azar antes de ajustar
+*c) Actualizar solo algunos de los parámetros del modelo
+d) Reemplazar el modelo por uno más chico
+*e) Actualizar solo los parámetros de circuitería extra específica
+
+### Tema: LoRA (Low-Rank Adaptation)
+
+12. En el fine-tuning completo, ¿qué debe aprender cada matriz W ∈ R^{d×d}?
+*a) Una actualización ΔW del mismo tamaño que W
+b) Una actualización ΔW de tamaño r × r, con r ≪ d
+c) Dos matrices más chicas que W, en lugar de actualizar W
+d) Una corrección de rango bajo de menor tamaño que W
+
+13. ¿Qué se congela y qué se aprende en el fine-tuning con LoRA?
+a) Se aprende una actualización completa de W y se congelan A y B
+b) Se congelan A y B y se aprende una actualización completa de W
+*c) Se congela W y se aprende solo una corrección de rango bajo de la matriz
+d) Se congela el modelo entero y se aprende solo la matriz de embeddings
+
+14. En LoRA, ¿cómo se expresa la matriz adaptada W'?
+a) W' = ΔW = AB, sin sumar W
+b) W' = W · ΔW = W · AB
+*c) W' = W + ΔW = W + AB
+d) W' = W − ΔW = W − AB, restando la corrección
+
+15. En LoRA, ¿qué dimensiones tienen las matrices A y B?
+a) A ∈ R^{d×d} y B ∈ R^{r×r}, siendo r ≪ d
+b) A ∈ R^{r×d} y B ∈ R^{d×r}, con r ≪ d
+*c) A ∈ R^{d×r} y B ∈ R^{r×d}, con r ≪ d
+d) A ∈ R^{d×r} y B ∈ R^{r×d}, con r mucho mayor que d
+
+16. ¿Qué intuición hay detrás de LoRA?
+a) Que la actualización necesaria para adaptar un modelo tiene rango intrínsecamente alto
+b) Que hay que mover los pesos en todas las direcciones posibles del espacio
+*c) Que la actualización necesaria para adaptar un modelo tiene rango intrínsecamente bajo
+d) Que W debe actualizarse en tantas direcciones como su tamaño
+
+17. En la figura de LoRA, ¿cuál de los bloques queda congelado durante el entrenamiento?
+![Esquema de LoRA con un bloque azul de pesos preentrenados W de d×d, dos bloques naranjas B y A de rango r, la entrada x y la salida h](imagenes/iap2-nivel10-lora-figura.png)
+a) El bloque naranja B, el que se inicializa en cero
+*b) El bloque azul de pesos preentrenados W
+c) La barra amarilla h de la salida
+d) El bloque naranja A, el que tiene rango r
+
+18. En la figura de LoRA, ¿cómo se obtiene la salida h a partir de la entrada x?
+![Esquema de LoRA con un bloque azul de pesos preentrenados W de d×d, dos bloques naranjas B y A de rango r, la entrada x y la salida h](imagenes/iap2-nivel10-lora-figura.png)
+*a) Se suman el resultado de W y el del camino formado por A y B
+b) Se multiplican el resultado de W y el del camino formado por A y B
+c) Se alterna entre W y el camino de A y B en cada paso
+d) Se usa solo el camino de A y B, y W se descarta antes de entrenar
+
+19. En LoRA, ¿cómo se inicializan las matrices B y A?
+a) Ambas inicializadas en cero, igual que la matriz W
+*b) B en cero y A con una distribución normal N(0, σ²)
+c) B con una distribución normal N(0, σ²) y A inicializada en cero
+d) Ambas con una distribución normal N(0, σ²), como W
+
+20. Según la inicialización que muestra la figura de LoRA, ¿cuánto vale la corrección AB antes de empezar a entrenar?
+![Esquema de LoRA con un bloque azul de pesos preentrenados W de d×d, dos bloques naranjas B y A de rango r, la entrada x y la salida h](imagenes/iap2-nivel10-lora-figura.png)
+*a) Cero, porque la matriz B se inicializa en cero
+b) Una matriz con valores normales, porque así se inicializa A
+c) El mismo valor que W, porque ambas parten igual
+d) Un valor distinto de cero que depende de r y de d
+
+21. Con d = k = 12288 y r = 8, ¿cuántos parámetros se entrenan con LoRA por matriz?
+a) 12288 · 12288, unos 151 millones de parámetros
+*b) 2 · 12288 · 8, unos 197 mil parámetros
+c) 8 · 8, es decir, solo 64 parámetros
+d) 12288 · 8, unos 98 mil parámetros en total
+
+22. ¿Cuáles de las siguientes ventajas de LoRA figuran en la clase?
+*a) Mayor eficiencia computacional
+b) Actualiza todos los pesos de W
+*c) Sin costo extra en inferencia
+d) Necesita una ΔW del tamaño de W
+*e) Adaptadores chicos e intercambiables
+*f) Rendimiento comparable al fine-tuning completo
+
+23. ¿En qué consiste QLoRA?
+a) Modelo base en 16 bits, sin ningún adaptador LoRA
+b) Modelo base en 16 bits, adaptadores LoRA cuantizados a 4 bits
+c) Modelo base cuantizado a 4 bits, adaptadores LoRA también cuantizados a 4 bits
+*d) Modelo base cuantizado a 4 bits, adaptadores LoRA entrenados en 16 bits
+
+24. ¿Qué ahorro y qué costo tiene QLoRA?
+a) Acelera mucho el entrenamiento, a costa de usar más memoria
+*b) Ahorra memoria, a costa de un entrenamiento un poco más lento
+c) Gasta más memoria, a costa de un entrenamiento un poco más lento
+d) Ahorra memoria sin ningún costo en el entrenamiento
+
+25. ¿Qué permite hacer QLoRA?
+a) Fine-tunear modelos chicos en varias GPU a la vez
+b) Fine-tunear modelos sin necesidad de ninguna GPU
+*c) Fine-tunear modelos muy grandes en una sola GPU
+d) Preentrenar modelos desde cero sin datos etiquetados
+
+### Tema: Decoder-only Transformers
+
+26. ¿Cuáles de los siguientes términos describen a los Decoder-only Transformers en la clase?
+*a) Generativos
+b) Bidireccionales
+*c) Causales
+*d) Autorregresivos
+e) Con cross-attention
+*f) Left-to-right
+
+### Tema: Scaling laws
+
+27. ¿Cuáles de las siguientes preguntas buscan responder las scaling laws?
+*a) ¿Cuán grande debe ser un LLM?
+b) ¿Qué lenguaje de programación conviene usar para implementarlo?
+*c) ¿Cómo elegir L, d, A, etc.?
+d) ¿Cuánto conviene cobrar por cada consulta al modelo?
+*e) ¿Cuántos datos son necesarios?
+
+28. ¿Qué plantean las scaling laws sobre la arquitectura (profundidad vs. ancho) de un LLM?
+*a) Que importa poco en comparación con la escala
+b) Que importa más que la escala del modelo
+c) Que solo importa cuando el cómputo es chico
+d) Que importa lo mismo que la escala del modelo
+
+29. Para una capacidad de cómputo C fija, ¿cómo deben crecer el tamaño del modelo N y la cantidad de datos D?
+a) N debe crecer primero y D recién después
+b) N y D deben ser siempre iguales entre sí
+c) D debe crecer mientras N se mantiene fijo
+*d) N y D deben crecer a la par
+
+30. En la fórmula de la pérdida, ¿qué término representa la pérdida por modelo?
+![Fórmula L(N, D) = E + A/N^α + B/D^β](imagenes/iap2-nivel10-scaling-formula.png)
+a) El término B/D^β, que acompaña a D
+b) La constante E, que no depende de N
+c) El exponente β, que acompaña a D
+*d) El término A/N^α, que depende de N
+
+31. En la fórmula de la pérdida, ¿qué representa el término B/D^β?
+![Fórmula L(N, D) = E + A/N^α + B/D^β](imagenes/iap2-nivel10-scaling-formula.png)
+a) La pérdida irreducible
+b) La pérdida por modelo
+c) El presupuesto de cómputo C
+*d) La pérdida por datos
+
+32. En la fórmula de la pérdida, ¿qué representa la constante E?
+![Fórmula L(N, D) = E + A/N^α + B/D^β](imagenes/iap2-nivel10-scaling-formula.png)
+*a) La pérdida irreducible, independiente de N y D
+b) La pérdida por datos, que depende de D
+c) La pérdida por modelo, que depende de N
+d) La cantidad de datos D
+
+33. ¿Qué son las constantes E, A, B, α y β de la fórmula de la pérdida?
+*a) Constantes reales que se ajustan de forma experimental
+b) Valores que se calculan directamente del cómputo C
+c) Parámetros que el modelo aprende al entrenarse
+d) Valores elegidos a mano antes de entrenar, sin experimentos
+
+34. Con α y β cercanos a 0,3, ¿qué pasa con el término de la pérdida al duplicar N o D?
+a) Se reduce a la cuarta parte de su valor
+b) Se reduce a la mitad, justo por haberlo duplicado
+*c) Se reduce de forma moderada, sin llegar a la mitad
+d) No cambia, porque la pérdida solo depende del cómputo C del entrenamiento
+
+35. ¿Para qué sirve el resultado de la fórmula de la pérdida?
+a) Para decidir qué función de activación usar en cada capa
+*b) Para repartir el presupuesto de cómputo entre N y D
+c) Para calcular las GPU necesarias en el entrenamiento
+d) Para elegir el idioma de los datos de entrenamiento
+
+36. En los dos gráficos de la derecha, ¿cómo cambian el número de parámetros y el de tokens al aumentar los FLOPs?
+![Tres gráficos: pérdida de entrenamiento según FLOPS con curvas de colores por tamaño de modelo, y parámetros y tokens según FLOPs con una recta de ajuste](imagenes/iap2-nivel10-scaling-graficos.png)
+*a) Ambos aumentan a la par a medida que suben los FLOPs
+b) Los parámetros aumentan, pero los tokens se mantienen constantes todo el tiempo
+c) Ambos disminuyen a medida que aumentan los FLOPs
+d) Los tokens aumentan mientras que los parámetros disminuyen
+
+37. En el gráfico de la izquierda, ¿qué representa el color de cada curva?
+![Tres gráficos: pérdida de entrenamiento según FLOPS con curvas de colores por tamaño de modelo, y parámetros y tokens según FLOPs con una recta de ajuste](imagenes/iap2-nivel10-scaling-graficos.png)
+*a) Un tamaño de modelo distinto
+b) Una función de pérdida distinta
+c) Un presupuesto de FLOPS distinto
+d) Una cantidad distinta de tokens de entrenamiento
+
+38. En el gráfico de la izquierda, ¿qué ocurre con la pérdida de entrenamiento al aumentar los FLOPS?
+![Tres gráficos: pérdida de entrenamiento según FLOPS con curvas de colores por tamaño de modelo, y parámetros y tokens según FLOPs con una recta de ajuste](imagenes/iap2-nivel10-scaling-graficos.png)
+a) Se mantiene casi constante en todas las curvas
+b) Oscila sin una tendencia definida en las curvas
+c) Aumenta de forma sostenida en todas las curvas del gráfico
+*d) Disminuye en todas las curvas, cualquiera sea el tamaño
+
+39. Dado C fijo, ¿qué ocurre si N es chico y D es grande?
+a) El modelo alcanza la pérdida mínima y ya no mejora más
+b) El modelo logra anular la pérdida irreducible por completo
+c) El modelo tiene capacidad de sobra y pocos datos (subentrenamiento)
+*d) El modelo no tiene capacidad para aprovechar tantos datos (subajuste)
+
+40. Dado C fijo, ¿qué ocurre si N es grande y D es chico?
+a) El modelo reduce la pérdida por modelo a cero con pocos datos
+*b) El modelo tiene capacidad de sobra y pocos datos (subentrenamiento)
+c) El modelo aprovecha todos los datos y alcanza la pérdida óptima
+d) El modelo no tiene capacidad para aprovechar tantos datos (subajuste)
+
+## Nivel 11: Fundamentos de LLMs #3 (parte 2)
+
+### Tema: In-context learning
+
+1. ¿En qué consiste el few-shot prompting?
+a) En dar un único ejemplo de la tarea, que a veces alcanza
+b) En ajustar los pesos del modelo con varios ejemplos etiquetados de la tarea
+c) En describir solo la tarea, sin dar ningún ejemplo al modelo
+*d) En dar varios ejemplos de la tarea para que entienda el patrón
+
+2. ¿Qué tipo de prompting ilustra la figura?
+![Prompt que pide detectar el idioma de cada oración, con cuatro oraciones ya resueltas y una quinta que responde el modelo](imagenes/iap2-nivel11-fewshot.png)
+a) Chain-of-thought, porque el prompt incluye pasos intermedios de razonamiento
+b) Zero-shot, porque el prompt solo describe la tarea
+c) One-shot, porque el prompt da un único ejemplo ya resuelto
+*d) Few-shot, porque el prompt da varios ejemplos ya resueltos
+
+3. En el prompt de la figura, ¿qué idioma le asigna el modelo a la última oración?
+![Prompt que pide detectar el idioma de cada oración, con cuatro oraciones ya resueltas y una quinta que responde el modelo](imagenes/iap2-nivel11-fewshot.png)
+a) Español
+b) Inglés
+c) Francés
+*d) Portugués
+
+4. ¿Qué ocurre con los pesos del modelo en el in-context learning?
+*a) No se actualiza ninguno: todo ocurre en el contexto
+b) Se actualizan solo las matrices A y B de rango bajo
+c) Se actualizan solo los de la última capa
+d) Se actualizan todos, usando los ejemplos del prompt
+
+5. En few-shot prompting, ¿de dónde infiere el modelo la tarea que debe hacer?
+a) De los gradientes que reciben sus matrices de pesos
+b) De un modelo de recompensas
+c) De una etapa de fine-tuning con esos mismos ejemplos
+*d) Del patrón que forman los ejemplos del prompt
+
+6. ¿Qué distingue al one-shot prompting del few-shot prompting?
+a) Que necesita muchos más ejemplos para resolver la misma tarea
+b) Que actualiza los pesos del modelo con el ejemplo dado
+*c) Que usa un solo ejemplo, que a veces alcanza
+d) Que no incluye ejemplos y solo describe la tarea
+
+7. ¿Qué tipo de prompting ilustra la figura?
+![Prompt que pide etiquetar cada palabra con su categoría gramatical, con un ejemplo resuelto y una segunda oración que responde el modelo](imagenes/iap2-nivel11-oneshot.png)
+*a) One-shot, porque el prompt da un único ejemplo ya resuelto
+b) Few-shot, porque el prompt da varios ejemplos de la tarea ya resueltos
+c) Chain-of-thought, porque el prompt incluye pasos intermedios de razonamiento
+d) Zero-shot, porque el prompt solo describe la tarea
+
+8. En la respuesta del modelo en la figura, ¿qué etiqueta recibe la palabra «rápido»?
+![Prompt que pide etiquetar cada palabra con su categoría gramatical, con un ejemplo resuelto y una segunda oración que responde el modelo](imagenes/iap2-nivel11-oneshot.png)
+a) VB
+*b) ADV
+c) NN
+d) DET
+
+9. ¿En qué consiste el zero-shot prompting?
+a) En dar un único ejemplo de la tarea
+*b) En describir solamente la tarea, sin darle ningún ejemplo
+c) En actualizar los pesos con datos propios de la tarea
+d) En dar varios ejemplos para que el modelo entienda el patrón
+
+10. ¿Qué tipo de prompting ilustra la figura?
+![Prompt que pide clasificar el sentimiento de una oración como Positivo, Negativo o Neutro, con la respuesta del modelo](imagenes/iap2-nivel11-zeroshot.png)
+a) One-shot, porque el prompt da un único ejemplo ya resuelto
+b) Few-shot, porque el prompt da varios ejemplos ya resueltos
+c) Chain-of-thought, porque el prompt incluye pasos intermedios
+*d) Zero-shot, porque el prompt solo describe la tarea
+
+11. ¿Qué sentimiento le asigna el modelo a la oración de la figura?
+![Prompt que pide clasificar el sentimiento de una oración como Positivo, Negativo o Neutro, con la respuesta del modelo](imagenes/iap2-nivel11-zeroshot.png)
+a) Neutro
+b) Positivo
+*c) Negativo
+
+12. ¿Qué se popularizó a partir del trabajo sobre in-context learning?
+a) El ajuste de pesos con pares de instrucción y respuesta de cada tarea
+b) El uso de modelos de recompensas para mejorar las respuestas del modelo
+c) La compresión de los modelos con matrices de rango bajo
+*d) Saber escribir prompts como interfaz para obtener buenos resultados de LLMs
+
+13. ¿Cuáles de las siguientes tareas se usan como ejemplos de in-context learning en la clase?
+*a) Detección del idioma
+b) Generación de imágenes desde texto
+*c) POS tagging
+d) Reconocimiento de voz
+*e) Clasificación de sentimiento
+
+### Tema: Instruction tuning
+
+14. Ante el prompt «Traducir 'hola mundo' al inglés», ¿qué hace un LLM preentrenado?
+a) Pide más ejemplos antes de responder
+b) Responde «hello world» siguiendo la instrucción
+c) Responde con la traducción a varios otros idiomas
+*d) Continúa la oración en lugar de traducir
+
+15. ¿Qué efecto tiene el few-shot prompting sobre el problema de que un LLM preentrenado no siga instrucciones?
+a) Lo resuelve por completo
+b) No tiene ningún efecto sobre el problema
+*c) Lo alivia, pero no lo resuelve
+d) Lo empeora en la mayoría de los casos
+
+16. ¿Qué propone instruction tuning para que el modelo siga instrucciones?
+a) Agregar más ejemplos dentro de cada uno de los prompts
+b) Preentrenar de nuevo el modelo con más texto
+*c) Fine-tuning supervisado con un dataset de pares (instrucción, respuesta)
+d) Aprendizaje por refuerzo con un modelo de recompensas
+
+17. En el par de la figura, ¿qué papel cumple cada parte durante el ajuste?
+![Recuadro con una instrucción, «Traducir 'hola mundo' al inglés», y su respuesta, «hello world»](imagenes/iap2-nivel11-it-par.png)
+*a) La instrucción es el contexto dado y la respuesta es lo que se genera
+b) Ambas partes son contexto y el modelo no predice ningún token
+c) Ambas partes las genera el modelo por sí solo, sin ningún contexto dado de antemano
+d) La respuesta es el contexto dado y la instrucción es lo que se genera
+
+18. En instruction tuning, ¿qué pérdida se usa y sobre qué tokens se calcula?
+*a) Entropía cruzada, solo sobre los tokens de la respuesta
+b) Una pérdida de recompensa, solo sobre la instrucción
+c) Entropía cruzada, solo sobre los tokens de entrada
+d) Entropía cruzada sobre todos los tokens de instrucción y respuesta
+
+19. En la pérdida de la figura, ¿qué condiciona la probabilidad de cada token y_t de la respuesta?
+![Fórmula de la pérdida de entropía cruzada con una suma sobre los tokens de la respuesta del logaritmo de P(y_t | instrucción, y_<t)](imagenes/iap2-nivel11-it-formula.png)
+a) Solo los tokens anteriores de la respuesta
+b) Solo la instrucción dada al comienzo
+*c) La instrucción y los tokens anteriores de la respuesta
+d) Los tokens posteriores de la respuesta, junto con la instrucción
+
+20. Después de proponer el fine-tuning con pares (instrucción, respuesta), ¿qué pregunta deja planteada la clase?
+a) ¿Cómo se actualizan los pesos con la entropía cruzada?
+b) ¿Cuántos ejemplos entran en un prompt?
+c) ¿Cómo se evita que el modelo continúe la oración?
+*d) ¿De dónde sacamos suficientes datos para esto?
+
+21. ¿Cuáles de las siguientes fuentes de datos para instruction tuning figuran en la clase?
+*a) Instrucciones y respuestas escritas por humanos
+b) Texto de la web sin formato de instrucción y respuesta
+*c) Datasets para tareas de NLP ya existentes, reformulados
+d) Pesos de otro modelo ya ajustado, copiados sin modificar
+*e) Datos sintéticos generados por un LLM
+
+22. ¿Qué se hace con los datasets de tareas de NLP ya existentes para usarlos en instruction tuning?
+*a) Se reformulan como pares de instrucción y respuesta
+b) Se usan tal cual, sin cambiar su formato original
+c) Se traducen a otro idioma
+d) Se reemplazan por texto generado por un LLM
+
+23. ¿Cómo se generan los datos sintéticos para instruction tuning?
+*a) Con un LLM, con few-shot prompting y bootstrapping iterativo desde unas pocas semillas
+b) Con reglas fijas que combinan frases de datasets ya existentes, sin usar ningún LLM
+c) Con un LLM que parte de miles de ejemplos escritos por humanos para cada tarea
+d) Con un reward model que genera instrucciones nuevas a partir de rankings
+
+24. ¿Qué tarea de NLP y qué dataset ilustra el ejemplo de la figura?
+![Instrucción «¿Es positiva o negativa la siguiente reseña?» con la reseña «La película estuvo bastante aburrida.» y la respuesta «Negativa»](imagenes/iap2-nivel11-it-sentimiento.png)
+*a) Análisis de sentimiento, con IMDB
+b) Resúmenes, con XSum
+c) NER, con el dataset CoNLL-2003
+d) Análisis de sentimiento, con el dataset XSum
+
+25. ¿Qué tarea de NLP y qué dataset ilustra el ejemplo de la figura?
+![Instrucción que pide listar las personas, lugares y organizaciones del texto «Messi jugó en el Barcelona.» y respuesta con Messi y Barcelona](imagenes/iap2-nivel11-it-ner.png)
+a) Resúmenes, con XSum
+b) Análisis de sentimiento, con IMDB
+c) Análisis de sentimiento, con el dataset CoNLL-2003
+*d) NER, con el dataset CoNLL-2003
+
+26. ¿Qué tarea de NLP y qué dataset ilustra el ejemplo de la figura?
+![Instrucción que pide resumir en una oración un artículo y respuesta con el resumen original del dataset](imagenes/iap2-nivel11-it-resumen.png)
+a) Análisis de sentimiento, con IMDB
+b) Análisis de sentimiento, con el dataset XSum
+c) NER, con CoNLL-2003
+*d) Resúmenes, con el dataset XSum
+
+### Tema: Alineación con RLHF
+
+27. ¿Qué significan las siglas RLHF?
+a) Aprendizaje por refuerzo con recompensas verificables
+b) Aprendizaje de recompensas con filtros jerárquicos
+c) Aprendizaje recurrente a partir de rasgos ocultos del texto
+*d) Aprendizaje por refuerzo a partir de feedback humano
+
+28. ¿Qué busca el RLHF?
+a) Reemplazar el preentrenamiento por un ajuste con muy pocos ejemplos
+b) Reducir el tamaño del modelo para que ocupe menos memoria
+c) Aumentar la cantidad de datos de preentrenamiento
+*d) Alinear el LLM a las preferencias y expectativas humanas
+
+29. En el planteo de RLHF como problema de aprendizaje por refuerzo, ¿qué es el agente?
+a) El anotador humano
+*b) El LLM causal (GPT)
+c) El modelo de recompensas
+d) El contexto en el paso actual
+
+30. En el planteo de RLHF como problema de aprendizaje por refuerzo, ¿qué es la acción?
+a) La respuesta completa ya terminada
+*b) La elección del token a generar
+c) El puntaje que da el modelo de recompensas
+d) La historia de tokens del contexto
+
+31. En el planteo de RLHF como problema de aprendizaje por refuerzo, ¿qué es el estado?
+a) El LLM causal que genera cada uno de los tokens
+b) La elección del token que se va a generar a continuación
+*c) El contexto actual de decoding, o sea, la historia de tokens
+d) El puntaje que calcula el modelo de recompensas sobre la respuesta final
+
+32. ¿De quién recibe feedback el LLM para ir mejorando sus respuestas?
+*a) De un modelo de recompensas
+b) De un decoder auxiliar
+c) De un dataset de instrucciones y respuestas
+d) De un encoder bidireccional
+
+33. ¿Qué relación hay entre InstructGPT y ChatGPT?
+a) ChatGPT usa una metodología distinta, basada solo en prompting
+b) ChatGPT se construyó con RAG sobre los datos de InstructGPT
+*c) ChatGPT se construyó usando la misma metodología que InstructGPT
+d) ChatGPT es el modelo de recompensas de InstructGPT
+
+34. ¿Qué diferencia hay entre los datos que se recolectan en el paso 1 y en el paso 2 de la figura?
+![Tres pasos de RLHF: datos de demostración y política supervisada, datos de comparación y reward model, y optimización de una política con PPO](imagenes/iap2-nivel11-rlhf.png)
+*a) En el 1 el anotador demuestra la respuesta deseada; en el 2 ordena varias respuestas
+b) En ambos pasos el modelo genera respuestas sin ninguna intervención del anotador
+c) En el 1 el anotador ordena varias respuestas del modelo; en el 2 demuestra la respuesta
+d) En ambos pasos el anotador solo escribe una respuesta nueva para cada prompt
+
+35. ¿Con qué se entrena el reward model en la figura?
+![Tres pasos de RLHF: datos de demostración y política supervisada, datos de comparación y reward model, y optimización de una política con PPO](imagenes/iap2-nivel11-rlhf.png)
+*a) Con rankings de varias salidas, ordenadas de mejor a peor
+b) Con los prompts del dataset, sin ninguna respuesta
+c) Con las recompensas que calcula la política en el paso 3
+d) Con respuestas escritas desde cero por los anotadores humanos
+
+36. En la figura, ¿en qué pasos interviene un anotador humano?
+![Tres pasos de RLHF: datos de demostración y política supervisada, datos de comparación y reward model, y optimización de una política con PPO](imagenes/iap2-nivel11-rlhf.png)
+*a) En el paso 1, donde demuestra el comportamiento deseado
+*b) En el paso 2, donde ordena las salidas de mejor a peor
+c) En el paso 3, donde califica cada salida de la política
+
+37. En el paso 3 de la figura, ¿qué se hace con la recompensa que calcula el reward model?
+![Tres pasos de RLHF: datos de demostración y política supervisada, datos de comparación y reward model, y optimización de una política con PPO](imagenes/iap2-nivel11-rlhf.png)
+a) Se descarta una vez generada la respuesta
+b) Se usa para entrenar de nuevo el reward model
+c) Se usa para ordenar las respuestas del anotador
+*d) Se usa para actualizar la política mediante PPO
+
+38. ¿A qué corresponde el paso 1 del esquema de RLHF?
+*a) Al instruction tuning con datos de demostración
+b) A la optimización de la política con PPO
+c) Al entrenamiento del reward model con rankings
+d) A la indexación de documentos externos
+
+39. ¿Para qué se usa el sistema Elo (ajedrez, FIFA) en el paso 2 de RLHF?
+a) Para elegir los prompts que se les muestran a los anotadores
+*b) Para asignar un puntaje a cada respuesta desde los rankings
+c) Para actualizar la política mediante el método PPO
+d) Para dividir los documentos de la base en fragmentos
+
+40. ¿Qué aprende el reward model con los puntajes asignados a cada respuesta?
+a) A elegir el siguiente token con mayor probabilidad
+*b) A asignar puntajes a las respuestas
+c) A generar respuestas desde instrucciones
+d) A reformular datasets de NLP como instrucciones
+
+41. ¿Qué tipo de método es PPO, que se usa en el paso 3 de RLHF?
+a) Un método de cuantización de los pesos del modelo
+b) Un método supervisado basado en rankings tipo Elo
+*c) Un método de gradiente de políticas del tipo actor-critic
+d) Un método de decodificación que elige el token más probable
+
+## Nivel 12: Fundamentos de LLMs #3 (parte 3)
+
+### Tema: Retrieval-Augmented Generation (RAG)
+
+1. ¿Cuál es el objetivo de RAG?
+a) Que un LLM comprima sus propios pesos para correr más rápido en cualquier equipo
+b) Que un LLM aprenda de memoria los documentos de la empresa
+c) Que un LLM genere documentos nuevos sin ninguna fuente externa
+*d) Que un LLM responda sobre documentos externos, como manuales o contratos
+
+2. ¿Cuáles son las dos etapas de RAG?
+a) Instruction tuning (offline) y alineación con RLHF (online)
+*b) Indexación (offline) y recuperación y generación (online)
+c) Preentrenamiento (offline) y fine-tuning (online)
+d) Recuperación y generación (offline) e indexación (online)
+
+3. En la indexación de RAG, ¿qué se hace primero con los documentos?
+a) Se computa el embedding de la consulta
+*b) Se los carga y se los divide en fragmentos
+c) Se guardan los pares (embedding, fragmento) en una BD vectorial
+d) Se buscan los fragmentos más cercanos a la consulta
+
+4. En la indexación de RAG, ¿qué se hace con cada fragmento?
+a) Se le pide al LLM que lo resuma
+b) Se lo descarta si es más largo que la consulta
+c) Se lo copia en el prompt
+*d) Se computa su embedding, por ejemplo con BERT
+
+5. En la indexación de RAG, ¿dónde se guardan los pares (embedding, fragmento)?
+*a) En una base de datos vectorial
+b) En una matriz de embeddings del vocabulario
+c) En el contexto del prompt
+d) En los pesos del LLM
+
+6. En la etapa online de RAG, ¿qué se computa a partir de la consulta del usuario?
+a) Un adaptador LoRA de rango bajo
+b) Un reward model
+c) Un ranking Elo
+*d) El embedding de la consulta
+
+7. En la etapa online de RAG, ¿qué se hace con los fragmentos más cercanos a la consulta?
+a) Se los borra de la base de datos vectorial
+b) Se los usa para actualizar los pesos del LLM
+c) Se los ordena por Elo
+*d) Se los copia en el prompt del LLM
+
+8. En la etapa online de RAG, ¿qué se le pide al LLM al final?
+a) Que ordene los fragmentos según su cercanía
+*b) Que responda la consulta usando esa información
+c) Que compute el embedding de cada uno de los fragmentos
+d) Que genere nuevos fragmentos para indexar
+
+9. En la figura de RAG, ¿qué comparten la consulta del usuario y los fragmentos de la base de conocimiento?
+![Esquema de RAG con base de conocimiento, fragmentos, modelo de embeddings, base vectorial, consulta más documentos recuperados y LLM](imagenes/iap2-nivel12-rag.png)
+*a) Ambos pasan por un único modelo de embeddings compartido
+b) Ambos se envían al LLM antes de ser convertidos en embeddings
+c) Ambos se dividen en fragmentos antes de entrar al modelo de embeddings
+d) Ambos se guardan directamente en la base vectorial
+
+10. En la figura de RAG, ¿de dónde salen los documentos que se juntan con la consulta antes de llegar al LLM?
+![Esquema de RAG con base de conocimiento, fragmentos, modelo de embeddings, base vectorial, consulta más documentos recuperados y LLM](imagenes/iap2-nivel12-rag.png)
+a) Del modelo de embeddings, que genera los documentos
+b) Directamente de la base de conocimiento, sin pasar por la base vectorial
+c) De la consulta del usuario, que ya los incluye
+*d) De la base vectorial, buscando con el embedding de la consulta
+
+### Tema: Chain of thought (CoT)
+
+11. ¿Qué se le pide al modelo en la idea inicial de chain of thought?
+*a) Que genere pasos intermedios de razonamiento para responder una consulta
+b) Que responda sin explicar nada, con una sola palabra de salida
+c) Que repita la consulta antes de responderla
+d) Que actualice sus pesos con cada paso de razonamiento
+
+12. ¿En qué tareas mostró mejoras la idea inicial de chain of thought?
+*a) Matemática
+b) Síntesis de voz
+*c) Sentido común
+d) Generación de imágenes
+*e) Razonamiento simbólico
+
+13. ¿Cuál es la intuición detrás de chain of thought?
+a) Que el modelo piensa más rápido cuando recibe menos texto de entrada del usuario
+*b) Que descompone un problema en pasos sencillos más probables de salir bien
+c) Que los ejemplos del prompt actualizan los pesos del modelo
+d) Que cada paso intermedio reemplaza una capa completa del transformer
+
+14. ¿Qué diferencia hay entre el prompt de Chain-of-Thought y el de Standard Prompting en la figura?
+![Comparación entre Standard Prompting y Chain-of-Thought Prompting con el mismo problema de pelotas de tenis y la misma pregunta sobre manzanas](imagenes/iap2-nivel12-cot.png)
+a) En CoT no se incluye ningún ejemplo resuelto antes de la pregunta
+b) En CoT la pregunta final es distinta, con un problema más fácil
+c) En CoT se pide la respuesta final sin mostrar cálculos
+*d) En CoT la respuesta del ejemplo incluye pasos intermedios de razonamiento
+
+15. En la figura, ¿cómo resultan las respuestas del modelo con Standard Prompting y con CoT?
+![Comparación entre Standard Prompting y Chain-of-Thought Prompting con el mismo problema de pelotas de tenis y la misma pregunta sobre manzanas](imagenes/iap2-nivel12-cot.png)
+a) Con Standard acierta y con CoT falla
+*b) Con Standard se equivoca y con CoT acierta
+c) Se equivoca con ambos, aunque con CoT da más pasos
+d) Acierta con ambos, pero con CoT da más pasos
+
+16. ¿Qué alcanza con agregar al prompt para obtener razonamiento paso a paso, sin ejemplos?
+*a) Agregar la frase «Let's think step by step»
+b) Entrenar un modelo de recompensas con rankings
+c) Ajustar el modelo con pares de instrucción y respuesta
+d) Dar un único ejemplo resuelto en el prompt
+
+17. ¿Qué diferencia hay entre la idea inicial de CoT y zero-shot CoT?
+*a) La inicial usa ejemplos que razonan; zero-shot CoT usa solo una frase
+b) La inicial usa un reward model; zero-shot CoT usa un ranking Elo
+c) La inicial actualiza los pesos; zero-shot CoT no los actualiza
+d) La inicial usa solo una frase; zero-shot CoT usa varios ejemplos que razonan
+
+18. ¿Cómo logran modelos como OpenAI o1 y DeepSeek-R1 descomponer problemas en cadenas largas?
+a) Con un encoder bidireccional que revisa cada paso
+b) Con una base vectorial que recupera cadenas de razonamiento ya resueltas
+*c) Con aprendizaje por refuerzo sobre cadenas largas de razonamiento
+d) Con prompts few-shot escritos a mano para cada uno de los problemas
+
+19. ¿Qué significan las siglas RLVR?
+a) Generación aumentada por recuperación con ranking verificable
+b) Aprendizaje por refuerzo a partir de feedback humano
+*c) Aprendizaje por refuerzo con recompensas verificables
+d) Aprendizaje recurrente con recompensas variables
+
+20. ¿Qué costo tiene el CoT entrenado en inferencia?
+a) Reduce el cómputo, porque el modelo responde con menos tokens
+b) Aumenta el costo solo en el preentrenamiento
+*c) Aumenta mucho el cómputo y la latencia en inferencia
+d) No cambia el cómputo, solo el tamaño del vocabulario
+
+21. ¿Cuáles de los siguientes modelos figuran como ejemplos de CoT entrenado en la clase?
+*a) OpenAI o1
+b) InstructGPT (2022)
+*c) DeepSeek-R1
+d) ChatGPT (2022)
+e) RoBERTuito
+
+### Tema: Preguntas para las Neurociencias
+
+22. ¿Qué contraste plantea la clase entre un LLM y un niño/a?
+*a) La cantidad de palabras que ve cada uno al entrenarse
+b) La velocidad con que cada uno genera palabras
+c) El tamaño del vocabulario que cada uno llega a usar
+d) La cantidad de idiomas que cada uno aprende de manera simultánea
+
+23. ¿Qué propone el BabyLM Challenge desde 2023?
+*a) Entrenar LLMs con datos comparables a los de un niño/a y ver qué emerge
+b) Comparar el desempeño de los LLMs con el de niños en tareas de razonamiento
+c) Entrenar LLMs con la mayor cantidad de datos de texto que se pueda conseguir hoy
+d) Ajustar LLMs ya preentrenados con pocos ejemplos de lenguaje de niños
+
+24. Al preguntar si los humanos elegimos las palabras de un modo similar al de un LLM, ¿qué elemento de los LLMs se compara con algo del cerebro?
+a) La normalización de capas
+b) La máscara causal
+*c) La temperatura del modelo
+d) La matriz de embeddings del vocabulario
+
+25. Los LLMs no incluyen módulos específicos para sintaxis, pero parecen aprender bien la estructura jerárquica del lenguaje. ¿Qué debate se retoma a partir de esto?
+a) El debate entre el aprendizaje supervisado y el aprendizaje por refuerzo
+*b) El debate entre la gramática universal y el aprendizaje estadístico
+c) El debate entre habla interna y pensamiento deliberado
+d) El debate entre memoria de trabajo y memoria episódica
+
+26. ¿Qué mecanismo de los transformers se compara con uno de las Neurociencias al preguntar si comparten algo más que el nombre?
+*a) La atención de los transformers
+b) La máscara causal del decoder
+c) La conexión residual
+d) La normalización de cada capa del bloque
+
+27. ¿Con qué funciones del cerebro se comparan el in-context learning y RAG?
+*a) Con la memoria de trabajo
+b) Con la plasticidad sináptica
+*c) Con la memoria episódica del hipocampo
+d) Con el olvido catastrófico
+e) Con el habla interna
+
+28. Respecto de in-context learning y RAG, ¿qué proceso se pregunta si les falta a los LLM?
+a) La plasticidad sináptica de las neuronas
+b) La temperatura
+c) La atención entre los tokens
+*d) La consolidación de la memoria
+
+29. ¿Con qué fenómenos del cerebro se propone hacer un paralelismo con el fine-tuning?
+*a) Plasticidad sináptica
+b) Memoria de trabajo
+*c) Olvido catastrófico
+d) Habla interna
+e) Memoria episódica del hipocampo
+
+30. ¿Con qué se pregunta si se parecen las ideas de chain-of-thought?
+a) Con la gramática universal y el aprendizaje
+b) Con la plasticidad sináptica y el olvido catastrófico del cerebro
+*c) Con el habla interna y/o el pensamiento deliberado
+d) Con la memoria de trabajo y la memoria episódica
+
+31. ¿Qué ventaja de los LLMs sobre el cerebro menciona la clase para hacer experimentos?
+a) Procesan el lenguaje sin necesitar ningún tipo de mecanismo de atención
+*b) Se puede acceder a cada unidad, intervenir y ablacionar
+c) Pueden aprender un idioma nuevo sin datos
+d) Consumen menos energía que cualquier cerebro humano
+
+32. ¿Cuáles de los siguientes experimentos de neurociencia del lenguaje se plantea replicar en modelos?
+*a) Lesiones
+b) Entrenamiento con más datos
+*c) Estimulación
+d) Comparación de tokenizadores
+*e) Afasias
 `;

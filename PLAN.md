@@ -8,6 +8,7 @@
 - **Agregar materias/niveles reales adicionales** a medida que el usuario curse nuevas clases, siguiendo el patrón ya documentado en el README.
 
 ### Completadas
+- 2026-11-03 — «IA y Neuro p. 2»: niveles 10 a 12 («Fundamentos de LLMs #3», 113 preguntas) con 15 imágenes nuevas
 - 2026-10-27 — «IA y Neuro p. 2» reorganizada en 9 niveles (333 preguntas) con 30 imágenes nuevas
 - 2026-10-26 — «IA y Neuro p. 2»: Nivel 4 «Fundamentos de LLMs #1» (9 temas, 92 preguntas, sin imágenes nuevas)
 - 2026-10-21 — Rediseño C, fase 3: Repaso del día (calendario de 1, 3, 7 y 14 días) y las insignias «Cinco repasos» y «25 recuperadas»; con esto el rediseño C queda terminado
@@ -26,6 +27,12 @@
 - 2026-09-05 — Checkpoints agrupados por tema (`### Tema:`) en vez de por tamaño parejo
 
 ## Bitácora de decisiones
+
+### 2026-11-03 — «IA y Neuro p. 2»: se suman los niveles 10 a 12
+**Contexto:** el usuario subió una versión de `preguntas_ia_neurociencias_p2.js` que agrega al final «Fundamentos de LLMs #3» en tres partes (113 preguntas, 11 temas) y un zip con 15 imágenes nuevas. Los niveles 1 a 9 no cambian ni en una línea.
+**Decisión:** se reemplazó el archivo y se sumaron las 15 imágenes. Como los niveles anteriores conservan su huella, el avance guardado sigue siendo válido y los tres niveles nuevos aparecen sin aprobar.
+**Alternativas descartadas:** ninguna; es solo contenido, sin cambios de código.
+**Revisión post-implementación:** salió tal cual lo planeado. Los 12 niveles se leen sin errores de formato y las 54 imágenes distintas de la materia cargan en celular y escritorio.
 
 ### 2026-10-27 — «IA y Neuro p. 2»: reorganización en 9 niveles y 30 imágenes nuevas
 **Contexto:** el usuario subió una versión actualizada de `preguntas_ia_neurociencias_p2.js` y un zip de imágenes. El Nivel 3 viejo se parte en los niveles 3 y 4, el Nivel 4 en los niveles 5 a 9, y muchas preguntas de los niveles 1 a 3 pasan a apoyarse en una imagen en lugar de repetir el enunciado.
